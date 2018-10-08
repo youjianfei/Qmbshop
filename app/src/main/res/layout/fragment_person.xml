@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.jingnuo.quanmbshop.customview.CustomerScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="vertical"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_userpic"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@mipmap/user_pic"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:id="@+id/text_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户名"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@+id/image_userpic"
+                android:layout_marginLeft="20dp"
+                />
+            <LinearLayout
+                android:id="@+id/linearlayout_chengwei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_chengwei"
+                android:layout_below="@+id/text_username"
+                android:layout_toRightOf="@+id/image_userpic"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                >
+                <ImageView
+                    android:id="@+id/image_chengwei"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="2dp"
+                    />
+                <TextView
+                    android:id="@+id/textview_phonenumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_username"
+                    android:text="称谓"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray_background"
+                android:layout_below="@+id/image_userpic"
+                />
+
+            <RelativeLayout
+                android:id="@+id/relative_info"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/line1"
+                android:layout_marginTop="10dp"
+                >
+                    <TextView
+                        android:id="@+id/textview_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="余额：(元)"
+                        android:textColor="@color/black_text"
+                        android:textSize="13dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        />
+                    <TextView
+                        android:id="@+id/textview_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/textview_1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        />
+
+
+                <TextView
+                    android:id="@+id/button_recharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="充值"
+                    android:textColor="@color/black_text"
+                    android:textSize="13dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"
+
+                    />
+                <TextView
+                    android:id="@+id/button_tixian"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
+                    android:text="立即提现"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:textColor="@color/yellow_button"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/button_miaobian_yellow_5dp"
+                    android:layout_below="@+id/button_recharge"
+                    android:layout_marginTop="10dp"
+                    />
+
+
+
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray_background"
+                android:layout_below="@+id/relative_info"
+                android:layout_marginTop="15dp"
+                />
+
+            <com.jingnuo.quanmbshop.customview.MyListView
+                android:id="@+id/mygridview_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray_background"
+                android:layout_below="@+id/line2"
+                android:layout_marginTop="10dp"
+                android:divider="@null"
+                />
+
+            <TextView
+                android:id="@+id/text_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退出"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/mygridview_menu"
+                android:layout_marginTop="30dp"
+                />
+
+        </RelativeLayout>
+
+    </com.jingnuo.quanmbshop.customview.CustomerScrollView>
+
+
+
+
+
+</RelativeLayout>

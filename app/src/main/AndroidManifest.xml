@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jingnuo.quanmbshop">
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <!--手机定位信息，用来为语义等功能提供定位，提供更精准的服务-->
+
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 申明网络权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIMOUNT_UNMOUNT_FILESYSTEMSBRATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.jingnuo.quanmbshop.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <!-- <provider -->
+        <!-- android:name="android.support.v4.content.FileProvider" -->
+        <!-- android:authorities="com.jingnuo.quanmb.FileProvider" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/rc_file_path" /> -->
+        <!-- </provider> -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="5f44a6cf8d64182033741d5b546a4ef0" />
+
+        <service android:name="com.amap.api.location.APSService" />
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:process=":multiprocess"
+            tools:node="replace" />
+        <!-- &lt;!&ndash;融云广播接受者&ndash;&gt; -->
+        <receiver
+            android:name=".broadcastrReceiver.RongyunReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MESSAGE_CLICKED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
+                <action android:name="io.rong.push.intent.THIRD_PARTY_PUSH_STATE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcastrReceiver.JpushBroadcastRecricer"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+
+                <category android:name="com.jingnuo.quanmb" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.FindPasswordActivity" />
+        <activity android:name=".activity.AuthenticationActivity" />
+        <activity android:name=".activity.DatailAddressActivity" />
+        <activity android:name=".activity.AddAddressActivity" />
+        <activity
+            android:name=".activity.IssueTaskActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.ChangepasswordActivity" />
+        <activity android:name=".activity.ChangephoneNumberActivity" />
+        <activity android:name=".activity.ChangephoneNumberNextActivity" />
+        <activity android:name=".activity.SetPasswordActivity" />
+        <activity android:name=".activity.PersonInfoActivity" />
+        <activity android:name=".activity.TaskDetailsActivity" />
+        <activity android:name=".activity.ShopInActivity" />
+        <activity android:name=".activity.LaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ShopInNextActivity" />
+        <activity android:name=".activity.BargainActivity" />
+        <activity android:name=".activity.ShophallActivity" />
+        <activity android:name=".activity.SkillDetailActivity" />
+        <activity android:name=".activity.LocationMapActivity" />
+        <activity android:name=".activity.IssueSkillActivity" />
+        <activity android:name=".activity.ShopCenterActivity" />
+        <activity android:name=".activity.SetNicknameActivity" />
+        <activity android:name=".activity.chooseImageActivity" />
+        <activity android:name=".activity.IssueTaskNextActivity" />
+        <activity android:name=".activity.HelperOrderActivity" />
+        <activity android:name=".activity.SystemMessageActivity" />
+        <activity android:name=".activity.BarginmessageListActivity" />
+        <activity android:name=".activity.MyOrderActivity" />
+        <activity android:name=".activity.MytaskDetailActivity" />
+        <activity android:name=".activity.ThreeRegisterActivity" />
+        <activity android:name=".activity.ThreeLoginBindActivity" />
+        <activity android:name=".activity.MyTodoActivity" />
+        <activity android:name=".activity.MyAuthenticationActivity" />
+        <activity android:name=".activity.MySkillActivity" />
+        <activity android:name=".activity.DealActivity" />
+        <activity android:name=".activity.PayActivity" />
+        <activity android:name=".activity.SuggestActivity" />
+        <activity android:name=".activity.OrderThinkActivity" />
+        <activity android:name=".activity.MySkillCollectActivity" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind" />
+        <activity android:name=".activity.SystemmessageDetailActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activity.LocationaddressActivity" />
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".activity.RechargeActivity" />
+        <activity android:name=".activity.CashoutActivity" />
+        <activity android:name=".activity.ShopCenterInfoActivity" />
+        <activity android:name=".activity.ShopinfoEditActivity" />
+        <activity android:name=".activity.SubmitSuccessActivity" />
+        <activity android:name=".activity.WalletActivity" />
+        <activity android:name=".activity.MonryMingxiActivity" />
+        <activity android:name=".activity.PayBaozhengmoneyActivity" />
+        <activity android:name=".activity.MoneyMingxiDetailsActivity" />
+        <activity android:name=".activity.SetSafepassword1Activity" />
+        <activity android:name=".activity.SetSafepassword2Activity" />
+        <activity android:name=".activity.TuiguangbiWalletActivity" />
+        <activity android:name=".activity.HuiyuanRechargeActivity" />
+        <activity android:name=".activity.PaytuiguangbiActivity" />
+        <activity android:name=".activity.PaySuccessActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.FirstLoginActivity" />
+        <activity android:name=".activity.HelperType" />
+        <activity android:name=".activity.TuijianrenwuActivity" />
+        <activity android:name=".activity.AdressShowActivity" />
+        <activity android:name=".activity.LoveTaskActivity" />
+        <activity android:name=".activity.LoveTaskDetailsActivity" />
+        <activity android:name=".activity.MessageWallEditActivity" />
+        <activity android:name=".activity.IssuelovetaskActivity" />
+        <activity android:name=".activity.MyShequActivity" />
+        <activity android:name=".activity.ShuidianfeiActivity" />
+        <activity android:name=".activity.ShezhishequActivity" />
+        <activity android:name=".activity.FulisheActivity" />
+        <activity android:name=".activity.ErShoushichangActivity" />
+        <activity android:name=".activity.IssueErshoushichangActivity" />
+        <activity android:name=".activity.ErshouxinxiDetailsActivity" />
+        <activity
+            android:name=".activity.SquareActuvity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MessageActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SkillActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.MatchShopActivity" />
+        <activity android:name=".activity.XieyZhuceiActivity" />
+        <activity android:name=".activity.XieYiShanghuActivity" />
+        <activity android:name=".activity.ZixunKefuWebActivity" />
+        <activity android:name=".activity.LookShequ" />
+        <activity android:name=".activity.GuanggaoWeb" />
+        <activity android:name=".activity.JubaoActivity" />
+        <activity
+            android:name=".activity.ConversationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.jingnuo.quanmb"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ConversationListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.jingnuo.quanmb"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.HelperguizeActivity" />
+        <activity android:name=".activity.TuiyajinActivity"></activity>
+    </application>
+
+</manifest>

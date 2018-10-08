@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    android:orientation="vertical"
+    tools:context="com.jingnuo.quanmbshop.activity.BargainActivity">
+
+    <RelativeLayout
+        android:id="@+id/re_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/back_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="还价信息"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textmessagetitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:text="你发布的任务被帮手还价了！"
+        android:textColor="@color/black_text"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/text_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:paddingTop="11dp"
+        android:text=""
+        android:textColor="@color/text_hide_tip"
+        android:textSize="12dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textview_shenfen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="还价帮手"
+            android:textColor="@color/black_text"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:text="还价帮手"
+            android:textColor="@color/black_text"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/text_name"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:src="@color/gray_dfdfdf" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_type"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/line1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/user_pic" />
+
+        <TextView
+            android:id="@+id/text_tasktype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/image_type"
+            android:background="@drawable/background_text_taskstate"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="跑腿"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/taskprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/text_tasktype"
+            android:text="佣金00.00元"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/line1"
+            android:textColor="@color/yellow_jianbian_end"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/taskdes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/image_type"
+            android:text=""
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/taskprice"
+            android:textColor="@color/black_text"
+            android:textSize="15dp" />
+
+
+        <ImageView
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/taskdes"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:src="@color/gray_dfdfdf" />
+
+        <TextView
+            android:id="@+id/text_yourprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="你的还价："
+            android:textColor="@color/black_text"
+            android:textSize="15dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/text_needprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_yourprice"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="还价价格："
+            android:textColor="@color/black_text"
+            android:textSize="15dp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:text="提示:"
+            android:textColor="@color/text_hide_tip"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="9dp"
+            android:text="接受：帮手的还价不影响该任务的正常出售，非还价帮手也可以按原价帮助"
+            android:textColor="@color/text_hide_tip"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:text="拒绝：点击后你将拒绝该帮手的还价"
+            android:textColor="@color/text_hide_tip"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_caozuo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/button_refuse"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_red_20dp"
+            android:text="拒 绝"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button_goon"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_yellow_20dp"
+            android:text="继续还价"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button_accect"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_green_20dp"
+            android:text="接 受"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_bargainstate"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_yellow2"
+        android:gravity="center"
+        android:text="还价中"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:visibility="gone" />
+
+
+</LinearLayout>

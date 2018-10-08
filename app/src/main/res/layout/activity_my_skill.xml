@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    tools:context="com.jingnuo.quanmbshop.activity.MySkillActivity">
+    <RelativeLayout
+        android:id="@+id/re_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/back_black" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="我的服务"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/re_title"
+        app:tabMode="fixed"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        app:tabTextColor="@color/text_title2"
+        app:tabSelectedTextColor="@color/yellow_jianbian_start"
+        app:tabIndicatorColor="@color/yellow_jianbian_start"
+        app:tabMinWidth="110dp"
+        />
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/list_myskill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:divider="@null"
+        android:dividerHeight="8dp"
+        ptr:ptrMode="both"
+        />
+
+
+</LinearLayout>

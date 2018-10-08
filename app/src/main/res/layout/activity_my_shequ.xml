@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    tools:context="com.jingnuo.quanmbshop.activity.MyShequActivity">
+    <RelativeLayout
+        android:id="@+id/re_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/back_black" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="我的社区"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/textview_shequname"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:singleLine="true"
+            android:text="我的社区"
+            android:gravity="right"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:singleLine="true"
+            android:text=">"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+    </RelativeLayout>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:layout_below="@+id/re_title"
+        android:id="@+id/listview_myshequ"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        ptr:ptrMode="both"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_fabu"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_yellow_20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/fabuaixin"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

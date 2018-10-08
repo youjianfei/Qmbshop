@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    tools:context=".activity.MatchShopActivity">
+
+    <RelativeLayout
+        android:id="@+id/re_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/back_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="匹配商家"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <com.jingnuo.quanmbshop.customview.CustomerScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearlayout_bottom"
+        android:layout_below="@+id/re_title"
+        android:overScrollMode="never"
+        android:scrollbars="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_matchCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="为你选择最合适的商家" />
+            <LinearLayout
+                android:id="@+id/textview_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@mipmap/refresh"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="换一组" />
+
+
+            </LinearLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_gravity="bottom"
+                android:clipToPadding="false"
+                android:layout_below="@+id/text_matchCount"
+                android:overScrollMode="never"
+                android:paddingEnd="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingStart="30dp" />
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/re2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_below="@+id/viewPager"
+                android:background="@color/white">
+                <TextView
+                    android:id="@+id/texttitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="订单详情"
+                    android:textColor="@color/black_text"
+                    android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/line111"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/texttitle"
+                    android:src="@color/gray_dfdfdf" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_below="@+id/line111"
+                    android:src="@mipmap/taskdetails2" />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="15dp"
+                    android:text="详情"
+                    android:layout_below="@+id/line111"
+                    android:textColor="@color/black_text"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/text_taskdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:text="任务详情"
+                    android:layout_below="@+id/line111"
+                    android:textColor="#7f7f7f"
+                    android:textSize="15dp" />
+
+                <RelativeLayout
+                    android:id="@+id/skill_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_taskdetail"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/white">
+
+                    <com.jingnuo.quanmbshop.customview.MyGridView
+                        android:id="@+id/GridView_PIC"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:visibility="gone"
+                        android:numColumns="3" />
+
+                </RelativeLayout>
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/line222"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_below="@+id/skill_pic"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:src="@color/gray_dfdfdf" />-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="15dp"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:layout_below="@+id/skill_pic"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginTop="20dp"-->
+                    <!--android:src="@mipmap/people2" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/text_guzhu"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/skill_pic"-->
+                    <!--android:layout_marginLeft="40dp"-->
+                    <!--android:layout_marginTop="18dp"-->
+                    <!--android:text="联系人"-->
+                    <!--android:textColor="@color/black_text"-->
+                    <!--android:textSize="15dp" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/text_guzhuname"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/skill_pic"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginTop="18dp"-->
+                    <!--android:text="雇主名字"-->
+                    <!--android:textColor="#7f7f7f"-->
+                    <!--android:textSize="15dp" />-->
+
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/line2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_below="@+id/text_guzhu"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:src="@color/gray_dfdfdf" />-->
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/skill_pic"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@mipmap/time2" />
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/skill_pic"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="18dp"
+                    android:text="预约时间"
+                    android:textColor="@color/black_text"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/text_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/skill_pic"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    android:textColor="@color/black_text2"
+                    android:textSize="15dp" />
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/line3"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_below="@+id/text3"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:src="@color/gray_dfdfdf" />-->
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/text3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@mipmap/address_blue" />
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text3"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="18dp"
+                    android:text="地址"
+                    android:textColor="@color/black_text"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/text_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text3"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    android:textColor="#7f7f7f"
+                    android:textSize="15dp" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </com.jingnuo.quanmbshop.customview.CustomerScrollView>
+
+
+</RelativeLayout>
