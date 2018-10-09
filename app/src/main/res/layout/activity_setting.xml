@@ -10,7 +10,7 @@
         android:id="@+id/re_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -19,7 +19,7 @@
             android:padding="10dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/back_black" />
+            android:src="@mipmap/back_white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,20 +27,146 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="设置"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </RelativeLayout>
+    <TextView
+        android:id="@+id/textview_changephonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/re_title"
+        android:text="更换手机号"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:paddingLeft="25dp"
+        android:background="@color/white"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        />
+    <TextView
+        android:id="@+id/textview_phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/re_title"
+        android:text="18539931923"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="35dp"
+        />
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@mipmap/more"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/re_title"
+        />
+    <TextView
+    android:id="@+id/textview_changepassword"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="修改密码"
+    android:layout_marginTop="1dp"
+    android:layout_below="@+id/textview_changephonenumber"
+    android:textColor="@color/black"
+    android:paddingLeft="25dp"
+    android:background="@color/white"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp"
+    />
+    <ImageView
+    android:layout_width="15dp"
+    android:layout_height="15dp"
+    android:src="@mipmap/more"
+    android:layout_below="@+id/textview_changephonenumber"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="16dp"
+    />
+    <TextView
+        android:id="@+id/textview_changesafepassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改安全密码"
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/textview_changepassword"
+        android:textColor="@color/black"
+        android:paddingLeft="25dp"
+        android:background="@color/white"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        />
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@mipmap/more"
+        android:layout_below="@+id/textview_changepassword"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
+        />
 
+
+    <!--<TextView-->
+        <!--android:id="@+id/textview_shareAPP"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="分享APP"-->
+        <!--android:layout_marginTop="1dp"-->
+        <!--android:layout_below="@+id/textview_cleancache"-->
+        <!--android:textColor="@color/black_text"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingTop="15dp"-->
+        <!--/>-->
+    <!--<ImageView-->
+        <!--android:layout_width="15dp"-->
+        <!--android:layout_height="15dp"-->
+        <!--android:src="@mipmap/more"-->
+        <!--android:layout_below="@+id/textview_cleancache"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:id="@+id/imageView" />-->
+
+    <TextView
+        android:id="@+id/textview_aboutus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关于我们"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textview_changesafepassword"
+        android:textColor="@color/black"
+        android:paddingLeft="25dp"
+        android:background="@color/white"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        />
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@mipmap/more"
+        android:layout_below="@+id/textview_changesafepassword"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="26dp"
+         />
     <TextView
         android:id="@+id/textview_cleancache"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="清除缓存"
         android:layout_marginTop="1dp"
-        android:layout_below="@+id/re_title"
-        android:textColor="@color/black_text"
-        android:paddingLeft="20dp"
+        android:layout_below="@+id/textview_aboutus"
+        android:textColor="@color/black"
+        android:paddingLeft="25dp"
         android:background="@color/white"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
@@ -51,8 +177,8 @@
         android:layout_height="wrap_content"
         android:text="0Kb"
         android:layout_marginTop="1dp"
-        android:layout_below="@+id/re_title"
-        android:textColor="@color/black_text"
+        android:layout_below="@+id/textview_aboutus"
+        android:textColor="@color/black"
         android:paddingLeft="20dp"
         android:background="@color/white"
         android:paddingBottom="15dp"
@@ -60,61 +186,18 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         />
-    <!--<ImageView-->
-        <!--android:layout_width="15dp"-->
-        <!--android:layout_height="15dp"-->
-        <!--android:src="@mipmap/more"-->
-        <!--android:layout_below="@+id/textview_suggest"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginRight="20dp"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:id="@+id/imageView12" />-->
-    <TextView
-        android:id="@+id/textview_shareAPP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="分享APP"
-        android:layout_marginTop="1dp"
-        android:layout_below="@+id/textview_cleancache"
-        android:textColor="@color/black_text"
-        android:paddingLeft="20dp"
-        android:background="@color/white"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
-        />
-    <ImageView
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:src="@mipmap/more"
-        android:layout_below="@+id/textview_cleancache"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="16dp"
-        android:id="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textview_aboutus"
+        android:id="@+id/textview_exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="关于我们"
+        android:text="退出登录"
         android:layout_marginTop="1dp"
-        android:layout_below="@+id/textview_shareAPP"
-        android:textColor="@color/black_text"
-        android:paddingLeft="20dp"
+        android:textColor="@color/black"
         android:background="@color/white"
+        android:gravity="center"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
+        android:layout_alignParentBottom="true"
         />
-    <ImageView
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:src="@mipmap/more"
-        android:layout_below="@+id/textview_shareAPP"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="16dp"
-         />
-
-
-
 </RelativeLayout>
