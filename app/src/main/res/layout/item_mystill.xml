@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_person">
+    android:orientation="vertical"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_person">
         <ImageView
             android:id="@+id/image_zhiding"
             android:layout_width="30dp"
@@ -66,13 +68,13 @@
             android:layout_marginTop="15dp"
             android:text="这里是专业的详细描述" />
 
-        <ImageView
-            android:id="@+id/image_01"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_below="@+id/text_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray_background" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/background_person">
 
         <TextView
             android:id="@+id/text_cancle"
@@ -133,4 +135,4 @@
             android:layout_toLeftOf="@+id/text_zhinengshuaxin"
             android:textColor="@color/white" />
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

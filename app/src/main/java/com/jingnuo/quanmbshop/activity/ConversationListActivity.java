@@ -67,7 +67,7 @@ public class ConversationListActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation_list);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);//状态栏颜色
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.black), 0);//状态栏颜色
         initview();
         initdata();
         setdata();

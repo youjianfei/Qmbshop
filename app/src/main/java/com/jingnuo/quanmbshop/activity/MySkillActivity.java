@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.jaeger.library.StatusBarUtil;
 import com.jingnuo.quanmbshop.Adapter.Adapter_mystill;
 import com.jingnuo.quanmbshop.Interface.InterfaceAdapterSuccess;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
@@ -27,6 +30,7 @@ public class MySkillActivity extends BaseActivityother {
     //控件
     PullToRefreshListView  mListview;
     TabLayout mTablayout;
+    LinearLayout linearlayout_fabu;
 
     //数据
     int  page=1;
@@ -45,7 +49,7 @@ public class MySkillActivity extends BaseActivityother {
 
     @Override
     protected void setData() {
-
+//        StatusBarUtil.setColor(this, getResources().getColor(R.color.black), 0);//状态栏颜色
     }
 
     @Override
@@ -67,6 +71,42 @@ public class MySkillActivity extends BaseActivityother {
 
     @Override
     protected void initListener() {
+        final float[] mFirstY = {0};//按下时获取位置
+        final float[] mCurrentY = {0};//得到滑动的位置
+        mListview.getRefreshableView().setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        mFirstY[0] = event.getY();//按下时获取位置
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        mCurrentY[0] = event.getY();//得到滑动的位置
+                        if(mCurrentY[0] - mFirstY[0] > 5){//滑动的位置减去按下的位置大于最小滑动距离  则表示向下滑动
+                            //down
+                            LogUtils.LOG("ceshi", "下", "我的技能");
+                            linearlayout_fabu.setVisibility(View.VISIBLE);
+                        }else if(mFirstY[0] - mCurrentY[0] > 5){//反之向上滑动
+                            //up
+                            LogUtils.LOG("ceshi", "上", "我的技能");
+                            linearlayout_fabu.setVisibility(View.INVISIBLE);
+                        }
+                        break;
+
+                }
+
+                return false;
+            }
+        });
+        linearlayout_fabu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {//发布技能
+                Intent intend_issue_skill = new Intent(MySkillActivity.this, IssueSkillActivity.class);
+                intend_issue_skill.putExtra("type", type);
+                startActivity(intend_issue_skill);
+            }
+        });
         mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -114,6 +154,7 @@ public class MySkillActivity extends BaseActivityother {
     @Override
     protected void initView() {
         mListview=findViewById(R.id.list_myskill);
+        linearlayout_fabu=findViewById(R.id.linearlayout_fabu);
         mTablayout=findViewById(R.id.tablayout);
         mTablayout.addTab(mTablayout.newTab().setText("发布中").setTag("1"));
         mTablayout.addTab(mTablayout.newTab().setText("已关闭").setTag("2"));

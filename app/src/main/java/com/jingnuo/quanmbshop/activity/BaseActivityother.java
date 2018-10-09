@@ -37,7 +37,7 @@ public abstract class BaseActivityother extends Activity implements OnClickListe
 //            ViewCompat.setFitsSystemWindows(childView,false);
 //        }
 
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.white ), 0);//状态栏颜色
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.black ), 0);//状态栏颜色
 
         initView();
         initData();
