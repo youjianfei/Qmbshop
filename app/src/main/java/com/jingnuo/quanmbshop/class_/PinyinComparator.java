@@ -8,7 +8,7 @@ public class PinyinComparator implements Comparator<LocationAddressListBean> {
 
 	@Override
 	public int compare(LocationAddressListBean lhs, LocationAddressListBean rhs) {
-		// TODO Auto-generated method stub
+
 		return sort(lhs, rhs);
 	}
 

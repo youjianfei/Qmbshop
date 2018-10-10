@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    android:orientation="vertical"
+    tools:context=".activity.ShopCenterNewActivity">
+
+    <RelativeLayout
+        android:id="@+id/re_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="商家中心"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_setting"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/setting" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iamgeview_shopheadpic"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/user_pic" />
+
+        <TextView
+            android:id="@+id/textview_shopname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_toRightOf="@+id/iamgeview_shopheadpic"
+            android:text="全民帮商户"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/textview_shoptype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_shopname"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/iamgeview_shopheadpic"
+            android:text="技能类型"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/gray_969696"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:id="@+id/linearlayout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iamgeview_shopheadpic"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearlayout_jineng"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/jineng" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="技能"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_qianbao"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/qianbao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="钱包"
+
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_tuiguangbi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/tuiguangbi_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="我的推广币"
+                    android:textColor="@color/black"
+
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearlayout_1"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearlayout_huanyuan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/huiyuanchongzhi_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="会员商家"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/qianbao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="钱包"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/tuiguangbi_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="我的推广币"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/image_line"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/yellow_shutiao" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/image_line"
+            android:text="教学助手"
+            android:textColor="@color/text_title2" />
+
+        <ImageView
+            android:id="@+id/image_line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/image_line"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:src="@color/gray_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_line2"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearlayout_kefu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/kefu_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="客服"
+                    android:textColor="@color/text_title2"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_jiaoxue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@mipmap/jiaoxue_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="教学"
+                    android:textColor="@color/text_title2"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_fenxiang"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/share_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="分享"
+                    android:textColor="@color/text_title2"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

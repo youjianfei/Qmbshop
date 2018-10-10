@@ -26,6 +26,7 @@ import com.jingnuo.quanmbshop.activity.PersonInfoActivity;
 import com.jingnuo.quanmbshop.activity.RechargeActivity;
 import com.jingnuo.quanmbshop.activity.SettingActivity;
 import com.jingnuo.quanmbshop.activity.ShopCenterActivity;
+import com.jingnuo.quanmbshop.activity.ShopCenterNewActivity;
 import com.jingnuo.quanmbshop.activity.ShopInActivity;
 import com.jingnuo.quanmbshop.activity.SubmitSuccessActivity;
 import com.jingnuo.quanmbshop.activity.WalletActivity;
@@ -128,7 +129,7 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
                         if (Staticdata.static_userBean.getData().getAppuser().getRole().contains("2")) {
                             LogUtils.LOG("ceshi", "检测商户审核状态dfgdfsgfd", "检测商户审核状态");
 
-                            Intent intent_shopcenter = new Intent(getActivity(), ShopCenterActivity.class);
+                            Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
                             intent_shopcenter.putExtra("type", 2);//2  商户
                             getActivity().startActivity(intent_shopcenter);
 
@@ -150,7 +151,7 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
                                         e.printStackTrace();
                                     }
                                     if (state.equals("00")) {//审核通过
-                                        Intent intent_shopcenter = new Intent(getActivity(), ShopCenterActivity.class);
+                                        Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
                                         intent_shopcenter.putExtra("type", 2);//2  商户
                                         getActivity().startActivity(intent_shopcenter);
                                     } else if (state.equals("01")) {//没提交

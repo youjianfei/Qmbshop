@@ -574,10 +574,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_LOCAL);
             // 设置本地合成发音人 voicer为空，默认通过语记界面指定发音人。
             mTts.setParameter(SpeechConstant.VOICE_NAME, voicer);
-            /**
-             * TODO 本地合成不设置语速、音调、音量，默认使用语记设置
-             * 开发者如需自定义参数，请参考在线合成参数设置
-             */
+
         }
         //设置播放器音频流类型
         mTts.setParameter(SpeechConstant.STREAM_TYPE, "3");
