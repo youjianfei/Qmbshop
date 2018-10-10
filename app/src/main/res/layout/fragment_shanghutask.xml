@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray_background"
+    >
+    <RelativeLayout
+        android:id="@+id/re_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/image_personcenter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/person_white" />
+        <TextView
+            android:id="@+id/text_jiedan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="自动接单"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+        <ImageView
+            android:id="@+id/image_down"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/text_jiedan"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/jiantou_xia2" />
+    </RelativeLayout>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/list_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        ptr:ptrMode="both"
+        android:dividerHeight="8dp"
+        android:layout_below="@+id/re_title"
+        />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/re_title"
+        android:visibility="invisible"
+        app:tabMode="fixed"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        app:tabTextColor="@color/text_title2"
+        app:tabSelectedTextColor="@color/yellow_jianbian_start"
+        app:tabIndicatorColor="@color/yellow_jianbian_start"
+        app:tabMinWidth="110dp"
+        />
+
+
+
+
+</RelativeLayout>

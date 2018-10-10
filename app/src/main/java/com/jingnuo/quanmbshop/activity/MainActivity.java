@@ -375,7 +375,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Intent intent;
         switch (view.getId()) {
             case R.id.image_help://广场列表
-                intent = new Intent(MainActivity.this, SquareActuvity.class);
+                intent = new Intent(MainActivity.this, ShanghuMainActivity.class);
                 startActivity(intent);
 
                 break;

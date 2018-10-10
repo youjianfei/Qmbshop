@@ -9,7 +9,7 @@
         android:id="@+id/re_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -18,7 +18,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:padding="10dp"
-            android:src="@mipmap/back_black" />
+            android:src="@mipmap/back_white" />
 
         <TextView
             android:id="@+id/text_title"
@@ -27,7 +27,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="帮手订单"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </RelativeLayout>

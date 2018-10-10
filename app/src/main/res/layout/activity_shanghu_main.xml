@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ShanghuMainActivity"
+    android:background="@color/white"
+    >
+
+
+    <FrameLayout
+        android:id="@+id/framelayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/line1"
+        />
+    <ImageView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_background"
+        android:layout_above="@+id/linearlayout_bottom"
+        />
+    <LinearLayout
+        android:id="@+id/linearlayout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <LinearLayout
+            android:id="@+id/LinearLayout_taskmain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/imageview_task"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/select_image_taskmain"
+                />
+            <TextView
+                android:id="@+id/text_task"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="任务列表"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LinearLayout_messagemain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/image_messgae"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/selsect_main_message"
+                />
+            <TextView
+                android:id="@+id/text_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消息"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

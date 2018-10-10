@@ -263,7 +263,8 @@
         </activity>
         <activity android:name=".activity.HelperguizeActivity" />
         <activity android:name=".activity.TuiyajinActivity" />
-        <activity android:name=".activity.ShopCenterNewActivity"></activity>
+        <activity android:name=".activity.ShopCenterNewActivity" />
+        <activity android:name=".activity.ShanghuMainActivity"></activity>
     </application>
 
 </manifest>
