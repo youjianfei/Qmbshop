@@ -79,7 +79,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     ImageView mImageview_help;//帮忙
     ImageView mImageview_needhelp;//求助
     private TextSwitcher tv_notice;//轮播通知文字
-
     TextView mTextview_neerbytask;//附近服务
     TextView mTextview_lovetask;//爱心帮
     TextView mTextview_myshequ;//我的社区
@@ -99,17 +98,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);//状态栏颜色
-        //注册监听函数
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            View decorView = getWindow().getDecorView();
-//            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                    | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR| View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-//            decorView.setSystemUiVisibility(option);
-//            getWindow().setStatusBarColor(Color.TRANSPARENT);
-//        }
-
-//        ActionBar actionBar = getActionBar();
-//        actionBar.setCustomView(R.mipmap.aboutus);
 
         initview();
         initdata();
@@ -223,7 +211,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             public void onResult(boolean result) {
                 LogUtils.LOG("ceshi", result + "", "");
                 if (result) {//定位权限
-                    setmapdata();// 高德地图配置参数
+//                    setmapdata();// 高德地图配置参数
                     updata();
                     return;
                 } else {

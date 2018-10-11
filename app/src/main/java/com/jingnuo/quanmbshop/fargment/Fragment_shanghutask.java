@@ -23,6 +23,7 @@ import com.jingnuo.quanmbshop.Adapter.Adapter_mytodo;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.activity.HelperOrderActivity;
+import com.jingnuo.quanmbshop.activity.MyTodoActivity;
 import com.jingnuo.quanmbshop.activity.ShopCenterNewActivity;
 import com.jingnuo.quanmbshop.activity.ShopInActivity;
 import com.jingnuo.quanmbshop.activity.SubmitSuccessActivity;
@@ -63,12 +64,12 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
 
     //数据
     int page = 1;
-    int type = 0;
+    int type = 0;    // 0 新订单
     String state = "00000";
     ShopcenterBean shopcenterBean;//商户
 
     Adapter_SquareList adapter;
-    List<ShanghuneworderBean.DataBean> mList;
+    List<ShanghuneworderBean.DataBean.ListBean> mList;
     ShanghuneworderBean  shanghuneworderBean;
 
     @Nullable
@@ -89,7 +90,9 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
 
     private void initdata() {
         requestshopinfo();
-        request("00000", page);
+        if(Staticdata.xValue!=null){
+            request("00000", page);
+        }
         mList=new ArrayList<>();
         adapter=new Adapter_SquareList(mList,getActivity());
         mListview_shanghuorder.setAdapter(adapter);
@@ -112,7 +115,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         mTablayout_header = listheadView.findViewById(R.id.tablayout_head);
         mTablayout_header.addTab(mTablayout_header.newTab().setText("新订单").setTag("00000"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("进行中").setTag("05,06"));
-        mTablayout_header.addTab(mTablayout_header.newTab().setText("已完成").setTag("00,"));
+        mTablayout_header.addTab(mTablayout_header.newTab().setText("已完成").setTag("00,01,02"));
     }
 
     private void initlistenner() {
@@ -132,11 +135,20 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         mListview_shanghuorder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getActivity(),TaskDetailsActivity.class);
-                intent.putExtra("id",mList.get(position-2).getTask_ID()+"");
+                if(type==0){
+                    Intent intent=new Intent(getActivity(),TaskDetailsActivity.class);
+                    intent.putExtra("id",mList.get(position-2).getTask_id()+"");
 //                LogUtils.LOG("ceshi","列表数"+mdata.size()+"点击位置"+position,"sadfasfd");
 //                intent.putExtra("order_no",mdata.get(position-1).getOrder_no()+"");
-                startActivity(intent);
+                    startActivity(intent);
+                }else {
+                    Intent  intent=new Intent(getActivity(),HelperOrderActivity.class);
+                    intent.putExtra("type",type);
+                    LogUtils.LOG("ceshi","列表数"+mList.size()+"点击位置"+position,"sadfasfd");
+                    intent.putExtra("order_no",mList.get(position-2).getOrder_no()+"");
+                    startActivity(intent);
+                }
+
 
 
 
@@ -323,14 +335,16 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         LogUtils.LOG("ceshi", "state"+state, "Fragment_shanghutask");
         if (state.equals("00000")){//新订单
             URL = Urls.Baseurl + Urls.neworderlist + Staticdata.static_userBean.getData().getUser_token() + "&business_no=" +
-                    "60000000046"+ "&x_value=" + "34.800276" + "&y_value=" + "113.631177"+
+                    "60000000046"+ "&x_value=" + Staticdata.xValue + "&y_value=" + Staticdata.yValue+
                     "&pageNum=" + page;
+            type=0;
         }else {
             URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getUser_token() + "&client_no=" +
                     Staticdata.static_userBean.getData().getAppuser().getClient_no() + "&order_status=" + state +
                     "&curPageNo=" + page;
+            type=1;
         }
-        LogUtils.LOG("ceshi", URL, "Fragment_shanghutask");
+        LogUtils.LOG("ceshiurl", URL, "Fragment_shanghutask");
 
         new Volley_Utils(new Interface_volley_respose() {
             @Override
@@ -343,13 +357,15 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                 if (page == 1) {
                     mList.clear();
                     if (shanghuneworderBean.getData() != null) {
-                        mList.addAll(shanghuneworderBean.getData());
+                        mList.addAll(shanghuneworderBean.getData().getList());
                     }
+                    adapter.settype(type);
                     adapter.notifyDataSetChanged();
                 } else {
                     if (shanghuneworderBean.getData() != null) {
-                        mList.addAll(shanghuneworderBean.getData());
+                        mList.addAll(shanghuneworderBean.getData().getList());
                     }
+                    adapter.settype(type);
                     adapter.notifyDataSetChanged();
                 }
 

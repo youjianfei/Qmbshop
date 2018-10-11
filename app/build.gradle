@@ -42,7 +42,7 @@ android {
     }
     signingConfigs {//友盟要用到
         debug {
-            storeFile file('quanminbang.keystore')
+            storeFile file('quanminbangshop.jks')
             storePassword "quanminbang123"
             keyAlias "quanminbang"
             keyPassword "quanminbang123"
