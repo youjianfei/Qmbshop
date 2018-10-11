@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jingnuo.quanmbshop.entityclass.ShanghuneworderBean;
 import com.jingnuo.quanmbshop.entityclass.Square_defaultBean;
 import com.jingnuo.quanmbshop.utils.Utils;
 import com.jingnuo.quanmbshop.R;
@@ -23,9 +24,9 @@ import java.util.List;
 
 public class Adapter_SquareList extends  BaseAdapter {
     private Activity mContext;
-    private List<Square_defaultBean.DataBean.ListBean> mData;
+    private List<ShanghuneworderBean.DataBean> mData;
     private LayoutInflater mInflater;
-    public Adapter_SquareList(List<Square_defaultBean.DataBean.ListBean> mDatas, Activity mContext) {
+    public Adapter_SquareList(List<ShanghuneworderBean.DataBean> mDatas, Activity mContext) {
         super(mDatas, mContext);
         this.mData=mDatas;
         this.mContext=mContext;

@@ -107,7 +107,16 @@ public class ShopcenterBean {
             private String  push_on_off;//
             private int  business_level;
             private int  spread_b;
+            private int  orderSum;
             private double  evaluation_star;
+
+            public int getOrderSum() {
+                return orderSum;
+            }
+
+            public void setOrderSum(int orderSum) {
+                this.orderSum = orderSum;
+            }
 
             public String getPush_on_off() {
                 return push_on_off;

@@ -45,7 +45,6 @@
         android:layout_height="match_parent"
         android:divider="@null"
         ptr:ptrMode="both"
-        android:dividerHeight="8dp"
         android:layout_below="@+id/re_title"
         />
     <android.support.design.widget.TabLayout

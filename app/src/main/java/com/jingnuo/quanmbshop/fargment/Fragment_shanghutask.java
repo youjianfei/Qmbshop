@@ -12,10 +12,13 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.jingnuo.quanmbshop.Adapter.Adapter_SquareList;
 import com.jingnuo.quanmbshop.Adapter.Adapter_mytodo;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
@@ -23,10 +26,16 @@ import com.jingnuo.quanmbshop.activity.HelperOrderActivity;
 import com.jingnuo.quanmbshop.activity.ShopCenterNewActivity;
 import com.jingnuo.quanmbshop.activity.ShopInActivity;
 import com.jingnuo.quanmbshop.activity.SubmitSuccessActivity;
+import com.jingnuo.quanmbshop.activity.TaskDetailsActivity;
+import com.jingnuo.quanmbshop.customview.SimpleRatingBar;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.MyTodoBean;
+import com.jingnuo.quanmbshop.entityclass.ShanghuneworderBean;
+import com.jingnuo.quanmbshop.entityclass.ShopcenterBean;
+import com.jingnuo.quanmbshop.popwinow.Popwindow_helperfirst;
 import com.jingnuo.quanmbshop.utils.LogUtils;
+import com.jingnuo.quanmbshop.utils.SharedPreferencesUtils;
 import com.jingnuo.quanmbshop.utils.SizeUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 
@@ -45,17 +54,22 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
 
     View listheadView;//头视图
     TabLayout mTablayout_header;
+    TextView textview_money;
+    TextView textview_ordercount;
+    SimpleRatingBar simpleRatingBar;
 
 
-    Adapter_mytodo adapter;
+
 
     //数据
     int page = 1;
     int type = 0;
-    String state = "";
-    MyTodoBean myTodoBean;
-    List<MyTodoBean.DataBean.ListBean> mdata;
+    String state = "00000";
+    ShopcenterBean shopcenterBean;//商户
 
+    Adapter_SquareList adapter;
+    List<ShanghuneworderBean.DataBean> mList;
+    ShanghuneworderBean  shanghuneworderBean;
 
     @Nullable
     @Override
@@ -74,9 +88,10 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     }
 
     private void initdata() {
-        mdata = new ArrayList<>();
-        request("05,06", page);
-        adapter = new Adapter_mytodo(mdata, getActivity());
+        requestshopinfo();
+        request("00000", page);
+        mList=new ArrayList<>();
+        adapter=new Adapter_SquareList(mList,getActivity());
         mListview_shanghuorder.setAdapter(adapter);
     }
 
@@ -84,15 +99,18 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         mListview_shanghuorder = rootview.findViewById(R.id.list_order);
         image_personcenter = rootview.findViewById(R.id.image_personcenter);
         mTablayout = rootview.findViewById(R.id.tablayout);
-        mTablayout.addTab(mTablayout.newTab().setText("新订单").setTag(""));
+        mTablayout.addTab(mTablayout.newTab().setText("新订单").setTag("00000"));
         mTablayout.addTab(mTablayout.newTab().setText("进行中").setTag("05,06"));
         mTablayout.addTab(mTablayout.newTab().setText("已完成").setTag("00,"));
 
         listheadView = LayoutInflater.from(getActivity()).inflate(R.layout.list_headview_shanghuorder, null, false);
         mListview_shanghuorder.getRefreshableView().addHeaderView(listheadView);
 
+        textview_ordercount = listheadView.findViewById(R.id.textview_ordercount);
+        simpleRatingBar = listheadView.findViewById(R.id.SimpleRatingBar);
+        textview_money = listheadView.findViewById(R.id.textview_money);
         mTablayout_header = listheadView.findViewById(R.id.tablayout_head);
-        mTablayout_header.addTab(mTablayout_header.newTab().setText("新订单").setTag(""));
+        mTablayout_header.addTab(mTablayout_header.newTab().setText("新订单").setTag("00000"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("进行中").setTag("05,06"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("已完成").setTag("00,"));
     }
@@ -114,11 +132,15 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         mListview_shanghuorder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getActivity(),HelperOrderActivity.class);
-                intent.putExtra("type",type);
-                LogUtils.LOG("ceshi","列表数"+mdata.size()+"点击位置"+position,"sadfasfd");
-                intent.putExtra("order_no",mdata.get(position-1).getOrder_no()+"");
+                Intent intent=new Intent(getActivity(),TaskDetailsActivity.class);
+                intent.putExtra("id",mList.get(position-2).getTask_ID()+"");
+//                LogUtils.LOG("ceshi","列表数"+mdata.size()+"点击位置"+position,"sadfasfd");
+//                intent.putExtra("order_no",mdata.get(position-1).getOrder_no()+"");
                 startActivity(intent);
+
+
+
+
             }
         });
         //listview的滑动距离监听
@@ -208,7 +230,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
             case R.id.image_personcenter:
                 LogUtils.LOG("ceshi", Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), "检测商户审核状态接口");
                 if (Staticdata.static_userBean.getData().getAppuser().getRole().contains("2")) {
-                    LogUtils.LOG("ceshi", "检测商户审核状态dfgdfsgfd", "检测商户审核状态");
+                    LogUtils.LOG("ceshi", "检测商户审核状态", "检测商户审核状态");
 
                     Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
                     intent_shopcenter.putExtra("type", 2);//2  商户
@@ -256,38 +278,77 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                         public void onError(int error) {
 
                         }
-                    }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), getContext(), 0);
+                    }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), getActivity(), 0);
 
                 }
                 break;
         }
     }
 
-    void request(String state, final int page) {
-        String URL = "";
-        URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getUser_token() + "&client_no=" +
-                Staticdata.static_userBean.getData().getAppuser().getClient_no() + "&order_status=" + state +
-                "&curPageNo=" + page;
+    void setstar(float stars){
+        simpleRatingBar.setNumberOfStars(5);
+        simpleRatingBar.setFillColor(getResources().getColor(R.color.yellow_jianbian_start));
+        simpleRatingBar.setStarBackgroundColor(getResources().getColor(R.color.gray_background));
+        simpleRatingBar.setStepSize((float) 0.1);
+        simpleRatingBar.setRating(stars);
+        simpleRatingBar.setDrawBorderEnabled(false);
+        simpleRatingBar.setStarsSeparation(1);
 
-        LogUtils.LOG("ceshi", URL, "MyTodoActivity的URl");
+    }
+    void requestshopinfo() {
+        String url_info = Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
+                        .getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
+                        .getClient_no();
+        LogUtils.LOG("ceshi", "帮手 商户网址：" + url_info, "ShopCenterActivity");
+        new Volley_Utils(new Interface_volley_respose() {
+            @Override
+            public void onSuccesses(String respose) {
+                LogUtils.LOG("ceshi", "商户中心：" + respose, "ShopCenterActivity");
+                    shopcenterBean = new Gson().fromJson(respose, ShopcenterBean.class);
+                    textview_money.setText(shopcenterBean.getData().getList().getCommission()+"");
+                   textview_ordercount.setText(shopcenterBean.getData().getList().getOrderSum()+"");
+                    setstar((float) shopcenterBean.getData().getList().getEvaluation_star());
+            }
+
+            @Override
+            public void onError(int error) {
+
+            }
+        }).Http(url_info, getActivity(), 0);
+    }
+
+
+    void request(String state, final int page) {//请求列表
+        String URL = "";
+        LogUtils.LOG("ceshi", "state"+state, "Fragment_shanghutask");
+        if (state.equals("00000")){//新订单
+            URL = Urls.Baseurl + Urls.neworderlist + Staticdata.static_userBean.getData().getUser_token() + "&business_no=" +
+                    "60000000046"+ "&x_value=" + "34.800276" + "&y_value=" + "113.631177"+
+                    "&pageNum=" + page;
+        }else {
+            URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getUser_token() + "&client_no=" +
+                    Staticdata.static_userBean.getData().getAppuser().getClient_no() + "&order_status=" + state +
+                    "&curPageNo=" + page;
+        }
+        LogUtils.LOG("ceshi", URL, "Fragment_shanghutask");
 
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
-                LogUtils.LOG("ceshi", respose, "MyTodoActivity");
+                LogUtils.LOG("ceshi", "新订单"+respose, "Fragment_shanghutask");
                 if (mListview_shanghuorder.isRefreshing()) {
                     mListview_shanghuorder.onRefreshComplete();
                 }
-                myTodoBean = new Gson().fromJson(respose, MyTodoBean.class);
+                shanghuneworderBean = new Gson().fromJson(respose, ShanghuneworderBean.class);
                 if (page == 1) {
-                    mdata.clear();
-                    if (myTodoBean.getData() != null) {
-                        mdata.addAll(new Gson().fromJson(respose, MyTodoBean.class).getData().getList());
+                    mList.clear();
+                    if (shanghuneworderBean.getData() != null) {
+                        mList.addAll(shanghuneworderBean.getData());
                     }
                     adapter.notifyDataSetChanged();
                 } else {
-                    if (myTodoBean.getData() != null) {
-                        mdata.addAll(new Gson().fromJson(respose, MyTodoBean.class).getData().getList());
+                    if (shanghuneworderBean.getData() != null) {
+                        mList.addAll(shanghuneworderBean.getData());
                     }
                     adapter.notifyDataSetChanged();
                 }
@@ -341,5 +402,11 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestshopinfo();//
     }
 }

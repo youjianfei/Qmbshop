@@ -108,6 +108,7 @@ public class ConversationListActivity extends FragmentActivity {
             public void onClick(View v) {
                Intent intent = new Intent(ConversationListActivity.this, ShanghuMainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(0, 0);//跳转无动画
             }
         });
 
@@ -208,11 +209,11 @@ public class ConversationListActivity extends FragmentActivity {
 
     }
 
-    @Override
-    protected void onPause() {
-        overridePendingTransition(0,0);
-        super.onPause();
-    }
+//    @Override
+//    protected void onPause() {
+//        overridePendingTransition(0,0);
+//        super.onPause();
+//    }
     @Override
     public void onResume() {
         super.onResume();

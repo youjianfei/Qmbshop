@@ -123,6 +123,7 @@ public class Urls {
     public static String businesszhinengshuaxin = "business/autoRefresh?user_token=";//智能刷新   服务
     public static String businesszhiding = "business/setTopSpecialty?user_token=";//置顶   服务
     public static String push_on_off = "business/pushOnOff?user_token=";//推荐任务推送开关
+    public static String neworderlist = "business/matchList?user_token=";//商户推荐任务列表
 
 
     //商户 帮手通用

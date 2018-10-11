@@ -154,7 +154,7 @@ public class SquareActuvity extends BaseActivityother {
         mdata_image_GG = new ArrayList<>();
         initMap(MinCommission + "", MaxCommission + "", page + "", "", "", "");//默认展示
         mListDate_square = new ArrayList<>();
-        mAdapter_SquareList = new Adapter_SquareList(mListDate_square, this);
+//        mAdapter_SquareList = new Adapter_SquareList(mListDate_square, this);
         mListview_square.setAdapter(mAdapter_SquareList);
 
         request_square(map_filter_sort, page);//首页默认请求 page==1
