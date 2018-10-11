@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".activity.ConversationListActivity"
     android:background="@color/gray_background"
     >
@@ -13,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/black">
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="10dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:src="@mipmap/back_white" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_back"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:padding="10dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:src="@mipmap/back_white" />-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,8 +30,10 @@
             android:textSize="18sp" />
     </RelativeLayout>
     <LinearLayout
+        android:id="@+id/linearlayout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/re_title"
         android:orientation="horizontal"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -77,22 +78,6 @@
                 android:textColor="@color/text_title2"
                 android:textSize="15dp" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/text_systemnotice"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@+id/text_1"-->
-                <!--android:layout_marginLeft="15dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_toRightOf="@+id/image_1"-->
-                <!--android:text="暂时没有系统消息"-->
-                <!--android:lines="1"-->
-
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:textColor="@color/text_hide_tip"-->
-                <!--android:textSize="15dp"-->
-
-                <!--/>-->
 
         </RelativeLayout>
         <RelativeLayout
@@ -205,89 +190,123 @@
                 <!--android:textSize="15dp" />-->
 
         </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/relativelayout_tuijianrenwu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:visibility="gone"
-            >
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relativelayout_tuijianrenwu"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:visibility="gone"-->
+            <!--&gt;-->
 
-            <ImageView
-                android:id="@+id/image_4"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+            <!--<ImageView-->
+                <!--android:id="@+id/image_4"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginTop="10dp"-->
 
-                android:src="@mipmap/tuijianrenwu" />
-            <ImageView
-                android:id="@+id/image_reddot4"
-                android:layout_width="6dp"
-                android:layout_height="6dp"
-                android:src="@mipmap/red_dot"
-                android:visibility="gone"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
+                <!--android:src="@mipmap/tuijianrenwu" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/image_reddot4"-->
+                <!--android:layout_width="6dp"-->
+                <!--android:layout_height="6dp"-->
+                <!--android:src="@mipmap/red_dot"-->
+                <!--android:visibility="gone"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--android:layout_marginTop="10dp"-->
 
-                />
-            <TextView
-                android:id="@+id/text_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/image_4"
-                android:text="推荐任务"
-                android:textColor="@color/text_title2"
-                android:textSize="15dp" />
-
+                <!--/>-->
             <!--<TextView-->
-                <!--android:id="@+id/text_tujianrenwu"-->
+                <!--android:id="@+id/text_4"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@+id/text_4"-->
-                <!--android:layout_marginLeft="15dp"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_toRightOf="@+id/image_4"-->
-                <!--android:lines="1"-->
-                <!--android:text="暂无新的推荐任务"-->
-                <!--android:textColor="@color/text_hide_tip"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_below="@+id/image_4"-->
+                <!--android:text="推荐任务"-->
+                <!--android:textColor="@color/text_title2"-->
                 <!--android:textSize="15dp" />-->
 
-        </RelativeLayout>
+            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/text_tujianrenwu"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_below="@+id/text_4"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginLeft="15dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginRight="20dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="8dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_toRightOf="@+id/image_4"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:lines="1"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:text="暂无新的推荐任务"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textColor="@color/text_hide_tip"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textSize="15dp" />&ndash;&gt;-->
+
+        <!--</RelativeLayout>-->
     </LinearLayout>
-
-
-    <!--<ImageView-->
-        <!--android:id="@+id/image_line2"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@color/gray_dbdbdb" />-->
-
-
-
-
-    <!--<ImageView-->
-        <!--android:id="@+id/image_line3"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@color/gray_dbdbdb" />-->
-
-
-    <!--<ImageView-->
-        <!--android:id="@+id/image_line4"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@color/gray_dbdbdb" />-->
-
     <fragment
         android:id="@+id/conversationlist"
         android:name="io.rong.imkit.fragment.ConversationListFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearlayout_bottom"
+        android:layout_below="@+id/linearlayout_1"/>
+    <LinearLayout
+        android:id="@+id/linearlayout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        >
+        <LinearLayout
+            android:id="@+id/LinearLayout_taskmain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/imageview_task"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/select_image_taskmain"
+                />
+            <TextView
+                android:id="@+id/text_task"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="任务列表"
+                />
 
-</LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LinearLayout_messagemain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginRight="60dp"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/image_messgae"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/selsect_main_message"
+                />
+            <TextView
+                android:id="@+id/text_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消息"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.jingnuo.quanmbshop.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.jingnuo.quanmbshop.Adapter.Adapter_mytodo;
-import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
@@ -28,6 +25,10 @@ import com.jingnuo.quanmbshop.utils.Volley_Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.rong.imkit.RongIM;
+
+import static com.jingnuo.quanmbshop.data.Staticdata.isLogin;
 
 public class ShanghuMainActivity extends BaseActivityother {
     //控件
@@ -102,24 +103,30 @@ public class ShanghuMainActivity extends BaseActivityother {
                     fragment_shanghutask = new Fragment_shanghutask();
                     transaction.replace(R.id.framelayout_main, fragment_shanghutask).commit();
                 } else {
-//                    transaction.replace(R.id.framelayout_main, fragmentTskZhaoRenShou).commit();
+                    transaction.replace(R.id.framelayout_main, fragment_shanghutask).commit();
                 }
                 break;
             case R.id.LinearLayout_messagemain://点击消息
-                LinearLayout_messagemain.setSelected(true);
-                LinearLayout_taskmain.setSelected(false);
-                image_messgae.setSelected(true);
-                imageview_task.setSelected(false);
-                text_task.setTextColor(ShanghuMainActivity.this.getResources().getColor(R.color.black_text2));
-                text_message.setTextColor(ShanghuMainActivity.this.getResources().getColor(R.color.yellow_jianbian_end));
+//                LinearLayout_messagemain.setSelected(true);
+//                LinearLayout_taskmain.setSelected(false);
+//                image_messgae.setSelected(true);
+//                imageview_task.setSelected(false);
+//                text_task.setTextColor(ShanghuMainActivity.this.getResources().getColor(R.color.black_text2));
+//                text_message.setTextColor(ShanghuMainActivity.this.getResources().getColor(R.color.yellow_jianbian_end));
 
-                transaction = fragmetnmanager.beginTransaction();
-//                if (fragment_shanghutask == null) {
-//                    fragment_shanghutask = new Fragment_shanghutask();
-//                    transaction.replace(R.id.framelayout_main, fragment_shanghutask).commit();
-//                } else {
-////                    transaction.replace(R.id.framelayout_main, fragmentTskZhaoRenShou).commit();
-//                }
+                if (isLogin) {
+//                    image_dot.setVisibility(View.INVISIBLE);
+                    RongIM.getInstance().setMessageAttachedUserInfo(true);
+
+                   Intent  intent = new Intent(ShanghuMainActivity.this, ConversationListActivity.class);
+                    intent.putExtra("newmessageTYpe", Staticdata.newmessageTYpe);
+                    startActivity(intent);
+                   overridePendingTransition(0, 0);//跳转无动画
+                    Staticdata.newmessageTYpe = "notype";//跳转完之后归0
+                } else {
+//                    intent = new Intent(this, LoginActivity.class);
+//                    startActivity(intent);
+                }
 
                 break;
         }

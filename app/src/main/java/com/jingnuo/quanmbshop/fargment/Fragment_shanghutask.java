@@ -20,7 +20,6 @@ import com.jingnuo.quanmbshop.Adapter.Adapter_mytodo;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.activity.HelperOrderActivity;
-import com.jingnuo.quanmbshop.activity.MyTodoActivity;
 import com.jingnuo.quanmbshop.activity.ShopCenterNewActivity;
 import com.jingnuo.quanmbshop.activity.ShopInActivity;
 import com.jingnuo.quanmbshop.activity.SubmitSuccessActivity;

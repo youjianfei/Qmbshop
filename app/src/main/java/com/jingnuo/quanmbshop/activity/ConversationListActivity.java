@@ -2,12 +2,17 @@ package com.jingnuo.quanmbshop.activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,12 +42,20 @@ public class ConversationListActivity extends FragmentActivity {
     String  newmessageTYpe="";
 
     //控件
-    RelativeLayout mRelativelayout_bargain;
+//    RelativeLayout mRelativelayout_bargain;
     RelativeLayout mRelativelayout_systemmessage;
     RelativeLayout mRelativelayout_dealmessage;
-    RelativeLayout mRelativelayout_tuijianrenwu;
+//    RelativeLayout mRelativelayout_tuijianrenwu;
 
-    ImageView iv_back;
+
+    //控件
+    LinearLayout LinearLayout_taskmain;
+    LinearLayout LinearLayout_messagemain;
+    ImageView imageview_task;
+    ImageView image_messgae;
+    TextView  text_task;
+    TextView  text_message;
+//    ImageView iv_back;
 
 //    TextView mTextview_systemmessage;
 //    TextView mTextview_bargainmessage;
@@ -63,6 +76,7 @@ public class ConversationListActivity extends FragmentActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,20 +103,21 @@ public class ConversationListActivity extends FragmentActivity {
     }
 
     private void initListener() {
-        iv_back.setOnClickListener(new View.OnClickListener() {
+        LinearLayout_taskmain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+               Intent intent = new Intent(ConversationListActivity.this, ShanghuMainActivity.class);
+                startActivity(intent);
             }
         });
-        mRelativelayout_bargain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intend_bargain=new Intent(ConversationListActivity.this, BarginmessageListActivity.class);
-                mImageView_dot2.setVisibility(View.GONE);
-                startActivity(intend_bargain);
-            }
-        });
+
+//        iv_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+
         mRelativelayout_systemmessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,17 +134,19 @@ public class ConversationListActivity extends FragmentActivity {
                 startActivity(intent_deal);
             }
         });
-        mRelativelayout_tuijianrenwu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_tuijian=new Intent(ConversationListActivity.this, TuijianrenwuActivity.class);
-                mImageView_dot4.setVisibility(View.GONE);
-                startActivity(intent_tuijian);
-            }
-        });
+
     }
 
     private void setdata() {
+        LinearLayout_messagemain.setSelected(true);
+        LinearLayout_taskmain.setSelected(false);
+        image_messgae.setSelected(true);
+        imageview_task.setSelected(false);
+        text_task.setTextColor(this.getResources().getColor(R.color.black_text2));
+        text_message.setTextColor(this.getResources().getColor(R.color.yellow_jianbian_end));
+
+
+
         map_getnewmessage=new HashMap();
         map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getUser_token());
@@ -139,24 +156,20 @@ public class ConversationListActivity extends FragmentActivity {
     private void initdata() {
         newmessageTYpe=getIntent().getStringExtra("newmessageTYpe");
         setDot(newmessageTYpe);
-        if(Staticdata.static_userBean.getData().getAppuser().getRole().equals("0")){
-            mRelativelayout_tuijianrenwu.setVisibility(View.GONE);
-        }else {
-            mRelativelayout_tuijianrenwu.setVisibility(View.VISIBLE);
-        }
+
     }
 
     private void initview() {
+        LinearLayout_taskmain=findViewById(R.id.LinearLayout_taskmain);
+        LinearLayout_messagemain=findViewById(R.id.LinearLayout_messagemain);
+        imageview_task=findViewById(R.id.imageview_task);
+        image_messgae=findViewById(R.id.image_messgae);
+        text_task=findViewById(R.id.text_task);
+        text_message=findViewById(R.id.text_message);
 
-        mRelativelayout_bargain=findViewById(R.id.relativelayout_Kanprice);
+
         mRelativelayout_systemmessage=findViewById(R.id.relativelayout_systemnotice);
         mRelativelayout_dealmessage=findViewById(R.id.relativelayout_Jiaoyinotice);
-        mRelativelayout_tuijianrenwu=findViewById(R.id.relativelayout_tuijianrenwu);
-        iv_back=findViewById(R.id.iv_back);
-//        mTextview_systemmessage=findViewById(R.id.text_systemnotice);
-//        mTextview_bargainmessage=findViewById(R.id.text_moneynotice);
-//        mTextview_jiaoyimeaage=findViewById(R.id.text_jiaoyitixing);
-//        mTextview_tuijianrenwu=findViewById(R.id.text_tujianrenwu);
         mImageView_dot1=findViewById(R.id.image_reddot1);
         mImageView_dot2=findViewById(R.id.image_reddot2);
         mImageView_dot3=findViewById(R.id.image_reddot3);
@@ -185,10 +198,6 @@ public class ConversationListActivity extends FragmentActivity {
             @Override
             public void onSuccesses(String respose) {
                 newMessage_bean=new Gson().fromJson(respose,NewMessage_Bean.class);
-//                mTextview_systemmessage.setText(newMessage_bean.getData().get(0).getContent());
-//                mTextview_bargainmessage.setText(newMessage_bean.getData().get(1).getContent());
-//                mTextview_jiaoyimeaage.setText(newMessage_bean.getData().get(2).getContent());
-//                mTextview_tuijianrenwu.setText(newMessage_bean.getData().get(3).getContent());
             }
 
             @Override
@@ -199,22 +208,11 @@ public class ConversationListActivity extends FragmentActivity {
 
     }
 
-    //设置容云用户信息
-//    private void setRongUserInfo(final String targetid) {
-//        if (RongIM.getInstance()!=null){
-//            RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
-//                @Override
-//                public UserInfo getUserInfo(String s) {
-//                    if(targetid.equals(s)){
-//                        return new UserInfo(targetid,"郑州灯饰借", Uri.parse("http://quanminbang-img.oss-cn-beijing.aliyuncs.com/image/avatar/ba031a18-c3c0-4e7d-8a8f-2b94c12489391534840739188.png"));
-//                    }
-//                    return null;
-//                }
-//            },true);
-//        }
-//
-//
-//    }
+    @Override
+    protected void onPause() {
+        overridePendingTransition(0,0);
+        super.onPause();
+    }
     @Override
     public void onResume() {
         super.onResume();

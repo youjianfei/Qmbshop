@@ -249,7 +249,8 @@
         <activity
             android:name=".activity.ConversationListActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -264,7 +265,8 @@
         <activity android:name=".activity.HelperguizeActivity" />
         <activity android:name=".activity.TuiyajinActivity" />
         <activity android:name=".activity.ShopCenterNewActivity" />
-        <activity android:name=".activity.ShanghuMainActivity"></activity>
+        <activity android:name=".activity.ShanghuMainActivity"
+            android:launchMode="singleTask" ></activity>
     </application>
 
 </manifest>
