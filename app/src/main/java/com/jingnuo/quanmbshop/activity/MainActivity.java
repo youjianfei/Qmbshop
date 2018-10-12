@@ -73,7 +73,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     //控件
     DrawerLayout drawerlayout_menu;
 
-    CircleImageView image_dot;
+//    CircleImageView image_dot;
     ImageView mImageview_message;//消息
     ImageView mImageview_iamge_person;//用户中心
     ImageView mImageview_help;//帮忙
@@ -190,7 +190,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     public void initview() {
         drawerlayout_menu = findViewById(R.id.drawerlayout_menu);
-        image_dot = findViewById(R.id.image_dot);
+//        image_dot = findViewById(R.id.image_dot);
         mImageview_message = findViewById(R.id.iamge_message);
         mImageview_iamge_person = findViewById(R.id.iamge_person);
         mImageview_help = findViewById(R.id.image_help);
@@ -374,7 +374,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //                    startActivity(intent);
 //                }
                 if (isLogin) {
-                    image_dot.setVisibility(View.INVISIBLE);
+//                    image_dot.setVisibility(View.INVISIBLE);
                     RongIM.getInstance().setMessageAttachedUserInfo(true);
 
                     intent = new Intent(MainActivity.this, ConversationListActivity.class);
@@ -419,9 +419,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     }
 
-    public void setdot() {
-        image_dot.setVisibility(View.VISIBLE);
-    }
+
 
     /**
      * 再点一次退出

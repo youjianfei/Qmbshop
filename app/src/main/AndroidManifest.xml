@@ -95,13 +95,12 @@
             android:enabled="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
-                <!-- <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> -->
+                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
-
-                <category android:name="com.jingnuo.quanmb" />
+                <category android:name="com.jingnuo.quanmbshop" />
             </intent-filter>
         </receiver>
 
@@ -237,11 +236,11 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
+1
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.jingnuo.quanmb"
+                    android:host="com.jingnuo.quanmbshop"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
@@ -257,7 +256,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.jingnuo.quanmb"
+                    android:host="com.jingnuo.quanmbshop"
                     android:pathPrefix="/conversationlist"
                     android:scheme="rong" />
             </intent-filter>

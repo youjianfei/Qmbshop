@@ -52,29 +52,40 @@
                 />
 
         </LinearLayout>
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/LinearLayout_messagemain"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
             android:layout_marginRight="60dp"
             >
+
             <ImageView
                 android:id="@+id/image_messgae"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/selsect_main_message"
                 />
             <TextView
                 android:id="@+id/text_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/image_messgae"
+                android:layout_centerHorizontal="true"
                 android:text="消息"
                 />
-
-        </LinearLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_dot"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginLeft="5dp"
+                android:src="@color/red"
+                android:visibility="invisible"
+                android:layout_toRightOf="@+id/image_messgae"
+                />
+        </RelativeLayout>
 
     </LinearLayout>
 

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,19 +42,22 @@ import com.master.permissionhelper.PermissionHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.rong.imkit.RongIM;
 
 import static com.jingnuo.quanmbshop.data.Staticdata.isLogin;
 
 public class ShanghuMainActivity extends BaseActivityother {
+    public static ShanghuMainActivity shanghuMainActivity;
     //控件
     LinearLayout LinearLayout_taskmain;
-    LinearLayout LinearLayout_messagemain;
+    RelativeLayout LinearLayout_messagemain;
 
     ImageView imageview_task;
     ImageView image_messgae;
     TextView  text_task;
     TextView  text_message;
+    CircleImageView image_dot;
 
 
     //对象
@@ -82,9 +86,14 @@ public class ShanghuMainActivity extends BaseActivityother {
         text_task.setTextColor(ShanghuMainActivity.this.getResources().getColor(R.color.yellow_jianbian_end));
         text_message.setTextColor(ShanghuMainActivity.this.getResources().getColor(R.color.black_text2));
     }
-
+    public void setdot() {
+        image_dot.setVisibility(View.VISIBLE);
+    }
     @Override
     protected void initData() {
+        if (shanghuMainActivity == null) {
+            shanghuMainActivity = this;
+        }
         permissionHelper = new PermissionHelper(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         Permissionmanage permissionmanage = new Permissionmanage(permissionHelper, new InterfacePermission() {
             @Override
@@ -211,6 +220,7 @@ public class ShanghuMainActivity extends BaseActivityother {
         LinearLayout_messagemain=findViewById(R.id.LinearLayout_messagemain);
         imageview_task=findViewById(R.id.imageview_task);
         image_messgae=findViewById(R.id.image_messgae);
+        image_dot=findViewById(R.id.image_dot);
         text_task=findViewById(R.id.text_task);
         text_message=findViewById(R.id.text_message);
     }
@@ -238,7 +248,7 @@ public class ShanghuMainActivity extends BaseActivityother {
             case R.id.LinearLayout_messagemain://点击消息
 
                 if (isLogin) {
-//                    image_dot.setVisibility(View.INVISIBLE);
+                    image_dot.setVisibility(View.INVISIBLE);
                     RongIM.getInstance().setMessageAttachedUserInfo(true);
 
                    Intent  intent = new Intent(ShanghuMainActivity.this, ConversationListActivity.class);
@@ -247,8 +257,8 @@ public class ShanghuMainActivity extends BaseActivityother {
                    overridePendingTransition(0, 0);//跳转无动画
                     Staticdata.newmessageTYpe = "notype";//跳转完之后归0
                 } else {
-//                    intent = new Intent(this, LoginActivity.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
                 }
 
                 break;

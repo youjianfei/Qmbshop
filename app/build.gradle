@@ -13,7 +13,7 @@ android {
         manifestPlaceholders = [
                 qqappid      : "1106726779",//友盟配置的qq   id
                 JPUSH_PKGNAME: "com.jingnuo.quanmbshop",
-                JPUSH_APPKEY : "25315e0fdc4e023e4252256d", //JPush上注册的包名对应的appkey.
+                JPUSH_APPKEY : "edfd5b29112e6e79581147b5", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
 
