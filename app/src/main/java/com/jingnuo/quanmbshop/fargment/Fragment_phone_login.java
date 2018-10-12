@@ -15,6 +15,7 @@ import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.Interface.SendYanZhengmaSuccess;
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.activity.MainActivity;
+import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
 import com.jingnuo.quanmbshop.popwinow.ProgressDlog;
 import com.jingnuo.quanmbshop.class_.SendYanZhengMa;
 import com.jingnuo.quanmbshop.data.Staticdata;
@@ -99,7 +100,7 @@ public class Fragment_phone_login extends Fragment {
                     LogUtils.LOG("ceshi", respose + "1111111111", "fragment_account");
                     isLogin = true;
                     Utils.connect(userBean.getData().getAppuser().getRongCloud_token());
-                    Intent intent_login = new Intent(getActivity(), MainActivity.class);
+                    Intent intent_login = new Intent(getActivity(), ShanghuMainActivity.class);
                     getActivity().startActivity(intent_login);
                     getActivity().finish();
                 }else {

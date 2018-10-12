@@ -152,7 +152,7 @@ public class LaunchActivity extends BaseActivityother {
                     TimerTask timerTask = new TimerTask() {
                         @Override
                         public void run() {
-                            mhandler.sendEmptyMessage(0);
+                            mhandler.sendEmptyMessage(1);
                         }
                     };
                     mTimer.schedule(timerTask, 1000);
@@ -197,9 +197,14 @@ public class LaunchActivity extends BaseActivityother {
                         Intent intent = new Intent(LaunchActivity.this, FirstLoginActivity.class);
                         startActivity(intent);
                     } else {
-                        Intent intent = new Intent(LaunchActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LaunchActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }
+                    finish();
+                    break;
+                case 1:
+                    Intent intent = new Intent(LaunchActivity.this, ShanghuMainActivity.class);
+                    startActivity(intent);
                     finish();
                     break;
             }

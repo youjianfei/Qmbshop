@@ -265,6 +265,21 @@ public class ShanghuMainActivity extends BaseActivityother {
         }
 
     }
+    /**
+     * 再点一次退出
+     */
+    private long mLastTime = 0;
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - mLastTime > 2000) {
+            // 两次返回时间超出两秒
+            Toast.makeText(this, "再点一次退出程序", Toast.LENGTH_SHORT).show();
+            mLastTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

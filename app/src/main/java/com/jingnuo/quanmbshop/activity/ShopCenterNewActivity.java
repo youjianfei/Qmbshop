@@ -103,6 +103,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
             case R.id.iv_setting:
                 Intent intent_setting = new Intent(this, SettingActivity.class);
                 startActivity(intent_setting);
+                finish();
                 break;
             case R.id.iamgeview_shopheadpic:
                 Intent intent_shopcenterinfo = new Intent(this, ShopCenterInfoActivity.class);

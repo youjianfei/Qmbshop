@@ -155,8 +155,8 @@ public class SettingActivity extends BaseActivityother {
                 Staticdata.isLogin = false;
                 Staticdata.static_userBean.setData(null);//用户信息清空
                 RongIM.getInstance().disconnect();
-                Intent intent_logout = new Intent(this, LoginActivity.class);
-                startActivity(intent_logout);
+//                Intent intent_logout = new Intent(this, MainActivity.class);
+//                startActivity(intent_logout);
                 finish();
                 break;
 //            case R.id.textview_shareAPP:

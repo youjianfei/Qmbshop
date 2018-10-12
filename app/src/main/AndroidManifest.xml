@@ -118,7 +118,7 @@
         <activity
             android:name=".activity.IssueTaskActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.SettingActivity" android:launchMode="singleTask" />
         <activity android:name=".activity.ChangepasswordActivity" />
         <activity android:name=".activity.ChangephoneNumberActivity" />
         <activity android:name=".activity.ChangephoneNumberNextActivity" />

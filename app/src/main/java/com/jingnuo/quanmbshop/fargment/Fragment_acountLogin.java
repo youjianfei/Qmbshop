@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.activity.FindPasswordActivity;
 import com.jingnuo.quanmbshop.activity.MainActivity;
+import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
 import com.jingnuo.quanmbshop.popwinow.ProgressDlog;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
@@ -144,7 +145,7 @@ public class Fragment_acountLogin extends Fragment {
                     LogUtils.LOG("ceshi", respose + "1111111111", "fragment_account");
                     isLogin = true;
                     Utils.connect(userBean.getData().getAppuser().getRongCloud_token());
-                    Intent intent_login = new Intent(getActivity(), MainActivity.class);
+                    Intent intent_login = new Intent(getActivity(), ShanghuMainActivity.class);
                     getActivity().startActivity(intent_login);
                     getActivity().finish();
                 }else {
