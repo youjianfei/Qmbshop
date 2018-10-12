@@ -25,9 +25,7 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String type = "";//判断跳转页面
-        if (shanghuMainActivity != null) {
-            shanghuMainActivity.setdot();
-        }
+
         Bundle bundle = intent.getExtras();
         String title = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
         if (bundle.getString(JPushInterface.EXTRA_EXTRA) != null) {
@@ -38,6 +36,7 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
         if (extras != null && !extras.equals("")) {
             if (shanghuMainActivity != null) {
                 shanghuMainActivity.setdot();
+                shanghuMainActivity.speak();
             }
             try {
                 JSONObject object = new JSONObject(extras);
