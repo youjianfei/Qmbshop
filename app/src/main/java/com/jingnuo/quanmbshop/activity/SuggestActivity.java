@@ -37,7 +37,7 @@ public class SuggestActivity extends BaseActivityother {
     protected void setData() {
     map_suggest=new HashMap();
     map_suggest.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-    map_suggest.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+    map_suggest.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
     if(release_specialty_id!=null){
         map_suggest.put("release_specialty_id",release_specialty_id);
     }

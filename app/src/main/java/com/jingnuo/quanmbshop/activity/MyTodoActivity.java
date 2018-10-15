@@ -121,11 +121,11 @@ public class MyTodoActivity extends BaseActivityother {
     void request(String state, final int  page){
         String URL="";
         if(type==1){
-            URL=Urls.Baseurl+Urls.helporder+Staticdata.static_userBean.getData().getUser_token()+"&client_no="+
+            URL=Urls.Baseurl+Urls.helporder+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
                     Staticdata.static_userBean.getData().getAppuser().getClient_no()+"&order_status="+state+
                     "&curPageNo="+page;
         }else {
-             URL=Urls.Baseurl+Urls.shoporder+Staticdata.static_userBean.getData().getUser_token()+"&client_no="+
+             URL=Urls.Baseurl+Urls.shoporder+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
                     Staticdata.static_userBean.getData().getAppuser().getClient_no()+"&order_status="+state+
                     "&curPageNo="+page;
         }

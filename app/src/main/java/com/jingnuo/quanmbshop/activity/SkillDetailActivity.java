@@ -219,7 +219,7 @@ public class SkillDetailActivity extends BaseActivityother {
                 Map map = new HashMap();
                 map.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
                 map.put("release_id", mSkilldetailsbean.getData().getDetail().getRelease_specialty_id() + "");
-                map.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                map.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                 map.put("type", collrctID + "");
                 LogUtils.LOG("ceshi", map.toString() + "收藏网址" + Urls.Baseurl + Urls.setColltctSkill, "服务详情");
                 new Volley_Utils(new Interface_volley_respose() {
@@ -306,7 +306,7 @@ public class SkillDetailActivity extends BaseActivityother {
         String URL = "";
         String usertoken = "";
         if (Staticdata.static_userBean.getData() != null) {
-            usertoken = Staticdata.static_userBean.getData().getUser_token();
+            usertoken = Staticdata.static_userBean.getData().getAppuser().getUser_token();
         }
 
         if (role.equals("1")) {

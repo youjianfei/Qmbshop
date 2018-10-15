@@ -109,7 +109,7 @@ public class ShopCenterInfoActivity extends BaseActivityother {
                             imageID = (String) object.get("imgID");
                             LogUtils.LOG("ceshi", "单张图片ID" + imageID, "发布技能上传图片返回imageID");
                             map_setheadpic.put("img_id", imageID + "");
-                            map_setheadpic.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                            map_setheadpic.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                             map_setheadpic.put("business_id", shopcenterBean.getData().getList().getBusiness_id() + "");
                             setheadRequest(map_setheadpic);
                         }
@@ -401,7 +401,7 @@ public class ShopCenterInfoActivity extends BaseActivityother {
 
             }
         }).Http(Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
-                .getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
+                .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
                 .getClient_no(), this, 0);
     }
 
@@ -498,7 +498,7 @@ public class ShopCenterInfoActivity extends BaseActivityother {
         map_edit.put("introduction", jianjie);
         map_edit.put("business_mobile_no", lianxifangshi);
         map_edit.put("business_address", address);
-        map_edit.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_edit.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         return true;
     }
 

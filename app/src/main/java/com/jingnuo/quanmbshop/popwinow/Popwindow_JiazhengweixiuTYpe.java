@@ -75,7 +75,7 @@ public class Popwindow_JiazhengweixiuTYpe {
         Utils.setAlpha((float) 0.3, activity);
         initdata();
         initlistennr();
-        request(Urls.Baseurl_cui+ Urls.jiazhengweixiuTYpe+ Staticdata.static_userBean.getData().getUser_token(),level);
+        request(Urls.Baseurl_cui+ Urls.jiazhengweixiuTYpe+ Staticdata.static_userBean.getData().getAppuser().getUser_token(),level);
     }
 
     private void initdata() {
@@ -106,7 +106,7 @@ public class Popwindow_JiazhengweixiuTYpe {
             @Override
             public void onClick(View view) {
                 level=1;
-                request(Urls.Baseurl+Urls.jiazhengweixiuTYpe+ Staticdata.static_userBean.getData().getUser_token(),level);
+                request(Urls.Baseurl+Urls.jiazhengweixiuTYpe+ Staticdata.static_userBean.getData().getAppuser().getUser_token(),level);
                 mTextview_two.setVisibility(View.GONE);
             }
         });

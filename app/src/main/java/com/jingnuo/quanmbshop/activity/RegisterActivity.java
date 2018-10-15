@@ -268,7 +268,7 @@ public class RegisterActivity extends BaseActivityother {
                     LogUtils.LOG("ceshi", respose + "1111111111", "RegisterActivity");
                     isLogin = true;
                     Utils.connect(Staticdata. static_userBean.getData().getAppuser().getRongCloud_token());
-                    Userphonenumber=userBean.getData().getAppuser().getMobile_no();//将电话号设为全局变量
+                    Userphonenumber=userBean.getData().getAppuser().getBusiness_mobile_no();//将电话号设为全局变量
                     Intent intent_login = new Intent(RegisterActivity.this, ShanghuMainActivity.class);
                     RegisterActivity.this.startActivity(intent_login);
                     finish();

@@ -38,7 +38,7 @@ public class DealActivity extends BaseActivityother {
     List<DealMessageBean.DataBean> mData;
 
     int page=1;
-    int  type=0;//  //1帮手  2  商户
+    int  type=2;//  //1帮手  2  商户
 
     //对象
     Adapter_DealmessageList adapter_dealmessageList;
@@ -51,12 +51,12 @@ public class DealActivity extends BaseActivityother {
 
     @Override
     protected void setData() {
-        if(Staticdata.static_userBean.getData().getHelper_status()==1){
-            type=1;//帮手身份
-        }
-        if(Staticdata.static_userBean.getData().getBusiness_status()==1){
-            type=2;//商户身份
-        }
+//        if(Staticdata.static_userBean.getData().getHelper_status()==1){
+//            type=1;//帮手身份
+//        }
+//        if(Staticdata.static_userBean.getData().getBusiness_status()==1){
+//            type=2;//商户身份
+//        }
 
 
     }
@@ -77,7 +77,7 @@ public class DealActivity extends BaseActivityother {
             return;
         }
         map_message.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-        map_message.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_message.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         LogUtils.LOG("ceshi","系统消息内容map"+map_message,"DealMessageActivity");
         requestDealmessage(map_message);
     }

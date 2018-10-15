@@ -57,7 +57,7 @@ public class SetNicknameActivity extends BaseActivityother {
                     ToastUtils.showToast(SetNicknameActivity.this,"用户名限1~16个字符,一个汉字为两个字符");
                 }else {
                         map_nickname.put("NickName",nickname);
-                        map_nickname.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                        map_nickname.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     LogUtils.LOG("ceshi","修改昵称的map"+map_nickname.toString(),"SetNicknameActivity");
                     request(map_nickname);
                 }
@@ -88,7 +88,7 @@ public class SetNicknameActivity extends BaseActivityother {
                     e.printStackTrace();
                 }
                 if(status==1){
-                    Staticdata.static_userBean.getData().getAppuser().setNick_name(nickname);
+//                    Staticdata.static_userBean.getData().getAppuser().setNick_name(nickname);
                     ToastUtils.showToast(SetNicknameActivity.this,msg);
                     finish();
                 }else {

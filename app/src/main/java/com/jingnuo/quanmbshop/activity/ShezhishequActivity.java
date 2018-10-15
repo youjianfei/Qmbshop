@@ -66,12 +66,12 @@ public class ShezhishequActivity extends BaseActivityother {
         mList_shequ.setAdapter(adapter_shequList);
 
 
-        map_shequ.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_shequ.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_shequ.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_shequ.put("community_name", search);
         map_shequ.put("area", Staticdata.city_location);
 
-        map_shequ_bind.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_shequ_bind.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_shequ_bind.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
 
     }
@@ -123,7 +123,7 @@ public class ShezhishequActivity extends BaseActivityother {
                         }
                         ToastUtils.showToast(ShezhishequActivity.this,msg);
                         if(status==1){
-                            Staticdata.static_userBean.getData().getAppuser().setCommunity_name(mDate.get(position).getCommunity_name());
+//                            Staticdata.static_userBean.getData().getAppuser().setCommunity_name(mDate.get(position).getCommunity_name());
                             finish();
                         }
 

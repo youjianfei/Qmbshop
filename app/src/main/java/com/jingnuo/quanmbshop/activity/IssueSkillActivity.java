@@ -310,7 +310,7 @@ public class IssueSkillActivity extends BaseActivityother {
         map_issueSkill.put("img_id",img_id);
         map_issueSkill.put("contacts",contacts);
         map_issueSkill.put("mobile_no",mobile_no);
-        map_issueSkill.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_issueSkill.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_issueSkill.put("service_area","郑州");
         return true;
     }

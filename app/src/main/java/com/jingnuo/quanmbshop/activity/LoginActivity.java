@@ -245,7 +245,7 @@ public class LoginActivity extends BaseActivityother {
                     Staticdata. static_userBean=new Gson().fromJson(respose,UserBean.class);
                     isLogin = true;
                     Utils.connect(Staticdata. static_userBean.getData().getAppuser().getRongCloud_token());
-                    Staticdata.Userphonenumber=Staticdata.static_userBean.getData().getAppuser().getMobile_no();
+                    Staticdata.Userphonenumber=Staticdata.static_userBean.getData().getAppuser().getBusiness_mobile_no();
                     Intent intent_login = new Intent(LoginActivity.this, ShanghuMainActivity.class);
                     startActivity(intent_login);
                     ToastUtils.showToast(LoginActivity.this,msg);

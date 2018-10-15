@@ -274,7 +274,7 @@ public class AuthenticationActivity extends BaseActivityother {
             return false;
         }
 
-        map_submit.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_submit.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_submit.put("helper_name",name);
         map_submit.put("idCard",idcacardnumber);
         map_submit.put("front_imgID",idcacardPICID_zheng);

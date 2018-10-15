@@ -48,7 +48,7 @@ public class ChangephoneNumberNextActivity extends BaseActivityother {
     @Override
     protected void initData() {
         map_bindphonenumber = new HashMap();
-        map_bindphonenumber.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_bindphonenumber.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
 
     }
 
@@ -82,7 +82,7 @@ public class ChangephoneNumberNextActivity extends BaseActivityother {
                     return;
                 }
                 map_bindphonenumber.put("ValidateCode", yanzhengam);
-                map_bindphonenumber.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                map_bindphonenumber.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                 map_bindphonenumber.put("type","1");
                 new Volley_Utils(new Interface_volley_respose() {
                     @Override

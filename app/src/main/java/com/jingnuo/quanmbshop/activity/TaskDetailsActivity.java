@@ -314,7 +314,7 @@ public class TaskDetailsActivity extends BaseActivityother {
         if(Staticdata.static_userBean.getData()==null){
             URL=Urls.Baseurl_cui + Urls.taskdetails + "?id=" + ID;
         }else {
-            URL=Urls.Baseurl_cui + Urls.taskdetails + "?id=" + ID+"&user_token="+Staticdata.static_userBean.getData().getUser_token();
+            URL=Urls.Baseurl_cui + Urls.taskdetails + "?id=" + ID+"&user_token="+Staticdata.static_userBean.getData().getAppuser().getUser_token();
         }
         LogUtils.LOG("ceshi", "任务详情接口+" + Urls.Baseurl_cui + Urls.taskdetails + "?id=" + ID, "TaskDetailsActivity");
         new Volley_Utils(new Interface_volley_respose() {
@@ -391,12 +391,12 @@ public class TaskDetailsActivity extends BaseActivityother {
     }
     void querenbangzhu(){
         if (Staticdata.isLogin) {//是否登录
-            if (!Staticdata.static_userBean.getData().getAppuser().getRole().contains("1")) {
-                ToastUtils.showToast(TaskDetailsActivity.this, "请先认证帮手");
-                Intent intent_renzheng = new Intent(TaskDetailsActivity.this, AuthenticationActivity.class);
-                startActivity(intent_renzheng);
-                return;
-            }
+//            if (!Staticdata.static_userBean.getData().getAppuser().getRole().contains("1")) {
+//                ToastUtils.showToast(TaskDetailsActivity.this, "请先认证帮手");
+//                Intent intent_renzheng = new Intent(TaskDetailsActivity.this, AuthenticationActivity.class);
+//                startActivity(intent_renzheng);
+//                return;
+//            }
 
             new Popwindow_Tip("是否帮助此任务？", TaskDetailsActivity.this, new Interence_complteTask() {
                 @Override
@@ -422,13 +422,13 @@ public class TaskDetailsActivity extends BaseActivityother {
                             public void onError(int error) {
 
                             }
-                        }).Http(Urls.Baseurl_cui + Urls.helptask + "?tid=" + ID + "&user_token=" + Staticdata.static_userBean.getData().getUser_token(), TaskDetailsActivity.this, 0);
+                        }).Http(Urls.Baseurl_cui + Urls.helptask + "?tid=" + ID + "&user_token=" + Staticdata.static_userBean.getData().getAppuser().getUser_token(), TaskDetailsActivity.this, 0);
 
                     }
 
                 }
             }).showPopwindow();
-            LogUtils.LOG("ceshi", "确认帮助网址+" + Urls.Baseurl_cui + Urls.helptask + "?tid=" + ID + "&user_token=" + Staticdata.static_userBean.getData().getUser_token(), "TaskDetailsActivity");
+            LogUtils.LOG("ceshi", "确认帮助网址+" + Urls.Baseurl_cui + Urls.helptask + "?tid=" + ID + "&user_token=" + Staticdata.static_userBean.getData().getAppuser().getUser_token(), "TaskDetailsActivity");
 
         } else {
             Intent intent_login = new Intent(TaskDetailsActivity.this, LoginActivity.class);
@@ -437,11 +437,12 @@ public class TaskDetailsActivity extends BaseActivityother {
     }
     void baojia(){
         if (Staticdata.isLogin) {
-            if (!Staticdata.static_userBean.getData().getAppuser().getRole().contains("1")) {
-                ToastUtils.showToast(TaskDetailsActivity.this, "请先认证帮手");
-                Intent intent_renzheng = new Intent(TaskDetailsActivity.this, AuthenticationActivity.class);
-                startActivity(intent_renzheng);
-            } else {
+//            if (!Staticdata.static_userBean.getData().getAppuser().getRole().contains("1")) {
+//                ToastUtils.showToast(TaskDetailsActivity.this, "请先认证帮手");
+//                Intent intent_renzheng = new Intent(TaskDetailsActivity.this, AuthenticationActivity.class);
+//                startActivity(intent_renzheng);
+//            } else
+
                 new Popwindow_bargin(TaskDetailsActivity.this, new Interence_bargin() {
                     @Override
                     public void onResult(String result) {//还价网络请求
@@ -457,7 +458,7 @@ public class TaskDetailsActivity extends BaseActivityother {
                         }
 
                         Map map_bargin = new HashMap();
-                        map_bargin.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                        map_bargin.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                         map_bargin.put("task_id", "" + ID);
                         map_bargin.put("counteroffer_Amount", result);
                         new Volley_Utils(new Interface_volley_respose() {
@@ -487,7 +488,7 @@ public class TaskDetailsActivity extends BaseActivityother {
                         }).postHttp(URL, TaskDetailsActivity.this, 1, map_bargin);
                     }
                 },popTitle).showpop();
-            }
+
         } else {
             Intent intent_login = new Intent(TaskDetailsActivity.this, LoginActivity.class);
             startActivity(intent_login);

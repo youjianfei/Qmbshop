@@ -135,7 +135,7 @@ public class HuiyuanRechargeActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_hu+Urls.huiyuan_taocan+ Staticdata.static_userBean.getData().getUser_token(),HuiyuanRechargeActivity.this,0);
+        }).Http(Urls.Baseurl_hu+Urls.huiyuan_taocan+ Staticdata.static_userBean.getData().getAppuser().getUser_token(),HuiyuanRechargeActivity.this,0);
     }
     @Override
     protected void onDestroy() {

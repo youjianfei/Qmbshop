@@ -141,7 +141,7 @@ public class TuiguangbiWalletActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_hu+Urls.tui_taocan+ Staticdata.static_userBean.getData().getUser_token(),TuiguangbiWalletActivity.this,0);
+        }).Http(Urls.Baseurl_hu+Urls.tui_taocan+ Staticdata.static_userBean.getData().getAppuser().getUser_token(),TuiguangbiWalletActivity.this,0);
     }
     @Override
     protected void onDestroy() {

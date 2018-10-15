@@ -291,7 +291,7 @@ public class Fragment_tsk_ZhaoRenShou extends Fragment implements View.OnClickLi
     }
     void requestTaskid() {//请求任务号,
         LogUtils.LOG("ceshi", Urls.Baseurl_cui + Urls.gettaskid
-                + Staticdata.static_userBean.getData().getUser_token(), "获取任务ID");
+                + Staticdata.static_userBean.getData().getAppuser().getUser_token(), "获取任务ID");
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
@@ -327,7 +327,7 @@ public class Fragment_tsk_ZhaoRenShou extends Fragment implements View.OnClickLi
 
             }
         }).Http(Urls.Baseurl_cui + Urls.gettaskid
-                + Staticdata.static_userBean.getData().getUser_token(), getActivity(), 0);
+                + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
     }
     void requast(Map map) {//正式发布个性任务
         LogUtils.LOG("ceshi", Staticdata.map_task.toString(), "发布任务的map参数");
@@ -469,14 +469,14 @@ public class Fragment_tsk_ZhaoRenShou extends Fragment implements View.OnClickLi
                 map_issueTask.put("city_code", citycode + "");
                 map_issueTask.put("x_value", xValue + "");
                 map_issueTask.put("y_value", yValue + "");
-                map_issueTask.put("user_token", Staticdata.static_userBean.getData().getUser_token() + "");
+                map_issueTask.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token() + "");
                 if (initmap_zhaoshanghu()) {
                     ProgressDlog.showProgress(mKProgressHUD);
                     Staticdata.map_task = map_issueTask;//借助全局变量来传递数据
 
                     Staticdata.imagePathlist = mList_PicPath_down;
                     Map map_check = new HashMap();
-                    map_check.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                    map_check.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_check.put("task_description", map_issueTask.get("task_description"));
 //                    map_check.put("houseNumber", map_issueTask.get("houseNumber"));
 

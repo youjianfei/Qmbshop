@@ -139,7 +139,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                             public void onError(int error) {
 
                             }
-                        }).Http(Urls.Baseurl + Urls.updataXYDU + Staticdata.static_userBean.getData().getUser_token() + "&x_value=" +
+                        }).Http(Urls.Baseurl + Urls.updataXYDU + Staticdata.static_userBean.getData().getAppuser().getUser_token()+ "&x_value=" +
                                 Staticdata.xValue + "&y_value=" + Staticdata.yValue, MainActivity.this, 0);
 
                     }
@@ -338,19 +338,19 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                 break;
             case R.id.text_myshequ://我的社区
-                if (Staticdata.isLogin) {
-                    if (Staticdata.static_userBean.getData().getAppuser().getCommunity_code().equals("")) {
-                        ToastUtils.showToast(this, "请先绑定社区");
-                        intent = new Intent(this, ShezhishequActivity.class);
-                        startActivity(intent);
-                        return;
-                    }
-                    intent = new Intent(this, MyShequActivity.class);
-                    startActivity(intent);
-                } else {
-                    intent = new Intent(this, LoginActivity.class);
-                    startActivity(intent);
-                }
+//                if (Staticdata.isLogin) {
+//                    if (Staticdata.static_userBean.getData().getAppuser().getCommunity_code().equals("")) {
+//                        ToastUtils.showToast(this, "请先绑定社区");
+//                        intent = new Intent(this, ShezhishequActivity.class);
+//                        startActivity(intent);
+//                        return;
+//                    }
+//                    intent = new Intent(this, MyShequActivity.class);
+//                    startActivity(intent);
+//                } else {
+//                    intent = new Intent(this, LoginActivity.class);
+//                    startActivity(intent);
+//                }
                 break;
             case R.id.image_needhelp://发布服务
                 if (isLogin) {

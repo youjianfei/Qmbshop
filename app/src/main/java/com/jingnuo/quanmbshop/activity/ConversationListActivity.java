@@ -63,9 +63,9 @@ public class ConversationListActivity extends FragmentActivity {
 //    TextView mTextview_tuijianrenwu;
 
     static ImageView mImageView_dot1;
-    static ImageView mImageView_dot2;
+//    static ImageView mImageView_dot2;
     static ImageView mImageView_dot3;
-    static ImageView mImageView_dot4;
+//    static ImageView mImageView_dot4;
 
 
     //数据
@@ -145,18 +145,18 @@ public class ConversationListActivity extends FragmentActivity {
         imageview_task.setSelected(false);
         text_task.setTextColor(this.getResources().getColor(R.color.black_text2));
         text_message.setTextColor(this.getResources().getColor(R.color.yellow_jianbian_end));
-
+        setDot(newmessageTYpe);
 
 
         map_getnewmessage=new HashMap();
         map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-        map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         request();
     }
 
     private void initdata() {
         newmessageTYpe=getIntent().getStringExtra("newmessageTYpe");
-        setDot(newmessageTYpe);
+
 
     }
 
@@ -172,9 +172,9 @@ public class ConversationListActivity extends FragmentActivity {
         mRelativelayout_systemmessage=findViewById(R.id.relativelayout_systemnotice);
         mRelativelayout_dealmessage=findViewById(R.id.relativelayout_Jiaoyinotice);
         mImageView_dot1=findViewById(R.id.image_reddot1);
-        mImageView_dot2=findViewById(R.id.image_reddot2);
+//        mImageView_dot2=findViewById(R.id.image_reddot2);
         mImageView_dot3=findViewById(R.id.image_reddot3);
-        mImageView_dot4=findViewById(R.id.image_reddot4);
+//        mImageView_dot4=findViewById(R.id.image_reddot4);
         
     }
     public   void setDot(String num){
@@ -184,13 +184,13 @@ public class ConversationListActivity extends FragmentActivity {
                 mImageView_dot1.setVisibility(View.VISIBLE);
                 break;
             case "type2":
-                mImageView_dot2.setVisibility(View.VISIBLE);
+//                mImageView_dot2.setVisibility(View.VISIBLE);
                 break;
             case "type3":
                 mImageView_dot3.setVisibility(View.VISIBLE);
                 break;
             case "type4":
-                mImageView_dot4.setVisibility(View.VISIBLE);
+//                mImageView_dot4.setVisibility(View.VISIBLE);
                 break;
         }
     }
@@ -219,7 +219,7 @@ public class ConversationListActivity extends FragmentActivity {
         super.onResume();
         if(Staticdata.isLogin){
             map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-            map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+            map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
             request();
         }
     }

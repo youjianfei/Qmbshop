@@ -29,46 +29,47 @@ public class Chengweibangshou {
 
     public void  chengweibangshou(){
 
-        if(Staticdata.static_userBean.getData().getAppuser().getRole().contains("1")){
-            new Volley_Utils(new Interface_volley_respose() {
-                @Override
-                public void onSuccesses(String respose) {
-                    int status = 0;
-                    String msg = "";
-                    try {
-                        JSONObject object = new JSONObject(respose);
-                        status = (Integer) object.get("code");//
-                        msg = (String) object.get("msg");//
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    if(status==1){
-                        Intent intent_shopcenter=new Intent(activity, ShopCenterActivity.class);
-                        intent_shopcenter.putExtra("type",1);//1  帮手
-                        activity.startActivity(intent_shopcenter);
-                    }else {
-                        Intent intent_chosetype=new Intent(activity, HelperType.class);
-                        activity.startActivity(intent_chosetype);
-                    }
-                }
-
-
-                @Override
-                public void onError(int error) {
-
-                }
-            }).Http(Urls.Baseurl_hu+Urls.helper_isHavehelper+Staticdata.static_userBean.getData().getUser_token()+"&client_no="+
-                    Staticdata.static_userBean.getData().getAppuser().getClient_no(),activity,0);
-
-        }
+//        if(Staticdata.static_userBean.getData().getAppuser().getRole().contains("1")){
+//            new Volley_Utils(new Interface_volley_respose() {
+//                @Override
+//                public void onSuccesses(String respose) {
+//                    int status = 0;
+//                    String msg = "";
+//                    try {
+//                        JSONObject object = new JSONObject(respose);
+//                        status = (Integer) object.get("code");//
+//                        msg = (String) object.get("msg");//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    if(status==1){
+//                        Intent intent_shopcenter=new Intent(activity, ShopCenterActivity.class);
+//                        intent_shopcenter.putExtra("type",1);//1  帮手
+//                        activity.startActivity(intent_shopcenter);
+//                    }else {
+//                        Intent intent_chosetype=new Intent(activity, HelperType.class);
+//                        activity.startActivity(intent_chosetype);
+//                    }
+//                }
+//
+//
+//                @Override
+//                public void onError(int error) {
+//
+//                }
+//            }).Http(Urls.Baseurl_hu+Urls.helper_isHavehelper+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
+//                    Staticdata.static_userBean.getData().getAppuser().getClient_no(),activity,0);
+//
+//        }
 //        else if(Staticdata.static_userBean.getData().getAppuser().getRole().equals("2")) {//即时帮手也是商户
 //            ToastUtils.showToast(activity,"你已经是商户啦！");
 //        }
-        else {//申请帮手界面
+//        else
+            {//申请帮手界面
 //                    Intent intent_anthentication = new Intent(getActivity(), AuthenticationActivity.class);
 //                    getActivity().startActivity(intent_anthentication);
             Map map=new HashMap();
-            map.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+            map.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
             map.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
             new Volley_Utils(new Interface_volley_respose() {
                 @Override

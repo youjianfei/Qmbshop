@@ -73,7 +73,7 @@ public class MyAuthenticationActivity extends BaseActivityother {
 
     }
     void request(){
-        LogUtils.LOG("ceshi",Urls.Baseurl+Urls.woderenzheng+ Staticdata.static_userBean.getData().getUser_token()+
+        LogUtils.LOG("ceshi",Urls.Baseurl+Urls.woderenzheng+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+
                 "&client_no=" +Staticdata.static_userBean.getData().getAppuser().getClient_no(),"qode认证");
         new Volley_Utils(new Interface_volley_respose() {
             @Override
@@ -98,7 +98,7 @@ public class MyAuthenticationActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl+Urls.woderenzheng+ Staticdata.static_userBean.getData().getUser_token()+
+        }).Http(Urls.Baseurl+Urls.woderenzheng+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+
         "&client_no=" +Staticdata.static_userBean.getData().getAppuser().getClient_no(),
                 MyAuthenticationActivity.this,0);
     }

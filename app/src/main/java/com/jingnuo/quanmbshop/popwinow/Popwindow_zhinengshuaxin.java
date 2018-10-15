@@ -83,10 +83,10 @@ public class Popwindow_zhinengshuaxin {
         mTextview_textview_text_title.setText(title);
         if(fangshi==1){
             mTextview_textview_type.setText("智能刷新");
-            URLLL=Urls.Baseurl + Urls.shuaxinchoseDays + Staticdata.static_userBean.getData().getUser_token();
+            URLLL=Urls.Baseurl + Urls.shuaxinchoseDays + Staticdata.static_userBean.getData().getAppuser().getUser_token();
         }else {
             mTextview_textview_type.setText("服务置顶");
-            URLLL=Urls.Baseurl + Urls.zhidingchoseDays + Staticdata.static_userBean.getData().getUser_token();
+            URLLL=Urls.Baseurl + Urls.zhidingchoseDays + Staticdata.static_userBean.getData().getAppuser().getUser_token();
         }
         mdata = new ArrayList<>();
         adater_chooce = new Adater_chooce(mdata, activity);

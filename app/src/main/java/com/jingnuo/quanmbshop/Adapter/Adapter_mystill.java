@@ -85,7 +85,7 @@ public class Adapter_mystill extends BaseAdapter {
                     public void onResult(boolean result) {
                         if(result){
                             LogUtils.LOG("ceshi", Urls.Baseurl + Urls.shopCancleSkill +
-                                    Staticdata.static_userBean.getData().getUser_token() +
+                                    Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                                     "&id=" + mData.get(position).getRelease_specialty_id(), "撤消任务");
                             new Volley_Utils(new Interface_volley_respose() {
                                 @Override
@@ -98,7 +98,7 @@ public class Adapter_mystill extends BaseAdapter {
 
                                 }
                             }).Http(Urls.Baseurl + Urls.shopCancleSkill +
-                                    Staticdata.static_userBean.getData().getUser_token() +
+                                    Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                                     "&id=" + mData.get(position).getRelease_specialty_id(), mContext, 0);
                         }
 
@@ -117,11 +117,11 @@ public class Adapter_mystill extends BaseAdapter {
                             String URLL="";
                             if(type==1){//帮手刷新
                                 URLL=Urls.Baseurl + Urls.helperputongshuaxin +
-                                        Staticdata.static_userBean.getData().getUser_token() +
+                                        Staticdata.static_userBean.getData().getAppuser().getUser_token()+
                                         "&release_id=" + mData.get(position).getRelease_specialty_id();
                             }else {//商户刷新
                                 URLL=Urls.Baseurl + Urls.businessputongshuaxin +
-                                        Staticdata.static_userBean.getData().getUser_token() +
+                                        Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                                         "&release_id=" + mData.get(position).getRelease_specialty_id();
                             }
                             LogUtils.LOG("ceshi", URLL, "普通刷新");
@@ -168,13 +168,13 @@ public class Adapter_mystill extends BaseAdapter {
                 String URLL="";
                 if(type==1){//帮手智能刷新
                     URLL=Urls.Baseurl + Urls.helperzhinengshuaxin +
-                            Staticdata.static_userBean.getData().getUser_token() +
+                            Staticdata.static_userBean.getData().getAppuser().getUser_token()+
                             "&release_id=" + mData.get(position).getRelease_specialty_id()+
                     "&is_auto_refresh=Y&auto_refresh_day="
                     ;
                 }else {//商户智能刷新
                     URLL=Urls.Baseurl + Urls.businesszhinengshuaxin +
-                            Staticdata.static_userBean.getData().getUser_token() +
+                            Staticdata.static_userBean.getData().getAppuser().getUser_token()+
                             "&release_id=" + mData.get(position).getRelease_specialty_id()+
                             "&is_auto_refresh=Y&auto_refresh_day=";
                 }
@@ -221,13 +221,13 @@ public class Adapter_mystill extends BaseAdapter {
                 String URLL="";
                 if(type==1){//帮手智能刷新
                     URLL=Urls.Baseurl + Urls.helperzhiding +
-                            Staticdata.static_userBean.getData().getUser_token() +
+                            Staticdata.static_userBean.getData().getAppuser().getUser_token()+
                             "&release_id=" + mData.get(position).getRelease_specialty_id()+
                             "&is_top=Y&top_day="
                     ;
                 }else {//商户智能刷新
                     URLL=Urls.Baseurl + Urls.businesszhiding +
-                            Staticdata.static_userBean.getData().getUser_token() +
+                            Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                             "&release_id=" + mData.get(position).getRelease_specialty_id()+
                             "&is_top=Y&top_day=";
                 }

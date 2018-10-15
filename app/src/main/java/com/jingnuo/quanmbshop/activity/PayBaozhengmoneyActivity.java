@@ -84,7 +84,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
                         public void onError(int error) {
 
                         }
-                    }).Http(Urls.Baseurl_hu+Urls.BaoSuccess+Staticdata.static_userBean.getData().getUser_token()+
+                    }).Http(Urls.Baseurl_hu+Urls.BaoSuccess+Staticdata.static_userBean.getData().getAppuser().getUser_token()+
                     "&client_no="+Staticdata.static_userBean.getData().getAppuser().getClient_no(),PayBaozhengmoneyActivity.this,0);
                 }
             }
@@ -180,7 +180,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
                     map_pay.put("body",title_pay);
                     map_pay.put("total_fee","99");
                     map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-                    map_pay.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+                    map_pay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_pay.put("task_id","1");
                     LogUtils.LOG("ceshi",map_pay.toString(),"缴纳保证金");
                     new WechatPay(PayBaozhengmoneyActivity.this,api,map_pay).wepay();
@@ -193,7 +193,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
                     map_zpay.put("subject",title_pay);
                     map_zpay.put("total_fee","99");
                     map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
-                    map_zpay.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+                    map_zpay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_zpay.put("task_id","1");
                     LogUtils.LOG("ceshi",map_zpay.toString(),"支付宝qingqiu接口");
                     LogUtils.LOG("ceshi", Urls.Baseurl_hu+Urls.zhifubaoPay,"支付宝qingqiu接口");
@@ -273,7 +273,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_hu+Urls.getBalance+Staticdata.static_userBean.getData().getUser_token()+"&client_no="+
+        }).Http(Urls.Baseurl_hu+Urls.getBalance+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
                 Staticdata.static_userBean.getData().getAppuser().getClient_no(),this,0);
     }
     @Override
@@ -286,7 +286,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
     public void onInputFinish(String result) {
         if(result.equals("1")){
             Map map_yue=new HashMap();
-            map_yue.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+            map_yue.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
             map_yue.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
             map_yue.put("pay_money","99");
             map_yue.put("task_id","1");

@@ -219,7 +219,7 @@ public class HelperType extends BaseActivityother {
                     public void onError(int error) {
 
                     }
-                }).Http(Urls.Baseurl+Urls.helper_type+ Staticdata.static_userBean.getData().getUser_token()+"&helper_type_id="+helpertype,
+                }).Http(Urls.Baseurl+Urls.helper_type+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&helper_type_id="+helpertype,
                         HelperType.this,0);
             }
         });

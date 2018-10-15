@@ -142,7 +142,7 @@ public class Fragment_shopdetail extends Fragment{
                     public void onResult(boolean result) {
                         if(result) {
                             map_choosebissness=new HashMap();
-                            map_choosebissness.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                            map_choosebissness.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                             map_choosebissness.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
                             map_choosebissness.put("task_id", task_id);
                             map_choosebissness.put("business_no", matchingBean.getBusiness_no());
@@ -191,9 +191,9 @@ public class Fragment_shopdetail extends Fragment{
                 RongIM.getInstance().setCurrentUserInfo(new UserInfo(matchingBean.getClient_no(),
                         matchingBean.getBusiness_name(),
                         Uri.parse(matchingBean.getHeadUrl())));
-                RongIM.getInstance().setCurrentUserInfo(new UserInfo(Staticdata.static_userBean.getData().getAppuser().getClient_no(),
-                        Staticdata.static_userBean.getData().getAppuser().getNick_name(),
-                        Uri.parse( Staticdata.static_userBean.getData().getImg_url())));
+//                RongIM.getInstance().setCurrentUserInfo(new UserInfo(Staticdata.static_userBean.getData().getAppuser().getClient_no(),
+//                        Staticdata.static_userBean.getData().getAppuser().getNick_name(),
+//                        Uri.parse( Staticdata.static_userBean.getData().getImg_url())));
 //                RongIM.getInstance().refreshUserInfoCache(new UserInfo(matchingBean.getClient_no(),
 //                        matchingBean.getBusiness_name(),
 //                        Uri.parse(matchingBean.getHeadUrl())));

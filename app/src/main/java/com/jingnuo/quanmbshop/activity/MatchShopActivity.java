@@ -115,12 +115,12 @@ public class MatchShopActivity extends AppCompatActivity  {
         mViewPager.setAdapter(adapterFragment);
 
         map_taskdetail = new HashMap();
-        map_taskdetail.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_taskdetail.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_taskdetail.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_taskdetail.put("id", ID + "");
         request(map_taskdetail);//请求任务详情
         map_price=new HashMap();
-        map_price.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_price.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_price.put("task_id", ID + "");
         map_price.put("business_no", list_matchbea.get(0).getBusiness_no());
 //        timer = new Timer();
@@ -245,7 +245,7 @@ public class MatchShopActivity extends AppCompatActivity  {
                 mKProgressHUD.dismiss();
             }
         }).Http(Urls.Baseurl_cui+Urls.issuetask_huanyipi
-                +Staticdata.static_userBean.getData().getUser_token()+"&task_id="
+                +Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&task_id="
                 +ID,MatchShopActivity.this,0);
     }
 //    void getPrice(Map map){

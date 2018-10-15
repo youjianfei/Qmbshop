@@ -291,7 +291,7 @@ public class IssueTaskNextActivity extends BaseActivityother {
 
     void requestMorenLianxiren(){
         LogUtils.LOG("ceshi",Urls.Baseurl+Urls.findMorenlianxiren
-                +Staticdata.static_userBean.getData().getUser_token()
+                +Staticdata.static_userBean.getData().getAppuser().getUser_token()
                 +"&client_no="+Staticdata.static_userBean.getData().getAppuser().getClient_no(),"获取迷人联系人");
         new  Volley_Utils(new Interface_volley_respose() {
             @Override
@@ -321,7 +321,7 @@ public class IssueTaskNextActivity extends BaseActivityother {
 
             }
         }).Http(Urls.Baseurl+Urls.findMorenlianxiren
-                +Staticdata.static_userBean.getData().getUser_token()
+                +Staticdata.static_userBean.getData().getAppuser().getUser_token()
                 +"&client_no="+Staticdata.static_userBean.getData().getAppuser().getClient_no(),
                 IssueTaskNextActivity.this,0);
 
@@ -330,7 +330,7 @@ public class IssueTaskNextActivity extends BaseActivityother {
 
     void requestTaskid() {//请求任务号,
         LogUtils.LOG("ceshi", Urls.Baseurl_cui + Urls.gettaskid
-                + Staticdata.static_userBean.getData().getUser_token(), "获取任务ID");
+                + Staticdata.static_userBean.getData().getAppuser().getUser_token(), "获取任务ID");
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
@@ -370,7 +370,7 @@ public class IssueTaskNextActivity extends BaseActivityother {
 
             }
         }).Http(Urls.Baseurl_cui + Urls.gettaskid
-                + Staticdata.static_userBean.getData().getUser_token(), IssueTaskNextActivity.this, 0);
+                + Staticdata.static_userBean.getData().getAppuser().getUser_token(), IssueTaskNextActivity.this, 0);
     }
 
     void requast(Map map) {//正式发布个性任务

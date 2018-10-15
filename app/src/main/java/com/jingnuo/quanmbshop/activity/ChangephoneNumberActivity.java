@@ -63,7 +63,7 @@ public class ChangephoneNumberActivity extends BaseActivityother {
                     return;
                 }else {
                     map_oldphonenumber.put("ValidateCode",yanzhegnma);
-                    map_oldphonenumber.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+                    map_oldphonenumber.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     request(map_oldphonenumber);
                 }
 

@@ -89,7 +89,7 @@ public class SetSafepassword2Activity extends BaseActivityother {
                 if(initmap()){
                     String NewpasswordMM= PasswordJiami.passwordjiami(newpassword);
                     map_setsafepassword.put("security_code",NewpasswordMM);
-                    map_setsafepassword.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                    map_setsafepassword.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
 
                     request(map_setsafepassword);
                 }

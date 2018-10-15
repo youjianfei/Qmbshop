@@ -134,7 +134,7 @@ public class ShopInActivity extends BaseActivityother {
         map_submit.put("name",name);
         map_submit.put("mobile_no",phonenumber);
         map_submit.put("business_name",shopName);
-        map_submit.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_submit.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         return true;
     }
 }

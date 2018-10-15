@@ -192,7 +192,7 @@ public class MytaskDetailActivity extends BaseActivityother {
         Intent intent = getIntent();
         ID = intent.getStringExtra("id");
         map_taskdetail = new HashMap();
-        map_taskdetail.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_taskdetail.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_taskdetail.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_taskdetail.put("id", ID + "");
         LogUtils.LOG("ceshi", map_taskdetail.toString(), "MytaskDetailActivity");
@@ -379,12 +379,12 @@ public class MytaskDetailActivity extends BaseActivityother {
                         public void onError(int error) {
 
                         }
-                    }).Http(Urls.Baseurl_cui + Urls.completePipeitask + Staticdata.static_userBean.getData().getUser_token() +
+                    }).Http(Urls.Baseurl_cui + Urls.completePipeitask + Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                             "&task_id=" + taskDetailBean.getData().getTask_id(), MytaskDetailActivity.this, 0);
 
 
                 }else {
-                    LogUtils.LOG("ceshi", Urls.Baseurl_cui + Urls.completetask + Staticdata.static_userBean.getData().getUser_token() +
+                    LogUtils.LOG("ceshi", Urls.Baseurl_cui + Urls.completetask + Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                             "&task_id=" + taskDetailBean.getData().getTask_id(), "确认完成");
                     new Volley_Utils(new Interface_volley_respose() {
                         @Override
@@ -423,7 +423,7 @@ public class MytaskDetailActivity extends BaseActivityother {
                         public void onError(int error) {
 
                         }
-                    }).Http(Urls.Baseurl_cui + Urls.completetask + Staticdata.static_userBean.getData().getUser_token() +
+                    }).Http(Urls.Baseurl_cui + Urls.completetask + Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                             "&task_id=" + taskDetailBean.getData().getTask_id(), MytaskDetailActivity.this, 0);
                 }
 
@@ -516,7 +516,7 @@ public class MytaskDetailActivity extends BaseActivityother {
     }
 
     void requestTaskAgain() {
-        LogUtils.LOG("ceshi", Urls.Baseurl_cui + Urls.Issue_again + Staticdata.static_userBean.getData().getUser_token() + "&task_newid="
+        LogUtils.LOG("ceshi", Urls.Baseurl_cui + Urls.Issue_again + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&task_newid="
                 + newID + "&task_id=" + taskDetailBean.getData().getTask_id() + "&payResult=" + 1, "重新发布");
         new Volley_Utils(new Interface_volley_respose() {
             @Override
@@ -546,7 +546,7 @@ public class MytaskDetailActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_cui + Urls.Issue_again + Staticdata.static_userBean.getData().getUser_token() + "&task_id=" + taskDetailBean.getData().getTask_id() , MytaskDetailActivity.this, 0);
+        }).Http(Urls.Baseurl_cui + Urls.Issue_again + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&task_id=" + taskDetailBean.getData().getTask_id() , MytaskDetailActivity.this, 0);
     }
 
     void request(Map map) {

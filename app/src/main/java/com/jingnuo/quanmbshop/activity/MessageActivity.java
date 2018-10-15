@@ -53,7 +53,7 @@ public class MessageActivity extends BaseActivityother {
     protected void setData() {
         map_getnewmessage=new HashMap();
         map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-        map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         request();
     }
 
@@ -61,11 +61,11 @@ public class MessageActivity extends BaseActivityother {
     protected void initData() {
         newmessageTYpe=getIntent().getStringExtra("newmessageTYpe");
         setDot(newmessageTYpe);
-        if(Staticdata.static_userBean.getData().getAppuser().getRole().equals("0")){
-            mRelativelayout_tuijianrenwu.setVisibility(View.GONE);
-        }else {
+//        if(Staticdata.static_userBean.getData().getAppuser().getRole().equals("0")){
+//            mRelativelayout_tuijianrenwu.setVisibility(View.GONE);
+//        }else {
             mRelativelayout_tuijianrenwu.setVisibility(View.VISIBLE);
-        }
+//        }
     }
 
     @Override
@@ -159,7 +159,7 @@ public class MessageActivity extends BaseActivityother {
         super.onResume();
         if(Staticdata.isLogin){
             map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-            map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+            map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
             request();
         }
     }

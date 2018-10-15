@@ -189,7 +189,7 @@ public class ErshouxinxiDetailsActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_cui+Urls.ErshoushichangDetails+ Staticdata.static_userBean.getData().getUser_token()+
+        }).Http(Urls.Baseurl_cui+Urls.ErshoushichangDetails+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+
                 "&task_id="+taskid,ErshouxinxiDetailsActivity.this,0);
 
 

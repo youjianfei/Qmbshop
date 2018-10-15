@@ -55,7 +55,7 @@ public class MyOrderActivity extends BaseActivityother {
     @Override
     protected void initData() {//  code  01,08待帮助  02,03,05 进行中  06  已完成  07,13已关闭
         map_myorder=new HashMap();
-        map_myorder.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_myorder.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_myorder.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_myorder.put("code","");
         mData=new ArrayList();

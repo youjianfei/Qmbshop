@@ -144,10 +144,10 @@ public class LaunchActivity extends BaseActivityother {
                 if (status == 1) {//登录成功
                     userBean = new Gson().fromJson(respose, UserBean.class);
                     Staticdata.static_userBean = userBean;
-                    LogUtils.LOG("ceshi", userBean.getData().getUser_token(), "fragment_account");
+                    LogUtils.LOG("ceshi", userBean.getData().getAppuser().getUser_token(), "fragment_account");
                     isLogin = true;
                     Utils.connect(userBean.getData().getAppuser().getRongCloud_token());
-                    Userphonenumber = userBean.getData().getAppuser().getMobile_no();//将电话号设为全局变量
+                    Userphonenumber = userBean.getData().getAppuser().getBusiness_mobile_no();//将电话号设为全局变量
                     mTimer = new Timer();
                     TimerTask timerTask = new TimerTask() {
                         @Override

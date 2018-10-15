@@ -248,7 +248,7 @@ public class IssuelovetaskActivity extends BaseActivityother {
             ToastUtils.showToast(this,"不得少于5个字符");
             return false;
         }
-        map_issueLoveTask.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_issueLoveTask.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_issueLoveTask.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_issueLoveTask.put("task_type",task_typeID);
         map_issueLoveTask.put("task_name",tittle);

@@ -9,7 +9,7 @@ public class UserBean {
 
     /**
      * code : 1
-     * data : {"appuser":{"avatar_img_id":"6","client_no":"2147483667","createDate":"2018-05-02 16:23:43","createName":"root@47.95.254.3","mobile_no":"18539931923","nick_name":"aaaaa","role":"","status":"","updateDate":"2018-05-03 11:44:02","updateName":"root@115.57.138.146","user_grade":"1","user_id":"6","user_name":"18539931923","user_password":"565491d704013245","user_reputation":"100"},"business_status":0,"helper_status":0,"img_url":"http://quanminbang-img.oss-cn-beijing.aliyuncs.com/image/avatar/touxiang.png?Expires=1525405573&OSSAccessKeyId=LTAIcYmxp0FtpOf4&Signature=%2FLmSKaDGmoQp8LrbmUnKMeYXLtk%3D","user_token":"22c7c14a309c4245bb414e563183729a"}
+     * data : {"appuser":{"avatarUrl":"https://qmb-img.oss-cn-hangzhou.aliyuncs.com/image/avatar/business.png","business_address":"13","business_avatar":8,"business_id":47,"business_level":20,"business_license":"2543","business_mobile_no":"18539931923","business_name":"挖矿大师","business_no":"60000000040","business_reputation":136,"business_type_id":"1203,1204,1205,1206,","business_x_value":"34.800276","business_y_value":"113.631177","client_no":"90000000002","commission":906,"createDate":"2018-09-12 20:21:21","emp_no":"1010","legal_person":"11221212121","legal_person_cer_no":"411325199509259148","member_level":0,"orderSum":4,"organization_name":"121121212","push_on_off":"Y","rongCloud_token":"SbXhU4d0n4HAR6/MOJP9bwqH3PJ3sG9zVpUzO7BUVXekuBOiwYIUb4TB8FL2K+qBjN57IiH8+JCh7SqO8VhPEWcfbR6FH0k+","social_credit_code":"999999999","spread_b":150,"status":"0","updateDate":"2018-10-15 14:10:44","user_token":"b83c8024b9a8d99b74aa49a60eed6429"}}
      * message : 登录成功
      */
 
@@ -43,36 +43,10 @@ public class UserBean {
 
     public static class DataBean {
         /**
-         * appuser : {"avatar_img_id":"6","client_no":"2147483667","createDate":"2018-05-02 16:23:43","createName":"root@47.95.254.3","mobile_no":"18539931923","nick_name":"aaaaa","role":"","status":"","updateDate":"2018-05-03 11:44:02","updateName":"root@115.57.138.146","user_grade":"1","user_id":"6","user_name":"18539931923","user_password":"565491d704013245","user_reputation":"100"}
-         * business_status : 0
-         * helper_status : 0
-         * img_url : http://quanminbang-img.oss-cn-beijing.aliyuncs.com/image/avatar/touxiang.png?Expires=1525405573&OSSAccessKeyId=LTAIcYmxp0FtpOf4&Signature=%2FLmSKaDGmoQp8LrbmUnKMeYXLtk%3D
-         * user_token : 22c7c14a309c4245bb414e563183729a
+         * appuser : {"avatarUrl":"https://qmb-img.oss-cn-hangzhou.aliyuncs.com/image/avatar/business.png","business_address":"13","business_avatar":8,"business_id":47,"business_level":20,"business_license":"2543","business_mobile_no":"18539931923","business_name":"挖矿大师","business_no":"60000000040","business_reputation":136,"business_type_id":"1203,1204,1205,1206,","business_x_value":"34.800276","business_y_value":"113.631177","client_no":"90000000002","commission":906,"createDate":"2018-09-12 20:21:21","emp_no":"1010","legal_person":"11221212121","legal_person_cer_no":"411325199509259148","member_level":0,"orderSum":4,"organization_name":"121121212","push_on_off":"Y","rongCloud_token":"SbXhU4d0n4HAR6/MOJP9bwqH3PJ3sG9zVpUzO7BUVXekuBOiwYIUb4TB8FL2K+qBjN57IiH8+JCh7SqO8VhPEWcfbR6FH0k+","social_credit_code":"999999999","spread_b":150,"status":"0","updateDate":"2018-10-15 14:10:44","user_token":"b83c8024b9a8d99b74aa49a60eed6429"}
          */
 
         private AppuserBean appuser;
-        private int business_status=0;
-        private int helper_status=0;
-        private String img_url;
-        private String user_token;
-        private String appellation_name;
-        private String iconImgUrl;
-
-        public String getAppellation_name() {
-            return appellation_name;
-        }
-
-        public void setAppellation_name(String appellation_name) {
-            this.appellation_name = appellation_name;
-        }
-
-        public String getIconImgUrl() {
-            return iconImgUrl;
-        }
-
-        public void setIconImgUrl(String iconImgUrl) {
-            this.iconImgUrl = iconImgUrl;
-        }
 
         public AppuserBean getAppuser() {
             return appuser;
@@ -82,118 +56,78 @@ public class UserBean {
             this.appuser = appuser;
         }
 
-        public int getBusiness_status() {
-            return business_status;
-        }
-
-        public void setBusiness_status(int business_status) {
-            this.business_status = business_status;
-        }
-
-        public int getHelper_status() {
-            return helper_status;
-        }
-
-        public void setHelper_status(int helper_status) {
-            this.helper_status = helper_status;
-        }
-
-        public String getImg_url() {
-            return img_url;
-        }
-
-        public void setImg_url(String img_url) {
-            this.img_url = img_url;
-        }
-
-        public String getUser_token() {
-            return user_token;
-        }
-
-        public void setUser_token(String user_token) {
-            this.user_token = user_token;
-        }
-
         public static class AppuserBean {
             /**
-             * avatar_img_id : 6
-             * client_no : 2147483667
-             * createDate : 2018-05-02 16:23:43
-             * createName : root@47.95.254.3
-             * mobile_no : 18539931923
-             * nick_name : aaaaa
-             * role :
-             * status :
-             * updateDate : 2018-05-03 11:44:02
-             * updateName : root@115.57.138.146
-             * user_grade : 1
-             * user_id : 6
-             * user_name : 18539931923
-             * user_password : 565491d704013245
-             * user_reputation : 100
+             * avatarUrl : https://qmb-img.oss-cn-hangzhou.aliyuncs.com/image/avatar/business.png
+             * business_address : 13
+             * business_avatar : 8
+             * business_id : 47
+             * business_level : 20
+             * business_license : 2543
+             * business_mobile_no : 18539931923
+             * business_name : 挖矿大师
+             * business_no : 60000000040
+             * business_reputation : 136
+             * business_type_id : 1203,1204,1205,1206,
+             * business_x_value : 34.800276
+             * business_y_value : 113.631177
+             * client_no : 90000000002
+             * commission : 906.0
+             * createDate : 2018-09-12 20:21:21
+             * emp_no : 1010
+             * legal_person : 11221212121
+             * legal_person_cer_no : 411325199509259148
+             * member_level : 0
+             * orderSum : 4
+             * organization_name : 121121212
+             * push_on_off : Y
+             * rongCloud_token : SbXhU4d0n4HAR6/MOJP9bwqH3PJ3sG9zVpUzO7BUVXekuBOiwYIUb4TB8FL2K+qBjN57IiH8+JCh7SqO8VhPEWcfbR6FH0k+
+             * social_credit_code : 999999999
+             * spread_b : 150
+             * status : 0
+             * updateDate : 2018-10-15 14:10:44
+             * user_token : b83c8024b9a8d99b74aa49a60eed6429
              */
 
-            private String avatar_img_id;
+            private String avatarUrl;
+            private String business_address;
+            private int business_avatar;
+            private int business_id;
+            private int business_level;
+            private String business_license;
+            private String business_mobile_no;
+            private String business_name;
+            private String business_no;
+            private int business_reputation;
+            private String business_type_id;
+            private String business_x_value;
+            private String business_y_value;
             private String client_no;
+            private double commission;
             private String createDate;
-            private String createName;
-            private String mobile_no;
-            private String nick_name;
-            private String role;
+            private String emp_no;
+            private String legal_person;
+            private String legal_person_cer_no;
+            private int member_level;
+            private int orderSum;
+            private String organization_name;
+            private String push_on_off;
+            private String rongCloud_token;
+            private String social_credit_code;
+            private int spread_b;
             private String status;
             private String updateDate;
-            private String updateName;
-            private String user_grade;
-            private String user_id;
-            private String user_name;
-            private String user_password;
-            private String user_reputation;
-            private String balance;
-            private String push_register;
+            private String user_token;
             private String security_code;
-            private String community_code="";
-            private String community_name="";
-            private String rongCloud_token="";
-            private String business_name="";
+            private String user_name;
+            private String is_business;
 
-            public String getBusiness_name() {
-                return business_name;
+            public String getIs_business() {
+                return is_business;
             }
 
-            public void setBusiness_name(String business_name) {
-                this.business_name = business_name;
-            }
-
-            public String getRongCloud_token() {
-                return rongCloud_token;
-            }
-
-            public void setRongCloud_token(String rongCloud_token) {
-                this.rongCloud_token = rongCloud_token;
-            }
-
-            public String getCommunity_name() {
-                return community_name;
-            }
-
-            public void setCommunity_name(String community_name) {
-                this.community_name = community_name;
-            }
-
-            public String getCommunity_code() {
-                return community_code;
-            }
-
-            public void setCommunity_code(String community_code) {
-                this.community_code = community_code;
-            }
-
-            public String getPush_register() {
-                return push_register;
-            }
-
-            public void setPush_register(String push_register) {
-                this.push_register = push_register;
+            public void setIs_business(String is_business) {
+                this.is_business = is_business;
             }
 
             public String getSecurity_code() {
@@ -204,20 +138,116 @@ public class UserBean {
                 this.security_code = security_code;
             }
 
-            public String getBalance() {
-                return balance;
+            public String getUser_name() {
+                return user_name;
             }
 
-            public void setBalance(String balance) {
-                this.balance = balance;
+            public void setUser_name(String user_name) {
+                this.user_name = user_name;
             }
 
-            public String getAvatar_img_id() {
-                return avatar_img_id;
+            public String getAvatarUrl() {
+                return avatarUrl;
             }
 
-            public void setAvatar_img_id(String avatar_img_id) {
-                this.avatar_img_id = avatar_img_id;
+            public void setAvatarUrl(String avatarUrl) {
+                this.avatarUrl = avatarUrl;
+            }
+
+            public String getBusiness_address() {
+                return business_address;
+            }
+
+            public void setBusiness_address(String business_address) {
+                this.business_address = business_address;
+            }
+
+            public int getBusiness_avatar() {
+                return business_avatar;
+            }
+
+            public void setBusiness_avatar(int business_avatar) {
+                this.business_avatar = business_avatar;
+            }
+
+            public int getBusiness_id() {
+                return business_id;
+            }
+
+            public void setBusiness_id(int business_id) {
+                this.business_id = business_id;
+            }
+
+            public int getBusiness_level() {
+                return business_level;
+            }
+
+            public void setBusiness_level(int business_level) {
+                this.business_level = business_level;
+            }
+
+            public String getBusiness_license() {
+                return business_license;
+            }
+
+            public void setBusiness_license(String business_license) {
+                this.business_license = business_license;
+            }
+
+            public String getBusiness_mobile_no() {
+                return business_mobile_no;
+            }
+
+            public void setBusiness_mobile_no(String business_mobile_no) {
+                this.business_mobile_no = business_mobile_no;
+            }
+
+            public String getBusiness_name() {
+                return business_name;
+            }
+
+            public void setBusiness_name(String business_name) {
+                this.business_name = business_name;
+            }
+
+            public String getBusiness_no() {
+                return business_no;
+            }
+
+            public void setBusiness_no(String business_no) {
+                this.business_no = business_no;
+            }
+
+            public int getBusiness_reputation() {
+                return business_reputation;
+            }
+
+            public void setBusiness_reputation(int business_reputation) {
+                this.business_reputation = business_reputation;
+            }
+
+            public String getBusiness_type_id() {
+                return business_type_id;
+            }
+
+            public void setBusiness_type_id(String business_type_id) {
+                this.business_type_id = business_type_id;
+            }
+
+            public String getBusiness_x_value() {
+                return business_x_value;
+            }
+
+            public void setBusiness_x_value(String business_x_value) {
+                this.business_x_value = business_x_value;
+            }
+
+            public String getBusiness_y_value() {
+                return business_y_value;
+            }
+
+            public void setBusiness_y_value(String business_y_value) {
+                this.business_y_value = business_y_value;
             }
 
             public String getClient_no() {
@@ -228,6 +258,14 @@ public class UserBean {
                 this.client_no = client_no;
             }
 
+            public double getCommission() {
+                return commission;
+            }
+
+            public void setCommission(double commission) {
+                this.commission = commission;
+            }
+
             public String getCreateDate() {
                 return createDate;
             }
@@ -236,36 +274,84 @@ public class UserBean {
                 this.createDate = createDate;
             }
 
-            public String getCreateName() {
-                return createName;
+            public String getEmp_no() {
+                return emp_no;
             }
 
-            public void setCreateName(String createName) {
-                this.createName = createName;
+            public void setEmp_no(String emp_no) {
+                this.emp_no = emp_no;
             }
 
-            public String getMobile_no() {
-                return mobile_no;
+            public String getLegal_person() {
+                return legal_person;
             }
 
-            public void setMobile_no(String mobile_no) {
-                this.mobile_no = mobile_no;
+            public void setLegal_person(String legal_person) {
+                this.legal_person = legal_person;
             }
 
-            public String getNick_name() {
-                return nick_name;
+            public String getLegal_person_cer_no() {
+                return legal_person_cer_no;
             }
 
-            public void setNick_name(String nick_name) {
-                this.nick_name = nick_name;
+            public void setLegal_person_cer_no(String legal_person_cer_no) {
+                this.legal_person_cer_no = legal_person_cer_no;
             }
 
-            public String getRole() {
-                return role;
+            public int getMember_level() {
+                return member_level;
             }
 
-            public void setRole(String role) {
-                this.role = role;
+            public void setMember_level(int member_level) {
+                this.member_level = member_level;
+            }
+
+            public int getOrderSum() {
+                return orderSum;
+            }
+
+            public void setOrderSum(int orderSum) {
+                this.orderSum = orderSum;
+            }
+
+            public String getOrganization_name() {
+                return organization_name;
+            }
+
+            public void setOrganization_name(String organization_name) {
+                this.organization_name = organization_name;
+            }
+
+            public String getPush_on_off() {
+                return push_on_off;
+            }
+
+            public void setPush_on_off(String push_on_off) {
+                this.push_on_off = push_on_off;
+            }
+
+            public String getRongCloud_token() {
+                return rongCloud_token;
+            }
+
+            public void setRongCloud_token(String rongCloud_token) {
+                this.rongCloud_token = rongCloud_token;
+            }
+
+            public String getSocial_credit_code() {
+                return social_credit_code;
+            }
+
+            public void setSocial_credit_code(String social_credit_code) {
+                this.social_credit_code = social_credit_code;
+            }
+
+            public int getSpread_b() {
+                return spread_b;
+            }
+
+            public void setSpread_b(int spread_b) {
+                this.spread_b = spread_b;
             }
 
             public String getStatus() {
@@ -284,52 +370,12 @@ public class UserBean {
                 this.updateDate = updateDate;
             }
 
-            public String getUpdateName() {
-                return updateName;
+            public String getUser_token() {
+                return user_token;
             }
 
-            public void setUpdateName(String updateName) {
-                this.updateName = updateName;
-            }
-
-            public String getUser_grade() {
-                return user_grade;
-            }
-
-            public void setUser_grade(String user_grade) {
-                this.user_grade = user_grade;
-            }
-
-            public String getUser_id() {
-                return user_id;
-            }
-
-            public void setUser_id(String user_id) {
-                this.user_id = user_id;
-            }
-
-            public String getUser_name() {
-                return user_name;
-            }
-
-            public void setUser_name(String user_name) {
-                this.user_name = user_name;
-            }
-
-            public String getUser_password() {
-                return user_password;
-            }
-
-            public void setUser_password(String user_password) {
-                this.user_password = user_password;
-            }
-
-            public String getUser_reputation() {
-                return user_reputation;
-            }
-
-            public void setUser_reputation(String user_reputation) {
-                this.user_reputation = user_reputation;
+            public void setUser_token(String user_token) {
+                this.user_token = user_token;
             }
         }
     }

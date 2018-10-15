@@ -70,7 +70,7 @@ public class MyShequActivity extends BaseActivityother {
 
 
 
-    String  shequcode=Staticdata.static_userBean.getData().getAppuser().getCommunity_code()+"";
+    String  shequcode="";
 
 
     int  page=1;
@@ -101,7 +101,7 @@ public class MyShequActivity extends BaseActivityother {
         mygrid_mokuai.setAdapter(adapter_shequ8kuai);
         adapter_liuyanqiangList=new Adapter_liuyanqiangList(mList_liuyan,this);
         myListView.setAdapter(adapter_liuyanqiangList);
-        textview_shequname.setText(Staticdata.static_userBean.getData().getAppuser().getCommunity_name());
+//        textview_shequname.setText(Staticdata.static_userBean.getData().getAppuser().getCommunity_name());
         request_GGLB();
         request(1);
         requestNotic();
@@ -194,28 +194,28 @@ public class MyShequActivity extends BaseActivityother {
         myListView.getRefreshableView().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(shequcode.equals(Staticdata.static_userBean.getData().getAppuser().getCommunity_code())){
-                    switch (event.getAction()){
-                        case MotionEvent.ACTION_DOWN:
-                            mFirstY[0] = event.getY();//按下时获取位置
-                            break;
-                        case MotionEvent.ACTION_MOVE:
-                            mCurrentY[0] = event.getY();//得到滑动的位置
-                            if(mCurrentY[0] - mFirstY[0] > 5){//滑动的位置减去按下的位置大于最小滑动距离  则表示向下滑动
-                                //down
-                                LogUtils.LOG("ceshi", "下", "MyShequActivity");
-                                mLinearlayout_fabbu.setVisibility(View.VISIBLE);
-                            }else if(mFirstY[0] - mCurrentY[0] > 5){//反之向上滑动
-                                //up
-                                LogUtils.LOG("ceshi", "上", "MyShequActivity");
-                                mLinearlayout_fabbu.setVisibility(View.INVISIBLE);
-                            }
-                            break;
-
-                    }
-
-                    return false;
-                }
+//                if(shequcode.equals(Staticdata.static_userBean.getData().getAppuser().getCommunity_code())){
+//                    switch (event.getAction()){
+//                        case MotionEvent.ACTION_DOWN:
+//                            mFirstY[0] = event.getY();//按下时获取位置
+//                            break;
+//                        case MotionEvent.ACTION_MOVE:
+//                            mCurrentY[0] = event.getY();//得到滑动的位置
+//                            if(mCurrentY[0] - mFirstY[0] > 5){//滑动的位置减去按下的位置大于最小滑动距离  则表示向下滑动
+//                                //down
+//                                LogUtils.LOG("ceshi", "下", "MyShequActivity");
+//                                mLinearlayout_fabbu.setVisibility(View.VISIBLE);
+//                            }else if(mFirstY[0] - mCurrentY[0] > 5){//反之向上滑动
+//                                //up
+//                                LogUtils.LOG("ceshi", "上", "MyShequActivity");
+//                                mLinearlayout_fabbu.setVisibility(View.INVISIBLE);
+//                            }
+//                            break;
+//
+//                    }
+//
+//                    return false;
+//                }
                 return false;
             }
         });
@@ -223,15 +223,15 @@ public class MyShequActivity extends BaseActivityother {
             @Override
             public void onClick(View v) {
                 Intent  intent;
-                if(shequcode.equals(Staticdata.static_userBean.getData().getAppuser().getCommunity_code())){
-                    intent  =new Intent(MyShequActivity.this,ErShoushichangActivity.class);
-                            startActivity(intent);
-                        }else {
-                            intent=new Intent(MyShequActivity.this,ErShoushichangActivity.class);
-                            intent.putExtra("type",1);
-                            intent.putExtra("shequcode",shequcode);
-                            startActivity(intent);
-                        }
+//                if(shequcode.equals(Staticdata.static_userBean.getData().getAppuser().getCommunity_code())){
+//                    intent  =new Intent(MyShequActivity.this,ErShoushichangActivity.class);
+//                            startActivity(intent);
+//                        }else {
+//                            intent=new Intent(MyShequActivity.this,ErShoushichangActivity.class);
+//                            intent.putExtra("type",1);
+//                            intent.putExtra("shequcode",shequcode);
+//                            startActivity(intent);
+//                        }
             }
         });
         textview_shequname.setOnClickListener(new View.OnClickListener() {
@@ -318,11 +318,11 @@ public class MyShequActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_hu+Urls.CommunityNotice+Staticdata.static_userBean.getData().getUser_token()+"&community_code="
+        }).Http(Urls.Baseurl_hu+Urls.CommunityNotice+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&community_code="
                 +shequcode,MyShequActivity.this,0);
     }
     private  void  request(final int  page){
-        LogUtils.LOG("ceshi", "留言墙：" + Urls.Baseurl+Urls.getliuyan+Staticdata.static_userBean.getData().getUser_token()+"&pageNo="+page, " 社区轮播");
+        LogUtils.LOG("ceshi", "留言墙：" + Urls.Baseurl+Urls.getliuyan+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&pageNo="+page, " 社区轮播");
         new  Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
@@ -348,7 +348,7 @@ public class MyShequActivity extends BaseActivityother {
                     myListView.onRefreshComplete();
                 }
             }
-        }).Http(Urls.Baseurl+Urls.getliuyan+Staticdata.static_userBean.getData().getUser_token()
+        }).Http(Urls.Baseurl+Urls.getliuyan+Staticdata.static_userBean.getData().getAppuser().getUser_token()
                 +"&community_code="+shequcode
                 +"&pageNo="+page,MyShequActivity.this,0);
 
@@ -370,9 +370,9 @@ public class MyShequActivity extends BaseActivityother {
             shequcode=data.getStringExtra("community_code");
             request(1);
             requestNotic();
-            if(!shequcode.equals(Staticdata.static_userBean.getData().getAppuser().getCommunity_code())){
-                mLinearlayout_fabbu.setVisibility(View.INVISIBLE);
-            }
+//            if(!shequcode.equals(Staticdata.static_userBean.getData().getAppuser().getCommunity_code())){
+//                mLinearlayout_fabbu.setVisibility(View.INVISIBLE);
+//            }
 
         }
 

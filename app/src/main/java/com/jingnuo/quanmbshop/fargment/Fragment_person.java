@@ -125,59 +125,59 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
                         chengweibangshou.chengweibangshou();
                         break;
                     case 2://商户中心
-                        LogUtils.LOG("ceshi", Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), "检测商户审核状态接口");
-                        if (Staticdata.static_userBean.getData().getAppuser().getRole().contains("2")) {
-                            LogUtils.LOG("ceshi", "检测商户审核状态dfgdfsgfd", "检测商户审核状态");
-
-                            Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
-                            intent_shopcenter.putExtra("type", 2);//2  商户
-                            getActivity().startActivity(intent_shopcenter);
-
-                        } else {
-                            LogUtils.LOG("ceshi", "检测商户审核状态" + Staticdata.static_userBean.getData().getAppuser().getRole(), "检测商户审核状态");
-                            new Volley_Utils(new Interface_volley_respose() {
-                                @Override
-                                public void onSuccesses(String respose) {
-
-                                    int status = 0;
-                                    String msg = "";
-                                    String state = "";
-                                    try {
-                                        JSONObject object = new JSONObject(respose);
-                                        status = (Integer) object.get("code");//
-                                        msg = (String) object.get("message");//
-                                        state = (String) object.get("status");//
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                    if (state.equals("00")) {//审核通过
-                                        Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
-                                        intent_shopcenter.putExtra("type", 2);//2  商户
-                                        getActivity().startActivity(intent_shopcenter);
-                                    } else if (state.equals("01")) {//没提交
-                                        Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
-                                        getActivity().startActivity(intent_shopin);
-
-                                    } else if (state.equals("02")) {//正在审核
-//                            Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
-//                            getActivity().startActivity(intent_shopinext);
-                                        Intent intent_submit = new Intent(getActivity(), SubmitSuccessActivity.class);
-                                        intent_submit.putExtra("state", "2");
-                                        startActivity(intent_submit);
-
-                                    } else if (state.equals("03")) {//没提交审核
-                                        Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
-                                        getActivity().startActivity(intent_shopin);
-                                    }
-                                }
-
-                                @Override
-                                public void onError(int error) {
-
-                                }
-                            }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), getContext(), 0);
-
-                        }
+//                        LogUtils.LOG("ceshi", Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), "检测商户审核状态接口");
+//                        if (Staticdata.static_userBean.getData().getAppuser().getRole().contains("2")) {
+//                            LogUtils.LOG("ceshi", "检测商户审核状态dfgdfsgfd", "检测商户审核状态");
+//
+//                            Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
+//                            intent_shopcenter.putExtra("type", 2);//2  商户
+//                            getActivity().startActivity(intent_shopcenter);
+//
+//                        } else {
+//                            LogUtils.LOG("ceshi", "检测商户审核状态" + Staticdata.static_userBean.getData().getAppuser().getRole(), "检测商户审核状态");
+//                            new Volley_Utils(new Interface_volley_respose() {
+//                                @Override
+//                                public void onSuccesses(String respose) {
+//
+//                                    int status = 0;
+//                                    String msg = "";
+//                                    String state = "";
+//                                    try {
+//                                        JSONObject object = new JSONObject(respose);
+//                                        status = (Integer) object.get("code");//
+//                                        msg = (String) object.get("message");//
+//                                        state = (String) object.get("status");//
+//                                    } catch (JSONException e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                    if (state.equals("00")) {//审核通过
+//                                        Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
+//                                        intent_shopcenter.putExtra("type", 2);//2  商户
+//                                        getActivity().startActivity(intent_shopcenter);
+//                                    } else if (state.equals("01")) {//没提交
+//                                        Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
+//                                        getActivity().startActivity(intent_shopin);
+//
+//                                    } else if (state.equals("02")) {//正在审核
+////                            Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
+////                            getActivity().startActivity(intent_shopinext);
+//                                        Intent intent_submit = new Intent(getActivity(), SubmitSuccessActivity.class);
+//                                        intent_submit.putExtra("state", "2");
+//                                        startActivity(intent_submit);
+//
+//                                    } else if (state.equals("03")) {//没提交审核
+//                                        Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
+//                                        getActivity().startActivity(intent_shopin);
+//                                    }
+//                                }
+//
+//                                @Override
+//                                public void onError(int error) {
+//
+//                                }
+//                            }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), getContext(), 0);
+//
+//                        }
                         break;
                     case 3://我的收藏
                         Intent intent_collect = new Intent(getActivity(), MySkillCollectActivity.class);
@@ -288,12 +288,12 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
                 if (status == 1) {
                     LogUtils.LOG("ceshi", respose, "个人中心");
                     Staticdata.static_userBean = new Gson().fromJson(respose, UserBean.class);
-                    mTextview_nickname.setText(Staticdata.static_userBean.getData().getAppuser().getNick_name());
-                    mTextview_chengwei.setText(Staticdata.static_userBean.getData().getAppellation_name());
-                    LogUtils.LOG("ceshi", Staticdata.static_userBean.getData().getImg_url(), "touxaing");
-                    Glide.with(getActivity()).load(Staticdata.static_userBean.getData().getImg_url()).into(mCircleImage);
-                    Glide.with(getActivity()).load(Staticdata.static_userBean.getData().getIconImgUrl()).into(mimage_chengwei);
-                    mTextview_moneycount.setText(Staticdata.static_userBean.getData().getAppuser().getBalance() + "");
+//                    mTextview_nickname.setText(Staticdata.static_userBean.getData().getAppuser().get());
+//                    mTextview_chengwei.setText(Staticdata.static_userBean.getData().getAppellation_name());
+//                    LogUtils.LOG("ceshi", Staticdata.static_userBean.getData().getImg_url(), "touxaing");
+//                    Glide.with(getActivity()).load(Staticdata.static_userBean.getData().getImg_url()).into(mCircleImage);
+//                    Glide.with(getActivity()).load(Staticdata.static_userBean.getData().getIconImgUrl()).into(mimage_chengwei);
+//                    mTextview_moneycount.setText(Staticdata.static_userBean.getData().getAppuser().getBalance() + "");
                 }
 
             }
@@ -302,7 +302,7 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl + Urls.personinfo + Staticdata.static_userBean.getData().getUser_token(), getActivity(), 0);
+        }).Http(Urls.Baseurl + Urls.personinfo + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
     }
 
     private void setview() {
@@ -337,7 +337,7 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button_tixian://提现
                 Intent intent_cash = new Intent(getActivity(), CashoutActivity.class);
-                intent_cash.putExtra("money", Staticdata.static_userBean.getData().getAppuser().getBalance() + "");
+//                intent_cash.putExtra("money", Staticdata.static_userBean.getData().getAppuser().getBalance() + "");
                 intent_cash.putExtra("TransferType", "1");
                 startActivity(intent_cash);
 
@@ -354,7 +354,7 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
                 break;
             case R.id.textview_2:
                 Intent intent_wa = new Intent(getActivity(), WalletActivity.class);
-                intent_wa.putExtra("money", Staticdata.static_userBean.getData().getAppuser().getBalance() + "");
+//                intent_wa.putExtra("money", Staticdata.static_userBean.getData().getAppuser().getBalance() + "");
                 getActivity().startActivity(intent_wa);
                 break;
 
@@ -375,7 +375,7 @@ public class Fragment_person extends Fragment implements View.OnClickListener {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl + Urls.logout + Staticdata.static_userBean.getData().getUser_token(), getActivity(), 0);
+        }).Http(Urls.Baseurl + Urls.logout + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
         //登出注销微信授权
         mShareAPI = UMShareAPI.get(getActivity());
         mShareAPI.deleteOauth(getActivity(), SHARE_MEDIA.WEIXIN, new UMAuthListener() {

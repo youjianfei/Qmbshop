@@ -274,7 +274,7 @@ public class PayPwdView extends View {
                 sb.append(i);
             }
             Map map=new HashMap();
-            map.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+            map.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
             map.put("security_code",PasswordJiami.passwordjiami(sb.toString()));
             new Volley_Utils(new Interface_volley_respose() {
                 @Override

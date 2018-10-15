@@ -81,7 +81,7 @@ public class PersonInfoActivity extends BaseActivityother {
                         imageID = (String) object.get("imgID");
                         LogUtils.LOG("ceshi", "单张图片ID" + imageID, "发布技能上传图片返回imageID");
                         map_setheadpic.put("img_id",imageID);
-                        map_setheadpic.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+                        map_setheadpic.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                         setheadRequest(map_setheadpic);
                     }
                 } catch (JSONException e) {
@@ -97,33 +97,33 @@ public class PersonInfoActivity extends BaseActivityother {
         mKProgressHUD = new KProgressHUD(PersonInfoActivity.this);
         permissionHelper = new PermissionHelper(PersonInfoActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         map_setheadpic=new HashMap();
-        mtextview_nickname.setText(Staticdata.static_userBean.getData().getAppuser().getNick_name());
-        mtextview_phonenumber.setText(Staticdata.static_userBean.getData().getAppuser().getMobile_no());
-        Glide.with(this).load(Staticdata.static_userBean.getData().getImg_url()).into(mImageview_headPIC);
+//        mtextview_nickname.setText(Staticdata.static_userBean.getData().getAppuser().getNick_name());
+        mtextview_phonenumber.setText(Staticdata.static_userBean.getData().getAppuser().getBusiness_mobile_no());
+        Glide.with(this).load(Staticdata.static_userBean.getData().getAppuser().getAvatarUrl()).into(mImageview_headPIC);
         if(!Staticdata.static_userBean.getData().getAppuser().getSecurity_code().equals("")){
             mTextview_setsafepassword.setText("支付密码");
             mTextview_issetsafepassword.setVisibility(View.VISIBLE);
         }
-        if (!Staticdata.static_userBean.getData().getAppuser().getCommunity_code().equals("")){
-            mtextview_text_issetshequ.setText(Staticdata.static_userBean.getData().getAppuser().getCommunity_name());
-            mtextview_text_issetshequ.setVisibility(View.VISIBLE);
-        }
+//        if (!Staticdata.static_userBean.getData().getAppuser().getCommunity_code().equals("")){
+//            mtextview_text_issetshequ.setText(Staticdata.static_userBean.getData().getAppuser().getCommunity_name());
+//            mtextview_text_issetshequ.setVisibility(View.VISIBLE);
+//        }
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
         LogUtils.LOG("ceshi","onRestart","personinfoactivity");
-        mtextview_nickname.setText(Staticdata.static_userBean.getData().getAppuser().getNick_name());
-        mtextview_phonenumber.setText(Staticdata.static_userBean.getData().getAppuser().getMobile_no());
+//        mtextview_nickname.setText(Staticdata.static_userBean.getData().getAppuser().getNick_name());
+//        mtextview_phonenumber.setText(Staticdata.static_userBean.getData().getAppuser().getMobile_no());
         if(!Staticdata.static_userBean.getData().getAppuser().getSecurity_code().equals("")){
             mTextview_setsafepassword.setText("支付密码");
             mTextview_issetsafepassword.setVisibility(View.VISIBLE);
         }
-        if (!Staticdata.static_userBean.getData().getAppuser().getCommunity_name().equals("")){
-            mtextview_text_issetshequ.setText(Staticdata.static_userBean.getData().getAppuser().getCommunity_name());
-            mtextview_text_issetshequ.setVisibility(View.VISIBLE);
-        }
+//        if (!Staticdata.static_userBean.getData().getAppuser().getCommunity_name().equals("")){
+//            mtextview_text_issetshequ.setText(Staticdata.static_userBean.getData().getAppuser().getCommunity_name());
+//            mtextview_text_issetshequ.setVisibility(View.VISIBLE);
+//        }
     }
 
     @Override
@@ -201,8 +201,8 @@ public class PersonInfoActivity extends BaseActivityother {
                     mKProgressHUD.dismiss();
                     if (status == 1) {
                         ToastUtils.showToast(PersonInfoActivity.this,"设置头像成功");
-                        Staticdata.static_userBean.getData().setImg_url(imageUrl);
-                        Glide.with(PersonInfoActivity.this).load(Staticdata.static_userBean.getData().getImg_url()).into(mImageview_headPIC);
+                        Staticdata.static_userBean.getData().getAppuser().setAvatarUrl(imageUrl);
+                        Glide.with(PersonInfoActivity.this).load(Staticdata.static_userBean.getData().getAppuser().getAvatarUrl()).into(mImageview_headPIC);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -215,14 +215,14 @@ public class Fragment_task_JiaZhengWeixiu extends Fragment implements View.OnCli
                 map_issueTask.put("city_code", citycode + "");
                 map_issueTask.put("x_value", xValue + "");
                 map_issueTask.put("y_value", yValue + "");
-                map_issueTask.put("user_token", Staticdata.static_userBean.getData().getUser_token() + "");
+                map_issueTask.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token() + "");
                 if (initmap_zhaoshanghu()) {
                     ProgressDlog.showProgress(mKProgressHUD);
                     Staticdata.map_task = map_issueTask;//借助全局变量来传递数据
 
                     Staticdata.imagePathlist = mList_PicPath_down;
                     Map map_check = new HashMap();
-                    map_check.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                    map_check.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_check.put("task_description", map_issueTask.get("task_description"));
                     map_check.put("houseNumber", map_issueTask.get("houseNumber"));
                     new Volley_Utils(new Interface_volley_respose() {

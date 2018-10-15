@@ -141,7 +141,7 @@ public class Fragment_acountLogin extends Fragment {
                     SharedPreferencesUtils.putString(getActivity(),"QMB","password",password);//登录成功之后存未加密de密码
                     userBean=new Gson().fromJson(respose,UserBean.class);
                    Staticdata. static_userBean=userBean;
-                    Userphonenumber=userBean.getData().getAppuser().getMobile_no();//将电话号设为全局变量
+                    Userphonenumber=userBean.getData().getAppuser().getBusiness_mobile_no();//将电话号设为全局变量
                     LogUtils.LOG("ceshi", respose + "1111111111", "fragment_account");
                     isLogin = true;
                     Utils.connect(userBean.getData().getAppuser().getRongCloud_token());

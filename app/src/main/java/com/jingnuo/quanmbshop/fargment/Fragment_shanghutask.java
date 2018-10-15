@@ -1,9 +1,12 @@
 package com.jingnuo.quanmbshop.fargment;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -20,6 +24,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jingnuo.quanmbshop.Adapter.Adapter_SquareList;
 import com.jingnuo.quanmbshop.Adapter.Adapter_mytodo;
+import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.activity.HelperOrderActivity;
@@ -34,10 +39,12 @@ import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.MyTodoBean;
 import com.jingnuo.quanmbshop.entityclass.ShanghuneworderBean;
 import com.jingnuo.quanmbshop.entityclass.ShopcenterBean;
+import com.jingnuo.quanmbshop.popwinow.Popwindow_ShanghuIsjiedan;
 import com.jingnuo.quanmbshop.popwinow.Popwindow_helperfirst;
 import com.jingnuo.quanmbshop.utils.LogUtils;
 import com.jingnuo.quanmbshop.utils.SharedPreferencesUtils;
 import com.jingnuo.quanmbshop.utils.SizeUtils;
+import com.jingnuo.quanmbshop.utils.ToastUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 
 import org.json.JSONException;
@@ -49,6 +56,7 @@ import java.util.List;
 public class Fragment_shanghutask extends Fragment implements View.OnClickListener {
     View rootview;
     //控件
+    RelativeLayout re_title;
     ImageView image_personcenter;
     TabLayout mTablayout;
     PullToRefreshListView mListview_shanghuorder;
@@ -56,8 +64,12 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     View listheadView;//头视图
     TabLayout mTablayout_header;
     TextView textview_money;
+    TextView text_jiedan;
     TextView textview_ordercount;
     SimpleRatingBar simpleRatingBar;
+
+    //popwindow
+    Popwindow_ShanghuIsjiedan popwindow_shanghuIsjiedan;
 
 
 
@@ -86,8 +98,51 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     }
 
     private void setdata() {
-    }
+        popwindow_shanghuIsjiedan=new Popwindow_ShanghuIsjiedan(getActivity(), re_title, new InterfacePermission() {
+            @Override
+            public void onResult(boolean result) {
+                if(result){
+                    requestTuisongstate("Y");
+                }else {
+                    requestTuisongstate("N");
+                }
 
+            }
+        },text_jiedan.getText().equals("自动接单")?"关闭接单":"自动接单");
+    }
+    void  requestTuisongstate(String state){
+        new  Volley_Utils(new Interface_volley_respose() {
+            @Override
+            public void onSuccesses(String respose) {
+                int status = 0;
+                String msg = "";
+                LogUtils.LOG("ceshi", respose, "推送开关");
+                try {
+                    JSONObject object = new JSONObject(respose);
+                    status = (Integer) object.get("code");//
+                    msg = (String) object.get("message");//
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (status == 1) {
+                    ToastUtils.showToast(getActivity(), msg);
+                    requestshopinfo();
+                } else {
+                    ToastUtils.showToast(getActivity(), msg);
+                }
+
+            }
+
+            @Override
+            public void onError(int error) {
+
+            }
+        }).Http(Urls.Baseurl_cui+Urls.push_on_off+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&push_on_off="+state,getActivity(),0);
+
+
+
+
+    }
     private void initdata() {
         requestshopinfo();
         if(Staticdata.xValue!=null){
@@ -99,6 +154,9 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     }
 
     private void initview() {
+
+        re_title = rootview.findViewById(R.id.re_title);
+        text_jiedan = rootview.findViewById(R.id.text_jiedan);
         mListview_shanghuorder = rootview.findViewById(R.id.list_order);
         image_personcenter = rootview.findViewById(R.id.image_personcenter);
         mTablayout = rootview.findViewById(R.id.tablayout);
@@ -119,6 +177,13 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     }
 
     private void initlistenner() {
+        text_jiedan.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                popwindow_shanghuIsjiedan.showPopwindow();
+            }
+        });
         mListview_shanghuorder.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -240,16 +305,14 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.image_personcenter:
-                LogUtils.LOG("ceshi", Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), "检测商户审核状态接口");
-                if (Staticdata.static_userBean.getData().getAppuser().getRole().contains("2")) {
+                LogUtils.LOG("ceshi", Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), "检测商户审核状态接口");
+                if (Staticdata.static_userBean.getData().getAppuser().getIs_business().equals("Y")) {
                     LogUtils.LOG("ceshi", "检测商户审核状态", "检测商户审核状态");
-
                     Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
                     intent_shopcenter.putExtra("type", 2);//2  商户
                     getActivity().startActivity(intent_shopcenter);
 
                 } else {
-                    LogUtils.LOG("ceshi", "检测商户审核状态" + Staticdata.static_userBean.getData().getAppuser().getRole(), "检测商户审核状态");
                     new Volley_Utils(new Interface_volley_respose() {
                         @Override
                         public void onSuccesses(String respose) {
@@ -290,7 +353,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                         public void onError(int error) {
 
                         }
-                    }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getUser_token(), getActivity(), 0);
+                    }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
 
                 }
                 break;
@@ -309,7 +372,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     }
     void requestshopinfo() {
         String url_info = Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
-                        .getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
+                        .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
                         .getClient_no();
         LogUtils.LOG("ceshi", "帮手 商户网址：" + url_info, "ShopCenterActivity");
         new Volley_Utils(new Interface_volley_respose() {
@@ -320,6 +383,11 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                     textview_money.setText(shopcenterBean.getData().getList().getCommission()+"");
                    textview_ordercount.setText(shopcenterBean.getData().getList().getOrderSum()+"");
                     setstar((float) shopcenterBean.getData().getList().getEvaluation_star());
+                if(shopcenterBean.getData().getList().getPush_on_off().equals("Y")){//推送开关状态
+                    text_jiedan.setText("自动接单");
+                }else {
+                    text_jiedan.setText("关闭接单");
+                }
             }
 
             @Override
@@ -334,12 +402,12 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         String URL = "";
         LogUtils.LOG("ceshi", "state"+state, "Fragment_shanghutask");
         if (state.equals("00000")){//新订单
-            URL = Urls.Baseurl + Urls.neworderlist + Staticdata.static_userBean.getData().getUser_token() + "&business_no=" +
+            URL = Urls.Baseurl + Urls.neworderlist + Staticdata.static_userBean.getData().getAppuser().getUser_token()+ "&business_no=" +
                     "60000000046"+ "&x_value=" + Staticdata.xValue + "&y_value=" + Staticdata.yValue+
                     "&pageNum=" + page;
             type=0;
         }else {
-            URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getUser_token() + "&client_no=" +
+            URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&client_no=" +
                     Staticdata.static_userBean.getData().getAppuser().getClient_no() + "&order_status=" + state +
                     "&curPageNo=" + page;
             type=1;

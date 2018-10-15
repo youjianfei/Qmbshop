@@ -54,7 +54,7 @@ public class MonryMingxiActivity extends BaseActivityother {
         map_mingxi.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
 //        map_mingxi.put("type", "");   类型（1：支付，2：提现，3：充值，4：退款）
 //        map_mingxi.put("pay_method", "");  付款方式（微信：WX，支付宝：ZFB， 余额支付:QMB）
-        map_mingxi.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_mingxi.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         requestMingxi(map_mingxi);
     }
 

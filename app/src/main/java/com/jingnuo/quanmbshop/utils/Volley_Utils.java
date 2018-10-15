@@ -74,6 +74,7 @@ public class Volley_Utils {
                         Staticdata. static_userBean=null;
                         ToastUtils.showToast(mContext,"登录过期，请重新登录");
                         Staticdata.isLogin=false;//将登录状态改为未登录
+
                         mContext.startActivity(new Intent(mContext, LoginActivity.class));
                     }else {
 

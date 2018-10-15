@@ -268,7 +268,7 @@ public class ShopCenterActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_cui+Urls.push_on_off+Staticdata.static_userBean.getData().getUser_token()+"&push_on_off="+state,this,0);
+        }).Http(Urls.Baseurl_cui+Urls.push_on_off+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&push_on_off="+state,this,0);
 
 
 
@@ -277,11 +277,11 @@ public class ShopCenterActivity extends BaseActivityother {
 
     void request() {
         String url_info = type == 1 ? Urls.Baseurl + Urls.helperInfo + Staticdata.static_userBean.getData()
-                .getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
+                .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
                 .getClient_no()
                 :
                 Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
-                        .getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
+                        .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
                         .getClient_no();
         LogUtils.LOG("ceshi", "帮手 商户网址：" + url_info, "ShopCenterActivity");
         new Volley_Utils(new Interface_volley_respose() {

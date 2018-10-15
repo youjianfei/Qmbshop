@@ -104,7 +104,7 @@ public class DatailAddressActivity extends BaseActivityother {
     void request() {
         map_lianxiren = new HashMap();
         map_lianxiren.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-        map_lianxiren.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_lianxiren.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         LogUtils.LOG("ceshi", Urls.Baseurl + Urls.myLianxiren, "联系人列表");
         LogUtils.LOG("ceshi", map_lianxiren.toString(), "联系人列表");
         new Volley_Utils(new Interface_volley_respose() {
@@ -210,7 +210,7 @@ public class DatailAddressActivity extends BaseActivityother {
 
                         }
                     }).Http(Urls.Baseurl + Urls.deleteLianxiren +
-                            Staticdata.static_userBean.getData().getUser_token() + "&id=" +
+                            Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&id=" +
                             mData.get(position).getId(), mContext, 0);
 
                 }
@@ -252,7 +252,7 @@ public class DatailAddressActivity extends BaseActivityother {
 
                         }
                     }).Http(Urls.Baseurl + Urls.setmorenLianxiren +
-                            Staticdata.static_userBean.getData().getUser_token() + "&id=" +
+                            Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&id=" +
                             mData.get(position).getId()+"&client_no="
                             +Staticdata.static_userBean.getData().getAppuser().getClient_no(), mContext, 0);
                 }

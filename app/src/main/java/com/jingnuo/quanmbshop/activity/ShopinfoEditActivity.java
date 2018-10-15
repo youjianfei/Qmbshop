@@ -280,7 +280,7 @@ public class ShopinfoEditActivity extends BaseActivityother {
         }
         map_edit.put("business_id",business_id);
         map_edit.put("introduction",jianjie);
-        map_edit.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_edit.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         return true;
     }
     @Override

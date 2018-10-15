@@ -227,10 +227,10 @@ public class MessageWallEditActivity extends BaseActivityother {
             return false;
         }
 
-        map_addliuyan.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_addliuyan.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_addliuyan.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_addliuyan.put("content",message);
-        map_addliuyan.put("community_code",Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
+//        map_addliuyan.put("community_code",Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
         return true;
     }
     void uploadimg(){

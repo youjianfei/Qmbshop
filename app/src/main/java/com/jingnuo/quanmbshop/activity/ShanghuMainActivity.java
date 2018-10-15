@@ -154,7 +154,7 @@ public class ShanghuMainActivity extends BaseActivityother {
                             public void onError(int error) {
 
                             }
-                        }).Http(Urls.Baseurl + Urls.updataXYDU + Staticdata.static_userBean.getData().getUser_token() + "&x_value=" +
+                        }).Http(Urls.Baseurl + Urls.updataXYDU + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&x_value=" +
                                 Staticdata.xValue + "&y_value=" + Staticdata.yValue, ShanghuMainActivity.this, 0);
                     }
                 } else {
@@ -337,7 +337,7 @@ public class ShanghuMainActivity extends BaseActivityother {
 
         setParam();
 
-        int code = mTts.startSpeaking("今天天 气不错", mTtsListener);
+        int code = mTts.startSpeaking("你有新的订单", mTtsListener);
 //			/**
 //			 * 只保存音频不进行播放接口,调用此接口请注释startSpeaking接口
 //			 * text:要合成的文本，uri:需要保存的音频全路径，listener:回调接口

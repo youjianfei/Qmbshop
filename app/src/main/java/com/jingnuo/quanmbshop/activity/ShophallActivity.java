@@ -164,10 +164,10 @@ public class ShophallActivity extends BaseActivityother {
             URL=Urls.Baseurl+Urls.Skillmenulist+"?specialty_id="+specialty_id+"&title="+search2+"&curPageNo="+page;
         }
         if(FromShequ!=null&&!FromShequ.equals("")){//社区跳转来的
-            URL=Urls.Baseurl+Urls.FromShequSkiss+"?specialty_id="+FromShequ+"&title="+search2+"&curPageNo="+page+"&user_token="+ Staticdata.static_userBean.getData().getUser_token();
+            URL=Urls.Baseurl+Urls.FromShequSkiss+"?specialty_id="+FromShequ+"&title="+search2+"&curPageNo="+page+"&user_token="+ Staticdata.static_userBean.getData().getAppuser().getUser_token();
         }
         if(FromShequZuhe!=null&&!FromShequZuhe.equals("")){//社区跳转来的
-            URL=Urls.Baseurl+Urls.zhidiengShequSkiss+"?specialtyidlist="+FromShequZuhe+"&title="+search2+"&curPageNo="+page+"&user_token="+ Staticdata.static_userBean.getData().getUser_token();
+            URL=Urls.Baseurl+Urls.zhidiengShequSkiss+"?specialtyidlist="+FromShequZuhe+"&title="+search2+"&curPageNo="+page+"&user_token="+ Staticdata.static_userBean.getData().getAppuser().getUser_token();
         }
         LogUtils.LOG("sousuo","接口："+URL,"找专业列表");
         new Volley_Utils(new Interface_volley_respose() {

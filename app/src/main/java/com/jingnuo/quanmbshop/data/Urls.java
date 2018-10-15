@@ -34,7 +34,7 @@ public class Urls {
     /**
      * 登录注册相关
      */
-    public static String login = "login/doLogin";//登陆  post
+    public static String login = "login/businessDoLogin";//登陆  post
     public static String wechatlogin = "login/weChatLogin";//微信登陆  post
     public static String phoneLogin = "login/moblieLogin";//手机号验证登陆
     public static String phoneRegister = "register/Register";//注册

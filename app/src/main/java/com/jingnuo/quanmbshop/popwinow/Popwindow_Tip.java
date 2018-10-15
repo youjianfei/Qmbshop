@@ -64,7 +64,6 @@ public class Popwindow_Tip {
             @Override
             public void onDismiss() {
                 Utils.setAlpha((float) 1,activity);
-
             }
         });
     }

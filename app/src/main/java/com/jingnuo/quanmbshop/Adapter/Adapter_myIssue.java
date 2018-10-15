@@ -134,7 +134,7 @@ public class Adapter_myIssue extends BaseAdapter {
                     public void onResult(boolean result) {
                         if (result){
                             Map map=new HashMap();
-                            map.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                            map.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                             map.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
                             map.put("id",mData.get(position).getTask_id()+"");
                             new Volley_Utils(new Interface_volley_respose() {

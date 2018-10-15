@@ -81,8 +81,8 @@ public class ErShoushichangActivity extends BaseActivityother {
         mdata_image_GG=new ArrayList<>();
         mdata=new ArrayList<>();
         map_ershoushichang=new HashMap();
-        map_ershoushichang.put("user_token", Staticdata.static_userBean.getData().getUser_token());
-        map_ershoushichang.put("community_code",Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
+        map_ershoushichang.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
+//        map_ershoushichang.put("community_code",Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
 
 
         type=getIntent().getIntExtra("type",0);

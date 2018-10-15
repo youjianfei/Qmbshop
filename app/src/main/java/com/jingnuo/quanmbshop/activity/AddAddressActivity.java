@@ -179,7 +179,7 @@ public class AddAddressActivity extends BaseActivityother {
         map_lianxiren.put("name",name);
         map_lianxiren.put("sex",sex+"");
         map_lianxiren.put("mobile_no",phonenumber);
-        map_lianxiren.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+        map_lianxiren.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_lianxiren.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_lianxiren.put("is_default",isDefult);//暂时设为 不是默认
         return true;

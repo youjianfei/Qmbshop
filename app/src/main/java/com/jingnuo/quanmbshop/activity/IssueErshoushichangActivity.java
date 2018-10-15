@@ -242,11 +242,11 @@ public class IssueErshoushichangActivity extends BaseActivityother {
             ToastUtils.showToast(this,"请详细描述物品");
             return false;
         }
-        map_issueErshou.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_issueErshou.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_issueErshou.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
         map_issueErshou.put("task_name",tittle);
         map_issueErshou.put("task_description",description);
-        map_issueErshou.put("community_code",Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
+//        map_issueErshou.put("community_code",Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
 
         return true;
     }

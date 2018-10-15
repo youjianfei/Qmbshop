@@ -126,12 +126,13 @@ public class HelperOrderActivity extends BaseActivityother {
 
     }
     void request() {
-        LogUtils.LOG("ceshi", "帮手订单+" + Urls.Baseurl + Urls.shoporderdetail + Staticdata.static_userBean.getData().getUser_token() + "&orderId=" + order_no, "帮手订单网址");
+        LogUtils.LOG("ceshi", "帮手订单+" + Urls.Baseurl + Urls.shoporderdetail + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&orderId=" + order_no, "帮手订单网址");
         String URL = "";
-        if (type == 1) {
-            URL = Urls.Baseurl + Urls.helporderdetail + Staticdata.static_userBean.getData().getUser_token() + "&order_no=" + order_no;
-        } else {
-            URL = Urls.Baseurl + Urls.shoporderdetail + Staticdata.static_userBean.getData().getUser_token() + "&order_no=" + order_no;
+//        if (type == 1) {
+//            URL = Urls.Baseurl + Urls.helporderdetail + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&order_no=" + order_no;
+//        } else
+            {
+            URL = Urls.Baseurl + Urls.shoporderdetail + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&order_no=" + order_no;
         }
 
         new Volley_Utils(new Interface_volley_respose() {
@@ -224,7 +225,7 @@ public class HelperOrderActivity extends BaseActivityother {
                                 public void onError(int error) {
                                     request();
                                 }
-                            }).Http(Urls.Baseurl_cui + Urls.applyPipeicompletetask + Staticdata.static_userBean.getData().getUser_token() +
+                            }).Http(Urls.Baseurl_cui + Urls.applyPipeicompletetask + Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                                     "&order_no=" + helpOrderBean.getData().getDetail().getOrder_no() +
                                     "&order_amount=" + result, HelperOrderActivity.this, 0);
 
@@ -239,7 +240,7 @@ public class HelperOrderActivity extends BaseActivityother {
                         @Override
                         public void onResult(boolean result) {
                             if (result) {
-                                LogUtils.LOG("ceshi", "申请完成任务接口+" + Urls.Baseurl_cui + Urls.applycompletetask + Staticdata.static_userBean.getData().getUser_token() +
+                                LogUtils.LOG("ceshi", "申请完成任务接口+" + Urls.Baseurl_cui + Urls.applycompletetask + Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                                         "&order_no=" + helpOrderBean.getData().getDetail().getOrder_no() +
                                         "&task_id=" + helpOrderBean.getData().getDetail().getTask_id(), "申请完成任务");
                                 new Volley_Utils(new Interface_volley_respose() {
@@ -268,7 +269,7 @@ public class HelperOrderActivity extends BaseActivityother {
                                     public void onError(int error) {
                                         request();
                                     }
-                                }).Http(Urls.Baseurl_cui + Urls.applycompletetask + Staticdata.static_userBean.getData().getUser_token() +
+                                }).Http(Urls.Baseurl_cui + Urls.applycompletetask + Staticdata.static_userBean.getData().getAppuser().getUser_token() +
                                         "&order_no=" + helpOrderBean.getData().getDetail().getOrder_no() +
                                         "&task_id=" + helpOrderBean.getData().getDetail().getTask_id(), HelperOrderActivity.this, 0);
                             }

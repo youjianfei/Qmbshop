@@ -70,7 +70,7 @@ public class SettingActivity extends BaseActivityother {
     protected void initData() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.black ), 0);//状态栏颜色
         shareClass = new ShareGoodWeb(this);
-        textview_phonenumber.setText(Staticdata.static_userBean.getData().getAppuser().getMobile_no());
+        textview_phonenumber.setText(Staticdata.static_userBean.getData().getAppuser().getBusiness_mobile_no());
         if(!Staticdata.static_userBean.getData().getAppuser().getSecurity_code().equals("")){
             textview_changesafepassword.setText("设置安全密码");
         }
@@ -180,7 +180,7 @@ public class SettingActivity extends BaseActivityother {
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl + Urls.logout + Staticdata.static_userBean.getData().getUser_token(), this, 0);
+        }).Http(Urls.Baseurl + Urls.logout + Staticdata.static_userBean.getData().getAppuser().getUser_token(), this, 0);
         //登出注销微信授权
         mShareAPI = UMShareAPI.get(this);
         mShareAPI.deleteOauth(this, SHARE_MEDIA.WEIXIN, new UMAuthListener() {

@@ -85,8 +85,8 @@ public class ShuidianfeiActivity extends BaseActivityother {
             ToastUtils.showToast(this, "请输入你的门牌号");
             return false;
         }
-        map_shuidian.put("user_token", Staticdata.static_userBean.getData().getUser_token());
-        map_shuidian.put("community_code", Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
+        map_shuidian.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
+//        map_shuidian.put("community_code", Staticdata.static_userBean.getData().getAppuser().getCommunity_code());
         map_shuidian.put("name", name);
         map_shuidian.put("budding_no", building);
         map_shuidian.put("house_no", doorno);

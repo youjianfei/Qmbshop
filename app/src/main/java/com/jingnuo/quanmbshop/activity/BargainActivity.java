@@ -121,7 +121,7 @@ public class BargainActivity extends BaseActivityother {
         map_bargainmessagedetail.put("binding_id", binding_id + "");
         map_bargainmessagedetail.put("receive_client_no", receive_client_no);
         map_bargainmessagedetail.put("send_client_no", send_client_no);
-        map_bargainmessagedetail.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_bargainmessagedetail.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         LogUtils.LOG("ceshi", "map+" + map_bargainmessagedetail, "还价消息详情");
         requestBargainmessage(map_bargainmessagedetail);
 
@@ -130,7 +130,7 @@ public class BargainActivity extends BaseActivityother {
 
         Map map_accept = new HashMap();
         map_accept.put("id", bargainMessagedetailsBean.getData().getTask_id() + "");
-        map_accept.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+        map_accept.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_accept.put("is_accept", "1");
         map_accept.put("binding_id", binding_id + "");
         map_accept.put("mark", bargainMessagedetailsBean.getData().getMark() + "");
@@ -239,7 +239,7 @@ public class BargainActivity extends BaseActivityother {
             case R.id.button_refuse://拒觉还价
                 Map map_refuse = new HashMap();
                 map_refuse.put("id", bargainMessagedetailsBean.getData().getTask_id() + "");
-                map_refuse.put("user_token", Staticdata.static_userBean.getData().getUser_token());
+                map_refuse.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                 map_refuse.put("is_accept", "0");
                 map_refuse.put("binding_id", binding_id + "");
                 map_refuse.put("mark", bargainMessagedetailsBean.getData().getMark() + "");

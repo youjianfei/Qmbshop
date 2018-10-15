@@ -109,7 +109,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
         amount=intent.getStringExtra("amount");
         taskid=intent.getStringExtra("taskid");
         order_no=intent.getStringExtra("order_no");
-        Glide.with(this).load(Staticdata.static_userBean.getData().getImg_url()).into(mImageview_head);
+        Glide.with(this).load(Staticdata.static_userBean.getData().getAppuser().getAvatarUrl()).into(mImageview_head);
         mTextview_amount.setText("¥"+amount);
 //        if(Staticdata.map_task.get("tasktypename")!=null){
 //            mTextview_order.setText(Staticdata.map_task.get("tasktypename").toString()+"-"+Staticdata.map_task.get("task_id"));
@@ -153,7 +153,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
             public void onError(int error) {
 
             }
-        }).Http(Urls.Baseurl_hu+Urls.getBalance+Staticdata.static_userBean.getData().getUser_token()+"&client_no="+
+        }).Http(Urls.Baseurl_hu+Urls.getBalance+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
         Staticdata.static_userBean.getData().getAppuser().getClient_no(),this,0);
     }
 
@@ -231,7 +231,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
                     map_pay.put("body",title_pay);
                     map_pay.put("total_fee",amount);
                     map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
-                    map_pay.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+                    map_pay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_pay.put("task_id",taskid);
                     map_pay.put("order_no",order_no);
                     if(title_pay.equals("匹配商户成功付款")||title_pay.equals("任务补差价")){
@@ -257,7 +257,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
                     map_zpay.put("subject",title_pay);
                     map_zpay.put("total_fee",amount);
                     map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
-                    map_zpay.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+                    map_zpay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_zpay.put("task_id",taskid);
                     map_zpay.put("order_no",order_no);
                     if(title_pay.equals("匹配商户成功付款")||title_pay.equals("任务补差价")){
@@ -330,7 +330,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
     public void onInputFinish(String result) {
         if(result.equals("1")){
             Map map_yue=new HashMap();
-            map_yue.put("user_token",Staticdata.static_userBean.getData().getUser_token());
+            map_yue.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
             map_yue.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
             map_yue.put("pay_money",amount);
             map_yue.put("task_id",taskid);
