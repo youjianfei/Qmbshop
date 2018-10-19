@@ -24,7 +24,6 @@ public class Popwindow_ShanghuIsjiedan {
 
     TextView mTextview;
 
-    boolean isTuisong=true;
 
 
 
@@ -64,11 +63,11 @@ public class Popwindow_ShanghuIsjiedan {
         mTextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isTuisong){
-                    interfacePermission.onResult(false);
+                if(title.equals("自动接单")){
+                    interfacePermission.onResult(true);
                     mPopupWindow.dismiss();
                 }else {
-                    interfacePermission.onResult(true);
+                    interfacePermission.onResult(false);
                     mPopupWindow.dismiss();
                 }
             }

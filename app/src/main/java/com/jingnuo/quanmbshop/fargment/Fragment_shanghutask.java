@@ -98,17 +98,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     }
 
     private void setdata() {
-        popwindow_shanghuIsjiedan=new Popwindow_ShanghuIsjiedan(getActivity(), re_title, new InterfacePermission() {
-            @Override
-            public void onResult(boolean result) {
-                if(result){
-                    requestTuisongstate("Y");
-                }else {
-                    requestTuisongstate("N");
-                }
 
-            }
-        },text_jiedan.getText().equals("自动接单")?"关闭接单":"自动接单");
     }
     void  requestTuisongstate(String state){
         new  Volley_Utils(new Interface_volley_respose() {
@@ -388,6 +378,17 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                 }else {
                     text_jiedan.setText("关闭接单");
                 }
+                popwindow_shanghuIsjiedan=new Popwindow_ShanghuIsjiedan(getActivity(), re_title, new InterfacePermission() {
+                    @Override
+                    public void onResult(boolean result) {
+                        if(result){
+                            requestTuisongstate("Y");
+                        }else {
+                            requestTuisongstate("N");
+                        }
+
+                    }
+                },text_jiedan.getText().equals("自动接单")?"关闭接单":"自动接单");
             }
 
             @Override

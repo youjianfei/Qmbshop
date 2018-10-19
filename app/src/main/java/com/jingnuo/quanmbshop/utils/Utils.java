@@ -89,7 +89,7 @@ public class Utils {
 //                            Staticdata.static_userBean.getData().getAppuser().getNick_name(),
 //                            Uri.parse(Staticdata.static_userBean.getData().getImg_url())));
 //                }
-                LogUtils.LOG("rongyun","名字"+"(" +Staticdata.static_userBean.getData().getAppuser().getBusiness_name()+")","Utils");
+                LogUtils.LOG("rongyun","touxiang"+"(" +Staticdata.static_userBean.getData().getAppuser().getAvatarUrl()+")","Utils");
 
             }
 
