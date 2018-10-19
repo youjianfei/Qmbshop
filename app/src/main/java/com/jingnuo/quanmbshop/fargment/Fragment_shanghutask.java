@@ -372,9 +372,9 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     }
     void requestshopinfo() {
         String url_info = Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
-                        .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
-                        .getClient_no();
-        LogUtils.LOG("ceshi", "帮手 商户网址：" + url_info, "ShopCenterActivity");
+                        .getAppuser().getUser_token() + "&business_no=" + Staticdata.static_userBean.getData().getAppuser()
+                        .getBusiness_no();
+        LogUtils.LOG("ceshi", " 商户网址：" + url_info, "ShopCenterActivity");
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {

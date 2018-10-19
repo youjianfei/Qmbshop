@@ -125,7 +125,7 @@ public class PaytuiguangbiActivity extends BaseActivityother {
                             map_pay.put("isrecharge","Y");
                             map_pay.put("body","推广币套餐");
                             map_pay.put("total_fee",amount);
-                            map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                            map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                             map_pay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                             map_pay.put("task_id",Task_id);//充值推广币
                             map_pay.put("total_spreadcoin",total_spreadcoin);//推广币的个数
@@ -133,7 +133,7 @@ public class PaytuiguangbiActivity extends BaseActivityother {
                             map_pay.put("isrecharge","N");
                             map_pay.put("body","会员套餐");
                             map_pay.put("total_fee",amount);
-                            map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                            map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                             map_pay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                             map_pay.put("task_id",Task_id);//充值会员
                             map_pay.put("VIP_unique",VIP_unique);//会员套餐
@@ -150,7 +150,7 @@ public class PaytuiguangbiActivity extends BaseActivityother {
                             map_zpay.put("isrecharge","Y");
                             map_zpay.put("subject","推广币套餐");
                             map_zpay.put("total_fee",amount);
-                            map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                            map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                             map_zpay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                             map_zpay.put("task_id",Task_id);
                             map_zpay.put("total_spreadcoin",total_spreadcoin);
@@ -158,7 +158,7 @@ public class PaytuiguangbiActivity extends BaseActivityother {
                             map_zpay.put("isrecharge","N");
                             map_zpay.put("subject","会员套餐");
                             map_zpay.put("total_fee",amount);
-                            map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                            map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                             map_zpay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                             map_zpay.put("task_id",Task_id);
                             map_zpay.put("VIP_unique",VIP_unique);

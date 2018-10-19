@@ -115,14 +115,19 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 startActivity(intent_myorder);
                 break;
             case R.id.linearlayout_qianbao://钱包
-
+                Intent intent_wa = new Intent(ShopCenterNewActivity.this, WalletActivity.class);
+                intent_wa.putExtra("money", Staticdata.static_userBean.getData().getAppuser().getCommission() + "");
+                startActivity(intent_wa);
                 break;
             case R.id.linearlayout_tuiguangbi://推广币
-
-
+                Intent intent_mytuiguangbi = new Intent(ShopCenterNewActivity.this, TuiguangbiWalletActivity.class);
+                intent_mytuiguangbi.putExtra("type", type);
+                intent_mytuiguangbi.putExtra("tuiguangbi", shopcenterBean.getData().getList().getSpread_b()+"");
+                startActivity(intent_mytuiguangbi);
                 break;
             case R.id.linearlayout_huanyuan://会员
-
+                Intent intent_huiyuan = new Intent(ShopCenterNewActivity.this, HuiyuanRechargeActivity.class);
+                startActivity(intent_huiyuan);
                 break;
             case R.id.linearlayout_kefu://客服
                 Intent intent_kefuzhongxin = new Intent(this, ZixunKefuWebActivity.class);
@@ -150,8 +155,8 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 .getClient_no()
                 :
                 Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
-                        .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
-                        .getClient_no();
+                        .getAppuser().getUser_token() + "&business_no=" + Staticdata.static_userBean.getData().getAppuser()
+                        .getBusiness_no();
         LogUtils.LOG("ceshi", "帮手 商户网址：" + url_info, "ShopCenterActivity");
         new Volley_Utils(new Interface_volley_respose() {
             @Override

@@ -12,6 +12,7 @@ import com.jingnuo.quanmbshop.utils.ToastUtils;
 public class WalletActivity extends BaseActivityother {
     LinearLayout Lineatlayout_wallte;
     LinearLayout Lineatlayout_mingxi;
+    LinearLayout linerlayout_tixian;
     TextView  mTextview;
 
     String money="";
@@ -48,6 +49,15 @@ public class WalletActivity extends BaseActivityother {
                 ToastUtils.showToast(WalletActivity.this,"暂不可用");
             }
         });
+        linerlayout_tixian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_cash = new Intent(WalletActivity.this, CashoutActivity.class);
+                    intent_cash.putExtra("money",money+"");
+                    intent_cash.putExtra("TransferType","3");
+                startActivity(intent_cash);
+            }
+        });
 
     }
 
@@ -55,6 +65,7 @@ public class WalletActivity extends BaseActivityother {
     protected void initView() {
         Lineatlayout_wallte=findViewById(R.id.linear_bankcard);
         Lineatlayout_mingxi=findViewById(R.id.linerlayout_mingxi);
+        linerlayout_tixian=findViewById(R.id.linerlayout_tixian);
         mTextview=findViewById(R.id.text_money);
     }
 

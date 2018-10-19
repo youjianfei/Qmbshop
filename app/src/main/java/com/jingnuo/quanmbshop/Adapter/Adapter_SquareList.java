@@ -82,6 +82,8 @@ public class Adapter_SquareList extends  BaseAdapter {
                 holder.mText_task_price.setText(mData.get(position).getCommission()+"元");
             }
             holder.textview_state.setText("帮助");
+            holder.mTextview_distance.setVisibility(View.VISIBLE);
+
         }else {
             long ago = Long.parseLong(Utils.getTime(mData.get(position).getCreateDate()));//任务发布时间
             String time = Utils.getDistanceTime2(ago, now);//算出的差值
@@ -92,7 +94,7 @@ public class Adapter_SquareList extends  BaseAdapter {
                 holder.mText_task_price.setText(mData.get(position).getOrder_amount()+"元");
             }
             holder.textview_state.setText(mData.get(position).getOrder_status());
-
+            holder.mTextview_distance.setVisibility(View.INVISIBLE);
         }
 
 //        holder.mText_task_creattime.setText(mData.get(position).getCreateDate()+"");

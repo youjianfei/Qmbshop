@@ -281,8 +281,8 @@ public class ShopCenterActivity extends BaseActivityother {
                 .getClient_no()
                 :
                 Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
-                        .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
-                        .getClient_no();
+                        .getAppuser().getUser_token() + "&business_no=" + Staticdata.static_userBean.getData().getAppuser()
+                        .getBusiness_no();
         LogUtils.LOG("ceshi", "帮手 商户网址：" + url_info, "ShopCenterActivity");
         new Volley_Utils(new Interface_volley_respose() {
             @Override

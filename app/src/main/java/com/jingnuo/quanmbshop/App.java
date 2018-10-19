@@ -25,7 +25,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        UMConfigure.init(this, "5ad55925f43e4835c1000064"
+        UMConfigure.init(this, "5bc985e1b465f5fa17000231"
                 , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
         UMConfigure.setLogEnabled(true);
         /**

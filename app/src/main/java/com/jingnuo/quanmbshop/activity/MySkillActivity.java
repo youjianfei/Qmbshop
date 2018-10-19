@@ -165,8 +165,8 @@ public class MySkillActivity extends BaseActivityother {
             URL= Urls.Baseurl+Urls.helpskill+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
                     Staticdata.static_userBean.getData().getAppuser().getClient_no()+"&curPageNo="+page+"&release_status="+release_status;
         }else {
-            URL= Urls.Baseurl+Urls.shopkill+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
-                    Staticdata.static_userBean.getData().getAppuser().getClient_no()+"&curPageNo="+page+"&release_status="+release_status;
+            URL= Urls.Baseurl+Urls.shopkill+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&business_no="+
+                    Staticdata.static_userBean.getData().getAppuser().getBusiness_no()+"&curPageNo="+page+"&release_status="+release_status;
         }
 
         LogUtils.LOG("ceshi",URL,"发布服务列表网址");

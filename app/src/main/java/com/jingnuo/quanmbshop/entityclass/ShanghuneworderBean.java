@@ -72,7 +72,7 @@ public class ShanghuneworderBean {
             private String createDate;
             private String headUrl;
             private String is_helper_bid;
-            private String nick_name;
+            private String nick_name="";
             private String release_address;
             private String specialty_name;
             private String task_description;

@@ -401,8 +401,8 @@ public class ShopCenterInfoActivity extends BaseActivityother {
 
             }
         }).Http(Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
-                .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
-                .getClient_no(), this, 0);
+                .getAppuser().getUser_token() + "&business_no=" + Staticdata.static_userBean.getData().getAppuser()
+                .getBusiness_no(), this, 0);
     }
 
     void chooseHeadPic() {
