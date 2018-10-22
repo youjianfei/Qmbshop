@@ -10,16 +10,16 @@
         android:id="@+id/re_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white">
+        android:background="@color/black">
 
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="10dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:src="@mipmap/back_black" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_back"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:padding="10dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:src="@mipmap/back_white" />-->
         <TextView
             android:id="@+id/text_bar"
             android:layout_width="wrap_content"
@@ -27,9 +27,18 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="提交成功"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
-
+        <TextView
+            android:id="@+id/text_changeaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="切换账号"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            />
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relativelayout_back"

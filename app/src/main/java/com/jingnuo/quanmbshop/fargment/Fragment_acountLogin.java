@@ -16,6 +16,9 @@ import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.activity.FindPasswordActivity;
 import com.jingnuo.quanmbshop.activity.MainActivity;
 import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
+import com.jingnuo.quanmbshop.activity.ShopCenterNewActivity;
+import com.jingnuo.quanmbshop.activity.ShopInActivity;
+import com.jingnuo.quanmbshop.activity.SubmitSuccessActivity;
 import com.jingnuo.quanmbshop.popwinow.ProgressDlog;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
@@ -145,9 +148,60 @@ public class Fragment_acountLogin extends Fragment {
                     LogUtils.LOG("ceshi", respose + "1111111111", "fragment_account");
                     isLogin = true;
                     Utils.connect(userBean.getData().getAppuser().getRongCloud_token());
-                    Intent intent_login = new Intent(getActivity(), ShanghuMainActivity.class);
-                    getActivity().startActivity(intent_login);
-                    getActivity().finish();
+                    if(userBean.getData().getAppuser().getIs_business().equals("N")){
+                        new Volley_Utils(new Interface_volley_respose() {
+                            @Override
+                            public void onSuccesses(String respose) {
+
+                                int status = 0;
+                                String msg = "";
+                                String state = "";
+                                try {
+                                    JSONObject object = new JSONObject(respose);
+                                    status = (Integer) object.get("code");//
+                                    msg = (String) object.get("message");//
+                                    state = (String) object.get("status");//
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                if (state.equals("00")) {//审核通过
+                                    Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
+                                    intent_shopcenter.putExtra("type", 2);//2  商户
+                                    getActivity().startActivity(intent_shopcenter);
+                                    getActivity().finish();
+
+                                } else if (state.equals("01")) {//没提交
+                                    Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
+                                    getActivity().startActivity(intent_shopin);
+
+                                } else if (state.equals("02")) {//正在审核
+//                                  Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
+//                               getActivity().startActivity(intent_shopinext);
+                                    Intent intent_submit = new Intent(getActivity(), SubmitSuccessActivity.class);
+                                    intent_submit.putExtra("state", "2");
+                                    startActivity(intent_submit);
+                                    getActivity().finish();
+
+                                } else if (state.equals("03")) {//没提交审核
+                                    Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
+                                    getActivity().startActivity(intent_shopin);
+                                    getActivity().finish();
+
+                                }
+                            }
+
+                            @Override
+                            public void onError(int error) {
+
+                            }
+                        }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
+
+                    }else {
+                        Intent intent_login = new Intent(getActivity(), ShanghuMainActivity.class);
+                        getActivity().startActivity(intent_login);
+                        getActivity().finish();
+                    }
+
                 }else {
                     ToastUtils.showToast(getActivity(),msg);
                 }

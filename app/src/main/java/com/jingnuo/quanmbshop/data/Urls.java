@@ -37,7 +37,7 @@ public class Urls {
     public static String login = "login/businessDoLogin";//登陆  post
     public static String wechatlogin = "login/weChatLogin";//微信登陆  post
     public static String phoneLogin = "login/moblieLogin";//手机号验证登陆
-    public static String phoneRegister = "register/Register";//注册
+    public static String phoneRegister = "register/businessRegister";//注册
     public static String registerBind = "login/registerBind";//三方登录注册绑定
     public static String existsBind = "login/existsBind";//三方登录已有账号绑定
     public static String logout = "login/LoginOut?user_token=";//退出登录
@@ -46,9 +46,9 @@ public class Urls {
      */
     public static String setnickname = "user/setNickName";//更换昵称
     public static String setheadPic = "user/setheadimage";//设置头像
-    public static String changephonenumber = "user/modifyPhone1";//更换绑定手机号第一步
-    public static String bindphonenumber = "user/modifyPhone2";//更换绑定手机号第er步,绑定手机号
-    public static String changepassword = "user/changePwd";//更换密码
+    public static String changephonenumber = "business/modifyPhone1";//更换绑定手机号第一步
+    public static String bindphonenumber = "business/modifyPhone2";//更换绑定手机号第er步,绑定手机号
+    public static String changepassword = "business/changePwd";//更换密码
     public static String findpassword = "login/forgetPwd";//找回密码
     public static String setshophead = "business/setBusinessAvatar";//设置商户头像
     public static String editshopinfo = "business/editBusinessInfo";//编辑商户信息

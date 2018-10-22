@@ -118,7 +118,7 @@ public class UserBean {
             private String status;
             private String updateDate;
             private String user_token;
-            private String security_code;
+            private String security_code="";
             private String user_name;
             private String is_business;
 

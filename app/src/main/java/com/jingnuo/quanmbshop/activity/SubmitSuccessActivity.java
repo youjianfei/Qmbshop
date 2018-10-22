@@ -17,6 +17,7 @@ public class SubmitSuccessActivity extends BaseActivityother {
     Button mButton_close;
     TextView mtextview_bar;
     TextView mtextview_tip;
+    TextView text_changeaccount;
 
     String state="";
 
@@ -75,10 +76,19 @@ public class SubmitSuccessActivity extends BaseActivityother {
                 }
             }
         });
+        text_changeaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SubmitSuccessActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
     protected void initView() {
+        text_changeaccount=findViewById(R.id.text_changeaccount);
         mtextview_bar=findViewById(R.id.text_bar);
         mButton_close=findViewById(R.id.button_close);
         mRelativelayout_back=findViewById(R.id.relativelayout_back);

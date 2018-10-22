@@ -68,7 +68,7 @@ public class ShanghuneworderBean {
 
             private String app_type;
             private String client_no;
-            private int commission;
+            private double commission;
             private String createDate;
             private String headUrl;
             private String is_helper_bid;
@@ -127,11 +127,11 @@ public class ShanghuneworderBean {
                 this.client_no = client_no;
             }
 
-            public int getCommission() {
+            public double getCommission() {
                 return commission;
             }
 
-            public void setCommission(int commission) {
+            public void setCommission(double commission) {
                 this.commission = commission;
             }
 

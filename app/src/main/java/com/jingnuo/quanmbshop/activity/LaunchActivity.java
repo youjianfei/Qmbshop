@@ -203,9 +203,58 @@ public class LaunchActivity extends BaseActivityother {
                     finish();
                     break;
                 case 1:
-                    Intent intent = new Intent(LaunchActivity.this, ShanghuMainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    if(userBean.getData().getAppuser().getIs_business().equals("N")){
+                        new Volley_Utils(new Interface_volley_respose() {
+                            @Override
+                            public void onSuccesses(String respose) {
+
+                                int status = 0;
+                                String msg = "";
+                                String state = "";
+                                try {
+                                    JSONObject object = new JSONObject(respose);
+                                    status = (Integer) object.get("code");//
+                                    msg = (String) object.get("message");//
+                                    state = (String) object.get("status");//
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                if (state.equals("00")) {//审核通过
+                                    Intent intent_shopcenter = new Intent(LaunchActivity.this, ShopCenterNewActivity.class);
+                                    intent_shopcenter.putExtra("type", 2);//2  商户
+                                    startActivity(intent_shopcenter);
+                                    finish();
+                                } else if (state.equals("01")) {//没提交
+                                    Intent intent_shopin = new Intent(LaunchActivity.this, ShopInActivity.class);
+                                    startActivity(intent_shopin);
+                                    finish();
+
+                                } else if (state.equals("02")) {//正在审核
+//                            Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
+//                            getActivity().startActivity(intent_shopinext);
+                                    Intent intent_submit = new Intent(LaunchActivity.this, SubmitSuccessActivity.class);
+                                    intent_submit.putExtra("state", "2");
+                                    startActivity(intent_submit);
+                                    finish();
+
+                                } else if (state.equals("03")) {//没提交审核
+                                    Intent intent_shopin = new Intent(LaunchActivity.this, ShopInActivity.class);
+                                    startActivity(intent_shopin);
+                                    finish();
+                                }
+                            }
+
+                            @Override
+                            public void onError(int error) {
+
+                            }
+                        }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), LaunchActivity.this, 0);
+
+                    }else {
+                        Intent intent_login = new Intent(LaunchActivity.this, ShanghuMainActivity.class);
+                        startActivity(intent_login);
+                        finish();
+                    }
                     break;
             }
         }

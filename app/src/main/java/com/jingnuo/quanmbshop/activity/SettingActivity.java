@@ -29,6 +29,7 @@ import java.util.Map;
 
 import io.rong.imkit.RongIM;
 
+import static android.content.Intent.FLAG_ACTIVITY_NO_HISTORY;
 import static com.jingnuo.quanmbshop.utils.Utils.deleteAllFiles;
 
 public class SettingActivity extends BaseActivityother {
@@ -155,9 +156,13 @@ public class SettingActivity extends BaseActivityother {
                 Staticdata.isLogin = false;
                 Staticdata.static_userBean.setData(null);//用户信息清空
                 RongIM.getInstance().disconnect();
-//                Intent intent_logout = new Intent(this, MainActivity.class);
-//                startActivity(intent_logout);
+                if(ShanghuMainActivity.shanghuMainActivity!=null){
+                    ShanghuMainActivity.shanghuMainActivity.finish();
+                }
+                Intent intent_logout = new Intent(this, LoginActivity.class);
+                startActivity(intent_logout);
                 finish();
+
                 break;
 //            case R.id.textview_shareAPP:
 //                if(Utils.isWxInstall(this)){

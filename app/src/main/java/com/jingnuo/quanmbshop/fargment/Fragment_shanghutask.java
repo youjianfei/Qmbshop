@@ -301,51 +301,51 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                     Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
                     intent_shopcenter.putExtra("type", 2);//2  商户
                     getActivity().startActivity(intent_shopcenter);
-
-                } else {
-                    new Volley_Utils(new Interface_volley_respose() {
-                        @Override
-                        public void onSuccesses(String respose) {
-
-                            int status = 0;
-                            String msg = "";
-                            String state = "";
-                            try {
-                                JSONObject object = new JSONObject(respose);
-                                status = (Integer) object.get("code");//
-                                msg = (String) object.get("message");//
-                                state = (String) object.get("status");//
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            if (state.equals("00")) {//审核通过
-                                Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
-                                intent_shopcenter.putExtra("type", 2);//2  商户
-                                getActivity().startActivity(intent_shopcenter);
-                            } else if (state.equals("01")) {//没提交
-                                Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
-                                getActivity().startActivity(intent_shopin);
-
-                            } else if (state.equals("02")) {//正在审核
-//                            Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
-//                            getActivity().startActivity(intent_shopinext);
-                                Intent intent_submit = new Intent(getActivity(), SubmitSuccessActivity.class);
-                                intent_submit.putExtra("state", "2");
-                                startActivity(intent_submit);
-
-                            } else if (state.equals("03")) {//没提交审核
-                                Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
-                                getActivity().startActivity(intent_shopin);
-                            }
-                        }
-
-                        @Override
-                        public void onError(int error) {
-
-                        }
-                    }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
-
                 }
+//                else {
+//                    new Volley_Utils(new Interface_volley_respose() {
+//                        @Override
+//                        public void onSuccesses(String respose) {
+//
+//                            int status = 0;
+//                            String msg = "";
+//                            String state = "";
+//                            try {
+//                                JSONObject object = new JSONObject(respose);
+//                                status = (Integer) object.get("code");//
+//                                msg = (String) object.get("message");//
+//                                state = (String) object.get("status");//
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                            if (state.equals("00")) {//审核通过
+//                                Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
+//                                intent_shopcenter.putExtra("type", 2);//2  商户
+//                                getActivity().startActivity(intent_shopcenter);
+//                            } else if (state.equals("01")) {//没提交
+//                                Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
+//                                getActivity().startActivity(intent_shopin);
+//
+//                            } else if (state.equals("02")) {//正在审核
+////                            Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
+////                            getActivity().startActivity(intent_shopinext);
+//                                Intent intent_submit = new Intent(getActivity(), SubmitSuccessActivity.class);
+//                                intent_submit.putExtra("state", "2");
+//                                startActivity(intent_submit);
+//
+//                            } else if (state.equals("03")) {//没提交审核
+//                                Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
+//                                getActivity().startActivity(intent_shopin);
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onError(int error) {
+//
+//                        }
+//                    }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
+//
+//                }
                 break;
         }
     }
@@ -404,12 +404,11 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         LogUtils.LOG("ceshi", "state"+state, "Fragment_shanghutask");
         if (state.equals("00000")){//新订单
             URL = Urls.Baseurl + Urls.neworderlist + Staticdata.static_userBean.getData().getAppuser().getUser_token()+ "&business_no=" +
-                    "60000000046"+ "&x_value=" + Staticdata.xValue + "&y_value=" + Staticdata.yValue+
+                    Staticdata.static_userBean.getData().getAppuser().getBusiness_no()+ "&x_value=" + Staticdata.xValue + "&y_value=" + Staticdata.yValue+
                     "&pageNum=" + page;
             type=0;
         }else {
-            URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&client_no=" +
-                    Staticdata.static_userBean.getData().getAppuser().getClient_no() + "&order_status=" + state +
+            URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&order_status=" + state +
                     "&curPageNo=" + page;
             type=1;
         }

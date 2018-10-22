@@ -26,6 +26,7 @@ public class ShopInActivity extends BaseActivityother {
     private LinearLayout mLineatlayout_addview;
 
     //控件
+    TextView text_changeaccount;
     private Button mButton_submit;
     EditText mEditview_name;
     EditText mEditview_phonenumber;
@@ -103,12 +104,20 @@ public class ShopInActivity extends BaseActivityother {
 
             }
         });
-
+        text_changeaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ShopInActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
     @Override
     protected void initView() {
+        text_changeaccount=findViewById(R.id.text_changeaccount);
         mLineatlayout_addview=findViewById(R.id.linrarlayout_shop);
         mButton_submit=findViewById(R.id.button_submit);
         mEditview_name=findViewById(R.id.edit_shopname);

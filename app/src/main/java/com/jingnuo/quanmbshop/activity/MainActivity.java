@@ -281,21 +281,21 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private final int HOME_AD_RESULT = 1;
     private int mSwitcherCount = 0;
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                // 广告
-                case HOME_AD_RESULT:
-                    tv_notice.setText(data.get(mSwitcherCount % data.size()).getContent());
-                    mSwitcherCount++;
-                    mHandler.sendEmptyMessageDelayed(HOME_AD_RESULT, 3000);
-                    break;
-            }
-
-        }
-    };
+//    private Handler mHandler = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            switch (msg.what) {
+//                // 广告
+//                case HOME_AD_RESULT:
+//                    tv_notice.setText(data.get(mSwitcherCount % data.size()).getContent());
+//                    mSwitcherCount++;
+//                    mHandler.sendEmptyMessageDelayed(HOME_AD_RESULT, 3000);
+//                    break;
+//            }
+//
+//        }
+//    };
 
     public void setdata() {
 
@@ -306,7 +306,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             drawerlayout_menu.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);//禁止滑动
         }
         data = new ArrayList<>();
-        requestRadios();
+//        requestRadios();
     }
 
     List<ShouyeRadios.DataBean> data;
@@ -318,7 +318,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 LogUtils.LOG("ceshi", respose + "喇叭", "首页");
                 data.clear();
                 data.addAll(new Gson().fromJson(respose, ShouyeRadios.class).getData());
-                mHandler.sendEmptyMessage(HOME_AD_RESULT);
+//                mHandler.sendEmptyMessage(HOME_AD_RESULT);
             }
 
             @Override
