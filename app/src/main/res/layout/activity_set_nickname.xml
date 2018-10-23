@@ -12,7 +12,7 @@
         android:id="@+id/re_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -21,21 +21,21 @@
             android:padding="10dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/back_black" />
+            android:src="@mipmap/back_white" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="修改昵称"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/text_queding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:textSize="15dp"

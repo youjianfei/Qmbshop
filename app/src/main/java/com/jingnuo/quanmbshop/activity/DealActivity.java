@@ -76,7 +76,7 @@ public class DealActivity extends BaseActivityother {
             finish();
             return;
         }
-        map_message.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+        map_message.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
         map_message.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         LogUtils.LOG("ceshi","系统消息内容map"+map_message,"DealMessageActivity");
         requestDealmessage(map_message);

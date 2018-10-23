@@ -64,7 +64,7 @@ public class App extends Application {
         SpeechUtility.createUtility(getApplicationContext(), SpeechConstant.APPID +"=5bbabbd9");
 
         {
-            PlatformConfig.setWeixin("wx1589c6a947d1f803", "aad4f32f43f69d06cdaf6df5e1237e8b");
+            PlatformConfig.setWeixin("wx0b7afce06b6cc74d", "02ce3856df7e6f4acd7d67269bed0f69");
             PlatformConfig.setSinaWeibo("3364493522", "90801d9b64840597f32ed0533e8a2834", "http://www.sina.com.cn/");
             PlatformConfig.setQQZone("1106726779", "1wAnKLtEKebMe8WI");
         }

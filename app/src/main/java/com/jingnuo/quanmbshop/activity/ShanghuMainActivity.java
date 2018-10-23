@@ -300,12 +300,6 @@ public class ShanghuMainActivity extends BaseActivityother {
             permissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
-
-
-
-
-
-
     /**
      * 讯飞 模块
      *
@@ -337,7 +331,7 @@ public class ShanghuMainActivity extends BaseActivityother {
 
         setParam();
 
-        int code = mTts.startSpeaking("你有新的订单", mTtsListener);
+        int code = mTts.startSpeaking("你有新订单", mTtsListener);
 //			/**
 //			 * 只保存音频不进行播放接口,调用此接口请注释startSpeaking接口
 //			 * text:要合成的文本，uri:需要保存的音频全路径，listener:回调接口
