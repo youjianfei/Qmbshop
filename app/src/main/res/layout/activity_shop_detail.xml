@@ -16,7 +16,7 @@
             android:id="@+id/iv_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="10dp"
+            android:padding="9dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:src="@mipmap/back_white" />
@@ -28,7 +28,7 @@
             android:layout_centerVertical="true"
             android:text="服务详情"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </RelativeLayout>
     <com.jingnuo.quanmbshop.customview.CustomerScrollView
@@ -519,12 +519,12 @@
 
         </RelativeLayout>
     </com.jingnuo.quanmbshop.customview.CustomerScrollView>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/gray_background"
-        android:layout_above="@+id/linearlayout_bottom"
-        />
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="@color/gray_background"-->
+        <!--android:layout_above="@+id/linearlayout_bottom"-->
+        <!--/>-->
     <LinearLayout
         android:id="@+id/linearlayout_bottom"
         android:layout_width="match_parent"
