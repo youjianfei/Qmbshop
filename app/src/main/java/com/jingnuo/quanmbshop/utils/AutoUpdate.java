@@ -87,7 +87,7 @@ public class AutoUpdate {
      */
     String newdownurl = "";//下载apk网址
     public  void requestVersionData() {
-        LogUtils.LOG("anzhuang","联网查询的版本号请求","updataapp");
+        LogUtils.LOG("ceshi","联网查询的版本号请求","updataapp");
 
         new Volley_Utils(new Interface_volley_respose() {
             @Override

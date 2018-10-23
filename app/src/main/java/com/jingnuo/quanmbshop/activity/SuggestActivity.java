@@ -27,7 +27,7 @@ public class SuggestActivity extends BaseActivityother {
 
     String release_specialty_id="";
 
-
+        String URL;
     @Override
     public int setLayoutResID() {
         return R.layout.activity_suggest;
@@ -36,11 +36,14 @@ public class SuggestActivity extends BaseActivityother {
     @Override
     protected void setData() {
     map_suggest=new HashMap();
-    map_suggest.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+    map_suggest.put("business_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
     map_suggest.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
-    if(release_specialty_id!=null){
-        map_suggest.put("release_specialty_id",release_specialty_id);
-    }
+        if(release_specialty_id!=null){
+            URL=Urls.Baseurl+Urls.mySuggest;
+            map_suggest.put("release_specialty_id",release_specialty_id);
+        }else {
+            URL=Urls.Baseurl+Urls. mySFeedBack;
+        }
 
     }
 
@@ -88,7 +91,7 @@ public class SuggestActivity extends BaseActivityother {
                         public void onError(int error) {
 
                         }
-                    }).postHttp(Urls.Baseurl+Urls.mySuggest,SuggestActivity.this,1,map_suggest);
+                    }).postHttp(URL,SuggestActivity.this,1,map_suggest);
                 }
 
 
