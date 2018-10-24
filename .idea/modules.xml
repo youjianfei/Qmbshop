@@ -3,15 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IMKit/IMKit.iml" filepath="$PROJECT_DIR$/IMKit/IMKit.iml" />
-      <module fileurl="file://D:\MYwork\QMBShop\IMKit\IMKit.iml" filepath="D:\MYwork\QMBShop\IMKit\IMKit.iml" />
       <module fileurl="file://$PROJECT_DIR$/IMLib/IMLib.iml" filepath="$PROJECT_DIR$/IMLib/IMLib.iml" />
-      <module fileurl="file://D:\MYwork\QMBShop\IMLib\IMLib.iml" filepath="D:\MYwork\QMBShop\IMLib\IMLib.iml" />
       <module fileurl="file://D:\MYwork\QMBShop\QMBSH.iml" filepath="D:\MYwork\QMBShop\QMBSH.iml" />
       <module fileurl="file://$PROJECT_DIR$/QMBShop.iml" filepath="$PROJECT_DIR$/QMBShop.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\MYwork\QMBShop\app\app.iml" filepath="D:\MYwork\QMBShop\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library_pulltorefresh/library_pulltorefresh.iml" filepath="$PROJECT_DIR$/library_pulltorefresh/library_pulltorefresh.iml" />
-      <module fileurl="file://D:\MYwork\QMBShop\library_pulltorefresh\library_pulltorefresh.iml" filepath="D:\MYwork\QMBShop\library_pulltorefresh\library_pulltorefresh.iml" />
     </modules>
   </component>
 </project>

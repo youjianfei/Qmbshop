@@ -19,7 +19,7 @@ public class ConversationActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);//状态栏颜色
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.black), 0);//状态栏颜色
         mImageview_back =  findViewById(R.id.iv_back);
         text_title =  findViewById(R.id.text_title);
         mImageview_back.setOnClickListener(new View.OnClickListener() {
