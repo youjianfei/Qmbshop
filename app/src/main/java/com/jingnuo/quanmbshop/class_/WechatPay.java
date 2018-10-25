@@ -36,7 +36,7 @@ public class WechatPay {
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
-                LogUtils.LOG("ceshi","请求服务器统一下单"+ Urls.Baseurl_hu+Urls.wechatPay,"关于我们");
+                LogUtils.LOG("ceshi","请求服务器统一下单"+ Urls.Baseurl_hu+Urls.wechatPay,"weixin支付");
                 wechatPayBean=new Gson().fromJson(respose,WechatPayBean.class);
                 PayReq request = new PayReq();
                 request.appId = WechatApi;
@@ -54,6 +54,7 @@ public class WechatPay {
                 json.put("package","Sign=WXPay");
                 json.put("noncestr",request.nonceStr);
                 json.put("timestamp", request.timeStamp);
+                LogUtils.LOG("ceshi","请求服务器统一下单"+ respose,"weixin支付");
 
 
                 String[] keys = json.keySet().toArray(new String[0]);

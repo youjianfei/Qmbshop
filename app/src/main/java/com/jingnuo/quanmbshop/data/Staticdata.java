@@ -19,7 +19,7 @@ import java.util.Map;
 public class Staticdata {
     public static String UUID = "";
     public static String JpushID="";
-    public  static String WechatApi="wx1589c6a947d1f803";//微信appid
+    public  static String WechatApi="wx0b7afce06b6cc74d";//微信appid
     public  static String WechatApipay="40F4131427068E08451D37F02021473A";//微信支付签名密钥
 
 

@@ -21,7 +21,7 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wxpayentry);
-        api = WXAPIFactory.createWXAPI(this, "wx1589c6a947d1f803");
+        api = WXAPIFactory.createWXAPI(this, "wx0b7afce06b6cc74d");
         api.handleIntent(getIntent(), this);
     }
 
@@ -45,7 +45,6 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
             if(baseResp.errCode==0){
                 intent.putExtra("pay","success");
                 sendBroadcast(intent);
-
 
                 finish();
             }else{
