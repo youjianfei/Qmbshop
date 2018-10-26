@@ -48,9 +48,10 @@ public class FirstLoginActivity extends BaseActivityother {
         image.add(R.mipmap.a1);
         image.add(R.mipmap.a2);
         image.add(R.mipmap.a3);
+        image.add(R.mipmap.a5);
         listdate_viewpager = new ArrayList<>();
         View dotview;
-        for (int i = 0; i < 3; i++) {//动态添加布局图片界面
+        for (int i = 0; i < 4; i++) {//动态添加布局图片界面
             LinearLayout linearLayout = new LinearLayout(this);
             linearLayout.setBackgroundResource(R.mipmap.a4);//viewpager背景图
             RelativeLayout.LayoutParams mLayoutParams = new RelativeLayout.LayoutParams(
@@ -60,11 +61,11 @@ public class FirstLoginActivity extends BaseActivityother {
             ImageView imageview = new ImageView(this);//imageview
             imageview.setBackgroundResource(image.get(i));
             imageview.setScaleType(ImageView.ScaleType.CENTER);
-            if (i == 2) {
+            if (i == 3) {
                 imageview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(FirstLoginActivity.this, ShanghuMainActivity.class);
+                        Intent intent = new Intent(FirstLoginActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
 

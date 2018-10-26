@@ -106,11 +106,11 @@ public class LaunchActivity extends BaseActivityother {
         Screenwidth = SizeUtils.getScreenWidthPx(this);
         Staticdata.ScreenHight = Screenhight;
         Staticdata.ScreenWidth = Screenwidth;
-        ImageView image = new ImageView(this);
-        image.setBackgroundResource(R.mipmap.launchpic);
-        LinearLayout.LayoutParams mLayoutparams = new LinearLayout.LayoutParams(Staticdata.ScreenWidth, (int) (Staticdata.ScreenWidth * 1.77));
-        image.setLayoutParams(mLayoutparams);
-        mLinearlauout_root.addView(image);
+//        ImageView image = new ImageView(this);
+//        image.setBackgroundResource(R.mipmap.launchpic);
+//        LinearLayout.LayoutParams mLayoutparams = new LinearLayout.LayoutParams(Staticdata.ScreenWidth, (int) (Staticdata.ScreenWidth * 1.77));
+//        image.setLayoutParams(mLayoutparams);
+//        mLinearlauout_root.addView(image);
 
 
     }
