@@ -265,13 +265,62 @@ public class RegisterActivity extends BaseActivityother {
                     SharedPreferencesUtils.putString(RegisterActivity.this,"QMB","password",password);//登录成功之后存未加密de密码
                     userBean=new Gson().fromJson(respose,UserBean.class);
                     Staticdata. static_userBean=userBean;
-                    LogUtils.LOG("ceshi", respose + "1111111111", "RegisterActivity");
-                    isLogin = true;
-                    Utils.connect(Staticdata. static_userBean.getData().getAppuser().getRongCloud_token());
                     Userphonenumber=userBean.getData().getAppuser().getBusiness_mobile_no();//将电话号设为全局变量
-                    Intent intent_login = new Intent(RegisterActivity.this, ShanghuMainActivity.class);
-                    RegisterActivity.this.startActivity(intent_login);
-                    finish();
+                    LogUtils.LOG("ceshi", respose + "1111111111", "fragment_account");
+                    isLogin = true;
+                    Utils.connect(userBean.getData().getAppuser().getRongCloud_token());
+                    if(userBean.getData().getAppuser().getIs_business().equals("N")){
+                        new Volley_Utils(new Interface_volley_respose() {
+                            @Override
+                            public void onSuccesses(String respose) {
+
+                                int status = 0;
+                                String msg = "";
+                                String state = "";
+                                try {
+                                    JSONObject object = new JSONObject(respose);
+                                    status = (Integer) object.get("code");//
+                                    msg = (String) object.get("message");//
+                                    state = (String) object.get("status");//
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                if (state.equals("00")) {//审核通过
+                                    Intent intent_shopcenter = new Intent(RegisterActivity.this, ShopCenterNewActivity.class);
+                                    intent_shopcenter.putExtra("type", 2);//2  商户
+                                    startActivity(intent_shopcenter);
+                                    finish();
+
+                                } else if (state.equals("01")) {//没提交
+                                    Intent intent_shopin = new Intent(RegisterActivity.this, ShopInActivity.class);
+                                    startActivity(intent_shopin);
+
+                                } else if (state.equals("02")) {//正在审核
+//                                  Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
+//                               getActivity().startActivity(intent_shopinext);
+                                    Intent intent_submit = new Intent(RegisterActivity.this, SubmitSuccessActivity.class);
+                                    intent_submit.putExtra("state", "2");
+                                    startActivity(intent_submit);
+                                    RegisterActivity.this.finish();
+
+                                } else if (state.equals("03")) {//没提交审核
+                                    Intent intent_shopin = new Intent(RegisterActivity.this, ShopInActivity.class);
+                                    RegisterActivity.this.startActivity(intent_shopin);
+                                    RegisterActivity.this.finish();
+                                }
+                            }
+
+                            @Override
+                            public void onError(int error) {
+
+                            }
+                        }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), RegisterActivity.this, 0);
+
+                    }else {
+                        Intent intent_login = new Intent(RegisterActivity.this, ShanghuMainActivity.class);
+                        RegisterActivity.this.startActivity(intent_login);
+                        RegisterActivity.this.finish();
+                    }
                 }else {
                     ToastUtils.showToast(RegisterActivity.this,msg);
                 }
