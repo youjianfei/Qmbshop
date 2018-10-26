@@ -319,7 +319,6 @@ public class ShanghuMainActivity extends BaseActivityother {
 
    public void speak(){
 
-
         // 初始化合成对象
         mTts = SpeechSynthesizer.createSynthesizer(ShanghuMainActivity.this, mTtsInitListener);
 
@@ -343,7 +342,9 @@ public class ShanghuMainActivity extends BaseActivityother {
             LogUtils.LOG("ceshixunfei","语音合成失败,错误码: " + code,"mainactivity");
 
         }
-    }
+       LogUtils.LOG("ceshi","播放语音，","shanghumainactivity");
+
+   }
     /**
      * 参数设置
      * @return

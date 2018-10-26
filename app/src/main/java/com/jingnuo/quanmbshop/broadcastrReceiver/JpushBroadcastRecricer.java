@@ -36,7 +36,6 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
         if (extras != null && !extras.equals("")) {
             if (shanghuMainActivity != null) {
                 shanghuMainActivity.setdot();
-                shanghuMainActivity.speak();
             }
             try {
                 JSONObject object = new JSONObject(extras);
@@ -54,6 +53,9 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
             Staticdata.newmessageTYpe = "type3";
         } else if (type.equals("4")) {
             Staticdata.newmessageTYpe = "type4";
+            if (shanghuMainActivity != null) {
+                shanghuMainActivity.speak();
+            }
         }
 
         if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
@@ -72,6 +74,7 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
                 Intent[] intents = {mainIntent, intent_deal};
                 context.startActivities(intents);
             } else if (type.equals("1")) {
+
                 Intent mainIntent = new Intent(context, ShanghuMainActivity.class);
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Intent intent_system = new Intent(context, SystemMessageActivity.class);
@@ -79,12 +82,10 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
                 Intent[] intents = {mainIntent, intent_system};
                 context.startActivities(intents);
             } else if (type.equals("4")) {
+
                 Intent mainIntent = new Intent(context, ShanghuMainActivity.class);
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Intent intent_system = new Intent(context, TuijianrenwuActivity.class);
-                intent_system.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Intent[] intents = {mainIntent, intent_system};
-                context.startActivities(intents);
+                context.startActivity(mainIntent);
             }
 
         }

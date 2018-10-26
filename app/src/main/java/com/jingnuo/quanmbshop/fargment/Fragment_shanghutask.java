@@ -67,6 +67,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     TextView text_jiedan;
     TextView textview_ordercount;
     SimpleRatingBar simpleRatingBar;
+    ImageView image_huiyuan;
 
     //popwindow
     Popwindow_ShanghuIsjiedan popwindow_shanghuIsjiedan;
@@ -158,6 +159,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         mListview_shanghuorder.getRefreshableView().addHeaderView(listheadView);
 
         textview_ordercount = listheadView.findViewById(R.id.textview_ordercount);
+        image_huiyuan = listheadView.findViewById(R.id.image_huiyuan);
         simpleRatingBar = listheadView.findViewById(R.id.SimpleRatingBar);
         textview_money = listheadView.findViewById(R.id.textview_money);
         mTablayout_header = listheadView.findViewById(R.id.tablayout_head);
@@ -302,50 +304,6 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                     intent_shopcenter.putExtra("type", 2);//2  商户
                     getActivity().startActivity(intent_shopcenter);
                 }
-//                else {
-//                    new Volley_Utils(new Interface_volley_respose() {
-//                        @Override
-//                        public void onSuccesses(String respose) {
-//
-//                            int status = 0;
-//                            String msg = "";
-//                            String state = "";
-//                            try {
-//                                JSONObject object = new JSONObject(respose);
-//                                status = (Integer) object.get("code");//
-//                                msg = (String) object.get("message");//
-//                                state = (String) object.get("status");//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                            if (state.equals("00")) {//审核通过
-//                                Intent intent_shopcenter = new Intent(getActivity(), ShopCenterNewActivity.class);
-//                                intent_shopcenter.putExtra("type", 2);//2  商户
-//                                getActivity().startActivity(intent_shopcenter);
-//                            } else if (state.equals("01")) {//没提交
-//                                Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
-//                                getActivity().startActivity(intent_shopin);
-//
-//                            } else if (state.equals("02")) {//正在审核
-////                            Intent intent_shopinext=new Intent(getActivity(), ShopInNextActivity.class);
-////                            getActivity().startActivity(intent_shopinext);
-//                                Intent intent_submit = new Intent(getActivity(), SubmitSuccessActivity.class);
-//                                intent_submit.putExtra("state", "2");
-//                                startActivity(intent_submit);
-//
-//                            } else if (state.equals("03")) {//没提交审核
-//                                Intent intent_shopin = new Intent(getActivity(), ShopInActivity.class);
-//                                getActivity().startActivity(intent_shopin);
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onError(int error) {
-//
-//                        }
-//                    }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
-//
-//                }
                 break;
         }
     }
@@ -372,6 +330,11 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                     shopcenterBean = new Gson().fromJson(respose, ShopcenterBean.class);
                     textview_money.setText(shopcenterBean.getData().getList().getCommission()+"");
                    textview_ordercount.setText(shopcenterBean.getData().getList().getOrderSum()+"");
+                   if(shopcenterBean.getData().getList().getMemberImgUrl()==null){
+                       image_huiyuan.setBackgroundResource(R.mipmap.huiyuanno);
+                   }else {
+                       image_huiyuan.setBackgroundResource(R.mipmap.huiyuanyes);
+                   }
                     setstar((float) shopcenterBean.getData().getList().getEvaluation_star());
                 if(shopcenterBean.getData().getList().getPush_on_off().equals("Y")){//推送开关状态
                     text_jiedan.setText("自动接单");
