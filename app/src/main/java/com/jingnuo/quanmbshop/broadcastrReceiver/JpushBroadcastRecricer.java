@@ -53,6 +53,8 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
             Staticdata.newmessageTYpe = "type3";
         } else if (type.equals("4")) {
             Staticdata.newmessageTYpe = "type4";
+        }else if  (type.equals("5")){//预约下单提醒   属于交易提醒
+            Staticdata.newmessageTYpe = "type3";
             if (shanghuMainActivity != null) {
                 shanghuMainActivity.speak();
             }
@@ -82,7 +84,6 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
                 Intent[] intents = {mainIntent, intent_system};
                 context.startActivities(intents);
             } else if (type.equals("4")) {
-
                 Intent mainIntent = new Intent(context, ShanghuMainActivity.class);
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(mainIntent);
