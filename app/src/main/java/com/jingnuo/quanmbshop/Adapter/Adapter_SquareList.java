@@ -77,7 +77,7 @@ public class Adapter_SquareList extends  BaseAdapter {
             }
 
             if(mData.get(position).getIs_helper_bid().equals("Y")){
-                holder.mText_task_price.setText("商户出价");
+                holder.mText_task_price.setText("");
             }else {
                 holder.mText_task_price.setText(mData.get(position).getCommission()+"元");
             }
@@ -89,7 +89,7 @@ public class Adapter_SquareList extends  BaseAdapter {
             String time = Utils.getDistanceTime2(ago, now);//算出的差值
             holder.mText_task_creattime.setText(time);
             if(mData.get(position).getOrder_amount()==0){
-                holder.mText_task_price.setText("商户出价");
+                holder.mText_task_price.setText("");
             }else {
                 holder.mText_task_price.setText(mData.get(position).getOrder_amount()+"元");
             }
