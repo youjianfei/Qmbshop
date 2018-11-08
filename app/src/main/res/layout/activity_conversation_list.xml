@@ -250,8 +250,15 @@
         android:name="io.rong.imkit.fragment.ConversationListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/linearlayout_bottom"
+        android:layout_above="@+id/line1"
         android:layout_below="@+id/linearlayout_1"/>
+    <ImageView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_background"
+        android:layout_above="@+id/linearlayout_bottom"
+        />
     <LinearLayout
         android:id="@+id/linearlayout_bottom"
         android:layout_width="match_parent"

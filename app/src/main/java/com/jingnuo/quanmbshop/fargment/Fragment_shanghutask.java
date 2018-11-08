@@ -129,14 +129,10 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
 
             }
         }).Http(Urls.Baseurl_cui+Urls.push_on_off+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&push_on_off="+state,getActivity(),0);
-
-
-
-
     }
     private void initdata() {
         requestshopinfo();
-        if(Staticdata.xValue!=null){
+        if(!Staticdata.xValue.equals("")){
             request("00000", page);
         }
         mList=new ArrayList<>();
