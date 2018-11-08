@@ -147,7 +147,7 @@ public class CashoutActivity extends BaseActivityother implements PayPwdView.Inp
         map_cash.put("amount",amount);
         map_cash.put("payee_real_name",name);
         map_cash.put("TransferType",TransferType);
-        map_cash.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+        map_cash.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
         map_cash.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         return true;
     }
