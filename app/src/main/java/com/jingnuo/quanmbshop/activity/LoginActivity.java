@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.jaeger.library.StatusBarUtil;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
+import com.jingnuo.quanmbshop.class_.AppManager;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.UserBean;
@@ -136,6 +137,13 @@ public class LoginActivity extends BaseActivityother {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //退出
+        AppManager.getAppManager().AppExit(this);
+    }
+
+    @Override
     protected void initView() {
         mTextview_register=findViewById(R.id.text_register);
         mTabLayout_login=findViewById(R.id.tablayout_login);
@@ -148,8 +156,11 @@ public class LoginActivity extends BaseActivityother {
 
     @Override
     public void onClick(View v) {
-        super.onClick(v);
         switch (v.getId()){
+            case R.id.iv_back:
+                //退出
+                AppManager.getAppManager().AppExit(this);
+                break;
             case R.id.text_register:
                 Intent intent_register=new Intent(this,RegisterActivity.class);
                 startActivity(intent_register);

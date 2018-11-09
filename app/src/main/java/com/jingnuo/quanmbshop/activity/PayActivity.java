@@ -154,7 +154,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
 
             }
         }).Http(Urls.Baseurl_hu+Urls.getBalance+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
-        Staticdata.static_userBean.getData().getAppuser().getClient_no(),this,0);
+        Staticdata.static_userBean.getData().getAppuser().getBusiness_no(),this,0);
     }
 
     @Override
@@ -230,7 +230,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
                     map_pay.put("isrecharge","N");
                     map_pay.put("body",title_pay);
                     map_pay.put("total_fee",amount);
-                    map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                    map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                     map_pay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_pay.put("task_id",taskid);
                     map_pay.put("order_no",order_no);
@@ -256,7 +256,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
                     map_zpay.put("isrecharge","N");
                     map_zpay.put("subject",title_pay);
                     map_zpay.put("total_fee",amount);
-                    map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                    map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                     map_zpay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_zpay.put("task_id",taskid);
                     map_zpay.put("order_no",order_no);
@@ -331,7 +331,7 @@ public class PayActivity extends BaseActivityother implements PayPwdView.InputCa
         if(result.equals("1")){
             Map map_yue=new HashMap();
             map_yue.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
-            map_yue.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+            map_yue.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
             map_yue.put("pay_money",amount);
             map_yue.put("task_id",taskid);
             map_yue.put("order_no",order_no);

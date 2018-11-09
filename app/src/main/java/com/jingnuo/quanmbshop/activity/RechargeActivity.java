@@ -133,7 +133,7 @@ public class RechargeActivity extends BaseActivityother {
                         map_pay.put("isrecharge","Y");
                         map_pay.put("body","充值");
                         map_pay.put("total_fee",amount);
-                        map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                        map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                         map_pay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                         map_pay.put("task_id","0");
                         LogUtils.LOG("ceshi",map_pay.toString(),"充值");
@@ -146,7 +146,7 @@ public class RechargeActivity extends BaseActivityother {
                         map_zpay.put("isrecharge","Y");
                         map_zpay.put("subject","充值");
                         map_zpay.put("total_fee",amount);
-                        map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                        map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                         map_zpay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                         map_zpay.put("task_id","0");
                         LogUtils.LOG("ceshi",map_zpay.toString(),"支付宝qingqiu接口");

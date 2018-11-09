@@ -12,6 +12,7 @@ import android.view.WindowManager;
 
 import com.jaeger.library.StatusBarUtil;
 import com.jingnuo.quanmbshop.R;
+import com.jingnuo.quanmbshop.class_.AppManager;
 
 
 /**
@@ -24,7 +25,7 @@ public abstract class BaseActivityother extends Activity implements OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//添加Activity到堆栈
         setContentView(setLayoutResID());
 /**
  * 设置状态栏透明可以显示图片
@@ -38,6 +39,7 @@ public abstract class BaseActivityother extends Activity implements OnClickListe
 //        }
 
         StatusBarUtil.setColor(this, getResources().getColor(R.color.black ), 0);//状态栏颜色
+        AppManager.getAppManager().addActivity(this);
 
         initView();
         initData();
@@ -83,11 +85,18 @@ public abstract class BaseActivityother extends Activity implements OnClickListe
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()){
             case R.id.iv_back:
                 finish();
                 break;
 
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
     }
 }
