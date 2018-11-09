@@ -51,7 +51,7 @@ public class MonryMingxiActivity extends BaseActivityother {
         adapter_jiaoyimingxi=new Adapter_Jiaoyimingxi(mData,MonryMingxiActivity.this);
         listView.setAdapter(adapter_jiaoyimingxi);
         map_mingxi=new HashMap();
-        map_mingxi.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+        map_mingxi.put("business_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
 //        map_mingxi.put("type", "");   类型（1：支付，2：提现，3：充值，4：退款）
 //        map_mingxi.put("pay_method", "");  付款方式（微信：WX，支付宝：ZFB， 余额支付:QMB）
         map_mingxi.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());

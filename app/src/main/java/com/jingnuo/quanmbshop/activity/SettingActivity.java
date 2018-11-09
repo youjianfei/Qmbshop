@@ -154,11 +154,11 @@ public class SettingActivity extends BaseActivityother {
                 logout();
                 SharedPreferencesUtils.putString(this, "QMB", "password", "");
                 Staticdata.isLogin = false;
-                Staticdata.static_userBean.setData(null);//用户信息清空
-                RongIM.getInstance().disconnect();
                 if(ShanghuMainActivity.shanghuMainActivity!=null){
                     ShanghuMainActivity.shanghuMainActivity.finish();
                 }
+                RongIM.getInstance().disconnect();
+                Staticdata.static_userBean.setData(null);//用户信息清空
                 Intent intent_logout = new Intent(this, LoginActivity.class);
                 startActivity(intent_logout);
                 finish();

@@ -67,6 +67,37 @@
             android:background="@color/blue3"
             android:layout_alignParentBottom="true"
             >
+
+
+            <LinearLayout
+                android:id="@+id/linerlayout_mingxi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/mingxi"
+                    android:layout_centerVertical="true"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="交易明细"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                />
             <LinearLayout
                 android:id="@+id/linear_bankcard"
                 android:layout_width="0dp"
@@ -89,35 +120,6 @@
                     android:textColor="@color/white"
                     />
 
-            </LinearLayout>
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                />
-            <LinearLayout
-                android:id="@+id/linerlayout_mingxi"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal"
-                >
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/mingxi"
-                    android:layout_centerVertical="true"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="交易明细"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/white"
-                    />
             </LinearLayout>
             <ImageView
                 android:layout_width="1dp"

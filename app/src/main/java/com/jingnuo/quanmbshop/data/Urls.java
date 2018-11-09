@@ -9,15 +9,15 @@ public class Urls {
     public static String Baseurl_index = "http://v3.rabbitpre.com/m2/aUe1ZjN6ls";//分享的主页
     public static String Baseurl_zixunkefu = "http://www.quanminbang.top/QuanMinBang/v1.0/uploadIge/toH5";//客服咨询
     //正式
-    public static String Baseurl = "https://app.quanminbang.top/QMB_Business/v1.0/";
-    public static String Baseurl_cui = "https://app.quanminbang.top/QMB_Business/v1.0/";
-    public static String Baseurl_hu = "https://app.quanminbang.top/QMB_Business/v1.0/";
+//    public static String Baseurl = "https://app.quanminbang.top/QMB_Business/v1.0/";
+//    public static String Baseurl_cui = "https://app.quanminbang.top/QMB_Business/v1.0/";
+//    public static String Baseurl_hu = "https://app.quanminbang.top/QMB_Business/v1.0/";
 
 
     //  测试
-//    public static String Baseurl = "http://www.quanminbang.top/QMB_Business/v1.0/";
-//    public static String Baseurl_cui = "http://www.quanminbang.top/QMB_Business/v1.0/";
-//    public static String Baseurl_hu = "http://www.quanminbang.top/QMB_Business/v1.0/";
+    public static String Baseurl = "http://www.quanminbang.top/QMB_Business/v1.0/";
+    public static String Baseurl_cui = "http://www.quanminbang.top/QMB_Business/v1.0/";
+    public static String Baseurl_hu = "http://www.quanminbang.top/QMB_Business/v1.0/";
 
 
     //  本地
@@ -185,7 +185,7 @@ public class Urls {
     public static String zhifubaoPay = "ALiPay/dozhiAlipay";//支付宝支付
     public static String getBalance = "balance/getUserBalance?user_token=";//查询钱包余额
     public static String cashmoney = "ALiPay/aliTiZhuan";//提现
-    public static String jiaoyiMingxi = "balance/getTradeDetails";//查询交易明细
+    public static String jiaoyiMingxi = "balance/getBusinessTradeDetails";//查询交易明细
     public static String tui_taocan = "balance/getAllSpreadPags?user_token=";//充值推广币套餐列表接口
     public static String huiyuan_taocan = "balance/getAllVIPPackages?user_token=";//购买会员套餐接口
 
