@@ -105,26 +105,18 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".activity.MainActivity"
-            android:launchMode="singleTask" />
+
         <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTask" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.FindPasswordActivity" />
-        <activity android:name=".activity.AuthenticationActivity" />
-        <activity android:name=".activity.DatailAddressActivity" />
-        <activity android:name=".activity.AddAddressActivity" />
-        <activity
-            android:name=".activity.IssueTaskActivity"
-            android:launchMode="singleTask" />
+
         <activity android:name=".activity.SettingActivity" android:launchMode="singleTask" />
         <activity android:name=".activity.ChangepasswordActivity" />
         <activity android:name=".activity.ChangephoneNumberActivity" />
         <activity android:name=".activity.ChangephoneNumberNextActivity" />
         <activity android:name=".activity.SetPasswordActivity" />
-        <activity android:name=".activity.PersonInfoActivity" />
         <activity android:name=".activity.TaskDetailsActivity" />
         <activity android:name=".activity.ShopInActivity" />
         <activity android:name=".activity.LaunchActivity">
@@ -135,24 +127,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ShopInNextActivity" />
-        <activity android:name=".activity.BargainActivity" />
-        <activity android:name=".activity.ShophallActivity" />
         <activity android:name=".activity.SkillDetailActivity" />
         <activity android:name=".activity.LocationMapActivity" />
         <activity android:name=".activity.IssueSkillActivity" />
-        <activity android:name=".activity.ShopCenterActivity" />
         <activity android:name=".activity.SetNicknameActivity" />
-        <activity android:name=".activity.chooseImageActivity" />
-        <activity android:name=".activity.IssueTaskNextActivity" />
         <activity android:name=".activity.HelperOrderActivity" />
         <activity android:name=".activity.SystemMessageActivity" />
-        <activity android:name=".activity.BarginmessageListActivity" />
-        <activity android:name=".activity.MyOrderActivity" />
         <activity android:name=".activity.MytaskDetailActivity" />
         <activity android:name=".activity.ThreeRegisterActivity" />
         <activity android:name=".activity.ThreeLoginBindActivity" />
         <activity android:name=".activity.MyTodoActivity" />
-        <activity android:name=".activity.MyAuthenticationActivity" />
         <activity android:name=".activity.MySkillActivity" />
         <activity android:name=".activity.DealActivity" />
         <activity android:name=".activity.PayActivity" />
@@ -201,35 +185,10 @@
         <activity android:name=".activity.PaySuccessActivity" />
         <activity android:name=".activity.AboutUsActivity" />
         <activity android:name=".activity.FirstLoginActivity" />
-        <activity android:name=".activity.HelperType" />
         <activity android:name=".activity.TuijianrenwuActivity" />
         <activity android:name=".activity.AdressShowActivity" />
-        <activity android:name=".activity.LoveTaskActivity" />
-        <activity android:name=".activity.LoveTaskDetailsActivity" />
-        <activity android:name=".activity.MessageWallEditActivity" />
-        <activity android:name=".activity.IssuelovetaskActivity" />
-        <activity android:name=".activity.MyShequActivity" />
-        <activity android:name=".activity.ShuidianfeiActivity" />
-        <activity android:name=".activity.ShezhishequActivity" />
-        <activity android:name=".activity.FulisheActivity" />
-        <activity android:name=".activity.ErShoushichangActivity" />
-        <activity android:name=".activity.IssueErshoushichangActivity" />
-        <activity android:name=".activity.ErshouxinxiDetailsActivity" />
-        <activity
-            android:name=".activity.SquareActuvity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".activity.MessageActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".activity.SkillActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".activity.MatchShopActivity" />
         <activity android:name=".activity.XieyZhuceiActivity" />
-        <activity android:name=".activity.XieYiShanghuActivity" />
         <activity android:name=".activity.ZixunKefuWebActivity" />
-        <activity android:name=".activity.LookShequ" />
-        <activity android:name=".activity.GuanggaoWeb" />
         <activity android:name=".activity.JubaoActivity" />
         <activity
             android:name=".activity.ConversationActivity"
@@ -263,7 +222,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HelperguizeActivity" />
-        <activity android:name=".activity.TuiyajinActivity" />
         <activity android:name=".activity.ShopCenterNewActivity" />
         <activity android:name=".activity.ShanghuMainActivity"
             android:launchMode="singleTask" ></activity>

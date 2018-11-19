@@ -36,7 +36,7 @@ public class AdressShowActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adress_show);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);//状态栏颜色
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.black), 0);//状态栏颜色
         mMapview = findViewById(R.id.map);
         mImageview=findViewById(R.id.iv_back);
         mImageview.setOnClickListener(this);

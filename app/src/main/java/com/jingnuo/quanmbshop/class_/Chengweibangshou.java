@@ -4,14 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
-import com.jingnuo.quanmbshop.activity.AuthenticationActivity;
-import com.jingnuo.quanmbshop.activity.HelperType;
-import com.jingnuo.quanmbshop.activity.ShopCenterActivity;
 import com.jingnuo.quanmbshop.activity.SubmitSuccessActivity;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.utils.LogUtils;
-import com.jingnuo.quanmbshop.utils.ToastUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 
 import org.json.JSONException;
@@ -92,8 +88,8 @@ public class Chengweibangshou {
                         intent_submit.putExtra("state","3");
                         activity.startActivity(intent_submit);
                     }else if(status==0){//没提交
-                        Intent intent_shopin=new Intent(activity, AuthenticationActivity.class);
-                        activity.startActivity(intent_shopin);
+//                        Intent intent_shopin=new Intent(activity, AuthenticationActivity.class);
+//                        activity.startActivity(intent_shopin);
 
                     }else if(state.equals("1")){//正在审核
 

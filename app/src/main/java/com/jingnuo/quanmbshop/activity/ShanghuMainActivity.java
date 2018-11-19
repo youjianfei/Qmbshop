@@ -44,7 +44,6 @@ import com.jingnuo.quanmbshop.class_.Permissionmanage;
 import com.jingnuo.quanmbshop.customview.SimpleRatingBar;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
-import com.jingnuo.quanmbshop.entityclass.MyTodoBean;
 import com.jingnuo.quanmbshop.entityclass.ShanghuneworderBean;
 import com.jingnuo.quanmbshop.entityclass.ShopcenterBean;
 import com.jingnuo.quanmbshop.popwinow.Popwindow_ShanghuIsjiedan;

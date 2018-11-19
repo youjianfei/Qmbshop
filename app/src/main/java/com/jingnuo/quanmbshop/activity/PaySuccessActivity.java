@@ -95,8 +95,8 @@ public class PaySuccessActivity extends BaseActivityother {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_back:
-                Intent  intent=new Intent(PaySuccessActivity.this,MainActivity.class);
-                startActivity(intent);
+//                Intent  intent=new Intent(PaySuccessActivity.this,MainActivity.class);
+//                startActivity(intent);
                 break;
         }
     }

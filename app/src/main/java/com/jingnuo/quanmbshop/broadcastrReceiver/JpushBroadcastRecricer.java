@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.jingnuo.quanmbshop.activity.BarginmessageListActivity;
 import com.jingnuo.quanmbshop.activity.DealActivity;
 import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
 import com.jingnuo.quanmbshop.activity.SystemMessageActivity;
@@ -62,12 +61,12 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
 
         if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             if (type.equals("2")) {
-                Intent mainIntent = new Intent(context, ShanghuMainActivity.class);
-                mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Intent intent_bargain = new Intent(context, BarginmessageListActivity.class);
-                intent_bargain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Intent[] intents = {mainIntent, intent_bargain};
-                context.startActivities(intents);
+//                Intent mainIntent = new Intent(context, ShanghuMainActivity.class);
+//                mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                Intent intent_bargain = new Intent(context, BarginmessageListActivity.class);
+//                intent_bargain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                Intent[] intents = {mainIntent, intent_bargain};
+//                context.startActivities(intents);
             } else if (type.equals("3")) {
                 Intent mainIntent = new Intent(context, ShanghuMainActivity.class);
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

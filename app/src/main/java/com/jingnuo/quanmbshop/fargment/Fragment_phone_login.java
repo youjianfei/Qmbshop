@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.Interface.SendYanZhengmaSuccess;
 import com.jingnuo.quanmbshop.R;
-import com.jingnuo.quanmbshop.activity.MainActivity;
 import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
 import com.jingnuo.quanmbshop.popwinow.ProgressDlog;
 import com.jingnuo.quanmbshop.class_.SendYanZhengMa;

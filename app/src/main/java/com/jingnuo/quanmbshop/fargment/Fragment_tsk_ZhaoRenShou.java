@@ -30,8 +30,6 @@ import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.InterfacePopwindow_SkillType;
 import com.jingnuo.quanmbshop.Interface.Interface_loadImage_respose;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
-import com.jingnuo.quanmbshop.activity.IssueTaskActivity;
-import com.jingnuo.quanmbshop.activity.IssueTaskNextActivity;
 import com.jingnuo.quanmbshop.activity.LocationMapActivity;
 import com.jingnuo.quanmbshop.activity.PayActivity;
 import com.jingnuo.quanmbshop.class_.DataTime_select;

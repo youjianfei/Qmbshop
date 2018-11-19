@@ -39,7 +39,7 @@ public abstract class BaseActivityother extends Activity implements OnClickListe
 //        }
 
         StatusBarUtil.setColor(this, getResources().getColor(R.color.black ), 0);//状态栏颜色
-        AppManager.getAppManager().addActivity(this);
+        AppManager.getAppManager().addActivity(this);//将activity加入到appmanager
 
         initView();
         initData();

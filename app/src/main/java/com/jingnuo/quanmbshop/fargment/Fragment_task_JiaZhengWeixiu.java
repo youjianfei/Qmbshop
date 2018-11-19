@@ -28,7 +28,6 @@ import com.jingnuo.quanmbshop.Interface.InterfaceDate_select;
 import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.InterfacePopwindow_SkillType;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
-import com.jingnuo.quanmbshop.activity.IssueTaskNextActivity;
 import com.jingnuo.quanmbshop.activity.LocationMapActivity;
 import com.jingnuo.quanmbshop.class_.DataTime_select;
 import com.jingnuo.quanmbshop.class_.GlideLoader;
@@ -242,9 +241,6 @@ public class Fragment_task_JiaZhengWeixiu extends Fragment implements View.OnCli
                             if (status == 1) {
                                 Staticdata.map_task.put("check", 1 + "");
                                 LogUtils.LOG("ceshi", "图片地址的个数" + Staticdata.imagePathlist.size(), "发布任务图片");
-                                Intent intent = new Intent(getActivity(), IssueTaskNextActivity.class);
-                                intent.putExtra("issuetask","zhaoshanghu");
-                                startActivity(intent);
                             } else {
                                 ToastUtils.showToast(getActivity(), msg);
                             }

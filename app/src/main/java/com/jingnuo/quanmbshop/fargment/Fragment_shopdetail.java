@@ -15,27 +15,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jingnuo.quanmbshop.Interface.Interence_complteTask;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
-import com.jingnuo.quanmbshop.activity.IssueTaskNextActivity;
-import com.jingnuo.quanmbshop.activity.MainActivity;
 import com.jingnuo.quanmbshop.activity.MytaskDetailActivity;
-import com.jingnuo.quanmbshop.activity.PayActivity;
-import com.jingnuo.quanmbshop.activity.SkillDetailActivity;
 import com.jingnuo.quanmbshop.customview.SimpleRatingBar;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.Matchshoplistbean;
 import com.jingnuo.quanmbshop.popwinow.Popwindow_Tip;
-import com.jingnuo.quanmbshop.utils.ToastUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 import com.master.permissionhelper.PermissionHelper;
 

@@ -326,8 +326,8 @@ public class HelperOrderActivity extends BaseActivityother {
         switch (v.getId()){
             case R.id.iv_back:
                 if(whichactivity==1){
-                    Intent intent=new Intent(HelperOrderActivity.this,SquareActuvity.class);
-                    startActivity(intent);
+//                    Intent intent=new Intent(HelperOrderActivity.this,SquareActuvity.class);
+//                    startActivity(intent);
                 }else {
                     finish();
                 }
@@ -339,9 +339,9 @@ public class HelperOrderActivity extends BaseActivityother {
     @Override
     public void onBackPressed() {
         if(whichactivity==1){
-            Intent intent=new Intent(HelperOrderActivity.this,SquareActuvity.class);
-            intent.putExtra("refresh",1);
-            startActivity(intent);
+//            Intent intent=new Intent(HelperOrderActivity.this,SquareActuvity.class);
+//            intent.putExtra("refresh",1);
+//            startActivity(intent);
         }else {
             finish();
         }

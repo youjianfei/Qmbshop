@@ -69,10 +69,6 @@ public class SubmitSuccessActivity extends BaseActivityother {
                     Intent intent_payBanzheng=new Intent(SubmitSuccessActivity.this,PayBaozhengmoneyActivity.class);
                     startActivity(intent_payBanzheng);
                     finish();
-                }else if(state.equals("4")){
-                    Intent intent_again=new Intent(SubmitSuccessActivity.this,AuthenticationActivity.class);
-                    startActivity(intent_again);
-                    finish();
                 }
             }
         });

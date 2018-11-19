@@ -3,10 +3,7 @@ package com.jingnuo.quanmbshop.broadcastrReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.jingnuo.quanmbshop.activity.LaunchActivity;
-import com.jingnuo.quanmbshop.activity.MainActivity;
 import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
-import com.jingnuo.quanmbshop.activity.TuijianrenwuActivity;
 import com.jingnuo.quanmbshop.utils.LogUtils;
 
 import io.rong.push.notification.PushMessageReceiver;

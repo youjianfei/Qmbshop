@@ -29,9 +29,7 @@ import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.InterfacePopwindow_SkillType;
 import com.jingnuo.quanmbshop.Interface.Interface_loadImage_respose;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
-import com.jingnuo.quanmbshop.activity.IssueTaskNextActivity;
 import com.jingnuo.quanmbshop.activity.LocationMapActivity;
-import com.jingnuo.quanmbshop.activity.MatchShopActivity;
 import com.jingnuo.quanmbshop.class_.DataTime_select;
 import com.jingnuo.quanmbshop.class_.GlideLoader;
 import com.jingnuo.quanmbshop.class_.Permissionmanage;
@@ -279,22 +277,6 @@ public class Fragment_task_ZhaoShangHu extends Fragment implements View.OnClickL
                     msg = (String) object.get("message");//
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }
-                if (status == 1) {
-                    Intent intent = new Intent(getActivity(), MatchShopActivity.class);
-                    intent.putExtra("respose",respose);
-                    intent.putExtra("id",Staticdata.map_task.get("task_id")+"");
-                    startActivity(intent);
-
-                    Staticdata.imagePathlist.clear();
-                    Staticdata.map_task.clear();
-
-                } else {
-                    ToastUtils.showToast(getActivity(),"附近没有此类型商户");
-                    count = 0;
-                    mList_picID.clear();
-                    mKProgressHUD.dismiss();
-                    ToastUtils.showToast(getActivity(), msg);
                 }
 
             }

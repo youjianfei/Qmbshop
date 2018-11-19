@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.activity.FindPasswordActivity;
-import com.jingnuo.quanmbshop.activity.MainActivity;
 import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
 import com.jingnuo.quanmbshop.activity.ShopCenterNewActivity;
 import com.jingnuo.quanmbshop.activity.ShopInActivity;
