@@ -4,9 +4,10 @@ import java.util.List;
 
 public class HuiyuanTaocanBean {
 
+
     /**
      * code : 1
-     * data : [{"member_id":3,"member_level":500,"package_name":"三个月会员","price":500,"spread_b":100},{"member_id":4,"member_level":800,"package_name":"六个月会员","price":800,"spread_b":300},{"member_id":1,"member_level":1000,"package_name":"一年会员","price":1000,"spread_b":500},{"member_id":2,"member_level":2200,"package_name":"两年会员","price":1800,"spread_b":1200},{"member_id":5,"member_level":3000,"package_name":"三年会员","price":2600,"spread_b":1800},{"member_id":6,"member_level":5000,"package_name":"五年会员","price":3500,"spread_b":2500}]
+     * data : [{"discount":"","member_id":1,"member_level":150,"months":1,"org_price":"","package_name":"一个月","price":800,"spread_b":0},{"discount":"五折","member_id":2,"member_level":500,"months":3,"org_price":"2400.00","package_name":"三个月","price":1200,"spread_b":0},{"discount":"五折","member_id":3,"member_level":1200,"months":6,"org_price":"4800.00","package_name":"六个月","price":2400,"spread_b":0},{"discount":"五折","member_id":4,"member_level":2500,"months":12,"org_price":"9600.00","package_name":"一年","price":4800,"spread_b":0}]
      * msg : 获取成功
      */
 
@@ -40,26 +41,31 @@ public class HuiyuanTaocanBean {
 
     public static class DataBean {
         /**
-         * member_id : 3
-         * member_level : 500
-         * package_name : 三个月会员
-         * price : 500.0
-         * spread_b : 100
+         * discount :
+         * member_id : 1
+         * member_level : 150
+         * months : 1
+         * org_price :
+         * package_name : 一个月
+         * price : 800.0
+         * spread_b : 0
          */
 
+        private String discount;
         private int member_id;
         private int member_level;
+        private int months;
+        private String org_price;
         private String package_name;
         private double price;
         private int spread_b;
-        private int months;
 
-        public int getMonths() {
-            return months;
+        public String getDiscount() {
+            return discount;
         }
 
-        public void setMonths(int months) {
-            this.months = months;
+        public void setDiscount(String discount) {
+            this.discount = discount;
         }
 
         public int getMember_id() {
@@ -76,6 +82,22 @@ public class HuiyuanTaocanBean {
 
         public void setMember_level(int member_level) {
             this.member_level = member_level;
+        }
+
+        public int getMonths() {
+            return months;
+        }
+
+        public void setMonths(int months) {
+            this.months = months;
+        }
+
+        public String getOrg_price() {
+            return org_price;
+        }
+
+        public void setOrg_price(String org_price) {
+            this.org_price = org_price;
         }
 
         public String getPackage_name() {

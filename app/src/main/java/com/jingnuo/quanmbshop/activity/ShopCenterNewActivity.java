@@ -33,6 +33,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
     CircleImageView iamgeview_shopheadpic;
     TextView textview_shopname;
     TextView textview_shoptype;
+    TextView textview_guize;
     LinearLayout linearlayout_jineng;
     LinearLayout linearlayout_qianbao;
     LinearLayout linearlayout_tuiguangbi;
@@ -79,6 +80,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_kefu.setOnClickListener(this);
         linearlayout_jiaoxue.setOnClickListener(this);
         linearlayout_fenxiang.setOnClickListener(this);
+        textview_guize.setOnClickListener(this);
     }
 
     @Override
@@ -94,12 +96,14 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_kefu = findViewById(R.id.linearlayout_kefu);
         linearlayout_jiaoxue = findViewById(R.id.linearlayout_jiaoxue);
         linearlayout_fenxiang = findViewById(R.id.linearlayout_fenxiang);
+        textview_guize = findViewById(R.id.textview_guize);
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
+
             case R.id.iv_setting:
                 Intent intent_setting = new Intent(this, SettingActivity.class);
                 startActivity(intent_setting);
@@ -135,10 +139,15 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 break;
             case R.id.linearlayout_jiaoxue://教学
                 Intent intent_shopcenter = new Intent(this, HelperguizeActivity.class);
-                intent_shopcenter.putExtra("title", "接单规则");
+                intent_shopcenter.putExtra("title", "商家教学");
                 startActivity(intent_shopcenter);
                 break;
-            case R.id.linearlayout_fenxiang://分享  todo 微信分享的内容网址是否需要更改
+            case R.id.textview_guize:
+                Intent intent_shangjiaguize= new Intent(this, HelperguizeActivity.class);
+                intent_shangjiaguize.putExtra("title", "商家规则");
+                startActivity(intent_shangjiaguize);
+                break;
+            case R.id.linearlayout_fenxiang://分享
                 if (Utils.isWxInstall(this)) {
                     shareClass.shareapp();
                 } else {

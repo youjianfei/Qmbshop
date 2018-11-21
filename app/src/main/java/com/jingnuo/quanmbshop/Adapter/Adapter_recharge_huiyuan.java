@@ -1,6 +1,7 @@
 package com.jingnuo.quanmbshop.Adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,17 +32,29 @@ public class Adapter_recharge_huiyuan extends BaseAdapter {
         LinearLayout mlinearlayout=convertView.findViewById(R.id.layout_back);
         TextView mTextview_price=convertView.findViewById(R.id.text_hui_price);
         TextView mTextview_huiyuan=convertView.findViewById(R.id.text_huiyuan);
-        TextView mTextview_tui=convertView.findViewById(R.id.text_tui);
+        TextView text_yuanjia=convertView.findViewById(R.id.text_yuanjia);
+        TextView text_dazhe=convertView.findViewById(R.id.textview_dazhe);
         if(select==position){
-            mlinearlayout.setBackgroundResource(R.mipmap.tuiguang_y);
-            mTextview_price.setTextColor(mContext.getResources().getColor(R.color.yellow_jianbian_end));
-            mTextview_huiyuan.setTextColor(mContext.getResources().getColor(R.color.yellow_jianbian_end));
-            mTextview_tui.setTextColor(mContext.getResources().getColor(R.color.yellow_jianbian_end));
-        }
-        mTextview_price.setText("￥"+mdata.get(position).getPrice());
-        mTextview_huiyuan.setText(mdata.get(position).getPackage_name());
-        mTextview_tui.setText("送"+mdata.get(position).getSpread_b()+"个推广币");
+            mlinearlayout.setBackgroundResource(R.drawable.red_background_5);
+            mTextview_price.setTextColor(mContext.getResources().getColor(R.color.white));
+            mTextview_huiyuan.setTextColor(mContext.getResources().getColor(R.color.white));
+            text_yuanjia.setTextColor(mContext.getResources().getColor(R.color.white));
+            text_dazhe.setTextColor(mContext.getResources().getColor(R.color.red));
+            text_dazhe.setBackgroundResource(R.mipmap.huiyuandazhe_white);
 
+        }
+        if(mdata.get(position).getDiscount().equals("")){
+            text_dazhe.setVisibility(View.INVISIBLE);
+            text_yuanjia.setVisibility(View.GONE);
+        }else {
+            text_dazhe.setVisibility(View.VISIBLE);
+            text_yuanjia.setVisibility(View.VISIBLE);
+        }
+        mTextview_price.setText(mdata.get(position).getPrice()+"");
+        text_yuanjia.setText("原价"+mdata.get(position).getOrg_price());
+        text_yuanjia.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
+        mTextview_huiyuan.setText(mdata.get(position).getPackage_name());
+        text_dazhe.setText(mdata.get(position).getDiscount());
         return convertView;
     }
 }

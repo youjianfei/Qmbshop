@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.jingnuo.quanmbshop.Adapter.Adapter_recharge_huiyuan;
 import com.jingnuo.quanmbshop.Adapter.BaseAdapter;
@@ -20,6 +23,7 @@ import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.HuiyuanTaocanBean;
 import com.jingnuo.quanmbshop.entityclass.TuiguangbiTaocanBean;
 import com.jingnuo.quanmbshop.utils.LogUtils;
+import com.jingnuo.quanmbshop.utils.SizeUtils;
 import com.jingnuo.quanmbshop.utils.ToastUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 import com.jingnuo.quanmbshop.R;
@@ -31,7 +35,7 @@ public class HuiyuanRechargeActivity extends BaseActivityother {
     //控件
     MyGridView myGridView;
     Button mButton_queren;
-
+    LinearLayout iamge_newacount;
 
     List<HuiyuanTaocanBean.DataBean>mdata;
     Adapter_recharge_huiyuan adapter_recharge_huiyuan;
@@ -117,6 +121,16 @@ public class HuiyuanRechargeActivity extends BaseActivityother {
     protected void initView() {
         myGridView=findViewById(R.id.mygrid_huiyuanrecharge);
         mButton_queren=findViewById(R.id.button_queren);
+        iamge_newacount=findViewById(R.id.iamge_newacount);
+
+
+        ImageView image = new ImageView(HuiyuanRechargeActivity.this);
+        image.setBackgroundResource(R.mipmap.huiyuan_zi);
+        int w=Staticdata.ScreenWidth- SizeUtils.dip2px(this,40);
+        int h= (int) (w*0.06);
+        LinearLayout.LayoutParams mLayoutparams = new LinearLayout.LayoutParams(w, h);
+        image.setLayoutParams(mLayoutparams);
+        iamge_newacount.addView(image);
     }
     void  requestHuiyuan_grid(){
         new Volley_Utils(new Interface_volley_respose() {

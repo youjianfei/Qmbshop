@@ -36,38 +36,47 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
-        android:layout_marginTop="10dp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="会员套餐"
-            android:layout_marginTop="10dp"
+            android:text="请选择充值金额"
+            android:layout_marginTop="25dp"
             android:layout_marginLeft="20dp"
-            android:textColor="@color/blue2"
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp"
+            android:textSize="25dp"
             />
         <com.jingnuo.quanmbshop.customview.MyGridView
             android:id="@+id/mygrid_huiyuanrecharge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:horizontalSpacing="5dp"
-            android:verticalSpacing="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:numColumns="3"
+            android:layout_marginTop="15dp"
+            android:horizontalSpacing="20dp"
+            android:verticalSpacing="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:numColumns="2"
             />
         <Button
             android:id="@+id/button_queren"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/button_yellow_20dp"
-            android:text="确  认"
+            android:background="@drawable/button_red_20dp"
+            android:text="确  定"
             android:textColor="@color/white"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="30dp"
             />
+        <LinearLayout
+            android:id="@+id/iamge_newacount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal" />
     </LinearLayout>
+
 
 </LinearLayout>
