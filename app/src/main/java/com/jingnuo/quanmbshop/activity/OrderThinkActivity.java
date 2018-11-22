@@ -145,8 +145,8 @@ public class OrderThinkActivity extends BaseActivityother {
                 String msg = "";
                 try {
                     JSONObject object = new JSONObject(respose);
-                    status = (Integer) object.get("code");//登录状态
-                    msg = (String) object.get("message");//登录返回信息
+                    status = (Integer) object.get("code");
+                    msg = (String) object.get("message");
 
                     if (status == 1) {
                         ToastUtils.showToast(OrderThinkActivity.this, msg);

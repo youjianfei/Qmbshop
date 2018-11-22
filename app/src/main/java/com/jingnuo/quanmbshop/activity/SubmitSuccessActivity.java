@@ -65,11 +65,11 @@ public class SubmitSuccessActivity extends BaseActivityother {
         mButton_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(state.equals("3")){
-                    Intent intent_payBanzheng=new Intent(SubmitSuccessActivity.this,PayBaozhengmoneyActivity.class);
-                    startActivity(intent_payBanzheng);
-                    finish();
-                }
+//                if(state.equals("3")){
+//                    Intent intent_payBanzheng=new Intent(SubmitSuccessActivity.this,PayBaozhengmoneyActivity.class);
+//                    startActivity(intent_payBanzheng);
+//                    finish();
+//                }
             }
         });
         text_changeaccount.setOnClickListener(new View.OnClickListener() {

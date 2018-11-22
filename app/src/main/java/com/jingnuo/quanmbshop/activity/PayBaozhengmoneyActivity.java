@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.jingnuo.quanmbshop.Interface.Interface_paySuccessOrerro;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
@@ -36,15 +37,19 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
     RelativeLayout mRelativeLayout_wechat;
     RelativeLayout mRelativeLayout_zhifubao;
 
-    ImageView image_yue;
+    TextView textneedmoney;
+
+//    ImageView image_yue;
     ImageView image_wechat;
     ImageView image_zhifubao;
 
     Button mButton_submit;
 
     PayFragment fragment;
+
+    String needmoney="";
     double balance=0;//余额
-    int pay=1;  //1 余额支付 2 微信支付  3 支付宝支付
+    int pay=2;  //1 余额支付 2 微信支付  3 支付宝支付
     String title_pay="缴纳保证金";
     private IWXAPI api;
 
@@ -64,28 +69,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
             public void onSuccesses(String respose) {
                 LogUtils.LOG("ceshi", respose, "payResult");
                 if(respose.equals("success")){//支付成功
-                    new  Volley_Utils(new Interface_volley_respose() {
-                        @Override
-                        public void onSuccesses(String respose) {
-                        LogUtils.LOG("ceshi",respose,"缴纳保证金成功");
-                            int status = 0;
-                            String msg = "";
-                            try {
-                                JSONObject object = new JSONObject(respose);
-                                status = (Integer) object.get("code");//
-                                msg = (String) object.get("msg");//
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            ToastUtils.showToast(PayBaozhengmoneyActivity.this,msg);
-                        }
-
-                        @Override
-                        public void onError(int error) {
-
-                        }
-                    }).Http(Urls.Baseurl_hu+Urls.BaoSuccess+Staticdata.static_userBean.getData().getAppuser().getUser_token()+
-                    "&client_no="+Staticdata.static_userBean.getData().getAppuser().getClient_no(),PayBaozhengmoneyActivity.this,0);
+                    finish();
                 }
             }
 
@@ -104,14 +88,15 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
 
     @Override
     protected void initData() {
+        needmoney=getIntent().getStringExtra("money");
+        textneedmoney.setText("交"+needmoney+"元保证金");
         api = WXAPIFactory.createWXAPI(PayBaozhengmoneyActivity.this, Staticdata.WechatApi);//微信支付用到
-        requestYue();
-        image_yue.setSelected(true);
+//        requestYue();
+        image_wechat.setSelected(true);
     }
 
     @Override
     protected void initListener() {
-        mRelativeLayout_yue.setOnClickListener(this);
         mRelativeLayout_wechat.setOnClickListener(this);
         mRelativeLayout_zhifubao.setOnClickListener(this);
         mButton_submit.setOnClickListener(this);
@@ -119,10 +104,11 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
 
     @Override
     protected void initView() {
-        mRelativeLayout_yue=findViewById(R.id.relayoutyue);
+//        mRelativeLayout_yue=findViewById(R.id.relayoutyue);
         mRelativeLayout_wechat=findViewById(R.id.relayout_wechat);
         mRelativeLayout_zhifubao=findViewById(R.id.relayout_zhifubao);
-        image_yue = findViewById(R.id.image_yue);
+//        image_yue = findViewById(R.id.image_yue);
+        textneedmoney=findViewById(R.id.textneedmoney);
         image_wechat = findViewById(R.id.image_wechat);
         image_zhifubao = findViewById(R.id.image_zhifubao);
         mButton_submit=findViewById(R.id.button_submit);
@@ -132,24 +118,24 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
-            case R.id.relayoutyue:
-                if(balance<99){
-                    ToastUtils.showToast(this,"余额不足");
-                    return;
-                }
-                image_yue.setSelected(true);
-                image_wechat.setSelected(false);
-                image_zhifubao.setSelected(false);
-                pay=1;
-                break;
+//            case R.id.relayoutyue:
+//                if(balance<99){
+//                    ToastUtils.showToast(this,"余额不足");
+//                    return;
+//                }
+//                image_yue.setSelected(true);
+//                image_wechat.setSelected(false);
+//                image_zhifubao.setSelected(false);
+//                pay=1;
+//                break;
             case R.id.relayout_wechat:
-                image_yue.setSelected(false);
+//                image_yue.setSelected(false);
                 image_wechat.setSelected(true);
                 image_zhifubao.setSelected(false);
                 pay=2;
                 break;
             case R.id.relayout_zhifubao:
-                image_yue.setSelected(false);
+//                image_yue.setSelected(false);
                 image_wechat.setSelected(false);
                 image_zhifubao.setSelected(true);
                 pay=3;
@@ -178,8 +164,8 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
                     Map map_pay=new HashMap();
                     map_pay.put("isrecharge","N");
                     map_pay.put("body",title_pay);
-                    map_pay.put("total_fee","99");
-                    map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                    map_pay.put("total_fee",needmoney);
+                    map_pay.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                     map_pay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_pay.put("task_id","1");
                     LogUtils.LOG("ceshi",map_pay.toString(),"缴纳保证金");
@@ -191,8 +177,8 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
                     Map map_zpay=new HashMap();
                     map_zpay.put("isrecharge","N");
                     map_zpay.put("subject",title_pay);
-                    map_zpay.put("total_fee","99");
-                    map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                    map_zpay.put("total_fee",needmoney);
+                    map_zpay.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                     map_zpay.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_zpay.put("task_id","1");
                     LogUtils.LOG("ceshi",map_zpay.toString(),"支付宝qingqiu接口");
@@ -241,41 +227,41 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
             }
         }).postHttp(Urls.Baseurl_hu+Urls.balancePay,this,1,map);
     }
-    void requestYue(){
-        new Volley_Utils(new Interface_volley_respose() {
-            @Override
-            public void onSuccesses(String respose) {
-                LogUtils.LOG("ceshi",respose,"显示余额");
-                int status = 0;
-                String msg = "";
-                String balan="";
-                try {
-                    JSONObject object = new JSONObject(respose);
-                    status = (Integer) object.get("code");//
-                    msg = (String) object.get("msg");//
-                    if(status==1){
-                        balan=(String) object.get("balance");
-                        balance= Double.parseDouble(balan);
-                        if(balance<99){
-                            image_yue.setSelected(false);
-                            image_wechat.setSelected(true);
-                            image_zhifubao.setSelected(false);
-                            pay=2;
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onError(int error) {
-
-            }
-        }).Http(Urls.Baseurl_hu+Urls.getBalance+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
-                Staticdata.static_userBean.getData().getAppuser().getClient_no(),this,0);
-    }
+//    void requestYue(){
+//        new Volley_Utils(new Interface_volley_respose() {
+//            @Override
+//            public void onSuccesses(String respose) {
+//                LogUtils.LOG("ceshi",respose,"显示余额");
+//                int status = 0;
+//                String msg = "";
+//                String balan="";
+//                try {
+//                    JSONObject object = new JSONObject(respose);
+//                    status = (Integer) object.get("code");//
+//                    msg = (String) object.get("msg");//
+//                    if(status==1){
+//                        balan=(String) object.get("balance");
+//                        balance= Double.parseDouble(balan);
+//                        if(balance<99){
+////                            image_yue.setSelected(false);
+//                            image_wechat.setSelected(true);
+//                            image_zhifubao.setSelected(false);
+//                            pay=2;
+//                        }
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onError(int error) {
+//
+//            }
+//        }).Http(Urls.Baseurl_hu+Urls.getBalance+Staticdata.static_userBean.getData().getAppuser().getUser_token()+"&client_no="+
+//                Staticdata.static_userBean.getData().getAppuser().getClient_no(),this,0);
+//    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -288,7 +274,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
             Map map_yue=new HashMap();
             map_yue.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
             map_yue.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
-            map_yue.put("pay_money","99");
+            map_yue.put("pay_money",needmoney);
             map_yue.put("task_id","1");
             balancePay(map_yue);
         }else {

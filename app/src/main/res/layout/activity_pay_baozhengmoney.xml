@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.jingnuo.quanmbshop.activity.PayBaozhengmoneyActivity">
     <RelativeLayout
         android:id="@+id/re_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -19,28 +20,29 @@
             android:padding="10dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/back_black" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="缴纳保证金"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:src="@mipmap/back_white" />
+
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="交保证金"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:layout_margin="15dp"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@drawable/button_yellow_5dp"
-        android:layout_margin="5dp"
+        android:background="@drawable/red_5dp"
+        android:layout_margin="15dp"
         >
         <TextView
-            android:id="@+id/text11"
+            android:id="@+id/textneedmoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="缴纳99元保证金"
+            android:text="交899元保证金"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:layout_marginTop="10dp"
@@ -51,59 +53,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="保证金随时退，安全有保障"
-            android:layout_below="@+id/text11"
+            android:layout_below="@+id/textneedmoney"
             android:textColor="@color/white"
             android:textSize="12dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             />
     </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/relayoutyue"
+    <LinearLayout
+        android:id="@+id/learlayout_tip2"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_below="@+id/relativelayout_main"
+        android:gravity="center"
         >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="@color/gray_969696"
+            />
         <TextView
-            android:id="@+id/text111"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="支付方式"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
+            android:textSize="13dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/gray_969696"
             />
         <ImageView
-            android:id="@+id/image_1"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@mipmap/yue"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/text111"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="@color/gray_969696"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="余额支付"
-            android:layout_marginLeft="20dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/image_1"
-            android:layout_below="@+id/text111"
-            android:layout_marginTop="15dp"
-            />
-        <ImageView
-            android:id="@+id/image_yue"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginRight="30dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/select_duigou"
-            android:layout_below="@+id/text111"
-            android:layout_marginTop="15dp"
-            />
-    </RelativeLayout>
+    </LinearLayout>
     <RelativeLayout
         android:id="@+id/relayout_wechat"
         android:layout_width="match_parent"
@@ -175,16 +165,12 @@
         android:id="@+id/button_submit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
-        android:text="确认支付"
+        android:text="立即支付"
         android:textColor="@color/white"
-        android:background="@drawable/button_morph_20dp"
+        android:background="@drawable/button_red_20dp"
         />
-
-
-
-
 
 </LinearLayout>

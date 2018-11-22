@@ -188,6 +188,8 @@ public class Urls {
     public static String jiaoyiMingxi = "balance/getBusinessTradeDetails";//查询交易明细
     public static String tui_taocan = "balance/getAllSpreadPags?user_token=";//充值推广币套餐列表接口
     public static String huiyuan_taocan = "balance/getAllVIPPackages?user_token=";//购买会员套餐接口
+    public static String lookBaozhengjin = "balance/getPayMargin";//商户保证金状况  post      user_token business_no
+    public static String TuiBaozhengjin = "balance/reFundBusinessMargin";//商户退保证金  post      user_token business_no
 
     //爱心帮
     public static String IssueLovetask = "loveTask/addLoveTask";//发布爱心帮

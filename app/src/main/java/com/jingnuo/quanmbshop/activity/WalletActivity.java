@@ -56,6 +56,7 @@ public class WalletActivity extends BaseActivityother {
                     intent_cash.putExtra("money",money+"");
                     intent_cash.putExtra("TransferType","3");
                 startActivity(intent_cash);
+                finish();
             }
         });
 

@@ -56,7 +56,6 @@
             android:authorities="com.jingnuo.quanmbshop.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
-
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
@@ -96,23 +95,24 @@
             android:enabled="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
-                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
+
                 <category android:name="com.jingnuo.quanmbshop" />
             </intent-filter>
         </receiver>
-
 
         <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTask" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.FindPasswordActivity" />
-
-        <activity android:name=".activity.SettingActivity" android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.ChangepasswordActivity" />
         <activity android:name=".activity.ChangephoneNumberActivity" />
         <activity android:name=".activity.ChangephoneNumberNextActivity" />
@@ -207,9 +207,9 @@
         </activity>
         <activity
             android:name=".activity.ConversationListActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:launchMode="singleTask" >
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -223,8 +223,11 @@
         </activity>
         <activity android:name=".activity.HelperguizeActivity" />
         <activity android:name=".activity.ShopCenterNewActivity" />
-        <activity android:name=".activity.ShanghuMainActivity"
-            android:launchMode="singleTask" ></activity>
+        <activity
+            android:name=".activity.ShanghuMainActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.BaozhengjinActivity" />
+        <activity android:name=".activity.BaozhengjinTuikuanActivity"></activity>
     </application>
 
 </manifest>

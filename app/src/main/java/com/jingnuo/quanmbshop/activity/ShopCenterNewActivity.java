@@ -51,7 +51,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
     //数据
     int type = 2;  //1 帮手  2  商户
 
-    boolean isfirst=true;
+    boolean isfirst = true;
 
     @Override
     public int setLayoutResID() {
@@ -123,11 +123,14 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 intent_wa.putExtra("money", Staticdata.static_userBean.getData().getAppuser().getCommission() + "");
                 startActivity(intent_wa);
                 break;
-            case R.id.linearlayout_tuiguangbi://推广币
-                Intent intent_mytuiguangbi = new Intent(ShopCenterNewActivity.this, TuiguangbiWalletActivity.class);
-                intent_mytuiguangbi.putExtra("type", type);
-                intent_mytuiguangbi.putExtra("tuiguangbi", shopcenterBean.getData().getList().getSpread_b()+"");
-                startActivity(intent_mytuiguangbi);
+            case R.id.linearlayout_tuiguangbi://保证金
+//                Intent intent_mytuiguangbi = new Intent(ShopCenterNewActivity.this, TuiguangbiWalletActivity.class);
+//                intent_mytuiguangbi.putExtra("type", type);
+//                intent_mytuiguangbi.putExtra("tuiguangbi", shopcenterBean.getData().getList().getSpread_b()+"");
+//                startActivity(intent_mytuiguangbi);
+                Intent intent_baozhngjin = new Intent(ShopCenterNewActivity.this, BaozhengjinActivity.class);
+                startActivity(intent_baozhngjin);
+
                 break;
             case R.id.linearlayout_huanyuan://会员
                 Intent intent_huiyuan = new Intent(ShopCenterNewActivity.this, HuiyuanRechargeActivity.class);
@@ -143,7 +146,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 startActivity(intent_shopcenter);
                 break;
             case R.id.textview_guize:
-                Intent intent_shangjiaguize= new Intent(this, HelperguizeActivity.class);
+                Intent intent_shangjiaguize = new Intent(this, HelperguizeActivity.class);
                 intent_shangjiaguize.putExtra("title", "商家规则");
                 startActivity(intent_shangjiaguize);
                 break;
@@ -159,70 +162,24 @@ public class ShopCenterNewActivity extends BaseActivityother {
 
 
     void request() {
-        String url_info = type == 1 ? Urls.Baseurl + Urls.helperInfo + Staticdata.static_userBean.getData()
-                .getAppuser().getUser_token() + "&client_no=" + Staticdata.static_userBean.getData().getAppuser()
-                .getClient_no()
-                :
-                Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
+        String url_info = Urls.Baseurl + Urls.shopcenter + Staticdata.static_userBean.getData()
                         .getAppuser().getUser_token() + "&business_no=" + Staticdata.static_userBean.getData().getAppuser()
                         .getBusiness_no();
-        LogUtils.LOG("ceshi", "帮手 商户网址：" + url_info, "ShopCenterActivity");
+        LogUtils.LOG("ceshi", " 商户网址：" + url_info, "ShopCenterActivity");
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
                 LogUtils.LOG("ceshi", "商户中心：" + respose, "ShopCenterActivity");
-                if (type == 1) {
-//                    isfirst= SharedPreferencesUtils.getBoolean(ShopCenterActivity.this, "QMB", "bangshou");
-//                    if(isfirst){
-//                        new Popwindow_helperfirst(ShopCenterActivity.this,1,1.17).showpop();
-//                    }
-//
-//                    helpterInfoBean = new Gson().fromJson(respose, HelpterInfoBean.class);
-//                    if(helpterInfoBean.getData().getList().getMemberImgUrl()==null||helpterInfoBean.getData().getList().getMemberImgUrl().equals("")){
-//                        mImageview_vip.setVisibility(View.GONE);
-//                    }else {
-//                        mImageview_vip.setVisibility(View.VISIBLE);
-//                        Glide.with(ShopCenterActivity.this).load(helpterInfoBean.getData().getList().getMemberImgUrl()).error(R.mipmap.vip1).into(mImageview_vip);
-//                    }
-//                    Glide.with(ShopCenterActivity.this).load(helpterInfoBean.getData().getList().getAvatar_url()).into(imageview_head);
-//                    Glide.with(ShopCenterActivity.this).load(helpterInfoBean.getData().getList().getIconImgUrl()).error(R.mipmap.lv1).into(mImageview_lv);
-//                    mTextview_name.setText(helpterInfoBean.getData().getList().getHelper_name());
-////                    mTextview_level.setText(helpterInfoBean.getData().getList().geth());
-//                    mTextview_text_tui_count.setText(helpterInfoBean.getData().getList().getSpread_b()+"个");
-//                    if(helpterInfoBean.getData().getList().getMember_enddate()!=null){
-//                        mTextview_text_huiyuan.setText(helpterInfoBean.getData().getList().getMember_enddate().substring(0,10)+"到期");
-//                    }
-////                    mTextview_namenext.setVisibility(View.GONE);
-//                    mTextview_money.setText(helpterInfoBean.getData().getList().getCommission()+"");
-//                    setstar((float) helpterInfoBean.getData().getList().getEvaluation_star());
-                } else {
-                    isfirst= SharedPreferencesUtils.getBoolean(ShopCenterNewActivity.this, "QMB", "shanghu");
-                    if (isfirst){
-                        new Popwindow_helperfirst (ShopCenterNewActivity.this,2,1.17).showpop();
+                {
+                    isfirst = SharedPreferencesUtils.getBoolean(ShopCenterNewActivity.this, "QMB", "shanghu");
+                    if (isfirst) {
+                        new Popwindow_helperfirst(ShopCenterNewActivity.this, 2, 1.17).showpop();
                     }
                     shopcenterBean = new Gson().fromJson(respose, ShopcenterBean.class);
-                    if(shopcenterBean.getData().getList().getPush_on_off().equals("Y")){//推送开关状态
-//                        image_tujianrenwukaiguan.setSelected(true);
-                    }else {
-//                        image_tujianrenwukaiguan.setSelected(false);
-                    }
-                    if(shopcenterBean.getData().getList().getMemberImgUrl()==null||shopcenterBean.getData().getList().getMemberImgUrl().equals("")){
-//                        mImageview_vip.setVisibility(View.GONE);
-                    }else {
-//                        mImageview_vip.setVisibility(View.VISIBLE);
-//                        Glide.with(ShopCenterNewActivity.this).load(shopcenterBean.getData().getList().getMemberImgUrl()).error(R.mipmap.vip1).into(mImageview_vip);
-                    }
                     Glide.with(ShopCenterNewActivity.this).load(shopcenterBean.getData().getList().getAvatar_url()).into(iamgeview_shopheadpic);
-//                    Glide.with(ShopCenterNewActivity.this).load(shopcenterBean.getData().getList().getIconImgUrl()).error(R.mipmap.lv1).into(mImageview_lv);
                     textview_shopname.setText(shopcenterBean.getData().getList().getBusiness_name());
-//                    mTextview_namenext.setText(shopcenterBean.getData().getList().getBusiness_address()+" | ");
-//                    mTextview_money.setText(shopcenterBean.getData().getList().getCommission()+"");
-//                    mTextview_text_tui_count.setText(shopcenterBean.getData().getList().getSpread_b()+"个");
-                    if(shopcenterBean.getData().getList().getMember_enddate()!=null){
-//                        mTextview_text_huiyuan.setText(shopcenterBean.getData().getList().getMember_enddate().substring(0,10)+"到期");
-                    }
-//                    setstar((float) shopcenterBean.getData().getList().getEvaluation_star());
                     textview_shoptype.setText(shopcenterBean.getData().getList().getBusiness_type_id());
+                    Staticdata.static_userBean.getData().getAppuser().setCommission(Double.parseDouble(shopcenterBean.getData().getList().getCommission()));
                 }
 
             }
@@ -233,6 +190,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
             }
         }).Http(url_info, ShopCenterNewActivity.this, 0);
     }
+
     @Override
     protected void onPostResume() {
         super.onPostResume();

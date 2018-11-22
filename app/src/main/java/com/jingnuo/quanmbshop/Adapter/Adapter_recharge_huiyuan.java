@@ -45,7 +45,7 @@ public class Adapter_recharge_huiyuan extends BaseAdapter {
         }
         if(mdata.get(position).getDiscount().equals("")){
             text_dazhe.setVisibility(View.INVISIBLE);
-            text_yuanjia.setVisibility(View.GONE);
+            text_yuanjia.setVisibility(View.INVISIBLE);
         }else {
             text_dazhe.setVisibility(View.VISIBLE);
             text_yuanjia.setVisibility(View.VISIBLE);
