@@ -1,5 +1,6 @@
 package com.jingnuo.quanmbshop.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -106,20 +107,23 @@ public class BaozhengjinActivity extends BaseActivityother {
                     JSONObject object=new JSONObject(respose);
                     isjiaona = (Integer) object.get("code");//是否缴纳
                     money = (String) object.get("ensure_money");//缴纳显示金额
-                    needmoney = (String) object.get("ensure_money_business");//需要缴纳的金额
                     baozhengjinmsg = (String) object.get("msg");//提示
+                    needmoney = (String) object.get("ensure_money_business");//需要缴纳的金额
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 text_money.setText(money);
+                LogUtils.LOG("ceshi",baozhengjinmsg,"baozhengjin");
                 textview_isjiaona.setText(baozhengjinmsg);
-//                if(isjiaona==1){
-//                    button_rechange.setEnabled(false);
-//                    button_tuibaozhnegjin.setEnabled(true);
-//                }else {
-//                    button_rechange.setEnabled(true);
-//                    button_tuibaozhnegjin.setEnabled(false);
-//                }
+                if(isjiaona==1){
+                    text_money.setTextColor(BaozhengjinActivity.this.getResources().getColor(R.color.green3));
+                    textview_isjiaona.setTextColor(BaozhengjinActivity.this.getResources().getColor(R.color.green3));
+                }else {
+                    text_money.setTextColor(BaozhengjinActivity.this.getResources().getColor(R.color.red));
+                    textview_isjiaona.setTextColor(BaozhengjinActivity.this.getResources().getColor(R.color.red));
+
+                }
             }
 
             @Override

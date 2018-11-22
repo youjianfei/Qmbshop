@@ -47,14 +47,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="0.00"
-            android:textColor="@color/red"
             android:textSize="35dp" />
         <TextView
             android:id="@+id/textview_isjiaona"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="未缴纳"
-            android:textColor="@color/red"
             android:textSize="15dp" />
         <Button
             android:id="@+id/button_rechange"
