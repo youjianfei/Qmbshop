@@ -81,7 +81,7 @@ public class Utils {
 //                    finish();
 //                if(Staticdata.static_userBean.getData().getAppuser().getRole().contains("2")){
                     RongIM.getInstance().setCurrentUserInfo(new UserInfo(Staticdata.static_userBean.getData().getAppuser().getBusiness_no(),
-                            "(" +Staticdata.static_userBean.getData().getAppuser().getBusiness_name()+")",
+                            Staticdata.static_userBean.getData().getAppuser().getBusiness_name(),
                             Uri.parse(Staticdata.static_userBean.getData().getAppuser().getAvatarUrl())));
 //                }
 //                else {

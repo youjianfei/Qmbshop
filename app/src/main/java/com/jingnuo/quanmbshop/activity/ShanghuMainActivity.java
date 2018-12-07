@@ -1,16 +1,12 @@
 package com.jingnuo.quanmbshop.activity;
 
 import android.Manifest;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,10 +72,6 @@ public class ShanghuMainActivity extends BaseActivityother {
     TextView  text_task;
     TextView  text_message;
     CircleImageView image_dot;
-
-
-
-
 
     //控件
     RelativeLayout re_title;
@@ -181,10 +173,6 @@ public class ShanghuMainActivity extends BaseActivityother {
         mList=new ArrayList<>();
         adapter=new Adapter_SquareList(mList,ShanghuMainActivity.this);
         mListview_shanghuorder.setAdapter(adapter);
-
-
-
-
     }
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;

@@ -41,6 +41,7 @@ public class Staticdata {
     public static String Userphonenumber = "";
 
 
+
     public  static UserBean static_userBean=new UserBean();
 
     //发布任务需要向下一页传递map  这里偷懒把map写为全局变量
