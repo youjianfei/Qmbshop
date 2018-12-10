@@ -50,6 +50,14 @@
         android:layout_below="@+id/re_title"
         android:layout_above="@+id/line1"
         />
+    <ImageView
+        android:id="@+id/iamge_empty"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@mipmap/empry_order"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"

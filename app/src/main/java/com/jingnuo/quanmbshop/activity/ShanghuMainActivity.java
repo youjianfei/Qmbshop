@@ -33,6 +33,7 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SynthesizerListener;
 import com.jingnuo.quanmbshop.Adapter.Adapter_SquareList;
+import com.jingnuo.quanmbshop.Interface.Interence_jubao;
 import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
@@ -42,6 +43,7 @@ import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.ShanghuneworderBean;
 import com.jingnuo.quanmbshop.entityclass.ShopcenterBean;
+import com.jingnuo.quanmbshop.popwinow.Popwindow_JiaoBaozhengjin;
 import com.jingnuo.quanmbshop.popwinow.Popwindow_ShanghuIsjiedan;
 import com.jingnuo.quanmbshop.utils.AutoUpdate;
 import com.jingnuo.quanmbshop.utils.LogUtils;
@@ -54,7 +56,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.rong.imkit.RongIM;
@@ -67,6 +71,7 @@ public class ShanghuMainActivity extends BaseActivityother {
     LinearLayout LinearLayout_taskmain;
     RelativeLayout LinearLayout_messagemain;
 
+    ImageView iamge_empty;
     ImageView imageview_task;
     ImageView image_messgae;
     TextView  text_task;
@@ -97,12 +102,6 @@ public class ShanghuMainActivity extends BaseActivityother {
     Adapter_SquareList adapter;
     List<ShanghuneworderBean.DataBean.ListBean> mList;
     ShanghuneworderBean  shanghuneworderBean;
-
-
-
-
-
-
 
 
     //对象
@@ -162,10 +161,6 @@ public class ShanghuMainActivity extends BaseActivityother {
 //        transaction.add(R.id.framelayout_main, fragment_shanghutask).commit();
 //
 
-
-
-
-
         requestshopinfo();
         if(!Staticdata.xValue.equals("")){
             request("00000", page);
@@ -173,6 +168,12 @@ public class ShanghuMainActivity extends BaseActivityother {
         mList=new ArrayList<>();
         adapter=new Adapter_SquareList(mList,ShanghuMainActivity.this);
         mListview_shanghuorder.setAdapter(adapter);
+
+        Map map_lookBaozhengjin=new HashMap();
+        map_lookBaozhengjin.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
+        map_lookBaozhengjin.put("business_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
+        requestbaozhengjin(map_lookBaozhengjin);
+
     }
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
@@ -243,9 +244,44 @@ public class ShanghuMainActivity extends BaseActivityother {
         }
 
     }
+    //数据
+    int isjiaona;
+//    String money="";
+    String needmoney="";
+//    String baozhengjinmsg="";
+
+    void requestbaozhengjin( Map map){//是否缴纳保证金详情
+        new Volley_Utils(new Interface_volley_respose() {
+            @Override
+            public void onSuccesses(String respose) {
+                LogUtils.LOG("cehsi","保证金"+respose,"保证金");
+                try {
+                    JSONObject object=new JSONObject(respose);
+                    isjiaona = (Integer) object.get("code");//是否缴纳
+//                    money = (String) object.get("ensure_money");//缴纳显示金额
+//                    baozhengjinmsg = (String) object.get("msg");//提示
+                    needmoney = (String) object.get("ensure_money_business");//需要缴纳的金额
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if(isjiaona==0){//没有缴纳保证金
+                    new Popwindow_JiaoBaozhengjin(needmoney,ShanghuMainActivity.this).showPopwindow();
+                }
+            }
+
+            @Override
+            public void onError(int error) {
+
+            }
+        }).postHttp(Urls.Baseurl_hu+Urls.lookBaozhengjin,this,1,map);
+
+    }
+
+
     AutoUpdate autoUpdate;
 
-    void updata() {
+    void updata() {//检测是否更新
 
         Permissionmanage permissionmanage = new Permissionmanage(permissionHelper, new InterfacePermission() {
             @Override
@@ -405,6 +441,7 @@ public class ShanghuMainActivity extends BaseActivityother {
     protected void initView() {
         LinearLayout_taskmain=findViewById(R.id.LinearLayout_taskmain);
         LinearLayout_messagemain=findViewById(R.id.LinearLayout_messagemain);
+        iamge_empty=findViewById(R.id.iamge_empty);
         imageview_task=findViewById(R.id.imageview_task);
         image_messgae=findViewById(R.id.image_messgae);
         image_dot=findViewById(R.id.image_dot);
@@ -749,6 +786,8 @@ public class ShanghuMainActivity extends BaseActivityother {
 
                     }
                 },text_jiedan.getText().equals("自动接单")?"关闭接单":"自动接单");
+
+
             }
 
             @Override
@@ -794,7 +833,12 @@ public class ShanghuMainActivity extends BaseActivityother {
                     adapter.settype(type);
                     adapter.notifyDataSetChanged();
                 }
+                if(mList.size()==0){
+                    iamge_empty.setVisibility(View.VISIBLE);
+                }else {
+                    iamge_empty.setVisibility(View.GONE);
 
+                }
 
             }
 

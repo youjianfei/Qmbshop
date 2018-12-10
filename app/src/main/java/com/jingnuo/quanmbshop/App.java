@@ -14,7 +14,6 @@ import com.umeng.socialize.PlatformConfig;
 
 import cn.jpush.android.api.JPushInterface;
 import io.rong.imkit.RongIM;
-import io.rong.push.RongPushClient;
 
 /**
  * Created by Administrator on 2018/4/9.
