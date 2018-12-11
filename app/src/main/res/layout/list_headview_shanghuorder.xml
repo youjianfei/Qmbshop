@@ -134,7 +134,7 @@
             android:layout_below="@+id/relativeLayout2"
             android:layout_marginBottom="10dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="55dp"
+            android:layout_marginRight="45dp"
             android:layout_marginTop="10dp"
             />
     </RelativeLayout>
@@ -153,5 +153,23 @@
         app:tabIndicatorColor="@color/yellow_jianbian_start"
         app:tabMinWidth="110dp"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_below="@+id/tablayout_head"
+        android:gravity="center"
+        >
+        <ImageView
+            android:id="@+id/iamge_empty"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/empry_order"
+            android:layout_marginTop="20dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

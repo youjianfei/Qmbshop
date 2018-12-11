@@ -443,7 +443,6 @@ public class ShanghuMainActivity extends BaseActivityother {
     protected void initView() {
         LinearLayout_taskmain=findViewById(R.id.LinearLayout_taskmain);
         LinearLayout_messagemain=findViewById(R.id.LinearLayout_messagemain);
-        iamge_empty=findViewById(R.id.iamge_empty);
         imageview_task=findViewById(R.id.imageview_task);
         image_messgae=findViewById(R.id.image_messgae);
         image_dot=findViewById(R.id.image_dot);
@@ -470,6 +469,8 @@ public class ShanghuMainActivity extends BaseActivityother {
         textview_money = listheadView.findViewById(R.id.textview_money);
         mTablayout_header = listheadView.findViewById(R.id.tablayout_head);
         textview_huiyuan = listheadView.findViewById(R.id.textview_huiyuan);
+        iamge_empty=listheadView.findViewById(R.id.iamge_empty);
+
         mTablayout_header.addTab(mTablayout_header.newTab().setText("新订单").setTag("00000"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("进行中").setTag("05,06"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("已完成").setTag("00,01,02"));

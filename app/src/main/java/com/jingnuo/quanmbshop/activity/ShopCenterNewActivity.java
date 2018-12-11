@@ -34,7 +34,6 @@ public class ShopCenterNewActivity extends BaseActivityother {
     TextView textview_shopname;
     TextView textview_shoptype;
     TextView textview_guize;
-    TextView textview_jiaoxue;
     TextView textview_huiyua;
     ImageView huiyuanyes;
     LinearLayout linearlayout_jineng;
@@ -84,7 +83,6 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_jiaoxue.setOnClickListener(this);
         linearlayout_fenxiang.setOnClickListener(this);
         textview_guize.setOnClickListener(this);
-        textview_jiaoxue.setOnClickListener(this);
     }
 
     @Override
@@ -102,7 +100,6 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_jiaoxue = findViewById(R.id.linearlayout_jiaoxue);
         linearlayout_fenxiang = findViewById(R.id.linearlayout_fenxiang);
         textview_guize = findViewById(R.id.textview_guize);
-        textview_jiaoxue = findViewById(R.id.textview_jiaoxue);
         textview_huiyua = findViewById(R.id.textview_huiyua);
     }
 
@@ -152,11 +149,11 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 intent_shopcenter.putExtra("title", "商家教学");
                 startActivity(intent_shopcenter);
                 break;
-            case R.id.textview_jiaoxue://教学
-                Intent intent_shopcenter2 = new Intent(this, HelperguizeActivity.class);
-                intent_shopcenter2.putExtra("title", "商家教学");
-                startActivity(intent_shopcenter2);
-                break;
+//            case R.id.textview_jiaoxue://教学
+//                Intent intent_shopcenter2 = new Intent(this, HelperguizeActivity.class);
+//                intent_shopcenter2.putExtra("title", "商家教学");
+//                startActivity(intent_shopcenter2);
+//                break;
             case R.id.textview_guize:
                 Intent intent_shangjiaguize = new Intent(this, HelperguizeActivity.class);
                 intent_shangjiaguize.putExtra("title", "商家规则");

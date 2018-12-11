@@ -7,13 +7,12 @@ import android.util.Log;
  */
 
 public   class LogUtils {
-    static boolean log =true ;
+    static boolean log =false ;
 
    public static void LOG(String tag, String message,String position){
        if(log){
            Log.i(tag,message+"所在位置："+position);
        }
-
    }
 
 }
