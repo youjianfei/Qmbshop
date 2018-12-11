@@ -35,6 +35,8 @@ public class ShopCenterNewActivity extends BaseActivityother {
     TextView textview_shoptype;
     TextView textview_guize;
     TextView textview_jiaoxue;
+    TextView textview_huiyua;
+    ImageView huiyuanyes;
     LinearLayout linearlayout_jineng;
     LinearLayout linearlayout_qianbao;
     LinearLayout linearlayout_tuiguangbi;
@@ -87,6 +89,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
 
     @Override
     protected void initView() {
+        huiyuanyes = findViewById(R.id.image_huiyuan);
         mImageview_setting = findViewById(R.id.iv_setting);
         iamgeview_shopheadpic = findViewById(R.id.iamgeview_shopheadpic);
         textview_shopname = findViewById(R.id.textview_shopname);
@@ -100,6 +103,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_fenxiang = findViewById(R.id.linearlayout_fenxiang);
         textview_guize = findViewById(R.id.textview_guize);
         textview_jiaoxue = findViewById(R.id.textview_jiaoxue);
+        textview_huiyua = findViewById(R.id.textview_huiyua);
     }
 
     @Override
@@ -188,6 +192,12 @@ public class ShopCenterNewActivity extends BaseActivityother {
                     textview_shopname.setText(shopcenterBean.getData().getList().getBusiness_name());
                     textview_shoptype.setText(shopcenterBean.getData().getList().getBusiness_type_id());
                     Staticdata.static_userBean.getData().getAppuser().setCommission(Double.parseDouble(shopcenterBean.getData().getList().getCommission()));
+                    if(shopcenterBean.getData().getList().getMemberImgUrl()==null){
+                    textview_huiyua.setVisibility(View.VISIBLE);
+                }else {
+                        textview_huiyua.setVisibility(View.GONE);
+                    }
+                    Glide.with(ShopCenterNewActivity.this).load(shopcenterBean.getData().getList().getIconImgUrl()).into(huiyuanyes);
                 }
 
             }

@@ -23,6 +23,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -76,6 +77,7 @@ public class ShanghuMainActivity extends BaseActivityother {
     ImageView image_messgae;
     TextView  text_task;
     TextView  text_message;
+    TextView  textview_huiyuan;
     CircleImageView image_dot;
 
     //控件
@@ -467,6 +469,7 @@ public class ShanghuMainActivity extends BaseActivityother {
         simpleRatingBar = listheadView.findViewById(R.id.SimpleRatingBar);
         textview_money = listheadView.findViewById(R.id.textview_money);
         mTablayout_header = listheadView.findViewById(R.id.tablayout_head);
+        textview_huiyuan = listheadView.findViewById(R.id.textview_huiyuan);
         mTablayout_header.addTab(mTablayout_header.newTab().setText("新订单").setTag("00000"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("进行中").setTag("05,06"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("已完成").setTag("00,01,02"));
@@ -764,10 +767,18 @@ public class ShanghuMainActivity extends BaseActivityother {
                 shopcenterBean = new Gson().fromJson(respose, ShopcenterBean.class);
                 textview_money.setText(shopcenterBean.getData().getList().getCommission()+"");
                 textview_ordercount.setText(shopcenterBean.getData().getList().getOrderSum()+"");
+//                if(shopcenterBean.getData().getList().getMemberImgUrl()==null){
+//                    image_huiyuan.setBackgroundResource(R.mipmap.huiyuanno);
+//                }else {
+//                    image_huiyuan.setBackgroundResource(R.mipmap.huiyuanyes);
+//                }
+                Glide.with(ShanghuMainActivity.this).load(shopcenterBean.getData().getList().getIconImgUrl()).into(image_huiyuan);
+
                 if(shopcenterBean.getData().getList().getMemberImgUrl()==null){
-                    image_huiyuan.setBackgroundResource(R.mipmap.huiyuanno);
+                    textview_huiyuan.setText("会员商家未开通");
                 }else {
-                    image_huiyuan.setBackgroundResource(R.mipmap.huiyuanyes);
+                    textview_huiyuan.setText("会员商家");
+                    textview_huiyuan.setTextColor(ShanghuMainActivity.this.getResources().getColor(R.color.red2));
                 }
                 setstar((float) shopcenterBean.getData().getList().getEvaluation_star());
                 if(shopcenterBean.getData().getList().getPush_on_off().equals("Y")){//推送开关状态
