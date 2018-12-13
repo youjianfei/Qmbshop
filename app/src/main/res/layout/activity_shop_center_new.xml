@@ -58,11 +58,12 @@
 
         <TextView
             android:id="@+id/textview_shopname"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:layout_toRightOf="@+id/iamgeview_shopheadpic"
-            android:text="全民帮商户"
+            android:text="全民帮商户全民帮商户"
+            android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="17dp" />
         <ImageView

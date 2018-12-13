@@ -18,9 +18,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 
 import com.google.gson.Gson;
+import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.UpdataBean;
+import com.jingnuo.quanmbshop.popwinow.Popwindow_Updata;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,9 +41,12 @@ public class AutoUpdate {
     private ProgressDialog mProgress;
     private int progress; //apk下载的进度
     private Activity activity;
+    Popwindow_Updata popwindow_updata;
+    InterfacePermission interfacePermission;
 
-    public AutoUpdate(Activity activity) {
+    public AutoUpdate(Activity activity,InterfacePermission interfacePermission) {
         this.activity = activity;
+        this.interfacePermission=interfacePermission;
     }
 
     /**
@@ -105,10 +110,11 @@ public class AutoUpdate {
                     } else {
 
                         if (curVersionCode < newVersion) {//有新版本
-
-                            showUpdateDialog(newVersion, newdownurl);
+                            interfacePermission.onResult(true);
+                            showUpdateDialog();
 
                         } else {//没有新版本
+                            interfacePermission.onResult(true);
                             return;
                         }
                     }
@@ -140,50 +146,86 @@ public class AutoUpdate {
         }
     }
 
-    private void showUpdateDialog(final int code, final String apkurl) {
-       activity. runOnUiThread(new Runnable() {
+    private void showUpdateDialog() {
 
+        popwindow_updata=new Popwindow_Updata(activity, new InterfacePermission() {
             @Override
-            public void run() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                builder.setTitle("升级提示");
-                builder.setMessage("有新版本，请更新!");
-                builder.setCancelable(false);
+            public void onResult(boolean result) {
+                if(result){
+                    mProgress = new ProgressDialog(activity);
+                    mProgress.setMax(100);
+                    mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    mProgress.setMessage("正在下载...");
+                    // 对话框显示出来
+                    mProgress.setCancelable(false);
+                    mProgress.show();
 
-                builder.setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        mProgress = new ProgressDialog(activity);
-                        mProgress.setMax(100);
-                        mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                        mProgress.setMessage("正在下载...");
-                        // 对话框显示出来
-                        mProgress.setCancelable(false);
-                        mProgress.show();
-
-                        /**
-                         * 判断是否有存储权限
-                         */
-                        int checkWriteStoragePermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);//获取系统是否被授予该种权限
-                        if (checkWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {//如果没有被授予
-                            mProgress.dismiss();
-                            ToastUtils.showToast(activity,"请打开应用的存储权限");
-                            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0x123);
-                            //请求获取该种权限
-                        }else{
-                            // 直接下载
-                            new downloadApkThread().start();
-                        }
+                    /**
+                     * 判断是否有存储权限
+                     */
+                    int checkWriteStoragePermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);//获取系统是否被授予该种权限
+                    if (checkWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {//如果没有被授予
+                        mProgress.dismiss();
+                        ToastUtils.showToast(activity,"请打开应用的存储权限");
+                        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0x123);
+                        //请求获取该种权限
+                    }else{
+                        // 直接下载
+                        new downloadApkThread().start();
                     }
+                }else {
 
-                });
-
-                builder.show();
+                }
 
             }
         });
+        popwindow_updata.showpopwindow();
+
+
+
+//       activity. runOnUiThread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+//                builder.setTitle("升级提示");
+//                builder.setMessage("有新版本，请更新!");
+//                builder.setCancelable(false);
+//
+//                builder.setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        mProgress = new ProgressDialog(activity);
+//                        mProgress.setMax(100);
+//                        mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//                        mProgress.setMessage("正在下载...");
+//                        // 对话框显示出来
+//                        mProgress.setCancelable(false);
+//                        mProgress.show();
+//
+//                        /**
+//                         * 判断是否有存储权限
+//                         */
+//                        int checkWriteStoragePermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);//获取系统是否被授予该种权限
+//                        if (checkWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {//如果没有被授予
+//                            mProgress.dismiss();
+//                            ToastUtils.showToast(activity,"请打开应用的存储权限");
+//                            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0x123);
+//                            //请求获取该种权限
+//                        }else{
+//                            // 直接下载
+//                            new downloadApkThread().start();
+//                        }
+//                    }
+//
+//                });
+//
+//                builder.show();
+//
+//            }
+//        });
 
     }
 

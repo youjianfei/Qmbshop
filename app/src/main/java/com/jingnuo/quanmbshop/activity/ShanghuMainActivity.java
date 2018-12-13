@@ -171,12 +171,13 @@ public class ShanghuMainActivity extends BaseActivityother {
         adapter=new Adapter_SquareList(mList,ShanghuMainActivity.this);
         mListview_shanghuorder.setAdapter(adapter);
 
-        Map map_lookBaozhengjin=new HashMap();
+
         map_lookBaozhengjin.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_lookBaozhengjin.put("business_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
-        requestbaozhengjin(map_lookBaozhengjin);
 
     }
+    Map map_lookBaozhengjin=new HashMap();
+
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
     //声明定位回调监听器
@@ -294,7 +295,15 @@ public class ShanghuMainActivity extends BaseActivityother {
                         StrictMode.setVmPolicy(builder.build());
                     }
                     //检测是否更新
-                    autoUpdate = new AutoUpdate(ShanghuMainActivity.this);
+                    autoUpdate = new AutoUpdate(ShanghuMainActivity.this, new InterfacePermission() {
+                        @Override
+                        public void onResult(boolean result) {
+                            if(!result){//如果没有版本更新
+                                requestbaozhengjin(map_lookBaozhengjin);
+                            }
+
+                        }
+                    });
                     autoUpdate.requestVersionData();
 
                 } else {
