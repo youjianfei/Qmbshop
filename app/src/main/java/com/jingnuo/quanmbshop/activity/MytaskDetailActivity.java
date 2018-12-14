@@ -193,7 +193,7 @@ public class MytaskDetailActivity extends BaseActivityother {
         ID = intent.getStringExtra("id");
         map_taskdetail = new HashMap();
         map_taskdetail.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
-        map_taskdetail.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+        map_taskdetail.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
         map_taskdetail.put("id", ID + "");
         LogUtils.LOG("ceshi", map_taskdetail.toString(), "MytaskDetailActivity");
         request(map_taskdetail);

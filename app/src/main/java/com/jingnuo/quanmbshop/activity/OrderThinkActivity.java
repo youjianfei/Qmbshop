@@ -127,7 +127,7 @@ public class OrderThinkActivity extends BaseActivityother {
     }
 
     void initmap() {
-        map_think.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+        map_think.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
         map_think.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
         map_think.put("task_id", Taskid);
         map_think.put("evaluation_content", contenttext);

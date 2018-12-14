@@ -250,13 +250,6 @@ public class UserBean {
                 this.business_y_value = business_y_value;
             }
 
-            public String getClient_no() {
-                return client_no;
-            }
-
-            public void setClient_no(String client_no) {
-                this.client_no = client_no;
-            }
 
             public double getCommission() {
                 return commission;

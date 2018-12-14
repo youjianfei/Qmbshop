@@ -66,7 +66,7 @@ public class Chengweibangshou {
 //                    getActivity().startActivity(intent_anthentication);
             Map map=new HashMap();
             map.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
-            map.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+            map.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
             new Volley_Utils(new Interface_volley_respose() {
                 @Override
                 public void onSuccesses(String respose) {

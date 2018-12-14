@@ -149,7 +149,7 @@ public class ConversationListActivity extends FragmentActivity {
 
 
         map_getnewmessage=new HashMap();
-        map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+        map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
         map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         request();
     }
@@ -218,7 +218,7 @@ public class ConversationListActivity extends FragmentActivity {
     public void onResume() {
         super.onResume();
         if(Staticdata.isLogin){
-            map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+            map_getnewmessage.put("receive_client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
             map_getnewmessage.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
             request();
         }

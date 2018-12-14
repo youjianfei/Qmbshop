@@ -99,7 +99,7 @@ public class MySkillCollectActivity extends BaseActivityother {
     }
     void request(){
         LogUtils.LOG("ceshi","收藏列表网址接口+"+Urls.Baseurl+Urls.ColltctSkillList+ Staticdata.static_userBean.getData().getAppuser().getUser_token()
-                +"&client_no="+Staticdata.static_userBean.getData().getAppuser().getClient_no()+"&curPageNo="+page,"收藏列表");
+                +"&client_no="+Staticdata.static_userBean.getData().getAppuser().getBusiness_no()+"&curPageNo="+page,"收藏列表");
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
@@ -123,7 +123,7 @@ public class MySkillCollectActivity extends BaseActivityother {
 
             }
         }).Http(Urls.Baseurl+Urls.ColltctSkillList+ Staticdata.static_userBean.getData().getAppuser().getUser_token()
-                +"&client_no="+Staticdata.static_userBean.getData().getAppuser().getClient_no()+"&curPageNo="+page,this,0);
+                +"&client_no="+Staticdata.static_userBean.getData().getAppuser().getBusiness_no()+"&curPageNo="+page,this,0);
     }
 
     @Override

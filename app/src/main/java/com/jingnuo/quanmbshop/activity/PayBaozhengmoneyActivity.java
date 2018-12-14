@@ -273,7 +273,7 @@ public class PayBaozhengmoneyActivity extends BaseActivityother implements PayPw
         if(result.equals("1")){
             Map map_yue=new HashMap();
             map_yue.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
-            map_yue.put("client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());
+            map_yue.put("client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
             map_yue.put("pay_money",needmoney);
             map_yue.put("task_id","1");
             balancePay(map_yue);

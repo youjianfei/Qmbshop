@@ -194,7 +194,7 @@ public class SkillDetailActivity extends BaseActivityother {
                     return;
                 }
                 Map map = new HashMap();
-                map.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                map.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                 map.put("release_id", mSkilldetailsbean.getData().getDetail().getRelease_specialty_id() + "");
                 map.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                 map.put("type", collrctID + "");
@@ -320,7 +320,7 @@ public class SkillDetailActivity extends BaseActivityother {
 //                long ago = Long.parseLong(mSkilldetailsbean.getData().getDetail().getCreateDate()+"");//
 //                String time = Utils.getDistanceTime(ago, now);//算出的差值
                 mTextview_shopIN_time.setText(mSkilldetailsbean.getData().getDetail().getAddmission_month() + "个月");
-                if(Staticdata.isLogin&&mSkilldetailsbean.getData().getDetail().getClient_no().equals(Staticdata.static_userBean.getData().getAppuser().getClient_no())){
+                if(Staticdata.isLogin&&mSkilldetailsbean.getData().getDetail().getClient_no().equals(Staticdata.static_userBean.getData().getAppuser().getBusiness_no())){
                     linearlayout_bottom.setVisibility(View.GONE);
                 }else {
                     linearlayout_bottom.setVisibility(View.VISIBLE);

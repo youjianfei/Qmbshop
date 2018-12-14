@@ -61,7 +61,7 @@ public class SystemMessageActivity extends BaseActivityother {
         map_message.put("pageNo",page+"");
         map_message.put("type","1");
         if(Staticdata.isLogin){
-            map_message.put("receive_client_no",Staticdata.static_userBean.getData().getAppuser().getClient_no());//获取系统消息不用客户号
+            map_message.put("receive_client_no",Staticdata.static_userBean.getData().getAppuser().getBusiness_no());//获取系统消息不用客户号
             map_message.put("user_token",Staticdata.static_userBean.getData().getAppuser().getUser_token());
         }
         LogUtils.LOG("ceshi","系统消息内容map"+map_message,"SystemMessageActivity");

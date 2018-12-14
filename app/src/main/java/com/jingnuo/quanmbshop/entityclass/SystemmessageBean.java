@@ -59,6 +59,24 @@ public class SystemmessageBean
         private String title;
         private String type;
         private String updateDate;
+        private String click_url;
+        private String img_url;
+
+        public String getClick_url() {
+            return click_url;
+        }
+
+        public void setClick_url(String click_url) {
+            this.click_url = click_url;
+        }
+
+        public String getImg_url() {
+            return img_url;
+        }
+
+        public void setImg_url(String img_url) {
+            this.img_url = img_url;
+        }
 
         public int getId() {
             return Id;

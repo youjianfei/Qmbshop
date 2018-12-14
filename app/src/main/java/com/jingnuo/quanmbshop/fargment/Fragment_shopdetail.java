@@ -136,7 +136,7 @@ public class Fragment_shopdetail extends Fragment{
                         if(result) {
                             map_choosebissness=new HashMap();
                             map_choosebissness.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
-                            map_choosebissness.put("client_no", Staticdata.static_userBean.getData().getAppuser().getClient_no());
+                            map_choosebissness.put("client_no", Staticdata.static_userBean.getData().getAppuser().getBusiness_no());
                             map_choosebissness.put("task_id", task_id);
                             map_choosebissness.put("business_no", matchingBean.getBusiness_no());
 //                    map_choosebissness.put("counteroffer_amount", text_money.getText());

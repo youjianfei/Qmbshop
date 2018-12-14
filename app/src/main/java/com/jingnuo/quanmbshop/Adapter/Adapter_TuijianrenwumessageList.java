@@ -32,7 +32,7 @@ public class Adapter_TuijianrenwumessageList extends  BaseAdapter{
             holder=new viewHolder();
             convertView=mInflater.inflate(R.layout.item_text_dealmessage,null,false);
             holder.mTextview_title=convertView.findViewById(R.id.text_systemmessagetitle);
-            holder.mTextview_content=convertView.findViewById(R.id.text_systemmessagetext);
+            holder.mTextview_content=convertView.findViewById(R.id.text_content);
             holder.mTextview_time=convertView.findViewById(R.id.textview_time);
             convertView.setTag(holder);
         }else {
