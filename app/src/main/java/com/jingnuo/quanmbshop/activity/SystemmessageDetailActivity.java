@@ -1,10 +1,20 @@
 package com.jingnuo.quanmbshop.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import android.widget.TextView;
 import com.jingnuo.quanmbshop.R;
+import com.jingnuo.quanmbshop.data.Urls;
+import com.jingnuo.quanmbshop.utils.ToastUtils;
 
 public class SystemmessageDetailActivity extends BaseActivityother {
     TextView mTextview_title;
@@ -14,6 +24,7 @@ public class SystemmessageDetailActivity extends BaseActivityother {
     String title="";
     String content="";
     String time="";
+    String url="";
 
 
 
@@ -33,11 +44,26 @@ public class SystemmessageDetailActivity extends BaseActivityother {
         title= intent.getStringExtra("title");
         content=intent.getStringExtra("content");
         time=intent.getStringExtra("time");
+        url=intent.getStringExtra("url");
 
         mTextview_title.setText(title);
         mTextview_time.setText(time);
         mTextview_content.setText(content);
-
+        if(!url.equals("")){
+            SpannableString spannableString = new SpannableString(content+"点击查看");
+            spannableString.setSpan(new ClickableSpan() {
+                @Override
+                public void onClick(View widget) {
+                    Intent intent_kefuzhongxin = new Intent(SystemmessageDetailActivity.this, ZixunKefuWebActivity.class);
+                    intent_kefuzhongxin.putExtra("title","");
+                    intent_kefuzhongxin.putExtra("URL", url);
+                    startActivity(intent_kefuzhongxin);
+                }
+            },spannableString.length()-4,spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue2)), spannableString.length()-4,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            mTextview_content.setMovementMethod(LinkMovementMethod.getInstance());
+            mTextview_content.setText(spannableString);
+        }
     }
 
     @Override

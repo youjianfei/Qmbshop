@@ -142,6 +142,8 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 break;
             case R.id.linearlayout_kefu://客服
                 Intent intent_kefuzhongxin = new Intent(this, ZixunKefuWebActivity.class);
+                intent_kefuzhongxin.putExtra("title","全民帮客服中心");
+                intent_kefuzhongxin.putExtra("URL", Urls.Baseurl_zixunkefu);
                 startActivity(intent_kefuzhongxin);
                 break;
             case R.id.linearlayout_jiaoxue://教学

@@ -21,6 +21,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.data.Urls;
@@ -30,6 +31,12 @@ public class ZixunKefuWebActivity extends BaseActivityother {
     //控件
     private WebView webView;
     ProgressBar mPrigressBer;
+    TextView textview_title;
+
+
+
+    String URL="";
+    String title="";
 
     @Override
     public int setLayoutResID() {
@@ -43,6 +50,9 @@ public class ZixunKefuWebActivity extends BaseActivityother {
 
     @Override
     protected void initData() {
+        URL=getIntent().getStringExtra("URL");
+        title=getIntent().getStringExtra("title");
+        textview_title.setText(title);
         WebSettings settings = webView.getSettings();
         // 设置与Js交互的权限
         settings.setJavaScriptEnabled(true);
@@ -56,7 +66,7 @@ public class ZixunKefuWebActivity extends BaseActivityother {
         settings.setAllowFileAccess(true);
         // 将网页内容以单列显示
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        final String url = Urls.Baseurl_zixunkefu;
+        final String url = URL;
 //        final String url = "file:///android_asset/text.html";
 
         webView.loadUrl(url);
@@ -212,5 +222,6 @@ public class ZixunKefuWebActivity extends BaseActivityother {
     protected void initView() {
         webView=findViewById(R.id.webview);
         mPrigressBer=findViewById(R.id.pb);
+        textview_title=findViewById(R.id.textview_title);
     }
 }
