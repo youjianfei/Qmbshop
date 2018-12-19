@@ -1,5 +1,6 @@
 package com.jingnuo.quanmbshop.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -13,10 +14,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.jingnuo.quanmbshop.App;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.activity.LoginActivity;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.popwinow.Popwindow_loginAgain;
+import com.jingnuo.quanmbshop.popwinow.Popwindow_weigui;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,7 +48,6 @@ public class Volley_Utils {
     StringRequest mStringRequest;
 
 
-    Popwindow_loginAgain popwindow_loginAgain;
 
 
     public Volley_Utils(Interface_volley_respose mInterface) {
@@ -75,7 +77,11 @@ public class Volley_Utils {
                         Staticdata.isLogin=false;//将登录状态改为未登录
                         LogUtils.LOG("guoqi","登录过期，请重新登录"+URL,"vollryUtils");
                         mContext.startActivity(new Intent(mContext, LoginActivity.class));
-                    }else {
+                    }else if(status==-4){
+                        if(Staticdata.isshow){
+                            new Popwindow_weigui((Activity) mContext).showpopwindow();
+                        }
+                    } else {
 
                         mInterface.onSuccesses(response);
                     }

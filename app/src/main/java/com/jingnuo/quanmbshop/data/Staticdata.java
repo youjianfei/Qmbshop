@@ -74,4 +74,7 @@ public class Staticdata {
     //排序的选择
     public  static  String  paixuname="";
 
+    //商家违规处罚是否显示
+    public static boolean isshow=true;
+
 }
