@@ -34,9 +34,9 @@ public class Adapter_SquareList extends  BaseAdapter {
         mInflater=LayoutInflater.from(mContext);
 
     }
-    public void settype(int type){
-        this. type=type;
-    }
+//    public void settype(int type){
+//        this. type=type;
+//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -51,7 +51,7 @@ public class Adapter_SquareList extends  BaseAdapter {
             holder.mText_task_username=convertView.findViewById(R.id.text_taskpeoplename);
             holder.mText_task_address=convertView.findViewById(R.id.text_square_address);
             holder.mText_task_price=convertView.findViewById(R.id.text_square_price);
-            holder.mTextview_distance=convertView.findViewById(R.id.text_taskdistance);
+//            holder.mTextview_distance=convertView.findViewById(R.id.text_taskdistance);
             holder.mImage_view=convertView.findViewById(R.id.image_square_person);
             holder.image_line=convertView.findViewById(R.id.image_line);
             convertView.setTag(holder);
@@ -64,27 +64,7 @@ public class Adapter_SquareList extends  BaseAdapter {
         holder.mText_task_des.setText(mData.get(position).getTask_description()+"");
 
         long now = Long.parseLong(Utils.getTime(Utils.getTimeString()));//系统当前时间
-        if(type==0){
-            long ago = Long.parseLong(Utils.getTime(mData.get(position).getTask_Startdate()));//任务发布时间
-            String time = Utils.getDistanceTime2(ago, now);//算出的差值
-            holder.mText_task_creattime.setText(time);
-            double d = (double)mData.get(position).getDistance()/1000;
-            if(d<1){
-                holder.mTextview_distance.setText("距你 "+mData.get(position).getDistance()+"m");
-            }else {
-                DecimalFormat df = new DecimalFormat("#.0");
-                holder.mTextview_distance.setText("距你 "+df.format(d)+"km");
-            }
-
-            if(mData.get(position).getIs_helper_bid().equals("Y")){
-                holder.mText_task_price.setText("");
-            }else {
-                holder.mText_task_price.setText(mData.get(position).getCommission()+"元");
-            }
-            holder.textview_state.setText("帮助");
-            holder.mTextview_distance.setVisibility(View.VISIBLE);
-
-        }else {
+       {
             long ago = Long.parseLong(Utils.getTime(mData.get(position).getCreateDate()));//任务发布时间
             String time = Utils.getDistanceTime2(ago, now);//算出的差值
             holder.mText_task_creattime.setText(time);
@@ -93,8 +73,34 @@ public class Adapter_SquareList extends  BaseAdapter {
             }else {
                 holder.mText_task_price.setText(mData.get(position).getOrder_amount()+"元");
             }
-            holder.textview_state.setText(mData.get(position).getOrder_status());
-            holder.mTextview_distance.setVisibility(View.INVISIBLE);
+//            holder.mTextview_distance.setVisibility(View.INVISIBLE);
+            switch (mData.get(position).getOrder_status_code()){
+                case "07":
+                    holder.textview_state.setText("待完成");
+                    break;
+                case "09":
+                    holder.textview_state.setText("待完成");
+
+                    break;
+                case "05":
+                    holder.textview_state.setText("服务中");
+                    break;
+                case "06":
+                    holder.textview_state.setText("待确认");
+                    break;
+                case "00":
+                    holder.textview_state.setText("已完成");
+                    break;
+                case "01":
+                    holder.textview_state.setText("已关闭");
+                    break;
+                case "02":
+                    holder.textview_state.setText("已关闭");
+                    break;
+            }
+
+
+
         }
 
 //        holder.mText_task_creattime.setText(mData.get(position).getCreateDate()+"");

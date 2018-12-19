@@ -80,6 +80,7 @@ public class HelpOrderBean {
             private double order_amount;
             private String order_no;
             private String order_status;
+            private String order_status_code;
             private String task_StartDate;
             private String task_description;
             private int task_id;
@@ -93,6 +94,14 @@ public class HelpOrderBean {
 
             public String getApp_type() {
                 return app_type;
+            }
+
+            public String getOrder_status_code() {
+                return order_status_code;
+            }
+
+            public void setOrder_status_code(String order_status_code) {
+                this.order_status_code = order_status_code;
             }
 
             public void setApp_type(String app_type) {

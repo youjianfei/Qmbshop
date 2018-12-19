@@ -386,13 +386,13 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                     if (shanghuneworderBean.getData() != null) {
                         mList.addAll(shanghuneworderBean.getData().getList());
                     }
-                    adapter.settype(type);
+//                    adapter.settype(type);
                     adapter.notifyDataSetChanged();
                 } else {
                     if (shanghuneworderBean.getData() != null) {
                         mList.addAll(shanghuneworderBean.getData().getList());
                     }
-                    adapter.settype(type);
+//                    adapter.settype(type);
                     adapter.notifyDataSetChanged();
                 }
 

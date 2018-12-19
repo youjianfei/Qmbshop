@@ -55,7 +55,12 @@ public class JpushBroadcastRecricer extends BroadcastReceiver {
         } else if (type.equals("5")) {//预约下单提醒   属于交易提醒
             Staticdata.newmessageTYpe = "type3";
             if (shanghuMainActivity != null) {
-                shanghuMainActivity.speak();
+                shanghuMainActivity.speak("您有新订单");
+            }
+        }else if (type.equals("6")) {//取消订单提醒   属于交易提醒
+            Staticdata.newmessageTYpe = "type3";
+            if (shanghuMainActivity != null) {
+                shanghuMainActivity.speak("您的订单被雇主取消");
             }
         }
 

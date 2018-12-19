@@ -77,6 +77,7 @@ public class ShanghuneworderBean {
             private String specialty_name;
             private String task_description;
             private String order_status;
+            private String order_status_code;
             private String task_time;
             private String order_no;
             private int task_id;
@@ -84,6 +85,14 @@ public class ShanghuneworderBean {
             private int distance;
             private double order_amount;
             private String task_Startdate;
+
+            public String getOrder_status_code() {
+                return order_status_code;
+            }
+
+            public void setOrder_status_code(String order_status_code) {
+                this.order_status_code = order_status_code;
+            }
 
             public String getOrder_status() {
                 return order_status;

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    >
 
     <RelativeLayout
         android:id="@+id/re_title"
@@ -20,15 +22,7 @@
             android:padding="10dp"
             android:src="@mipmap/back_white" />
 
-        <TextView
-            android:id="@+id/text_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="帮手订单"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+
 
     </RelativeLayout>
 
@@ -37,23 +31,38 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/re_title">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="18dp"
+                android:text="订单进行中"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
 
             <RelativeLayout
                 android:id="@+id/re1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@color/white">
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/background_white_corners_8">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image_task"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:src="@mipmap/user_pic" />
 
 
@@ -72,6 +81,7 @@
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:textColor="@color/yellow_jianbian_end"
+                    android:visibility="gone"
                     android:textSize="12dp" />
                 <TextView
                     android:id="@+id/text_name"
@@ -92,7 +102,7 @@
                     android:layout_marginBottom="13dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="30dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:layout_toRightOf="@+id/image_task"
                     android:text="发布时间："
                     android:textColor="@color/black_text2"
@@ -104,16 +114,16 @@
                 android:id="@+id/re2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/re1"
-                android:layout_marginTop="8dp"
-                android:background="@color/white">
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/background_white_corners_8">
 
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_below="@+id/line1"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="23dp"
                     android:src="@mipmap/taskdetail" />
 
@@ -121,8 +131,7 @@
                     android:id="@+id/text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/line1"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="35dp"
                     android:layout_marginTop="20dp"
                     android:text="任务说明"
                     android:textColor="#7f7f7f"
@@ -132,13 +141,12 @@
                     android:id="@+id/text_taskdetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/text2"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text=""
-                    android:textColor="@color/black_text"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="门窗"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
                     android:textSize="15dp" />
 
                 <com.jingnuo.quanmbshop.customview.MyGridView
@@ -152,32 +160,25 @@
                     android:visibility="gone"
                     android:numColumns="3" />
 
-                <ImageView
-                    android:id="@+id/line2"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/GridView_PIC"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:src="@color/gray_dfdfdf" />
+
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_below="@+id/line2"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="18dp"
-                    android:src="@mipmap/people"
+                    android:layout_below="@+id/text2"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="28dp"
+                    android:src="@mipmap/people_pink2"
                     android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/text33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/line2"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="15dp"
-                    android:text="联系人"
+                    android:layout_below="@+id/text2"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="25dp"
+                    android:text="联系方式"
                     android:textColor="#7f7f7f"
                     android:textSize="15dp"
                     android:visibility="visible" />
@@ -187,87 +188,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@+id/line2"
+                    android:layout_below="@+id/text2"
                     android:layout_marginLeft="120dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="25dp"
                     android:lines="1"
                     android:text=""
-                    android:textColor="@color/black_text"
+                    android:textColor="@color/black"
                     android:textSize="15dp"
                     android:visibility="visible" />
 
 
                 <ImageView
-                    android:id="@+id/line2222"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_below="@+id/text33"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@color/gray_dfdfdf" />
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_below="@+id/line2222"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="18dp"
-                    android:src="@mipmap/resttime"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/text3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/line2222"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="15dp"
-                    android:text="预约时间"
-                    android:textColor="#7f7f7f"
-                    android:textSize="15dp"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/text_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/line2222"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="15dp"
-                    android:text=""
-                    android:textColor="@color/black_text"
-                    android:textSize="15dp"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:id="@+id/line3"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/text3"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@color/gray_dfdfdf"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_below="@+id/line3"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="18dp"
-                    android:src="@mipmap/address_blue" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="28dp"
+                    android:src="@mipmap/address_pink" />
 
                 <TextView
                     android:id="@+id/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/line3"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/text33"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="25dp"
                     android:text="地点"
                     android:textColor="#7f7f7f"
                     android:textSize="15dp" />
@@ -277,42 +223,82 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@+id/line3"
+                    android:layout_below="@+id/text33"
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="120dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
                     android:gravity="right"
                     android:text=""
-                    android:textColor="@color/black_text"
+                    android:textColor="@color/black"
                     android:textSize="15dp" />
-
 
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/re3"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/re2"
-                android:layout_marginTop="8dp"
-                android:background="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/background_white_corners_8"
                 >
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="18dp"
+                    android:src="@mipmap/resttime3"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="预约时间"
+                    android:textColor="@color/red"
+                    android:textSize="15dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/text_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="15dp"
+                    android:visibility="visible" />
+
+
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:src="@mipmap/money_blue"
+                    android:layout_below="@+id/text3"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+                    android:visibility="gone"
                     />
                 <TextView
                     android:id="@+id/text111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/text3"
+                    android:layout_marginTop="10dp"
                     android:text="佣金"
                     android:textSize="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="35dp"
                     android:textColor="#7f7f7f"
+                    android:visibility="gone"
                     />
                 <TextView
                     android:id="@+id/text_taskmoney_"
@@ -320,15 +306,28 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
+                    android:layout_below="@+id/text3"
                     android:textColor="@color/yellow_jianbian_end"
                     android:layout_marginLeft="100dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="16dp"
                     android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+
                     />
             </RelativeLayout>
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/textview_sendmessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="无法联系用户，短信提醒"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/yellow_jianbian_start"
+                android:textSize="13dp"
+                android:layout_marginTop="15dp"
+                />
+        </LinearLayout>
     </com.jingnuo.quanmbshop.customview.CustomerScrollView>
 
     <LinearLayout
@@ -377,8 +376,31 @@
             android:layout_marginBottom="5dp"
             android:text="申请完成"
             android:textColor="@color/white"
+            android:visibility="gone"
             android:textSize="15dp" />
+        <LinearLayout
+            android:id="@+id/linearlayout_star"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/button_yellow_star_5dp"
+            android:layout_margin="5dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/duihao_white" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="开始服务"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
+        </LinearLayout>
     </LinearLayout>
 
 

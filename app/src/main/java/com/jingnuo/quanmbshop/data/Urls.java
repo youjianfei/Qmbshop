@@ -72,6 +72,8 @@ public class Urls {
     public static String tasksort = "task/querySort/getSortBy";//任务智能排序方式
     public static String taskdetails = "task/taskDetail/getTaskDetail";//任务详情  ?id=
     public static String taskdetailscancle = "task/taskCancel";//撤消任务
+    public static String startTask = "order/makeOrder?user_token=";//商户开始任务
+    public static String sendmessage= "order/makeSms?user_token=";//商户发送提醒短信
     public static String helptask = "order/taskHelp";//确认帮助 ?id=
     public static String barginmonry = "bargain/taskBargain";//广场单还价
     public static String barginPiPei = "bargain/businessBid";//匹配单出价

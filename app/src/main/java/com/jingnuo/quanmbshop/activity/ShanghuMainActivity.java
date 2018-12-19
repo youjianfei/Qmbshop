@@ -97,8 +97,8 @@ public class ShanghuMainActivity extends BaseActivityother {
     Popwindow_ShanghuIsjiedan popwindow_shanghuIsjiedan;
     //数据
     int page = 1;
-    int type = 0;    // 0 新订单
-    String state = "00000";
+//    int type = 0;    // 0 新订单
+    String state = "07,09";
     ShopcenterBean shopcenterBean;//商户
 
     Adapter_SquareList adapter;
@@ -165,7 +165,7 @@ public class ShanghuMainActivity extends BaseActivityother {
 
         requestshopinfo();
         if(!Staticdata.xValue.equals("")){
-            request("00000", page);
+            request("07,09", page);
         }
         mList=new ArrayList<>();
         adapter=new Adapter_SquareList(mList,ShanghuMainActivity.this);
@@ -198,7 +198,7 @@ public class ShanghuMainActivity extends BaseActivityother {
                         Intent intent = new Intent("com.jingnuo.quanmb.ADDRESS");
                         intent.putExtra("address", aMapLocation.getCity());
                         sendBroadcast(intent);
-                        request("00000", page);
+                        request("07,09", page);
                     }
                     if (Staticdata.isLogin) {
                         new Volley_Utils(new Interface_volley_respose() {
@@ -344,19 +344,19 @@ public class ShanghuMainActivity extends BaseActivityother {
         mListview_shanghuorder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(type==0){
-                    Intent intent=new Intent(ShanghuMainActivity.this,TaskDetailsActivity.class);
-                    intent.putExtra("id",mList.get(position-2).getTask_id()+"");
-//                LogUtils.LOG("ceshi","列表数"+mdata.size()+"点击位置"+position,"sadfasfd");
-//                intent.putExtra("order_no",mdata.get(position-1).getOrder_no()+"");
-                    startActivity(intent);
-                }else {
+//                if(type==0){
+//                    Intent intent=new Intent(ShanghuMainActivity.this,TaskDetailsActivity.class);
+//                    intent.putExtra("id",mList.get(position-2).getTask_id()+"");
+////                LogUtils.LOG("ceshi","列表数"+mdata.size()+"点击位置"+position,"sadfasfd");
+////                intent.putExtra("order_no",mdata.get(position-1).getOrder_no()+"");
+//                    startActivity(intent);
+//                }else {
                     Intent  intent=new Intent(ShanghuMainActivity.this,HelperOrderActivity.class);
-                    intent.putExtra("type",type);
+//                    intent.putExtra("type",type);
                     LogUtils.LOG("ceshi","列表数"+mList.size()+"点击位置"+position,"sadfasfd");
                     intent.putExtra("order_no",mList.get(position-2).getOrder_no()+"");
                     startActivity(intent);
-                }
+//                }
 
 
 
@@ -465,9 +465,9 @@ public class ShanghuMainActivity extends BaseActivityother {
         mListview_shanghuorder = findViewById(R.id.list_order);
         image_personcenter = findViewById(R.id.image_personcenter);
         mTablayout = findViewById(R.id.tablayout);
-        mTablayout.addTab(mTablayout.newTab().setText("新订单").setTag("00000"));
+        mTablayout.addTab(mTablayout.newTab().setText("新订单").setTag("07,09"));
         mTablayout.addTab(mTablayout.newTab().setText("进行中").setTag("05,06"));
-        mTablayout.addTab(mTablayout.newTab().setText("已完成").setTag("00,"));
+        mTablayout.addTab(mTablayout.newTab().setText("已完成").setTag("00,01,02"));
 
         listheadView = LayoutInflater.from(ShanghuMainActivity.this).inflate(R.layout.list_headview_shanghuorder, null, false);
         mListview_shanghuorder.getRefreshableView().addHeaderView(listheadView);
@@ -480,7 +480,7 @@ public class ShanghuMainActivity extends BaseActivityother {
         textview_huiyuan = listheadView.findViewById(R.id.textview_huiyuan);
         iamge_empty=listheadView.findViewById(R.id.iamge_empty);
 
-        mTablayout_header.addTab(mTablayout_header.newTab().setText("新订单").setTag("00000"));
+        mTablayout_header.addTab(mTablayout_header.newTab().setText("新订单").setTag("07,09"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("进行中").setTag("05,06"));
         mTablayout_header.addTab(mTablayout_header.newTab().setText("已完成").setTag("00,01,02"));
 
@@ -584,7 +584,7 @@ public class ShanghuMainActivity extends BaseActivityother {
     // 引擎类型
     private String mEngineType = SpeechConstant.TYPE_CLOUD;
 
-   public void speak(){
+   public void speak(String message){
 
         // 初始化合成对象
         mTts = SpeechSynthesizer.createSynthesizer(ShanghuMainActivity.this, mTtsInitListener);
@@ -597,7 +597,7 @@ public class ShanghuMainActivity extends BaseActivityother {
 
         setParam();
 
-        int code = mTts.startSpeaking("你有新订单", mTtsListener);
+        int code = mTts.startSpeaking(message, mTtsListener);
 //			/**
 //			 * 只保存音频不进行播放接口,调用此接口请注释startSpeaking接口
 //			 * text:要合成的文本，uri:需要保存的音频全路径，listener:回调接口
@@ -820,16 +820,16 @@ public class ShanghuMainActivity extends BaseActivityother {
     void request(String state, final int page) {//请求列表
         String URL = "";
         LogUtils.LOG("ceshi", "state"+state, "Fragment_shanghutask");
-        if (state.equals("00000")){//新订单
-            URL = Urls.Baseurl + Urls.neworderlist + Staticdata.static_userBean.getData().getAppuser().getUser_token()+ "&business_no=" +
-                    Staticdata.static_userBean.getData().getAppuser().getBusiness_no()+ "&x_value=" + Staticdata.xValue + "&y_value=" + Staticdata.yValue+
-                    "&pageNum=" + page;
-            type=0;
-        }else {
+//        if (state.equals("00000")){//新订单
+//            URL = Urls.Baseurl + Urls.neworderlist + Staticdata.static_userBean.getData().getAppuser().getUser_token()+ "&business_no=" +
+//                    Staticdata.static_userBean.getData().getAppuser().getBusiness_no()+ "&x_value=" + Staticdata.xValue + "&y_value=" + Staticdata.yValue+
+//                    "&pageNum=" + page;
+//            type=0;
+//        }else {
             URL = Urls.Baseurl + Urls.shoporder + Staticdata.static_userBean.getData().getAppuser().getUser_token() + "&order_status=" + state +
                     "&curPageNo=" + page;
-            type=1;
-        }
+//            type=1;
+//        }
         LogUtils.LOG("ceshiurl", URL, "Fragment_shanghutask");
 
         new Volley_Utils(new Interface_volley_respose() {
@@ -845,13 +845,13 @@ public class ShanghuMainActivity extends BaseActivityother {
                     if (shanghuneworderBean.getData() != null) {
                         mList.addAll(shanghuneworderBean.getData().getList());
                     }
-                    adapter.settype(type);
+//                    adapter.settype(type);
                     adapter.notifyDataSetChanged();
                 } else {
                     if (shanghuneworderBean.getData() != null) {
                         mList.addAll(shanghuneworderBean.getData().getList());
                     }
-                    adapter.settype(type);
+//                    adapter.settype(type);
                     adapter.notifyDataSetChanged();
                 }
                 if(mList.size()==0){
