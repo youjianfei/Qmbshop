@@ -11,10 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
+import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.Interface.SendYanZhengmaSuccess;
 import com.jingnuo.quanmbshop.R;
+import com.jingnuo.quanmbshop.activity.LoginActivity;
 import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
+import com.jingnuo.quanmbshop.entityclass.DongjieBean;
+import com.jingnuo.quanmbshop.popwinow.Popwindow_weigui;
 import com.jingnuo.quanmbshop.popwinow.ProgressDlog;
 import com.jingnuo.quanmbshop.class_.SendYanZhengMa;
 import com.jingnuo.quanmbshop.data.Staticdata;
@@ -103,7 +107,47 @@ public class Fragment_phone_login extends Fragment {
                     getActivity().startActivity(intent_login);
                     getActivity().finish();
                 }else {
-                    ToastUtils.showToast(getActivity(),msg);
+                    if(status!=-4){
+                        ToastUtils.showToast(getActivity(),msg);
+                    }
+
+                    if(status==-4){
+                        if(Staticdata.isshow){
+                            String URL;
+//                            if(Staticdata.static_userBean.getData()!=null){
+//                                URL=Urls.Baseurl_cui+Urls.dongjieyuanyin+
+//                                        Staticdata.static_userBean.getData().getAppuser().getUser_name();
+//                            }else {
+                            URL=Urls.Baseurl_cui+Urls.dongjieyuanyin+
+                                    phonenumber;
+//                            }
+                            new Volley_Utils(new Interface_volley_respose() {
+                                @Override
+                                public void onSuccesses(String respose) {
+                                    LogUtils.LOG("guoqi",respose,"冻结post");
+                                    DongjieBean dongjieBean=new Gson().fromJson(respose,DongjieBean.class);
+                                    if(dongjieBean.getCode()==1){
+                                        new Popwindow_weigui(getActivity(), dongjieBean.getData().getTxt(),
+                                                dongjieBean.getData().getMoney() + "",
+                                                dongjieBean.getData().getLv() + "",
+                                                dongjieBean.getData().getDay() + "", new InterfacePermission() {
+                                            @Override
+                                            public void onResult(boolean result) {
+                                                getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+                                            }
+                                        }).showpopwindow();
+
+                                    }
+
+                                }
+
+                                @Override
+                                public void onError(int error) {
+
+                                }
+                            }).Http(URL,getActivity(),0);
+                        }
+                    }
                 }
 //                //登陆成功后 设置全局变量islogin为 true
 //                isLogin = true;

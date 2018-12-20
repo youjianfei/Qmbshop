@@ -227,7 +227,9 @@
             android:name=".activity.ShanghuMainActivity"
             android:launchMode="singleTask" />
         <activity android:name=".activity.BaozhengjinActivity" />
-        <activity android:name=".activity.BaozhengjinTuikuanActivity"></activity>
+        <activity android:name=".activity.BaozhengjinTuikuanActivity" />
+        <activity android:name=".activity.ZhuangbeiShangchengActivity" />
+        <activity android:name=".activity.ZhuangbeidetailActivity"></activity>
     </application>
 
 </manifest>

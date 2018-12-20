@@ -176,6 +176,8 @@ public class Urls {
     public static String setSafepassword = "user/setSecurityCode";//设置支付密码
     public static String checkSafepassword = "user/checkSecurityCode";//校验支付密码
     public static String updataXYDU = "user/updateXYDu?user_token=";//更新经纬度
+    public static String zhuangbeiliebiao = "task/taskDetail/getLifeCircle?user_token=";//装备列表   type= 4
+    public static String dongjieyuanyin= "user/getPenalty?user_name=";//冻结原因
 
 
 

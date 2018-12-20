@@ -43,6 +43,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
     LinearLayout linearlayout_kefu;
     LinearLayout linearlayout_jiaoxue;
     LinearLayout linearlayout_fenxiang;
+    LinearLayout linearlayout_zhuangbei;
 
     //对象
 
@@ -83,6 +84,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_jiaoxue.setOnClickListener(this);
         linearlayout_fenxiang.setOnClickListener(this);
         textview_guize.setOnClickListener(this);
+        linearlayout_zhuangbei.setOnClickListener(this);
     }
 
     @Override
@@ -99,6 +101,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_kefu = findViewById(R.id.linearlayout_kefu);
         linearlayout_jiaoxue = findViewById(R.id.linearlayout_jiaoxue);
         linearlayout_fenxiang = findViewById(R.id.linearlayout_fenxiang);
+        linearlayout_zhuangbei = findViewById(R.id.linearlayout_zhuangbei);
         textview_guize = findViewById(R.id.textview_guize);
         textview_huiyua = findViewById(R.id.textview_huiyua);
     }
@@ -107,7 +110,10 @@ public class ShopCenterNewActivity extends BaseActivityother {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-
+            case R.id.linearlayout_zhuangbei://装备商城
+                Intent intent_zhuangbei = new Intent(this, ZhuangbeiShangchengActivity.class);
+                startActivity(intent_zhuangbei);
+                break;
             case R.id.iv_setting:
                 Intent intent_setting = new Intent(this, SettingActivity.class);
                 startActivity(intent_setting);

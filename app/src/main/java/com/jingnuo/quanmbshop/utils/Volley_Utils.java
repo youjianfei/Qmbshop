@@ -14,10 +14,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.jingnuo.quanmbshop.App;
+import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.activity.LoginActivity;
 import com.jingnuo.quanmbshop.data.Staticdata;
+import com.jingnuo.quanmbshop.data.Urls;
+import com.jingnuo.quanmbshop.entityclass.DongjieBean;
 import com.jingnuo.quanmbshop.popwinow.Popwindow_loginAgain;
 import com.jingnuo.quanmbshop.popwinow.Popwindow_weigui;
 
@@ -79,10 +83,32 @@ public class Volley_Utils {
                         mContext.startActivity(new Intent(mContext, LoginActivity.class));
                     }else if(status==-4){
                         if(Staticdata.isshow){
-                            new Popwindow_weigui((Activity) mContext).showpopwindow();
+                            new Volley_Utils(new Interface_volley_respose() {
+                                @Override
+                                public void onSuccesses(String respose) {
+                                    LogUtils.LOG("guoqi",respose,"冻结get");
+                                     DongjieBean dongjieBean=new Gson().fromJson(respose,DongjieBean.class);
+                                    if(dongjieBean.getCode()==1){
+                                        new Popwindow_weigui((Activity) mContext, dongjieBean.getData().getTxt(),
+                                                dongjieBean.getData().getMoney() + "",
+                                                dongjieBean.getData().getLv() + "",
+                                                dongjieBean.getData().getDay() + "", new InterfacePermission() {
+                                            @Override
+                                            public void onResult(boolean result) {
+
+                                            }
+                                        }).showpopwindow();
+                                    }
+                                }
+
+                                @Override
+                                public void onError(int error) {
+
+                                }
+                            }).Http(Urls.Baseurl_cui+Urls.dongjieyuanyin+
+                                    Staticdata.static_userBean.getData().getAppuser().getUser_name(),mContext,0);
                         }
                     } else {
-
                         mInterface.onSuccesses(response);
                     }
                 }
@@ -123,7 +149,7 @@ public class Volley_Utils {
 
         mStringRequest = new StringRequest(Method, URL, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(final String response) {
                 if (response != null || response.length() != 0) {
 
 
@@ -144,8 +170,45 @@ public class Volley_Utils {
                         Staticdata.isLogin=false;
                         mContext.startActivity(new Intent(mContext, LoginActivity.class));
 
-
-                    }else {
+                    } else if(status==-4){
+//                        LogUtils.LOG("guoqi",,"冻结post");
+                        mInterface.onSuccesses(response);
+//                        if(Staticdata.isshow){
+//                            String URL;
+//                            if(Staticdata.static_userBean.getData()!=null){
+//                                URL=Urls.Baseurl_cui+Urls.dongjieyuanyin+
+//                                        Staticdata.static_userBean.getData().getAppuser().getUser_name();
+//                            }else {
+//                                URL=Urls.Baseurl_cui+Urls.dongjieyuanyin+
+//                                       map.get("username");
+//                            }
+//                            new Volley_Utils(new Interface_volley_respose() {
+//                                @Override
+//                                public void onSuccesses(String respose) {
+//                                    LogUtils.LOG("guoqi",respose,"冻结post");
+//                                    DongjieBean dongjieBean=new Gson().fromJson(respose,DongjieBean.class);
+//                                    if(dongjieBean.getCode()==1){
+//                                        new Popwindow_weigui((Activity) mContext, dongjieBean.getData().getTxt(),
+//                                                dongjieBean.getData().getMoney() + "",
+//                                                dongjieBean.getData().getLv() + "",
+//                                                dongjieBean.getData().getDay() + "", new InterfacePermission() {
+//                                            @Override
+//                                            public void onResult(boolean result) {
+//                                                mContext.startActivity(new Intent(mContext, LoginActivity.class));
+//                                            }
+//                                        }).showpopwindow();
+//
+//                                    }
+//
+//                                }
+//
+//                                @Override
+//                                public void onError(int error) {
+//
+//                                }
+//                            }).Http(URL,mContext,0);
+//                        }
+                    } else {
                         mInterface.onSuccesses(response);
                 }
                 }

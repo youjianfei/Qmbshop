@@ -257,7 +257,7 @@ public class ShanghuMainActivity extends BaseActivityother {
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
-                LogUtils.LOG("cehsi","保证金"+respose,"保证金");
+                LogUtils.LOG("cehsiq","保证金"+respose,"保证金");
                 try {
                     JSONObject object=new JSONObject(respose);
                     isjiaona = (Integer) object.get("code");//是否缴纳

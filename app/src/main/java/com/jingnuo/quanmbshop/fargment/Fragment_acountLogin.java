@@ -1,5 +1,6 @@
 package com.jingnuo.quanmbshop.fargment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +13,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.activity.FindPasswordActivity;
+import com.jingnuo.quanmbshop.activity.LoginActivity;
 import com.jingnuo.quanmbshop.activity.ShanghuMainActivity;
 import com.jingnuo.quanmbshop.activity.ShopCenterNewActivity;
 import com.jingnuo.quanmbshop.activity.ShopInActivity;
 import com.jingnuo.quanmbshop.activity.SubmitSuccessActivity;
+import com.jingnuo.quanmbshop.entityclass.DongjieBean;
+import com.jingnuo.quanmbshop.popwinow.Popwindow_weigui;
 import com.jingnuo.quanmbshop.popwinow.ProgressDlog;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
@@ -191,7 +196,7 @@ public class Fragment_acountLogin extends Fragment {
 
                             @Override
                             public void onError(int error) {
-
+                                progressDlog.cancelPD();
                             }
                         }).Http(Urls.Baseurl + Urls.shopIn_state + Staticdata.static_userBean.getData().getAppuser().getUser_token(), getActivity(), 0);
 
@@ -202,7 +207,46 @@ public class Fragment_acountLogin extends Fragment {
                     }
 
                 }else {
-                    ToastUtils.showToast(getActivity(),msg);
+                    if(status!=-4){
+                        ToastUtils.showToast(getActivity(),msg);
+                    }
+                    if(status==-4){
+                        if(Staticdata.isshow){
+                            String URL;
+//                            if(Staticdata.static_userBean.getData()!=null){
+//                                URL=Urls.Baseurl_cui+Urls.dongjieyuanyin+
+//                                        Staticdata.static_userBean.getData().getAppuser().getUser_name();
+//                            }else {
+                                URL=Urls.Baseurl_cui+Urls.dongjieyuanyin+
+                                        account;
+//                            }
+                            new Volley_Utils(new Interface_volley_respose() {
+                                @Override
+                                public void onSuccesses(String respose) {
+                                    LogUtils.LOG("guoqi",respose,"冻结post");
+                                    DongjieBean dongjieBean=new Gson().fromJson(respose,DongjieBean.class);
+                                    if(dongjieBean.getCode()==1){
+                                        new Popwindow_weigui(getActivity(), dongjieBean.getData().getTxt(),
+                                                dongjieBean.getData().getMoney() + "",
+                                                dongjieBean.getData().getLv() + "",
+                                                dongjieBean.getData().getDay() + "", new InterfacePermission() {
+                                            @Override
+                                            public void onResult(boolean result) {
+                                                getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+                                            }
+                                        }).showpopwindow();
+
+                                    }
+
+                                }
+
+                                @Override
+                                public void onError(int error) {
+
+                                }
+                            }).Http(URL,getActivity(),0);
+                        }
+                    }
                 }
 
             }

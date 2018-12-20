@@ -209,6 +209,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout_zhuangbei"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -217,15 +218,16 @@
                 android:visibility="invisible">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/qianbao" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/zhuangbei" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="钱包"
+                    android:text="装备商城"
+                    android:textSize="16dp"
                     android:textColor="@color/black" />
 
             </LinearLayout>

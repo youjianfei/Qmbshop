@@ -114,7 +114,7 @@ public class AutoUpdate {
                             showUpdateDialog();
 
                         } else {//没有新版本
-                            interfacePermission.onResult(true);
+                            interfacePermission.onResult(false);
                             return;
                         }
                     }

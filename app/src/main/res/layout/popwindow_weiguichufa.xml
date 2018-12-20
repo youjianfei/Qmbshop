@@ -1,17 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/relativelayout"
+    android:background="@drawable/background_white_corners"
     >
-        <LinearLayout
-            android:id="@+id/iamage_coupon"
+        <TextView
+            android:id="@+id/textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_below="@+id/iamge_cancle"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"/>
+            android:text="违规处罚"
+            android:textSize="18dp"
+            android:textColor="@color/yellow_jianbian_start"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:id="@+id/textview_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="15dp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_below="@+id/textview_title"
+            android:textColor="@color/text_black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+        <TextView
+            android:id="@+id/textview_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="15dp"
+            android:layout_below="@+id/textview_one"
+            android:lineSpacingMultiplier="1.5"
+            android:textColor="@color/text_black"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="6dp"
+            />
+
+        <TextView
+            android:id="@+id/textview_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请严格遵守全民帮平台规则，感谢您的配合!"
+            android:lineSpacingMultiplier="1.5"
+            android:textSize="15dp"
+            android:layout_below="@+id/textview_two"
+            android:textColor="@color/text_black"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="6dp"
+            />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="我知道了，会努力改进的"
+            android:textColor="@color/white"
+            android:background="@drawable/button_red_20dp"
+            android:layout_below="@+id/textview_three"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            />
+        <!--<LinearLayout-->
+            <!--android:id="@+id/iamage_coupon"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_below="@+id/iamge_cancle"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:orientation="vertical"/>-->
 
 
 </RelativeLayout>
