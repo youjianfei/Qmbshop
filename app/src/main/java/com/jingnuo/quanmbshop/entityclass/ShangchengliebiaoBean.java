@@ -54,6 +54,15 @@ public class ShangchengliebiaoBean {
         private String end_date;
         private String img_url;
         private String start_date;
+        private int  product_id;
+
+        public int getProduct_id() {
+            return product_id;
+        }
+
+        public void setProduct_id(int product_id) {
+            this.product_id = product_id;
+        }
 
         public String getClick_url() {
             return click_url;
