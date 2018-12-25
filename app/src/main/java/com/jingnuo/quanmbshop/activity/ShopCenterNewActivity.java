@@ -115,7 +115,8 @@ public class ShopCenterNewActivity extends BaseActivityother {
                 startActivity(intent_zhuangbei);
                 break;
             case R.id.iv_setting:
-                Intent intent_setting = new Intent(this, SettingActivity.class);
+//                Intent intent_setting = new Intent(this, SettingActivity.class);
+                Intent intent_setting = new Intent(this, LuntanActivity.class);
                 startActivity(intent_setting);
                 finish();
                 break;

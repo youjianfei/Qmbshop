@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-   >
+    android:background="@color/gray_background"
+    >
 
     <RelativeLayout
         android:id="@+id/relativelayout_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_white_corners_8"
         android:visibility="visible"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:background="@drawable/background_white_corners_8"
         >
         <TextView
 
             android:id="@+id/text_square_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/text_yellow_star_ban_20dp"
             android:text="全民帮"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="12dp"
+            android:textColor="@color/black"
+            android:textSize="17dp"
             />
         <TextView
             android:id="@+id/text_square_time"
@@ -46,14 +44,11 @@
             android:id="@+id/text_square_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="任务名称"
-            android:textSize="16dp"
+            android:layout_marginLeft="10dp"
             android:layout_below="@+id/text_square_type"
-            android:textColor="@color/black"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            />
+            android:text="任务名称"
+            android:textColor="@color/text_black"
+            android:textSize="13dp" />
         <TextView
             android:id="@+id/text_square_address"
             android:layout_width="wrap_content"
@@ -62,7 +57,7 @@
             android:textSize="12dp"
             android:textColor="#7f7f7f"
             android:layout_below="@+id/text_square_task"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             android:singleLine="true"
             />
@@ -144,10 +139,8 @@
 
     </RelativeLayout>
     <ImageView
-        android:id="@+id/image_line"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
-        android:src="@color/gray_background"/>
-
-
+        android:layout_height="8dp"
+        android:src="@color/gray_background"
+        />
 </LinearLayout>
