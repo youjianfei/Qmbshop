@@ -229,7 +229,8 @@
         <activity android:name=".activity.BaozhengjinActivity" />
         <activity android:name=".activity.BaozhengjinTuikuanActivity" />
         <activity android:name=".activity.ZhuangbeiShangchengActivity" />
-        <activity android:name=".activity.ZhuangbeidetailActivity"></activity>
+        <activity android:name=".activity.ZhuangbeidetailActivity" />
+        <activity android:name=".activity.PayShangchengActivity"></activity>
     </application>
 
 </manifest>

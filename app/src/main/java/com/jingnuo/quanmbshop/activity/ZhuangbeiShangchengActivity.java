@@ -52,6 +52,7 @@ public class ZhuangbeiShangchengActivity extends BaseActivityother {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent  intent=new Intent(ZhuangbeiShangchengActivity.this,ZhuangbeidetailActivity.class);
+               intent.putExtra("product_id",mData.get(position).getProduct_id());
                 startActivity(intent);
             }
         });
