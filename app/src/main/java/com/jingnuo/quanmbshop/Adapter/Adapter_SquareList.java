@@ -76,10 +76,10 @@ public class Adapter_SquareList extends  BaseAdapter {
 //            holder.mTextview_distance.setVisibility(View.INVISIBLE);
             switch (mData.get(position).getOrder_status_code()){
                 case "07":
-                    holder.textview_state.setText("待完成");
+                    holder.textview_state.setText("开始服务");
                     break;
                 case "09":
-                    holder.textview_state.setText("待完成");
+                    holder.textview_state.setText("开始服务");
 
                     break;
                 case "05":

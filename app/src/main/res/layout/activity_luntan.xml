@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/gray_background"
     xmlns:ptr="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context="com.jingnuo.quanmbshop.activity.LuntanActivity">
     <RelativeLayout
         android:id="@+id/re_title"
@@ -30,6 +29,7 @@
         android:layout_marginLeft="18dp"
         android:layout_marginBottom="20dp"
         android:text="论坛"
+        android:layout_below="@+id/re_title"
         android:textColor="@color/black"
         android:textSize="25dp" />
     <com.handmark.pulltorefresh.library.PullToRefreshListView
@@ -39,7 +39,17 @@
         android:divider="@color/gray_background"
         android:dividerHeight="8dp"
         ptr:ptrMode="both"
+        android:layout_below="@+id/text_title"
+        />
+    <ImageView
+        android:id="@+id/iamgeview_fabu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/fabu"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         />
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    >
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="回复 回帖人："
+            android:singleLine="true"
+            android:textSize="13dp"
+            android:textColor="@color/text_black"
+          />
+        <EditText
+            android:id="@+id/edit_content"
+            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:hint="请输入..."
+            android:layout_marginLeft="5dp"
+            android:lines="1"
+            android:textSize="13dp"
+            android:textColor="@color/gray_969696"
+            android:background="@null"
+             />
+    <TextView
+        android:id="@+id/text_submit"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="回复"
+        android:singleLine="true"
+        android:textSize="13dp"
+        android:textColor="@color/text_black"
+        />
+
+</LinearLayout>

@@ -65,6 +65,17 @@ public class Urls {
     public static String shouyePic = "plaza/getSlideShow?type=";//首页轮播广告  type=1广成首页   2爱心帮
     public static String shouyeRadios = "radio/getAllRadios";//首页轮播喇叭
 
+    /**
+     * BBS模块
+     */
+    public static String bbs_shouye = "bbs/homePage?user_token=";//BBS首页列表
+    public static String bbs_xiangqing = "bbs/bbsDetails?user_token=";//BBS详情
+    public static String bbs_xiangqingpinglun = "bbs/bbsComment";//BBS详情评论
+    public static String bbs_fabu = "bbs/publish";//BBS详情评论
+    public static String bbs_dianzan= "bbs/bbsLikeOrNo?user_token=";//BBS点赞
+
+
+
 
     //任务模块
     public static String square_default = "task/querySpecialty/search";//帮帮广场

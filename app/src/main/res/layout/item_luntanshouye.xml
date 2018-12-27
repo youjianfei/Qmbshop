@@ -58,7 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:horizontalSpacing="8dp"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
         android:visibility="gone"
         />
 
@@ -84,9 +85,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="15"
+                android:text="分享"
                 android:textColor="@color/text_title2"
-
+                android:textSize="13dp"
                 />
 
         </LinearLayout>
@@ -108,14 +109,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="15"
+                android:text="评论"
                 android:textColor="@color/text_title2"
-
+                android:textSize="13dp"
                 />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearlayout_dianzan"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -123,18 +125,19 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/image_dianzan"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:src="@mipmap/dianzan" />
+                android:src="@drawable/selsect_dianzan" />
 
             <TextView
                 android:id="@+id/textview_dianzanCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="15"
+                android:text="点赞"
                 android:textColor="@color/text_title2"
-
+                android:textSize="13dp"
                 />
 
         </LinearLayout>

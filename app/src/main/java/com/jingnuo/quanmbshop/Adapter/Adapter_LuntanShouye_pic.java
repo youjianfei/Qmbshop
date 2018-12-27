@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.customview.MyGridView;
 import com.jingnuo.quanmbshop.data.Staticdata;
+import com.jingnuo.quanmbshop.utils.LogUtils;
 import com.jingnuo.quanmbshop.utils.SizeUtils;
 
 import java.util.List;
@@ -33,11 +35,11 @@ public class Adapter_LuntanShouye_pic extends BaseAdapter {
        this. mContext=mContext;
         mLayoutinflater=LayoutInflater.from(mContext);
         if(mData.size()>1){
-            Width=Staticdata.ScreenWidth- SizeUtils.dip2px(mContext,50);
+            Width=Staticdata.ScreenWidth- SizeUtils.dip2px(mContext,40);
             Width=(int)Width/3;
             High= Width;
         }else {
-            Width=Staticdata.ScreenWidth- SizeUtils.dip2px(mContext,40);
+            Width=Staticdata.ScreenWidth- SizeUtils.dip2px(mContext,30);
             High= (int) (Width*0.55);
         }
     }
@@ -53,8 +55,8 @@ public class Adapter_LuntanShouye_pic extends BaseAdapter {
         }else {
             viewHolder= (ViewHolderRR) convertView.getTag();
         }
-//        Glide.with(mContext).load(mData.get(position).getImg_url()).into(viewholder_xianshimiaosha.mImage);
-            viewHolder.mImage.setImageResource(R.mipmap.imageselector_photo);
+        Glide.with(mContext).load(mData.get(position)).into(viewHolder.mImage);
+//            viewHolder.mImage.setImageResource(R.mipmap.imageselector_photo);
             ViewGroup.LayoutParams para;
             para = viewHolder.mImage.getLayoutParams();
             para.width = Width;

@@ -43,6 +43,19 @@
             android:src="@mipmap/setting" />
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+
+
+
     <RelativeLayout
         android:id="@+id/relative_1"
         android:layout_width="match_parent"
@@ -62,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:layout_toRightOf="@+id/iamgeview_shopheadpic"
-            android:text="全民帮商户全民帮商户"
+            android:text="全民帮商户"
             android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="17dp" />
@@ -87,12 +100,102 @@
             android:text="技能类型"
             android:textColor="@color/gray_969696"
             android:textSize="14dp" />
+        <ImageView
+            android:id="@+id/iamge_11"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@color/gray_background"
+            android:layout_below="@+id/iamgeview_shopheadpic"
+            />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iamge_11"
+            >
+            <ImageView
+                android:id="@+id/image_line1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/yellow_shutiao" />
+
+            <TextView
+                android:id="@+id/textview_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/image_line1"
+                android:text="收入"
+                android:textColor="@color/text_title2" />
+
+            <TextView
+                android:id="@+id/textview_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/textview_2"
+                android:layout_marginLeft="25dp"
+                android:text="本周收入"
+                android:textColor="@color/text_gray" />
+
+            <TextView
+                android:id="@+id/textview_benzhoumoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/textview_2"
+                android:layout_toRightOf="@+id/textview_3"
+                android:layout_marginLeft="5dp"
+                android:text="500元"
+                android:textColor="@color/red2" />
+
+
+            <TextView
+                android:id="@+id/textview_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/textview_2"
+                android:layout_marginLeft="25dp"
+                android:layout_toLeftOf="@+id/textview_lishimoney"
+                android:text="历史收入"
+                android:textColor="@color/text_gray" />
+
+            <TextView
+                android:id="@+id/textview_lishimoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/textview_2"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:text="5500元"
+                android:textColor="@color/text_black" />
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/iamge_111"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@color/gray_background"
+            android:layout_below="@+id/relativelayout_1"
+            />
+
 
         <LinearLayout
             android:id="@+id/linearlayout_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/iamgeview_shopheadpic"
+            android:layout_below="@+id/iamge_111"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -233,23 +336,25 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearlayout_luntan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:visibility="invisible">
+                android:visibility="visible">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/tuiguangbi_black" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/shangjialuntan" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="我的推广币"
+                    android:text="商家论坛"
+                    android:textSize="16dp"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -372,16 +477,16 @@
         </LinearLayout>
     </RelativeLayout>
 
-
-
         <TextView
             android:id="@+id/textview_guize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:text="如何接取更多订单  |  了解规则"
             android:textColor="@color/yellow_jianbian_start" />
 
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

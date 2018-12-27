@@ -20,7 +20,6 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_centerHorizontal="true"
-            android:scaleType="centerCrop"
             android:src="@mipmap/cancel"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"

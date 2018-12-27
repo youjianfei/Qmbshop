@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.jingnuo.quanmbshop.R;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.utils.SizeUtils;
@@ -28,8 +29,8 @@ public class Adapter_LuntanDetail_pic extends BaseAdapter {
         this.mData=mDatas;
        this. mContext=mContext;
         mLayoutinflater=LayoutInflater.from(mContext);
-//            Width=Staticdata.ScreenWidth- SizeUtils.dip2px(mContext,40);
-//            High= (int) (Width*0.55);
+            Width=Staticdata.ScreenWidth- SizeUtils.dip2px(mContext,40);
+            High= (int) (Width*0.55);
     }
 
     @Override
@@ -43,13 +44,13 @@ public class Adapter_LuntanDetail_pic extends BaseAdapter {
         }else {
             viewHolder= (ViewHolderRR) convertView.getTag();
         }
-//        Glide.with(mContext).load(mData.get(position).getImg_url()).into(viewholder_xianshimiaosha.mImage);
-            viewHolder.mImage.setImageResource(R.mipmap.a1);
-//            ViewGroup.LayoutParams para;
-//            para = viewHolder.mImage.getLayoutParams();
-//            para.width = Width;
-//            para.height = High;
-//            viewHolder.mImage.setLayoutParams(para);
+        Glide.with(mContext).load(mData.get(position)).into(viewHolder.mImage);
+//            viewHolder.mImage.setImageResource(R.mipmap.a1);
+            ViewGroup.LayoutParams para;
+            para = viewHolder.mImage.getLayoutParams();
+            para.width = Width;
+            para.height = High;
+            viewHolder.mImage.setLayoutParams(para);
 
         return convertView;
     }
