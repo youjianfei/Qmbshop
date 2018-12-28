@@ -58,7 +58,7 @@
                     android:id="@+id/textview_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="师傅冬季服装"
+                    android:text="折扣商品名称"
                     android:textSize="18dp"
                     android:layout_marginLeft="25dp"
                     android:textColor="@color/black"

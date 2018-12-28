@@ -109,6 +109,24 @@ public class ShopcenterBean {
             private int  spread_b;
             private int  orderSum;
             private double  evaluation_star;
+            private double  weekEarnings;
+            private double  historyEarnings;
+
+            public double getWeekEarnings() {
+                return weekEarnings;
+            }
+
+            public void setWeekEarnings(double weekEarnings) {
+                this.weekEarnings = weekEarnings;
+            }
+
+            public double getHistoryEarnings() {
+                return historyEarnings;
+            }
+
+            public void setHistoryEarnings(double historyEarnings) {
+                this.historyEarnings = historyEarnings;
+            }
 
             public int getOrderSum() {
                 return orderSum;

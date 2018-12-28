@@ -35,6 +35,8 @@ public class ShopCenterNewActivity extends BaseActivityother {
     TextView textview_shoptype;
     TextView textview_guize;
     TextView textview_huiyua;
+    TextView textview_benzhoumoney;//本周收入
+    TextView textview_lishimoney;//历史收入
     ImageView huiyuanyes;
     LinearLayout linearlayout_jineng;
     LinearLayout linearlayout_qianbao;
@@ -107,6 +109,8 @@ public class ShopCenterNewActivity extends BaseActivityother {
         linearlayout_luntan = findViewById(R.id.linearlayout_luntan);
         textview_guize = findViewById(R.id.textview_guize);
         textview_huiyua = findViewById(R.id.textview_huiyua);
+        textview_benzhoumoney = findViewById(R.id.textview_benzhoumoney);
+        textview_lishimoney = findViewById(R.id.textview_lishimoney);
     }
 
     @Override
@@ -204,6 +208,8 @@ public class ShopCenterNewActivity extends BaseActivityother {
                     Glide.with(ShopCenterNewActivity.this).load(shopcenterBean.getData().getList().getAvatar_url()).into(iamgeview_shopheadpic);
                     textview_shopname.setText(shopcenterBean.getData().getList().getBusiness_name());
                     textview_shoptype.setText(shopcenterBean.getData().getList().getBusiness_type_id());
+                    textview_benzhoumoney.setText(shopcenterBean.getData().getList().getWeekEarnings()+"元");
+                    textview_lishimoney.setText(shopcenterBean.getData().getList().getHistoryEarnings()+"元");
                     Staticdata.static_userBean.getData().getAppuser().setCommission(Double.parseDouble(shopcenterBean.getData().getList().getCommission()));
                     if(shopcenterBean.getData().getList().getMemberImgUrl()==null){
                     textview_huiyua.setVisibility(View.VISIBLE);

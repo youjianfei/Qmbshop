@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
+import com.jingnuo.quanmbshop.class_.ShareGoodWeb;
 import com.jingnuo.quanmbshop.customview.MyGridView;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
@@ -39,12 +40,13 @@ public class Adapter_LuntanShouye extends BaseAdapter {
     Context  mContext;
     LayoutInflater mLayoutinflater;
     List<BBSBean.DataBean> mData;
-
+    ShareGoodWeb shareClass;
     public Adapter_LuntanShouye(List mDatas, Context mContext) {
         super(mDatas, mContext);
         this.mData=mDatas;
        this. mContext=mContext;
         mLayoutinflater=LayoutInflater.from(mContext);
+        shareClass = new ShareGoodWeb((Activity) mContext);
     }
 
     @Override
@@ -62,6 +64,7 @@ public class Adapter_LuntanShouye extends BaseAdapter {
             viewHolder.textview_dianzanCount=convertView.findViewById(R.id.textview_dianzanCount);
             viewHolder.mygridview_luntanPIC=convertView.findViewById(R.id.mygridview_luntanPIC);
             viewHolder.linearlayout_dianzan=convertView.findViewById(R.id.linearlayout_dianzan);
+            viewHolder.linearlayout_fenxiang=convertView.findViewById(R.id.linearlayout_fenxiang);
             viewHolder.image_dianzan=convertView.findViewById(R.id.image_dianzan);
             convertView.setTag(viewHolder);
         }else {
@@ -165,6 +168,15 @@ public class Adapter_LuntanShouye extends BaseAdapter {
             }
 
         }
+        {//分享
+            viewHolder.linearlayout_fenxiang.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    shareClass.shareapp();
+                }
+            });
+        }
 
 
         return convertView;
@@ -179,6 +191,7 @@ public class Adapter_LuntanShouye extends BaseAdapter {
         TextView textview_dianzanCount;
         MyGridView mygridview_luntanPIC;
         LinearLayout linearlayout_dianzan;
+        LinearLayout linearlayout_fenxiang;
         ImageView image_dianzan;
     }
 

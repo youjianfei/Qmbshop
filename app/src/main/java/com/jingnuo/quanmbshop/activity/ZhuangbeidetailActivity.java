@@ -70,21 +70,24 @@ public class ZhuangbeidetailActivity extends BaseActivityother {
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
+                LogUtils.LOG("ceshi",respose,"装备详情");
                 zhuangbeidetailsBean=new Gson().fromJson(respose,ZhuangbeidetailsBean.class);
-                textview_name.setText(zhuangbeidetailsBean.getData().getProduct_name());
-                String imageurl[]=zhuangbeidetailsBean.getData().getImg_url().split(",");
+                if(zhuangbeidetailsBean.getData()!=null){
+                    textview_name.setText(zhuangbeidetailsBean.getData().getProduct_name());
+                    String imageurl[]=zhuangbeidetailsBean.getData().getImg_url().split(",");
 //                Glide.with(ZhuangbeidetailActivity.this).load(imageurl.substring(0,imageurl.length()-1)).into(image);
 
-                List<String> images = new ArrayList<>();
-                for (int i = 0; i < imageurl.length; i++) {
-                    images.add(imageurl[i]);
+                    List<String> images = new ArrayList<>();
+                    for (int i = 0; i < imageurl.length; i++) {
+                        images.add(imageurl[i]);
+                    }
+                    //设置图片集合
+                    banner.setImages(images);
+                    //banner设置方法全部调用完毕时最后调用
+                    banner.start();
+                    banner.setDelayTime( 2000*10);
+                    banner. stopAutoPlay();
                 }
-                //设置图片集合
-                banner.setImages(images);
-                //banner设置方法全部调用完毕时最后调用
-                banner.start();
-                banner.setDelayTime( 2000*10);
-                banner. stopAutoPlay();
             }
 
             @Override

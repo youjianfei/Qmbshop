@@ -18,6 +18,7 @@ import com.jingnuo.quanmbshop.Adapter.Adapter_LuntanDetailsHuifu;
 import com.jingnuo.quanmbshop.Interface.InterfacePermission;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.R;
+import com.jingnuo.quanmbshop.class_.ShareGoodWeb;
 import com.jingnuo.quanmbshop.customview.MyListView;
 import com.jingnuo.quanmbshop.data.Staticdata;
 import com.jingnuo.quanmbshop.data.Urls;
@@ -44,6 +45,7 @@ public class LuntanDetailActivity extends BaseActivityother {
     MyListView listview_detailsPIC;//详情图片
     MyListView mylistview_allHuifu;//详情下面回复列表
     LinearLayout linearlayout_dianzan;
+    LinearLayout linearlayout_share;
     ImageView image_dianzan;
 
     TextView textview_huifu;//评论确定按钮
@@ -53,7 +55,7 @@ public class LuntanDetailActivity extends BaseActivityother {
     Adapter_LuntanDetailsHuifu adapter_luntanDetailsHuifu;//评论 回复afapter
 
     BBSXiangqingBean bbsXiangqingBean;
-
+    ShareGoodWeb shareClass;
     List<BBSXiangqingBean.DataBean.CommentListBean> mData_pinlun;//评论data
     List<String> mData_pic;//详情图片
 
@@ -70,6 +72,7 @@ public class LuntanDetailActivity extends BaseActivityother {
 
     @Override
     protected void setData() {
+        shareClass=new ShareGoodWeb(this);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         requestXiangxing(PAGE);
     }
@@ -95,6 +98,12 @@ public class LuntanDetailActivity extends BaseActivityother {
 
     @Override
     protected void initListener() {
+        linearlayout_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareClass.shareapp();
+            }
+        });
         //详情页查看图片
         listview_detailsPIC.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -165,8 +174,8 @@ public class LuntanDetailActivity extends BaseActivityother {
                     ToastUtils.showToast(LuntanDetailActivity.this, "请输入有效内容");
                 } else {
                     Map map_pinglun = new HashMap();
-                    map_pinglun.put("rootId", bbsXiangqingBean.getData().getRoot().getID() + "");
-                    map_pinglun.put("ID", bbsXiangqingBean.getData().getRoot().getID() + "");
+                    map_pinglun.put("rootId", ID + "");
+                    map_pinglun.put("ID", ID + "");
                     map_pinglun.put("user_token", Staticdata.static_userBean.getData().getAppuser().getUser_token());
                     map_pinglun.put("content", pinglunContent);
                     requestPinglun(map_pinglun);
@@ -186,6 +195,7 @@ public class LuntanDetailActivity extends BaseActivityother {
         listview_detailsPIC = findViewById(R.id.listview_detailsPIC);
         mylistview_allHuifu = findViewById(R.id.mylistview_allHuifu);
         linearlayout_dianzan = findViewById(R.id.linearlayout_dianzan);
+        linearlayout_share = findViewById(R.id.linearlayout_share);
         image_dianzan = findViewById(R.id.image_dianzan);
         textview_huifu = findViewById(R.id.textview_huifu);
         edit_pinglun = findViewById(R.id.edit_pinglun);
@@ -244,6 +254,9 @@ public class LuntanDetailActivity extends BaseActivityother {
                 } else {
                     textview_loadmore.setEnabled(false);
                     textview_loadmore.setText("暂无更多回复");
+                    if(page!=1){
+                        PAGE--;
+                    }
                 }
 
 
