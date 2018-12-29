@@ -6,16 +6,14 @@
     android:orientation="vertical"
     android:background="@color/gray_background"
     >
-
     <RelativeLayout
         android:id="@+id/relativelayout_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/background_white_corners_8"
-        >
+        android:background="@drawable/background_white_corners_8">
         <TextView
 
             android:id="@+id/text_square_type"
@@ -23,32 +21,41 @@
             android:layout_height="wrap_content"
             android:text="全民帮"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="12dp"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
             android:textSize="17dp"
             />
-        <TextView
-            android:id="@+id/text_square_time"
-            android:text="刚刚"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666666"
-            android:textSize="12dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="10dp"
-            />
+        <!--<TextView-->
+            <!--android:id="@+id/text_square_time"-->
+            <!--android:text="刚刚"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="#666666"-->
+            <!--android:textSize="12dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--/>-->
 
         <TextView
             android:id="@+id/text_square_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
             android:layout_below="@+id/text_square_type"
             android:text="任务名称"
             android:textColor="@color/text_black"
             android:textSize="13dp" />
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@mipmap/address_gray"
+            android:layout_below="@+id/text_square_task"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            />
         <TextView
             android:id="@+id/text_square_address"
             android:layout_width="wrap_content"
@@ -57,20 +64,48 @@
             android:textSize="12dp"
             android:textColor="#7f7f7f"
             android:layout_below="@+id/text_square_task"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="10dp"
             android:singleLine="true"
             />
-        <TextView
-            android:id="@+id/text_square_price"
+        
+        <LinearLayout
+            android:id="@+id/linraelayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00.00元"
-            android:textColor="#fb1419"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
-            android:textSize="16dp"
-            android:layout_marginRight="15dp"
-            android:layout_alignBaseline="@+id/text_square_address"
+
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_square_person"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@mipmap/user_pic" />
+            <TextView
+                android:id="@+id/text_taskpeoplename"
+                android:text="发帖人"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#666666"
+                android:textSize="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/image_square_person"
+                />
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="60dp"
+            android:layout_toLeftOf="@+id/linraelayout"
+            android:src="@color/gray_background"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
             />
         <ImageView
             android:id="@+id/line2"
@@ -78,47 +113,47 @@
             android:layout_height="0.5dp"
             android:src="@color/gray_background"
             android:layout_below="@+id/text_square_address"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
             />
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_square_person"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
+        <TextView
+            android:id="@+id/text_square_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#fb1419"
+            android:textSize="16dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/line2"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            />
+        <LinearLayout
+            android:id="@+id/linearlayout_zhuyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_below="@+id/line2"
-            android:src="@mipmap/user_pic" />
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            >
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@mipmap/tanhao_yellow"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请在3分钟之内联系客户，并约定服务时间"
+                android:layout_marginLeft="5dp"
+                android:textSize="11dp"
+                android:textColor="@color/text_gray"
+                />
 
-        <TextView
-            android:id="@+id/text_taskpeoplename"
-            android:text="发帖人"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666666"
-            android:textSize="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/image_square_person"
-            android:layout_below="@+id/line2"
-            />
-        <TextView
-            android:id="@+id/text_taskdistance"
-            android:text="定位失败"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666666"
-            android:textSize="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/image_square_person"
-            android:layout_below="@+id/text_taskpeoplename"
-            android:visibility="gone"
-            />
+
+
+        </LinearLayout>
         <TextView
             android:id="@+id/textview_state"
             android:layout_width="wrap_content"
@@ -127,7 +162,8 @@
             android:textColor="@color/white"
             android:background="@drawable/button_yellow_star_5dp"
             android:layout_below="@+id/line2"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="3dp"
@@ -137,7 +173,11 @@
             android:layout_alignParentRight="true"
             />
 
+
+
+
     </RelativeLayout>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="8dp"

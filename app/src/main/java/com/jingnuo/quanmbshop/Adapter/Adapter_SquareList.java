@@ -47,13 +47,13 @@ public class Adapter_SquareList extends  BaseAdapter {
             holder.mText_task_des=convertView.findViewById(R.id.text_square_task);
             holder.mText_task_type=convertView.findViewById(R.id.text_square_type);
             holder.textview_state=convertView.findViewById(R.id.textview_state);
-            holder.mText_task_creattime=convertView.findViewById(R.id.text_square_time);
+//            holder.mText_task_creattime=convertView.findViewById(R.id.text_square_time);
             holder.mText_task_username=convertView.findViewById(R.id.text_taskpeoplename);
             holder.mText_task_address=convertView.findViewById(R.id.text_square_address);
             holder.mText_task_price=convertView.findViewById(R.id.text_square_price);
 //            holder.mTextview_distance=convertView.findViewById(R.id.text_taskdistance);
             holder.mImage_view=convertView.findViewById(R.id.image_square_person);
-            holder.image_line=convertView.findViewById(R.id.image_line);
+            holder.linearlayout_zhuyi=convertView.findViewById(R.id.linearlayout_zhuyi);
             convertView.setTag(holder);
 
         }else{
@@ -63,14 +63,16 @@ public class Adapter_SquareList extends  BaseAdapter {
 
         holder.mText_task_des.setText(mData.get(position).getTask_description()+"");
 
-        long now = Long.parseLong(Utils.getTime(Utils.getTimeString()));//系统当前时间
+//        long now = Long.parseLong(Utils.getTime(Utils.getTimeString()));//系统当前时间
        {
-            long ago = Long.parseLong(Utils.getTime(mData.get(position).getCreateDate()));//任务发布时间
-            String time = Utils.getDistanceTime2(ago, now);//算出的差值
-            holder.mText_task_creattime.setText(time);
+//            long ago = Long.parseLong(Utils.getTime(mData.get(position).getCreateDate()));//任务发布时间
+//            String time = Utils.getDistanceTime2(ago, now);//算出的差值
+//            holder.mText_task_creattime.setText(time);
             if(mData.get(position).getOrder_amount()==0){
                 holder.mText_task_price.setText("");
+                holder.linearlayout_zhuyi.setVisibility(View.VISIBLE);
             }else {
+                holder.linearlayout_zhuyi.setVisibility(View.INVISIBLE);
                 holder.mText_task_price.setText(mData.get(position).getOrder_amount()+"元");
             }
 //            holder.mTextview_distance.setVisibility(View.INVISIBLE);
@@ -117,15 +119,14 @@ public class Adapter_SquareList extends  BaseAdapter {
     class  ViewHolder {
         TextView mText_task_des;//任务描述
         TextView mText_task_type ;//任务类型
-        TextView mText_task_creattime ;//任务创建时间
+//        TextView mText_task_creattime ;//任务创建时间
         TextView mText_task_username ;//任务的发帖人
         TextView mText_task_address ;//发布任务的地址
         TextView mText_task_price ;//任务的佣金
         TextView mTextview_distance;
         TextView textview_state;//任务完成状态
         ImageView mImage_view;//头像
-        ImageView image_line;//分隔条
-
+LinearLayout linearlayout_zhuyi;
 
     }
 }
