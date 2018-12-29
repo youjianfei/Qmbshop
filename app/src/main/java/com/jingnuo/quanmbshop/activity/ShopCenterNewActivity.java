@@ -119,6 +119,7 @@ public class ShopCenterNewActivity extends BaseActivityother {
         switch (v.getId()) {
             case R.id.linearlayout_luntan://商家论坛
                 Intent intent_luntan = new Intent(this, LuntanActivity.class);
+                intent_luntan.putExtra("shuaxin","Y");
                 startActivity(intent_luntan);
                 break;
             case R.id.linearlayout_zhuangbei://装备商城

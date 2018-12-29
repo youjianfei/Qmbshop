@@ -34,6 +34,7 @@ public class LuntanActivity extends BaseActivityother {
     Adapter_LuntanShouye adapter_luntanShouye;//列表适配器对象
     BBSBean  bbsBean;//bbs实体类
 
+    String  shuangxin="";
 
     int  PAGE=1;
 
@@ -49,6 +50,7 @@ public class LuntanActivity extends BaseActivityother {
 
     @Override
     protected void initData() {
+//        shuangxin=getIntent().getStringExtra("shuaxin");
         mData=new ArrayList<>();
         adapter_luntanShouye=new Adapter_LuntanShouye(mData,this);
         listview_shouye.setAdapter(adapter_luntanShouye);
@@ -60,7 +62,7 @@ public class LuntanActivity extends BaseActivityother {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LuntanActivity.this,Luntan_AddActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1229);
             }
         });
         //上下拉刷新
@@ -138,6 +140,7 @@ public class LuntanActivity extends BaseActivityother {
                    if(bbsBean.getData()!=null){
                        mData.addAll(bbsBean.getData());
                        adapter_luntanShouye.notifyDataSetChanged();
+                       listview_shouye.getRefreshableView().setSelection(0);
                    }
                }else {
                    if(bbsBean.getData()!=null){
@@ -154,6 +157,18 @@ public class LuntanActivity extends BaseActivityother {
        }).Http(Urls.Baseurl_cui+Urls.bbs_shouye+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+
        "&pageNum="+page,this,0);
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1229 && resultCode == 1229) {
+            shuangxin  = data.getStringExtra("shuaxin");
+            if(shuangxin.equals("Y")){
+                PAGE=1;
+                request(PAGE);
+
+            }
+        }
     }
 
 }

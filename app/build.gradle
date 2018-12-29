@@ -5,10 +5,10 @@ android {
     buildToolsVersion "27.0.2"
     defaultConfig {
         applicationId "com.jingnuo.quanmbshop"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 26
-        versionCode 17
-        versionName "v1.6.5"
+        versionCode 18
+        versionName "v1.7.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
                 qqappid      : "1106726779",//友盟配置的qq   id

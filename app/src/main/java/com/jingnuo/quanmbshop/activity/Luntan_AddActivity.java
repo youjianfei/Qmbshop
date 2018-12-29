@@ -261,6 +261,9 @@ public class Luntan_AddActivity extends BaseActivityother {
                 }
                 if(status==1){
                     ToastUtils.showToast(Luntan_AddActivity.this,"发布成功");
+                    Intent result = new Intent();
+                    result.putExtra("shuaxin", "Y");
+                    setResult(1229, result);
                     finish();
                 }else {
                     ToastUtils.showToast(Luntan_AddActivity.this,msg);
