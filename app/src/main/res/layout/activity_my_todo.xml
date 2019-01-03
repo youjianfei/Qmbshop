@@ -46,7 +46,7 @@
         app:tabIndicatorColor="@color/yellow_jianbian_start"
         app:tabMinWidth="110dp"
         />
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    <ListView
         android:id="@+id/list_myorder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,6 +54,5 @@
         android:layout_marginRight="10dp"
         android:divider="@null"
         android:dividerHeight="8dp"
-        ptr:ptrMode="both"
         />
 </LinearLayout>

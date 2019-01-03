@@ -1,16 +1,12 @@
 package com.jingnuo.quanmbshop.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jingnuo.quanmbshop.Adapter.Adapter_myCollect;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.data.Staticdata;
@@ -25,7 +21,7 @@ import java.util.List;
 public class MySkillCollectActivity extends BaseActivityother {
 
     //控件
-    PullToRefreshListView  mListview;
+    ListView  mListview;
 
     List<SkillCollectBean.DataBean.ListBean>mdata;
     SkillCollectBean skillCollectBean;
@@ -55,21 +51,21 @@ public class MySkillCollectActivity extends BaseActivityother {
 
     @Override
     protected void initListener() {
-        mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                LogUtils.LOG("ceshi", "下拉刷新生效", "fragmentsquare");
-                page=1;
-                request();
-
-            }
-
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                page++;
-                request();
-            }
-        });
+//        mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+//            @Override
+//            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                LogUtils.LOG("ceshi", "下拉刷新生效", "fragmentsquare");
+//                page=1;
+//                request();
+//
+//            }
+//
+//            @Override
+//            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page++;
+//                request();
+//            }
+//        });
         mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -103,9 +99,7 @@ public class MySkillCollectActivity extends BaseActivityother {
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
-                if (mListview.isRefreshing()){
-                    mListview. onRefreshComplete();
-                }
+
                 LogUtils.LOG("ceshi",respose,"收藏列表");
                 skillCollectBean=new Gson().fromJson(respose,SkillCollectBean.class);
                 if(skillCollectBean.getData()!=null&&page==1){

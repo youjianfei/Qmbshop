@@ -31,7 +31,7 @@
             android:textSize="18sp" />
 
     </RelativeLayout>
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    <ListView
         android:id="@+id/list_tuijianrenwu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,7 +39,6 @@
         android:layout_marginRight="10dp"
         android:divider="@null"
         android:dividerHeight="1dp"
-        ptr:ptrMode="both"
         android:layout_below="@+id/re_title"
 
         />

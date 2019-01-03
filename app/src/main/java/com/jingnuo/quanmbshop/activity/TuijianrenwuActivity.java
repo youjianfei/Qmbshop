@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jingnuo.quanmbshop.Adapter.Adapter_DealmessageList;
 import com.jingnuo.quanmbshop.Adapter.Adapter_TuijianrenwumessageList;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
@@ -29,7 +27,7 @@ import java.util.Map;
 
 public class TuijianrenwuActivity extends BaseActivityother {
     //控件
-    PullToRefreshListView mListview;
+    ListView mListview;
     ImageView mImage_view_empty;
     Message_tujianrenwu message_tujianrenwuBean;
 
@@ -82,22 +80,22 @@ public class TuijianrenwuActivity extends BaseActivityother {
             }
         });
 //下拉  上拉 加载刷新
-        mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                page = 1;
-                map_message.put("pageNo",page+"");
-                requestTuijianrenwumessage(map_message);
-
-            }
-
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                page++;
-                map_message.put("pageNo",page+"");
-                requestTuijianrenwumessage(map_message);
-            }
-        });
+//        mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+//            @Override
+//            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page = 1;
+//                map_message.put("pageNo",page+"");
+//                requestTuijianrenwumessage(map_message);
+//
+//            }
+//
+//            @Override
+//            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page++;
+//                map_message.put("pageNo",page+"");
+//                requestTuijianrenwumessage(map_message);
+//            }
+//        });
     }
 
     @Override
@@ -110,9 +108,7 @@ public class TuijianrenwuActivity extends BaseActivityother {
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
-                if (mListview.isRefreshing()) {
-                    mListview.onRefreshComplete();
-                }
+
                 LogUtils.LOG("ceshi","交易消息内容"+respose,"DealMessageActivity");
                 message_tujianrenwuBean=new Gson().fromJson(respose,Message_tujianrenwu.class);
                 if(page==1){
@@ -132,9 +128,9 @@ public class TuijianrenwuActivity extends BaseActivityother {
 
             @Override
             public void onError(int error) {
-                if (mListview.isRefreshing()) {
-                    mListview.onRefreshComplete();
-                }
+//                if (mListview.isRefreshing()) {
+//                    mListview.onRefreshComplete();
+//                }
             }
         }).postHttp(Urls.Baseurl_hu+Urls.pushMessage,TuijianrenwuActivity.this,1,map);
 

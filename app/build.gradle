@@ -65,7 +65,7 @@ dependencies {
     //
     //状态栏 'com.jaeger.statusbaruitl:library:1.0.0'
     //圆形图片 'de.hdodenhof:circleimageview:2.0.0'
-    compile project(':library_pulltorefresh')
+//    compile project(':library_pulltorefresh')
     // Retrofit库
     // Okhttp库
     // 1、maven { url 'https://jitpack.io' }  2、'com.github.Jay-Goo:RangeSeekBar:v1.2.2'  双向滑动选择器

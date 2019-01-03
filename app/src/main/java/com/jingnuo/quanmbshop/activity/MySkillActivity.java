@@ -12,9 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.jaeger.library.StatusBarUtil;
 import com.jingnuo.quanmbshop.Adapter.Adapter_mystill;
 import com.jingnuo.quanmbshop.Interface.InterfaceAdapterSuccess;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;

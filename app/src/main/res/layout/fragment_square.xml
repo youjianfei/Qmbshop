@@ -15,12 +15,11 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         />
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    <ListView
         android:id="@+id/list_square"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        ptr:ptrMode="both"
         />
     <RelativeLayout
         android:id="@+id/relative_sort"

@@ -20,8 +20,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jingnuo.quanmbshop.Adapter.Adapter_SquareList;
 import com.jingnuo.quanmbshop.Adapter.Adapter_mytodo;
 import com.jingnuo.quanmbshop.Interface.InterfacePermission;
@@ -59,7 +57,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
     RelativeLayout re_title;
     ImageView image_personcenter;
     TabLayout mTablayout;
-    PullToRefreshListView mListview_shanghuorder;
+    ListView mListview_shanghuorder;
 
     View listheadView;//头视图
     TabLayout mTablayout_header;
@@ -152,7 +150,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
         mTablayout.addTab(mTablayout.newTab().setText("已完成").setTag("00,"));
 
         listheadView = LayoutInflater.from(getActivity()).inflate(R.layout.list_headview_shanghuorder, null, false);
-        mListview_shanghuorder.getRefreshableView().addHeaderView(listheadView);
+        mListview_shanghuorder.addHeaderView(listheadView);
 
         textview_ordercount = listheadView.findViewById(R.id.textview_ordercount);
         image_huiyuan = listheadView.findViewById(R.id.image_huiyuan);
@@ -172,19 +170,19 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
                 popwindow_shanghuIsjiedan.showPopwindow();
             }
         });
-        mListview_shanghuorder.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                page=1;
-                request(state,page);
-            }
-
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                page++;
-                request(state,page);
-            }
-        });
+//        mListview_shanghuorder.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+//            @Override
+//            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page=1;
+//                request(state,page);
+//            }
+//
+//            @Override
+//            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page++;
+//                request(state,page);
+//            }
+//        });
         mListview_shanghuorder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -236,13 +234,14 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
 
 //                        mRelativelayout_sort.setBackgroundColor(Color.argb(255, 255, 255, 255));
                     }
-                } else {
-                    if (firstVisibleItem > 1) {
-                        mTablayout.setVisibility(View.VISIBLE);
-                    } else {
-                        mTablayout.setVisibility(View.INVISIBLE);
-                    }
                 }
+//                else {
+//                    if (firstVisibleItem > 1) {
+//                        mTablayout.setVisibility(View.VISIBLE);
+//                    } else {
+//                        mTablayout.setVisibility(View.INVISIBLE);
+//                    }
+//                }
 
             }
         });
@@ -377,9 +376,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
             @Override
             public void onSuccesses(String respose) {
                 LogUtils.LOG("ceshi", "新订单"+respose, "Fragment_shanghutask");
-                if (mListview_shanghuorder.isRefreshing()) {
-                    mListview_shanghuorder.onRefreshComplete();
-                }
+
                 shanghuneworderBean = new Gson().fromJson(respose, ShanghuneworderBean.class);
                 if (page == 1) {
                     mList.clear();
@@ -413,7 +410,7 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
      * @return
      */
     private boolean isScroll() {
-        if (mListview_shanghuorder.getRefreshableView().getFirstVisiblePosition() == 1 || mListview_shanghuorder.getRefreshableView().getFirstVisiblePosition() == 0) {
+        if (mListview_shanghuorder.getFirstVisiblePosition() == 0) {
             return true;
         }
         return false;
@@ -425,12 +422,12 @@ public class Fragment_shanghutask extends Fragment implements View.OnClickListen
      * @return
      */
     private float getScrollY() {
-        View c = mListview_shanghuorder.getRefreshableView().getChildAt(0);
+        View c = mListview_shanghuorder.getChildAt(0);
         if (c == null) {
             return 0;
         }
-        int firstVisiblePosition = mListview_shanghuorder.getRefreshableView().getFirstVisiblePosition();
-        if (firstVisiblePosition == 1 || firstVisiblePosition == 0) {
+        int firstVisiblePosition = mListview_shanghuorder.getFirstVisiblePosition();
+        if (firstVisiblePosition == 0) {
             //如果可见的是第一行或第二行，那么开始计算距离比例
             float top = c.getTop();
             //当第一行已经开始消失的时候，top是为负数的，所以取正

@@ -40,7 +40,7 @@
         android:layout_below="@+id/re_title"
         android:divider="@null"
         android:dividerHeight="8dp"
-        ptr:ptrMode="both" />
+        />
     <ImageView
         android:id="@+id/image_empty"
         android:layout_width="150dp"

@@ -9,8 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jingnuo.quanmbshop.Adapter.Adapter_mytodo;
 import com.jingnuo.quanmbshop.Interface.Interface_volley_respose;
 import com.jingnuo.quanmbshop.data.Staticdata;
@@ -28,7 +26,7 @@ public class MyTodoActivity extends BaseActivityother {
 
     //控件
     TabLayout mTablayout;
-    PullToRefreshListView mListView;
+   ListView mListView;
 
 
     Adapter_mytodo adapter;
@@ -63,19 +61,19 @@ public class MyTodoActivity extends BaseActivityother {
 
     @Override
     protected void initListener() {
-        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                page=1;
-                request(state,page);
-            }
-
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                page++;
-                request(state,page);
-            }
-        });
+//        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+//            @Override
+//            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page=1;
+//                request(state,page);
+//            }
+//
+//            @Override
+//            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page++;
+//                request(state,page);
+//            }
+//        });
         mTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -135,9 +133,7 @@ public class MyTodoActivity extends BaseActivityother {
             @Override
             public void onSuccesses(String respose) {
                 LogUtils.LOG("ceshi",respose,"MyTodoActivity");
-                if (mListView.isRefreshing()) {
-                    mListView.onRefreshComplete();
-                }
+
                 myTodoBean=new  Gson().fromJson(respose,MyTodoBean.class);
                 if(page==1){
                     mdata.clear();
