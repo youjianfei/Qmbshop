@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -23,7 +24,7 @@ import java.util.Map;
 
 public class MonryMingxiActivity extends BaseActivityother {
 
-    PullToRefreshListView listView;
+    ListView listView;
 
 
     Map map_mingxi;
@@ -63,13 +64,12 @@ public class MonryMingxiActivity extends BaseActivityother {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LogUtils.LOG("ceshi",position+"","jiao易明细列表");
                 Intent intent_moneydetails=new Intent(MonryMingxiActivity.this,MoneyMingxiDetailsActivity.class);
-                intent_moneydetails.putExtra("money",mData.get(position-1).getOrder_amoun()+"");
-                intent_moneydetails.putExtra("type",mData.get(position-1).getPay_method()+"");//zhi'付方式
-                intent_moneydetails.putExtra("time",mData.get(position-1).getCreateDate()+"");
-                intent_moneydetails.putExtra("order",mData.get(position-1).getOrder_no()+"");
-                intent_moneydetails.putExtra("title",mData.get(position-1).getBill_title()+"");
+                intent_moneydetails.putExtra("money",mData.get(position).getOrder_amoun()+"");
+                intent_moneydetails.putExtra("type",mData.get(position).getPay_method()+"");//支付方式
+                intent_moneydetails.putExtra("time",mData.get(position).getCreateDate()+"");
+                intent_moneydetails.putExtra("order",mData.get(position).getOrder_no()+"");
+                intent_moneydetails.putExtra("title",mData.get(position).getBill_title()+"");
                 startActivity(intent_moneydetails);
             }
         });
@@ -93,7 +93,6 @@ public class MonryMingxiActivity extends BaseActivityother {
                     adapter_jiaoyimingxi.notifyDataSetChanged();
                 }
             }
-
             @Override
             public void onError(int error) {
 

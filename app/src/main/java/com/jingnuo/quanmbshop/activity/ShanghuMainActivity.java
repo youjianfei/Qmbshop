@@ -25,8 +25,6 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.SpeechConstant;
@@ -52,6 +50,10 @@ import com.jingnuo.quanmbshop.utils.SizeUtils;
 import com.jingnuo.quanmbshop.utils.ToastUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 import com.master.permissionhelper.PermissionHelper;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -84,7 +86,8 @@ public class ShanghuMainActivity extends BaseActivityother {
     RelativeLayout re_title;
     ImageView image_personcenter;
     TabLayout mTablayout;
-    PullToRefreshListView mListview_shanghuorder;
+    SmartRefreshLayout smartRefreshLayout_refreshLayout;
+    ListView mListview_shanghuorder;
 
     View listheadView;//头视图
     TabLayout mTablayout_header;
@@ -328,19 +331,31 @@ public class ShanghuMainActivity extends BaseActivityother {
                 popwindow_shanghuIsjiedan.showPopwindow();
             }
         });
-        mListview_shanghuorder.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+        smartRefreshLayout_refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 page=1;
                 request(state,page);
             }
-
+        });
+        smartRefreshLayout_refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 page++;
                 request(state,page);
             }
         });
+//        mListview_shanghuorder.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+//            @Override
+//            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+//
+//            }
+//
+//            @Override
+//            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+//
+//            }
+//        });
         mListview_shanghuorder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -354,7 +369,7 @@ public class ShanghuMainActivity extends BaseActivityother {
                     Intent  intent=new Intent(ShanghuMainActivity.this,HelperOrderActivity.class);
 //                    intent.putExtra("type",type);
                     LogUtils.LOG("ceshi","列表数"+mList.size()+"点击位置"+position,"sadfasfd");
-                    intent.putExtra("order_no",mList.get(position-2).getOrder_no()+"");
+                    intent.putExtra("order_no",mList.get(position-1).getOrder_no()+"");
                     startActivity(intent);
 //                }
 
@@ -393,11 +408,11 @@ public class ShanghuMainActivity extends BaseActivityother {
 //                        mRelativelayout_sort.setBackgroundColor(Color.argb(255, 255, 255, 255));
                     }
                 } else {
-                    if (firstVisibleItem > 1) {
-                        mTablayout.setVisibility(View.VISIBLE);
-                    } else {
-                        mTablayout.setVisibility(View.INVISIBLE);
-                    }
+//                    if (firstVisibleItem > 1) {
+//                        mTablayout.setVisibility(View.VISIBLE);
+//                    } else {
+//                        mTablayout.setVisibility(View.INVISIBLE);
+//                    }
                 }
 
             }
@@ -463,6 +478,7 @@ public class ShanghuMainActivity extends BaseActivityother {
         re_title = findViewById(R.id.re_title);
         text_jiedan = findViewById(R.id.text_jiedan);
         mListview_shanghuorder = findViewById(R.id.list_order);
+        smartRefreshLayout_refreshLayout = findViewById(R.id.smartRefreshLayout_refreshLayout);
         image_personcenter = findViewById(R.id.image_personcenter);
         mTablayout = findViewById(R.id.tablayout);
         mTablayout.addTab(mTablayout.newTab().setText("新订单").setTag("07,09"));
@@ -470,7 +486,7 @@ public class ShanghuMainActivity extends BaseActivityother {
         mTablayout.addTab(mTablayout.newTab().setText("已完成").setTag("00,01,02"));
 
         listheadView = LayoutInflater.from(ShanghuMainActivity.this).inflate(R.layout.list_headview_shanghuorder, null, false);
-        mListview_shanghuorder.getRefreshableView().addHeaderView(listheadView);
+        mListview_shanghuorder.addHeaderView(listheadView);
 
         textview_ordercount = listheadView.findViewById(R.id.textview_ordercount);
         image_huiyuan = listheadView.findViewById(R.id.image_huiyuan);
@@ -836,9 +852,8 @@ public class ShanghuMainActivity extends BaseActivityother {
             @Override
             public void onSuccesses(String respose) {
                 LogUtils.LOG("ceshi", "新订单"+respose, "Fragment_shanghutask");
-                if (mListview_shanghuorder.isRefreshing()) {
-                    mListview_shanghuorder.onRefreshComplete();
-                }
+                smartRefreshLayout_refreshLayout.finishLoadMore();
+                smartRefreshLayout_refreshLayout.finishRefresh();
                 shanghuneworderBean = new Gson().fromJson(respose, ShanghuneworderBean.class);
                 if (page == 1) {
                     mList.clear();
@@ -865,7 +880,8 @@ public class ShanghuMainActivity extends BaseActivityother {
 
             @Override
             public void onError(int error) {
-
+                smartRefreshLayout_refreshLayout.finishLoadMore();
+                smartRefreshLayout_refreshLayout.finishRefresh();
             }
         }).Http(URL, this, 0);
 
@@ -877,7 +893,7 @@ public class ShanghuMainActivity extends BaseActivityother {
      * @return
      */
     private boolean isScroll() {
-        if (mListview_shanghuorder.getRefreshableView().getFirstVisiblePosition() == 1 || mListview_shanghuorder.getRefreshableView().getFirstVisiblePosition() == 0) {
+        if (mListview_shanghuorder.getFirstVisiblePosition() == 0 ) {
             return true;
         }
         return false;
@@ -889,12 +905,12 @@ public class ShanghuMainActivity extends BaseActivityother {
      * @return
      */
     private float getScrollY() {
-        View c = mListview_shanghuorder.getRefreshableView().getChildAt(0);
+        View c = mListview_shanghuorder.getChildAt(0);
         if (c == null) {
             return 0;
         }
-        int firstVisiblePosition = mListview_shanghuorder.getRefreshableView().getFirstVisiblePosition();
-        if (firstVisiblePosition == 1 || firstVisiblePosition == 0) {
+        int firstVisiblePosition = mListview_shanghuorder.getFirstVisiblePosition();
+        if (firstVisiblePosition == 0 ) {
             //如果可见的是第一行或第二行，那么开始计算距离比例
             float top = c.getTop();
             //当第一行已经开始消失的时候，top是为负数的，所以取正

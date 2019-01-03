@@ -1,6 +1,7 @@
 package com.jingnuo.quanmbshop.activity;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,12 +24,18 @@ import com.jingnuo.quanmbshop.entityclass.MySkillBean;
 import com.jingnuo.quanmbshop.utils.LogUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 import com.jingnuo.quanmbshop.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MySkillActivity extends BaseActivityother {
     //控件
-    PullToRefreshListView  mListview;
+    SmartRefreshLayout SmartRefreshLayout_refreshLayout;
+    ListView  mListview;
     TabLayout mTablayout;
     LinearLayout linearlayout_fabu;
 
@@ -73,7 +80,7 @@ public class MySkillActivity extends BaseActivityother {
     protected void initListener() {
         final float[] mFirstY = {0};//按下时获取位置
         final float[] mCurrentY = {0};//得到滑动的位置
-        mListview.getRefreshableView().setOnTouchListener(new View.OnTouchListener() {
+        mListview.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -107,25 +114,28 @@ public class MySkillActivity extends BaseActivityother {
                 startActivity(intend_issue_skill);
             }
         });
-        mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+        SmartRefreshLayout_refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                linearlayout_fabu.setVisibility(View.VISIBLE);
                 page=1;
                 request(release_status,page);
             }
-
+        });
+        SmartRefreshLayout_refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 page++;
                 request(release_status,page);
             }
         });
+
         mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LogUtils.LOG("ceshi","点击了第"+position,"ssfd");
                 Intent intent=new Intent(MySkillActivity.this,SkillDetailActivity.class);
-                intent.putExtra("id",mData.get(position-1).getRelease_specialty_id()+"");
+                intent.putExtra("id",mData.get(position).getRelease_specialty_id()+"");
                 intent.putExtra("role",type+"");
                 startActivity(intent);
             }
@@ -153,6 +163,7 @@ public class MySkillActivity extends BaseActivityother {
 
     @Override
     protected void initView() {
+        SmartRefreshLayout_refreshLayout=findViewById(R.id.SmartRefreshLayout_refreshLayout);
         mListview=findViewById(R.id.list_myskill);
         linearlayout_fabu=findViewById(R.id.linearlayout_fabu);
         mTablayout=findViewById(R.id.tablayout);
@@ -174,9 +185,8 @@ public class MySkillActivity extends BaseActivityother {
             @Override
             public void onSuccesses(String respose) {
                 LogUtils.LOG("ceshi",respose,"发布服务列表网址");
-                if (mListview.isRefreshing()) {
-                    mListview.onRefreshComplete();
-                }
+                SmartRefreshLayout_refreshLayout.finishLoadMore();
+                SmartRefreshLayout_refreshLayout.finishRefresh();
                 mySkillBean=new Gson().fromJson(respose,MySkillBean.class);
                 if(page==1){
                     mData.clear();
@@ -193,7 +203,8 @@ public class MySkillActivity extends BaseActivityother {
             }
             @Override
             public void onError(int error) {
-
+                SmartRefreshLayout_refreshLayout.finishLoadMore();
+                SmartRefreshLayout_refreshLayout.finishRefresh();
             }
         }).Http(URL,MySkillActivity.this,0);
     }

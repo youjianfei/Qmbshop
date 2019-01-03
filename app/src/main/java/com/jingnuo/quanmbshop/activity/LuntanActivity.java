@@ -1,6 +1,7 @@
 package com.jingnuo.quanmbshop.activity;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -20,12 +21,17 @@ import com.jingnuo.quanmbshop.data.Urls;
 import com.jingnuo.quanmbshop.entityclass.BBSBean;
 import com.jingnuo.quanmbshop.utils.LogUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LuntanActivity extends BaseActivityother {
-    PullToRefreshListView listview_shouye;//列表控件
+    ListView listview_shouye;//列表控件
+    SmartRefreshLayout SmartRefreshLayout_refreshLayout;
     ImageView iamgeview_fabu;
 
     List<BBSBean.DataBean> mData;//列表数据
@@ -66,18 +72,20 @@ public class LuntanActivity extends BaseActivityother {
             }
         });
         //上下拉刷新
-        listview_shouye.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+
+        SmartRefreshLayout_refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                iamgeview_fabu.setVisibility(View.VISIBLE);
                 PAGE=1;
                 request(PAGE);
-
             }
-
+        });
+        SmartRefreshLayout_refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-            PAGE++;
-            request(PAGE);
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                PAGE++;
+                request(PAGE);
             }
         });
         //list  item  点击事件
@@ -86,14 +94,14 @@ public class LuntanActivity extends BaseActivityother {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LogUtils.LOG("ceshi","点击论坛条目"+position,"论坛列表");
                 Intent intent=new Intent(LuntanActivity.this,LuntanDetailActivity.class);
-                intent.putExtra("luntanID",mData.get(position-1).getID()+"");
+                intent.putExtra("luntanID",mData.get(position).getID()+"");
                 startActivity(intent);
             }
         });
         //监听 listview滑动距离
         final float[] mFirstY = {0};//按下时获取位置
         final float[] mCurrentY = {0};//得到滑动的位置
-        listview_shouye.getRefreshableView().setOnTouchListener(new View.OnTouchListener() {
+        listview_shouye.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -121,6 +129,7 @@ public class LuntanActivity extends BaseActivityother {
 
     @Override
     protected void initView() {
+        SmartRefreshLayout_refreshLayout=findViewById(R.id.SmartRefreshLayout_refreshLayout);
         listview_shouye=findViewById(R.id.listview_shouye);
         iamgeview_fabu=findViewById(R.id.iamgeview_fabu);
     }
@@ -131,16 +140,15 @@ public class LuntanActivity extends BaseActivityother {
            @Override
            public void onSuccesses(String respose) {
                LogUtils.LOG("ceshi",respose,"论坛首页");
-               if(listview_shouye.isRefreshing()){
-                   listview_shouye.onRefreshComplete();
-               }
+               SmartRefreshLayout_refreshLayout.finishLoadMore();
+               SmartRefreshLayout_refreshLayout.finishRefresh();
                bbsBean=new Gson().fromJson(respose,BBSBean.class);
                if(page==1){
                    mData.clear();
                    if(bbsBean.getData()!=null){
                        mData.addAll(bbsBean.getData());
                        adapter_luntanShouye.notifyDataSetChanged();
-                       listview_shouye.getRefreshableView().setSelection(0);
+                       listview_shouye.setSelection(0);
                    }
                }else {
                    if(bbsBean.getData()!=null){
@@ -152,7 +160,8 @@ public class LuntanActivity extends BaseActivityother {
 
            @Override
            public void onError(int error) {
-
+               SmartRefreshLayout_refreshLayout.finishLoadMore();
+               SmartRefreshLayout_refreshLayout.finishRefresh();
            }
        }).Http(Urls.Baseurl_cui+Urls.bbs_shouye+ Staticdata.static_userBean.getData().getAppuser().getUser_token()+
        "&pageNum="+page,this,0);

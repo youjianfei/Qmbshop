@@ -1,6 +1,7 @@
 package com.jingnuo.quanmbshop.activity;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,11 @@ import com.jingnuo.quanmbshop.entityclass.DealMessageBean;
 import com.jingnuo.quanmbshop.utils.LogUtils;
 import com.jingnuo.quanmbshop.utils.Volley_Utils;
 import com.jingnuo.quanmbshop.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +35,8 @@ public class DealActivity extends BaseActivityother {
 
 
     //控件
-    PullToRefreshListView mListview;
+    SmartRefreshLayout SmartRefreshLayout_refreshLayout;
+    ListView mListview;
     ImageView mImage_view_empty;
     //数据
     Map map_message;
@@ -88,7 +95,7 @@ public class DealActivity extends BaseActivityother {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LogUtils.LOG("ceshi","点击了"+position,"交易信息");
-                String binding_id=mData.get(position-1).getBinding_id();
+                String binding_id=mData.get(position).getBinding_id();
 
                 if(binding_id.contains("QMB")){
                     Intent intent=new Intent(DealActivity.this,HelperOrderActivity.class);
@@ -102,25 +109,40 @@ public class DealActivity extends BaseActivityother {
                 }
             }
         });
-
-
-        //下拉  上拉 加载刷新
-        mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+        SmartRefreshLayout_refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 page = 1;
                 map_message.put("pageNo",page+"");
                 requestDealmessage(map_message);
-
             }
-
+        });
+        SmartRefreshLayout_refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 page++;
                 map_message.put("pageNo",page+"");
                 requestDealmessage(map_message);
             }
         });
+
+        //下拉  上拉 加载刷新
+//        mListview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+//            @Override
+//            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page = 1;
+//                map_message.put("pageNo",page+"");
+//                requestDealmessage(map_message);
+//
+//            }
+//
+//            @Override
+//            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+//                page++;
+//                map_message.put("pageNo",page+"");
+//                requestDealmessage(map_message);
+//            }
+//        });
 
     }
 
@@ -128,6 +150,7 @@ public class DealActivity extends BaseActivityother {
     protected void initView() {
         mListview=findViewById(R.id.list_dealmessage);
         mImage_view_empty=findViewById(R.id.image_empty);
+        SmartRefreshLayout_refreshLayout=findViewById(R.id.SmartRefreshLayout_refreshLayout);
     }
 
 
@@ -136,9 +159,11 @@ public class DealActivity extends BaseActivityother {
         new Volley_Utils(new Interface_volley_respose() {
             @Override
             public void onSuccesses(String respose) {
-                if (mListview.isRefreshing()) {
-                    mListview.onRefreshComplete();
-                }
+//                if (mListview.isRefreshing()) {
+//                    mListview.onRefreshComplete();
+//                }
+                SmartRefreshLayout_refreshLayout.finishLoadMore();
+                SmartRefreshLayout_refreshLayout.finishRefresh();
                 LogUtils.LOG("ceshi","交易消息内容"+respose,"DealMessageActivity");
                 dealMessageBean=new Gson().fromJson(respose,DealMessageBean.class);
                 if(page==1){
@@ -158,9 +183,8 @@ public class DealActivity extends BaseActivityother {
 
             @Override
             public void onError(int error) {
-                if (mListview.isRefreshing()) {
-                    mListview.onRefreshComplete();
-                }
+                SmartRefreshLayout_refreshLayout.finishLoadMore();
+                SmartRefreshLayout_refreshLayout.finishRefresh();
             }
         }).postHttp(Urls.Baseurl_hu+Urls.pushMessage,DealActivity.this,1,map);
 

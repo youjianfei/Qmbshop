@@ -33,7 +33,7 @@
 
     </RelativeLayout>
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    <ListView
         android:id="@+id/mlistview_skillcollect"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
